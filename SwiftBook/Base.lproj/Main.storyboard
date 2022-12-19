@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,27 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="Uus-Ye-iN0">
-                                <rect key="frame" x="143" y="103" width="128" height="508"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Uus-Ye-iN0">
+                                <rect key="frame" x="128" y="54" width="158" height="490"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7P-zn-lAU" userLabel="RedCircleView">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7P-zn-lAU" userLabel="RedCircleView">
+                                        <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="P7P-zn-lAU" secondAttribute="height" multiplier="1:1" id="4P5-vC-WwC"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vP-ld-Ecf" userLabel="YellowCircleView">
-                                        <rect key="frame" x="0.0" y="190" width="128" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vP-ld-Ecf" userLabel="YellowCircleView">
+                                        <rect key="frame" x="0.0" y="166" width="158" height="158"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8vP-ld-Ecf" secondAttribute="height" multiplier="1:1" id="Va3-1m-vUm"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ovq-tt-WTY" userLabel="GreenCircleView">
-                                        <rect key="frame" x="0.0" y="380" width="128" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ovq-tt-WTY" userLabel="GreenCircleView">
+                                        <rect key="frame" x="0.0" y="332" width="158" height="158"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Ovq-tt-WTY" secondAttribute="height" multiplier="1:1" id="rfZ-XJ-3io"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uus-Ye-iN0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Pau-gf-Ly4"/>
+                            <constraint firstItem="Uus-Ye-iN0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="aeK-85-v9S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uus-Ye-iN0" secondAttribute="trailing" constant="128" id="ho6-VY-Qza"/>
+                            <constraint firstItem="Uus-Ye-iN0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="128" id="uii-DO-v4P"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
+                        <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
+                        <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
