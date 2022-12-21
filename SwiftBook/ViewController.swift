@@ -15,18 +15,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("viewDidLoad:", redCircleView.frame.width / 2)
     }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+        
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
 
         redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
         yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
         greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
-
-        print("viewWillLayoutSubviews:", redCircleView.frame.width / 2)
     }
 
 }
