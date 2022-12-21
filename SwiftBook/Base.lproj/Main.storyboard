@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Uus-Ye-iN0">
-                                <rect key="frame" x="128" y="54" width="158" height="490"/>
+                                <rect key="frame" x="128" y="74" width="158" height="490"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7P-zn-lAU" userLabel="RedCircleView">
                                         <rect key="frame" x="0.0" y="0.0" width="158" height="158"/>
@@ -43,19 +43,34 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jiv-AV-dvV">
+                                <rect key="frame" x="167" y="791" width="80" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="48j-nv-T0g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startNextColorLightButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEK-rj-lfz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jiv-AV-dvV" secondAttribute="bottom" constant="30" id="9qz-Wl-eYg"/>
                             <constraint firstItem="Uus-Ye-iN0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Pau-gf-Ly4"/>
-                            <constraint firstItem="Uus-Ye-iN0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="aeK-85-v9S"/>
+                            <constraint firstItem="Uus-Ye-iN0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="aeK-85-v9S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uus-Ye-iN0" secondAttribute="trailing" constant="128" id="ho6-VY-Qza"/>
                             <constraint firstItem="Uus-Ye-iN0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="128" id="uii-DO-v4P"/>
+                            <constraint firstItem="Jiv-AV-dvV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zu4-tN-BHw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
                         <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
+                        <outlet property="startNextColorLightButton" destination="Jiv-AV-dvV" id="h8e-55-ltG"/>
                         <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
                     </connections>
                 </viewController>
