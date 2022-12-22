@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet var redCircleView: UIView!
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
-    @IBOutlet var startNextColorLightButton: UIButton!
+    @IBOutlet var startButton: UIButton!
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +37,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startNextColorLightButtonTapped() {
-        if redCircleView.alpha < 1 && yellowCircleView.alpha < 1 && greenCircleView.alpha < 1 {
-            startNextColorLightButton.setTitle("Next", for: .normal)
-        }
+//        if redCircleView.alpha < 1 && yellowCircleView.alpha < 1 && greenCircleView.alpha < 1 {
+//            startNextColorLightButton.setTitle("Next", for: .normal)
+//        }
+    
     }
     
     
