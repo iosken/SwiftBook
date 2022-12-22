@@ -13,7 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
     @IBOutlet var startButton: UIButton!
-       
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +25,7 @@ class ViewController: UIViewController {
         redCircleView.alpha = 0
         yellowCircleView.alpha = 0
         greenCircleView.alpha = 0
+        startButton.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,17 +35,32 @@ class ViewController: UIViewController {
         yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
         greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
         
-        ///immediately show objects after transformation(with hometask start a-level):
+        startButton.layer.cornerRadius = startButton.frame.width / 16
+        
+        ///show objects after transformation:
         redCircleView.alpha = 0.3
         yellowCircleView.alpha = 0.3
         greenCircleView.alpha = 0.3
+        startButton.alpha = 1
     }
     
     @IBAction func startNextColorLightButtonTapped() {
-//        if redCircleView.alpha < 1 && yellowCircleView.alpha < 1 && greenCircleView.alpha < 1 {
-//            startNextColorLightButton.setTitle("Next", for: .normal)
-//        }
-    
+        guard startButton.currentTitle == "NEXT" else {
+            startButton.setTitle("NEXT", for: .normal)
+            redCircleView.alpha = 1
+            return
+        }
+        
+        if redCircleView.alpha == 1 {
+            redCircleView.alpha = 0.3
+            yellowCircleView.alpha = 1
+        } else if yellowCircleView.alpha == 1 {
+            yellowCircleView.alpha = 0.3
+            greenCircleView.alpha = 1
+        } else {
+            greenCircleView.alpha = 0.3
+            redCircleView.alpha = 1
+        }
     }
     
     
