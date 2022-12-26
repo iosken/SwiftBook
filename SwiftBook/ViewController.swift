@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet var greenCircleView: UIView!
     @IBOutlet var startButton: UIButton!
     
+    @IBOutlet var topConstraint: NSLayoutConstraint!
+    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
@@ -26,14 +29,25 @@ class ViewController: UIViewController {
         yellowCircleView.alpha = 0
         greenCircleView.alpha = 0
         startButton.alpha = 0
+        
+//        stackOfCirclesAndButton.topAnchor.constraint(equalTo: stackOfCirclesAndButton.bottomAnchor, constant: 10)
+//        redCircleView.layer.cornerRadius = ((UIScreen.main.bounds).size.width / 5 - stackOfCirclesAndButton.topAnchor)
+        
+//        print((UIApplication.shared.windows.first)?.safeAreaInsets.top)
+     //   print((UIWindowScene.windows.first)?.safeAreaInsets.top)
+//        
+//        print(view.safeAreaLayoutGuide)
+//        print((view.safeAreaLayoutGuide).layoutFrame.size.height)
+        
+        redCircleView.layer.cornerRadius = (((UIScreen.main.bounds).size.height - topConstraint.constant - bottomConstraint.constant) / 5) / 2
+        yellowCircleView.layer.cornerRadius = (((UIScreen.main.bounds).size.height - topConstraint.constant - bottomConstraint.constant) / 5) / 2
+        greenCircleView.layer.cornerRadius = (((UIScreen.main.bounds).size.height - topConstraint.constant - bottomConstraint.constant) / 5) / 2
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
-        yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
-        greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
+
         
         startButton.layer.cornerRadius = startButton.frame.width / 16
         
@@ -62,6 +76,4 @@ class ViewController: UIViewController {
             redCircleView.alpha = 1
         }
     }
-    
-    
 }
