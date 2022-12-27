@@ -14,8 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet var greenCircleView: UIView!
     @IBOutlet var startButton: UIButton!
     
-    @IBOutlet var topConstraint: NSLayoutConstraint!
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var mainStacktopConstraint: NSLayoutConstraint!
+    @IBOutlet var mainStackBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var mainStackAspectConstraint: NSLayoutConstraint!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
@@ -24,38 +25,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// hide objects to sneak transform:
-        redCircleView.alpha = 0
-        yellowCircleView.alpha = 0
-        greenCircleView.alpha = 0
-        startButton.alpha = 0
+        var topSafeAreaHeight: CGFloat = 0
+        var bottomSafeAreaHeight: CGFloat = 0
+        let screenBounds = (UIScreen.main.bounds).size.height
         
-//        stackOfCirclesAndButton.topAnchor.constraint(equalTo: stackOfCirclesAndButton.bottomAnchor, constant: 10)
-//        redCircleView.layer.cornerRadius = ((UIScreen.main.bounds).size.width / 5 - stackOfCirclesAndButton.topAnchor)
+        if #available(iOS 11.0, *) {
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.first
+            let safeFrame = window?.safeAreaLayoutGuide.layoutFrame
+            
+            topSafeAreaHeight = safeFrame?.minY ?? 0
+            bottomSafeAreaHeight = (window?.frame.maxY ?? 0) - (safeFrame?.maxY ?? 0)
+            // topSafeAreaHeight and bottomSafeAreaHeight is now available
+        }
         
-//        print((UIApplication.shared.windows.first)?.safeAreaInsets.top)
-     //   print((UIWindowScene.windows.first)?.safeAreaInsets.top)
-//        
-//        print(view.safeAreaLayoutGuide)
-//        print((view.safeAreaLayoutGuide).layoutFrame.size.height)
+        let mainAspectSizeVertical = 10 / (mainStackAspectConstraint.multiplier * 10)
+        let heighOfMainStack = screenBounds - topSafeAreaHeight - bottomSafeAreaHeight - mainStacktopConstraint.constant - mainStackBottomConstraint.constant
+        let widthOfMainStack = heighOfMainStack / mainAspectSizeVertical
+        let cornerRadiusValue = widthOfMainStack / 2
         
-        redCircleView.layer.cornerRadius = (((UIScreen.main.bounds).size.height - topConstraint.constant - bottomConstraint.constant) / 5) / 2
-        yellowCircleView.layer.cornerRadius = (((UIScreen.main.bounds).size.height - topConstraint.constant - bottomConstraint.constant) / 5) / 2
-        greenCircleView.layer.cornerRadius = (((UIScreen.main.bounds).size.height - topConstraint.constant - bottomConstraint.constant) / 5) / 2
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        redCircleView.layer.cornerRadius = cornerRadiusValue
+        yellowCircleView.layer.cornerRadius = cornerRadiusValue
+        greenCircleView.layer.cornerRadius = cornerRadiusValue
         
-
+        startButton.layer.cornerRadius = startButton.frame.width / (64 * mainStackAspectConstraint.multiplier)
         
-        startButton.layer.cornerRadius = startButton.frame.width / 16
-        
-        ///show objects after transformation:
         redCircleView.alpha = 0.3
         yellowCircleView.alpha = 0.3
         greenCircleView.alpha = 0.3
-        startButton.alpha = 1
     }
     
     @IBAction func startNextColorLightButtonTapped() {

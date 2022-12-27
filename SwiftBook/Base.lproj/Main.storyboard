@@ -75,17 +75,18 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="IJb-Dm-Xah" secondAttribute="bottom" constant="54" id="1y0-lK-W0T"/>
-                            <constraint firstItem="IJb-Dm-Xah" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="h0h-ih-5eZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IJb-Dm-Xah" secondAttribute="bottom" constant="20" id="1y0-lK-W0T"/>
+                            <constraint firstItem="IJb-Dm-Xah" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="h0h-ih-5eZ"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w7c-iB-KpM"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="1y0-lK-W0T" id="ONy-55-vmz"/>
                         <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
+                        <outlet property="mainStackAspectConstraint" destination="xWP-VZ-mdK" id="4Q1-2D-kpe"/>
+                        <outlet property="mainStackBottomConstraint" destination="1y0-lK-W0T" id="ONy-55-vmz"/>
+                        <outlet property="mainStacktopConstraint" destination="h0h-ih-5eZ" id="p8P-et-Qen"/>
                         <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
                         <outlet property="startButton" destination="Jiv-AV-dvV" id="h8e-55-ltG"/>
-                        <outlet property="topConstraint" destination="h0h-ih-5eZ" id="p8P-et-Qen"/>
                         <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
                     </connections>
                 </viewController>
