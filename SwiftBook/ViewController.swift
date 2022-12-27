@@ -56,22 +56,42 @@ class ViewController: UIViewController {
         greenCircleView.alpha = 0.3
     }
     
-    @IBAction func startNextColorLightButtonTapped() {
-        guard startButton.currentTitle == "NEXT" else {
-            startButton.setTitle("NEXT", for: .normal)
-            redCircleView.alpha = 1
-            return
+    class TrafficLight {
+        var currentState: States?
+        
+        enum States {
+            case red
+            case yellow
+            case green
         }
         
-        if redCircleView.alpha == 1 {
-            redCircleView.alpha = 0.3
-            yellowCircleView.alpha = 1
-        } else if yellowCircleView.alpha == 1 {
-            yellowCircleView.alpha = 0.3
-            greenCircleView.alpha = 1
-        } else {
+        func nextState() {
+            switch currentState {
+            case .red:
+                currentState = .yellow
+            case .yellow:
+                currentState = .green
+            case .green:
+                currentState = .red
+            default:
+                currentState = .red
+            }
+        }
+    }
+    
+    let trafficLight = TrafficLight()
+    
+    @IBAction func startNextColorLightButtonTapped() {
+        if trafficLight.currentState == .green || trafficLight.currentState == nil {
             greenCircleView.alpha = 0.3
             redCircleView.alpha = 1
+        } else if trafficLight.currentState == .red {
+            redCircleView.alpha = 0.3
+            yellowCircleView.alpha = 1
+        } else {
+            yellowCircleView.alpha = 0.3
+            greenCircleView.alpha = 1
         }
+        trafficLight.nextState()
     }
 }
