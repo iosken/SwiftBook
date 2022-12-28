@@ -58,6 +58,7 @@ class ViewController: UIViewController {
     
     class TrafficLight {
         var currentState: States?
+        var currentStateValue: (red: CGFloat, yellow: CGFloat, green: CGFloat) = (0, 0, 0)
         
         enum States {
             case red
@@ -69,12 +70,16 @@ class ViewController: UIViewController {
             switch currentState {
             case .red:
                 currentState = .yellow
+                currentStateValue = (red: 0.3, yellow: 1, green: 0.3)
             case .yellow:
                 currentState = .green
+                currentStateValue = (red: 0.3, yellow: 0.3, green: 1)
             case .green:
                 currentState = .red
+                currentStateValue = (red: 1, yellow: 0.3, green: 0.3)
             default:
                 currentState = .red
+                currentStateValue = (red: 1, yellow: 0.3, green: 0.3)
             }
         }
     }
@@ -82,16 +87,9 @@ class ViewController: UIViewController {
     let trafficLight = TrafficLight()
     
     @IBAction func startNextColorLightButtonTapped() {
-        if trafficLight.currentState == .green || trafficLight.currentState == nil {
-            greenCircleView.alpha = 0.3
-            redCircleView.alpha = 1
-        } else if trafficLight.currentState == .red {
-            redCircleView.alpha = 0.3
-            yellowCircleView.alpha = 1
-        } else {
-            yellowCircleView.alpha = 0.3
-            greenCircleView.alpha = 1
-        }
         trafficLight.nextState()
+        redCircleView.alpha = trafficLight.currentStateValue.red
+        yellowCircleView.alpha = trafficLight.currentStateValue.yellow
+        greenCircleView.alpha = trafficLight.currentStateValue.green
     }
 }
