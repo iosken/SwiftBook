@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     
     // MARK: - Public Properties
     let trafficLight = TrafficLight()
+    let offLightState = OnOffLightToggle.off
+    let onLightState = OnOffLightToggle.on
+    
     
     // MARK: - Life Cycles Properties and Methods
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -54,33 +57,38 @@ class ViewController: UIViewController {
         yellowCircleView.layer.cornerRadius = cornerRadiusValue
         greenCircleView.layer.cornerRadius = cornerRadiusValue
         
-        startButton.layer.cornerRadius = startButton.frame.width / (64 * mainStackAspectConstraint.multiplier)
+        redCircleView.alpha = offLightState.rawValue
+        yellowCircleView.alpha = offLightState.rawValue
+        greenCircleView.alpha = offLightState.rawValue
         
-        redCircleView.alpha = 0.3
-        yellowCircleView.alpha = 0.3
-        greenCircleView.alpha = 0.3
+        startButton.layer.cornerRadius = startButton.frame.width / (64 * mainStackAspectConstraint.multiplier)
     }
     
     // MARK: - Public objects
+    enum OnOffLightToggle: CGFloat { //one point to change On Off alpha channel fixed state of Circles
+        case off = 0.3
+        case on = 1
+    }
+    
     class TrafficLight {
         var currentState: States?
         
         enum States {
-            case red(red: CGFloat, yellow: CGFloat, green: CGFloat)
-            case yellow(red: CGFloat, yellow: CGFloat, green: CGFloat)
-            case green(red: CGFloat, yellow: CGFloat, green: CGFloat)
+            case red(red: OnOffLightToggle, yellow: OnOffLightToggle, green: OnOffLightToggle)
+            case yellow(red: OnOffLightToggle, yellow: OnOffLightToggle, green: OnOffLightToggle)
+            case green(red: OnOffLightToggle, yellow: OnOffLightToggle, green: OnOffLightToggle)
         }
         
         func nextState() {
             switch currentState {
             case .red:
-                currentState = .yellow(red: 0.3, yellow: 1, green: 0.3)
+                currentState = .yellow(red: .off, yellow: .on, green: .off)
             case .yellow:
-                currentState = .green(red: 0.3, yellow: 0.3, green: 1)
+                currentState = .green(red: .off, yellow: .off, green: .on)
             case .green:
-                currentState = .red(red: 1, yellow: 0.3, green: 0.3)
+                currentState = .red(red: .on, yellow: .off, green: .off)
             default:
-                currentState = .red(red: 1, yellow: 0.3, green: 0.3)
+                currentState = .red(red: .on, yellow: .off, green: .off)
             }
         }
     }
@@ -91,17 +99,17 @@ class ViewController: UIViewController {
         
         switch trafficLight.currentState {
         case let .red(red: redValue, yellow: yellowValue, green: greenValue):
-            redCircleView.alpha = redValue
-            yellowCircleView.alpha = yellowValue
-            greenCircleView.alpha = greenValue
+            redCircleView.alpha = redValue.rawValue
+            yellowCircleView.alpha = yellowValue.rawValue
+            greenCircleView.alpha = greenValue.rawValue
         case let .yellow(red: redValue, yellow: yellowValue, green: greenValue):
-            redCircleView.alpha = redValue
-            yellowCircleView.alpha = yellowValue
-            greenCircleView.alpha = greenValue
+            redCircleView.alpha = redValue.rawValue
+            yellowCircleView.alpha = yellowValue.rawValue
+            greenCircleView.alpha = greenValue.rawValue
         case let .green(red: redValue, yellow: yellowValue, green: greenValue):
-            redCircleView.alpha = redValue
-            yellowCircleView.alpha = yellowValue
-            greenCircleView.alpha = greenValue
+            redCircleView.alpha = redValue.rawValue
+            yellowCircleView.alpha = yellowValue.rawValue
+            greenCircleView.alpha = greenValue.rawValue
         default:
             break
         }
