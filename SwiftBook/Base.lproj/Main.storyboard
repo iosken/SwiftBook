@@ -61,7 +61,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="startNextColorLightButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEK-rj-lfz"/>
+                                            <action selector="startNextButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEK-rj-lfz"/>
                                         </connections>
                                     </button>
                                 </subviews>

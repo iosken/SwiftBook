@@ -58,38 +58,47 @@ class ViewController: UIViewController {
     
     class TrafficLight {
         var currentState: States?
-        var currentStateValue: (red: CGFloat, yellow: CGFloat, green: CGFloat) = (0, 0, 0)
         
         enum States {
-            case red
-            case yellow
-            case green
+            case red(red: CGFloat, yellow: CGFloat, green: CGFloat)
+            case yellow(red: CGFloat, yellow: CGFloat, green: CGFloat)
+            case green(red: CGFloat, yellow: CGFloat, green: CGFloat)
         }
         
         func nextState() {
             switch currentState {
             case .red:
-                currentState = .yellow
-                currentStateValue = (red: 0.3, yellow: 1, green: 0.3)
+                currentState = .yellow(red: 0.3, yellow: 1, green: 0.3)
             case .yellow:
-                currentState = .green
-                currentStateValue = (red: 0.3, yellow: 0.3, green: 1)
+                currentState = .green(red: 0.3, yellow: 0.3, green: 1)
             case .green:
-                currentState = .red
-                currentStateValue = (red: 1, yellow: 0.3, green: 0.3)
+                currentState = .red(red: 1, yellow: 0.3, green: 0.3)
             default:
-                currentState = .red
-                currentStateValue = (red: 1, yellow: 0.3, green: 0.3)
+                currentState = .red(red: 1, yellow: 0.3, green: 0.3)
             }
         }
     }
     
     let trafficLight = TrafficLight()
     
-    @IBAction func startNextColorLightButtonTapped() {
+    @IBAction func startNextButtonTapped() {
         trafficLight.nextState()
-        redCircleView.alpha = trafficLight.currentStateValue.red
-        yellowCircleView.alpha = trafficLight.currentStateValue.yellow
-        greenCircleView.alpha = trafficLight.currentStateValue.green
+        
+        switch trafficLight.currentState {
+        case let .red(red: redValue, yellow: yellowValue, green: greenValue):
+            redCircleView.alpha = redValue
+            yellowCircleView.alpha = yellowValue
+            greenCircleView.alpha = greenValue
+        case let .yellow(red: redValue, yellow: yellowValue, green: greenValue):
+            redCircleView.alpha = redValue
+            yellowCircleView.alpha = yellowValue
+            greenCircleView.alpha = greenValue
+        case let .green(red: redValue, yellow: yellowValue, green: greenValue):
+            redCircleView.alpha = redValue
+            yellowCircleView.alpha = yellowValue
+            greenCircleView.alpha = greenValue
+        default:
+            break
+        }
     }
 }
