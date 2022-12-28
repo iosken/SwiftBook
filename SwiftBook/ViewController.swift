@@ -21,9 +21,6 @@ class ViewController: UIViewController {
     
     // MARK: - Public Properties
     let trafficLight = TrafficLight()
-    let offLightState = OnOffLightToggle.off
-    let onLightState = OnOffLightToggle.on
-    
     
     // MARK: - Life Cycles Properties and Methods
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -57,38 +54,75 @@ class ViewController: UIViewController {
         yellowCircleView.layer.cornerRadius = cornerRadiusValue
         greenCircleView.layer.cornerRadius = cornerRadiusValue
         
-        redCircleView.alpha = offLightState.rawValue
-        yellowCircleView.alpha = offLightState.rawValue
-        greenCircleView.alpha = offLightState.rawValue
+        trafficLight.redCircleView = redCircleView
+        trafficLight.yellowCircleView = yellowCircleView
+        trafficLight.greenCircleView = greenCircleView
+        trafficLight.nextState()
         
         startButton.layer.cornerRadius = startButton.frame.width / (64 * mainStackAspectConstraint.multiplier)
     }
     
     // MARK: - Public objects
-    enum OnOffLightToggle: CGFloat { //one point to change On Off alpha channel fixed state of Circles
-        case off = 0.3
-        case on = 1
+    
+    enum TrafficLightsStates {
+        case red(red: OnOffLightToggle = .on, yellow: OnOffLightToggle = .off, green: OnOffLightToggle = .off)
+        case yellow(red: OnOffLightToggle = .off, yellow: OnOffLightToggle = .on, green: OnOffLightToggle = .off)
+        case green(red: OnOffLightToggle = .off, yellow: OnOffLightToggle = .off, green: OnOffLightToggle = .on)
+        case start(red: OnOffLightToggle = .off, yellow: OnOffLightToggle = .off, green: OnOffLightToggle = .off)
+        
+        enum OnOffLightToggle: CGFloat { //one point to change On Off alpha channel level of circles views
+            case off = 0.3
+            case on = 1
+        }
     }
     
     class TrafficLight {
-        var currentState: States?
+        var redCircleView: UIView?
+        var yellowCircleView: UIView?
+        var greenCircleView: UIView?
         
-        enum States {
-            case red(red: OnOffLightToggle, yellow: OnOffLightToggle, green: OnOffLightToggle)
-            case yellow(red: OnOffLightToggle, yellow: OnOffLightToggle, green: OnOffLightToggle)
-            case green(red: OnOffLightToggle, yellow: OnOffLightToggle, green: OnOffLightToggle)
-        }
+        private var currentState: TrafficLightsStates?
         
         func nextState() {
             switch currentState {
+            case .start:
+                currentState = .red()
+                applyState()
             case .red:
-                currentState = .yellow(red: .off, yellow: .on, green: .off)
+                currentState = .yellow()
+                applyState()
             case .yellow:
-                currentState = .green(red: .off, yellow: .off, green: .on)
+                currentState = .green()
+                applyState()
             case .green:
-                currentState = .red(red: .on, yellow: .off, green: .off)
+                currentState = .red()
+                applyState()
             default:
-                currentState = .red(red: .on, yellow: .off, green: .off)
+                currentState = .start()
+                applyState()
+            }
+        }
+        
+        private func applyState() {
+            switch currentState {
+            case let .start(red: redValue, yellow: yellowValue, green: greenValue):
+                redCircleView?.alpha = redValue.rawValue
+                yellowCircleView?.alpha = yellowValue.rawValue
+                greenCircleView?.alpha = greenValue.rawValue
+            case let .red(red: redValue, yellow: yellowValue, green: greenValue):
+                redCircleView?.alpha = redValue.rawValue
+                yellowCircleView?.alpha = yellowValue.rawValue
+                greenCircleView?.alpha = greenValue.rawValue
+            case let .yellow(red: redValue, yellow: yellowValue, green: greenValue):
+                redCircleView?.alpha = redValue.rawValue
+                yellowCircleView?.alpha = yellowValue.rawValue
+                greenCircleView?.alpha = greenValue.rawValue
+            case let .green(red: redValue, yellow: yellowValue, green: greenValue):
+                redCircleView?.alpha = redValue.rawValue
+                yellowCircleView?.alpha = yellowValue.rawValue
+                greenCircleView?.alpha = greenValue.rawValue
+            default:
+                break
             }
         }
     }
@@ -96,22 +130,5 @@ class ViewController: UIViewController {
     // MARK: - IB Actions
     @IBAction func startNextButtonTapped() {
         trafficLight.nextState()
-        
-        switch trafficLight.currentState {
-        case let .red(red: redValue, yellow: yellowValue, green: greenValue):
-            redCircleView.alpha = redValue.rawValue
-            yellowCircleView.alpha = yellowValue.rawValue
-            greenCircleView.alpha = greenValue.rawValue
-        case let .yellow(red: redValue, yellow: yellowValue, green: greenValue):
-            redCircleView.alpha = redValue.rawValue
-            yellowCircleView.alpha = yellowValue.rawValue
-            greenCircleView.alpha = greenValue.rawValue
-        case let .green(red: redValue, yellow: yellowValue, green: greenValue):
-            redCircleView.alpha = redValue.rawValue
-            yellowCircleView.alpha = yellowValue.rawValue
-            greenCircleView.alpha = greenValue.rawValue
-        default:
-            break
-        }
     }
 }
