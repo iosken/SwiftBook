@@ -129,6 +129,9 @@ class ViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func startNextButtonTapped() {
+        if startButton.currentTitle != "NEXT" {
+            startButton.setTitle("NEXT", for: .normal)
+        }
         trafficLight.nextState()
     }
 }
