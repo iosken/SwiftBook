@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet var redCircleView: UIView!
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
@@ -18,6 +19,10 @@ class ViewController: UIViewController {
     @IBOutlet var mainStackBottomConstraint: NSLayoutConstraint!
     @IBOutlet var mainStackAspectConstraint: NSLayoutConstraint!
     
+    // MARK: - Public Properties
+    let trafficLight = TrafficLight()
+    
+    // MARK: - Life Cycles Properties and Methods
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
@@ -40,7 +45,7 @@ class ViewController: UIViewController {
             // topSafeAreaHeight and bottomSafeAreaHeight is now available
         }
         
-        let mainAspectSizeVertical = 10 / (mainStackAspectConstraint.multiplier * 10)
+        let mainAspectSizeVertical = 1 / (mainStackAspectConstraint.multiplier)
         let heighOfMainStack = screenBounds - topSafeAreaHeight - bottomSafeAreaHeight - mainStacktopConstraint.constant - mainStackBottomConstraint.constant
         let widthOfMainStack = heighOfMainStack / mainAspectSizeVertical
         let cornerRadiusValue = widthOfMainStack / 2
@@ -56,6 +61,7 @@ class ViewController: UIViewController {
         greenCircleView.alpha = 0.3
     }
     
+    // MARK: - Public objects
     class TrafficLight {
         var currentState: States?
         
@@ -79,8 +85,7 @@ class ViewController: UIViewController {
         }
     }
     
-    let trafficLight = TrafficLight()
-    
+    // MARK: - IB Actions
     @IBAction func startNextButtonTapped() {
         trafficLight.nextState()
         
