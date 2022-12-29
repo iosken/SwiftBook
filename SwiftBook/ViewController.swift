@@ -22,11 +22,12 @@ class ViewController: UIViewController {
     // MARK: - Public Properties
     let trafficLight = TrafficLight()
     
-    // MARK: - Life Cycles Properties and Methods
+    // MARK: - Overrided properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,12 +78,15 @@ class ViewController: UIViewController {
     }
     
     class TrafficLight {
+        // MARK: - Public Properties
         var redCircleView: UIView?
         var yellowCircleView: UIView?
         var greenCircleView: UIView?
         
+        // MARK: - Private Properties
         private var currentState: TrafficLightsStates?
         
+        // MARK: - Pubic Methods
         func nextState() {
             switch currentState {
             case .start:
@@ -103,6 +107,7 @@ class ViewController: UIViewController {
             }
         }
         
+        // MARK: - Private Methods
         private func setToCircles() {
             switch currentState {
             case let .start(red: redValue, yellow: yellowValue, green: greenValue):
@@ -127,7 +132,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - IB Actions
+    // MARK: - IBActions
     @IBAction func startNextButtonTapped() {
         if startButton.currentTitle != "NEXT" {
             startButton.setTitle("NEXT", for: .normal)
