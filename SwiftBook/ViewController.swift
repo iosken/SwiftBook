@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var greenCircleView: UIView!
     @IBOutlet var startButton: UIButton!
     
-    @IBOutlet var mainStacktopConstraint: NSLayoutConstraint!
+    @IBOutlet var mainStackTopConstraint: NSLayoutConstraint!
     @IBOutlet var mainStackBottomConstraint: NSLayoutConstraint!
     @IBOutlet var mainStackAspectConstraint: NSLayoutConstraint!
     
@@ -45,9 +45,9 @@ class ViewController: UIViewController {
             // topSafeAreaHeight and bottomSafeAreaHeight is now available
         }
         
-        let mainAspectSizeVertical = 1 / (mainStackAspectConstraint.multiplier)
-        let heighOfMainStack = screenBounds - topSafeAreaHeight - bottomSafeAreaHeight - mainStacktopConstraint.constant - mainStackBottomConstraint.constant
-        let widthOfMainStack = heighOfMainStack / mainAspectSizeVertical
+        let heighOfMainStack = screenBounds - topSafeAreaHeight - bottomSafeAreaHeight - mainStackTopConstraint.constant - mainStackBottomConstraint.constant
+        let mainStackAspectMultiplierDevider = 1 / (mainStackAspectConstraint.multiplier)
+        let widthOfMainStack = heighOfMainStack / mainStackAspectMultiplierDevider
         let cornerRadiusValue = widthOfMainStack / 2
         
         redCircleView.layer.cornerRadius = cornerRadiusValue
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         case green(red: OnOffLightToggle = .off, yellow: OnOffLightToggle = .off, green: OnOffLightToggle = .on)
         case start(red: OnOffLightToggle = .off, yellow: OnOffLightToggle = .off, green: OnOffLightToggle = .off)
         
-        enum OnOffLightToggle: CGFloat { //one point to change On Off alpha channel level of circles views
+        enum OnOffLightToggle: CGFloat { //one point to change On/Off alpha channel level for circles views
             case off = 0.3
             case on = 1
         }
@@ -87,23 +87,23 @@ class ViewController: UIViewController {
             switch currentState {
             case .start:
                 currentState = .red()
-                applyState()
+                setToCircles()
             case .red:
                 currentState = .yellow()
-                applyState()
+                setToCircles()
             case .yellow:
                 currentState = .green()
-                applyState()
+                setToCircles()
             case .green:
                 currentState = .red()
-                applyState()
+                setToCircles()
             default:
                 currentState = .start()
-                applyState()
+                setToCircles()
             }
         }
         
-        private func applyState() {
+        private func setToCircles() {
             switch currentState {
             case let .start(red: redValue, yellow: yellowValue, green: greenValue):
                 redCircleView?.alpha = redValue.rawValue

@@ -84,7 +84,7 @@
                         <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
                         <outlet property="mainStackAspectConstraint" destination="xWP-VZ-mdK" id="4Q1-2D-kpe"/>
                         <outlet property="mainStackBottomConstraint" destination="1y0-lK-W0T" id="ONy-55-vmz"/>
-                        <outlet property="mainStacktopConstraint" destination="h0h-ih-5eZ" id="p8P-et-Qen"/>
+                        <outlet property="mainStackTopConstraint" destination="h0h-ih-5eZ" id="p8P-et-Qen"/>
                         <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
                         <outlet property="startButton" destination="Jiv-AV-dvV" id="h8e-55-ltG"/>
                         <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
