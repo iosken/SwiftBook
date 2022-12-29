@@ -8,16 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    // MARK: - IBOutlets
     @IBOutlet var redCircleView: UIView!
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
     @IBOutlet var startButton: UIButton!
     
+    // MARK: - Overrided properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
         startButton.alpha = 1
     }
     
+    // MARK: - IBActions
     @IBAction func startNextColorLightButtonTapped() {
         if startButton.currentTitle != "NEXT" {
             startButton.setTitle("NEXT", for: .normal)
@@ -62,6 +65,4 @@ class ViewController: UIViewController {
             redCircleView.alpha = 1
         }
     }
-    
-    
 }
