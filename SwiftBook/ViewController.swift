@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startNextColorLightButtonTapped() {
-        guard startButton.currentTitle == "NEXT" else {
+        if startButton.currentTitle != "NEXT" {
             startButton.setTitle("NEXT", for: .normal)
             redCircleView.alpha = 1
             return
