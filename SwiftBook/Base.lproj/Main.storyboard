@@ -120,15 +120,15 @@
                     </view>
                     <connections>
                         <outlet property="rgbView" destination="rpk-Ei-V9q" id="ELS-CJ-wfs"/>
-                        <outletCollection property="colorSliders" destination="h1m-wP-NJU" collectionClass="NSMutableArray" id="qVg-1G-1ig"/>
-                        <outletCollection property="colorSliders" destination="O6O-Tv-9EU" collectionClass="NSMutableArray" id="hgK-Jd-YK6"/>
-                        <outletCollection property="colorSliders" destination="H43-7p-ytH" collectionClass="NSMutableArray" id="DzS-bL-A9T"/>
-                        <outletCollection property="valueLabels" destination="Gt8-NP-pje" collectionClass="NSMutableArray" id="EsJ-vi-IqI"/>
-                        <outletCollection property="valueLabels" destination="e1z-Ev-zhT" collectionClass="NSMutableArray" id="Hcf-ID-Zy9"/>
-                        <outletCollection property="valueLabels" destination="dxX-62-pwG" collectionClass="NSMutableArray" id="aya-NW-ngz"/>
-                        <outletCollection property="colorNamesLabels" destination="BGt-VR-wdm" collectionClass="NSMutableArray" id="Y20-ZE-Ljg"/>
-                        <outletCollection property="colorNamesLabels" destination="0gm-Df-GgH" collectionClass="NSMutableArray" id="02a-vt-Sai"/>
-                        <outletCollection property="colorNamesLabels" destination="Fvd-Zo-fCP" collectionClass="NSMutableArray" id="hsr-RJ-O0e"/>
+                        <outletCollection property="colorChannelSliders" destination="h1m-wP-NJU" collectionClass="NSMutableArray" id="qVg-1G-1ig"/>
+                        <outletCollection property="colorChannelSliders" destination="O6O-Tv-9EU" collectionClass="NSMutableArray" id="hgK-Jd-YK6"/>
+                        <outletCollection property="colorChannelSliders" destination="H43-7p-ytH" collectionClass="NSMutableArray" id="DzS-bL-A9T"/>
+                        <outletCollection property="slidersValuesLabels" destination="Gt8-NP-pje" collectionClass="NSMutableArray" id="EsJ-vi-IqI"/>
+                        <outletCollection property="slidersValuesLabels" destination="e1z-Ev-zhT" collectionClass="NSMutableArray" id="Hcf-ID-Zy9"/>
+                        <outletCollection property="slidersValuesLabels" destination="dxX-62-pwG" collectionClass="NSMutableArray" id="aya-NW-ngz"/>
+                        <outletCollection property="slidersColorsNamesLabels" destination="BGt-VR-wdm" collectionClass="NSMutableArray" id="Y20-ZE-Ljg"/>
+                        <outletCollection property="slidersColorsNamesLabels" destination="0gm-Df-GgH" collectionClass="NSMutableArray" id="02a-vt-Sai"/>
+                        <outletCollection property="slidersColorsNamesLabels" destination="Fvd-Zo-fCP" collectionClass="NSMutableArray" id="hsr-RJ-O0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,9 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var rgbView: UIView!
-    @IBOutlet var colorSliders: [UISlider]!
-    @IBOutlet var valueLabels: [UILabel]!
-    @IBOutlet var colorNamesLabels: [UILabel]!
+    @IBOutlet var colorChannelSliders: [UISlider]!
+    @IBOutlet var slidersValuesLabels: [UILabel]!
+    @IBOutlet var slidersColorsNamesLabels: [UILabel]!
     
     // MARK: - Private Properties
     private var viewColor: (red: CGFloat, green: CGFloat , blue: CGFloat) = (0, 0, 0)
@@ -34,25 +34,26 @@ class ViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func slidersValueChanged(_ sender: UISlider) {
-        if let colorSliderIndex = colorSliders.firstIndex(of: sender) {
+        if let colorSliderIndex = colorChannelSliders.firstIndex(of: sender) {
             switch colorSliderIndex {
             case 0:
                 viewColor.red = CGFloat(sender.value)
-                valueLabels[colorSliderIndex].text = String(
+                slidersValuesLabels[colorSliderIndex].text = String(
                     round(sender.value * 100) / 100
                 )
             case 1:
                 viewColor.green = CGFloat(sender.value)
-                valueLabels[colorSliderIndex].text = String(
+                slidersValuesLabels[colorSliderIndex].text = String(
                     round(sender.value * 100) / 100
                 )
             default:
                 viewColor.blue = CGFloat(sender.value)
-                valueLabels[colorSliderIndex].text = String(
+                slidersValuesLabels[colorSliderIndex].text = String(
                     round(sender.value * 100) / 100
                 )
             }
         }
+        
         rgbView.backgroundColor = UIColor(
             red: viewColor.red,
             green: viewColor.green,
@@ -73,7 +74,7 @@ class ViewController: UIViewController {
     }
     
     private func setupSliders() {
-        for horisontalSlider in colorSliders {
+        for horisontalSlider in colorChannelSliders {
             horisontalSlider.minimumValue = 0
             horisontalSlider.maximumValue = 1
             horisontalSlider.value = 0
@@ -81,10 +82,11 @@ class ViewController: UIViewController {
     }
     
     private func setupLabels() {
-        for valueLabel in valueLabels {
+        for valueLabel in slidersValuesLabels {
             valueLabel.textColor = .white
         }
-        for colorNamesLabel in colorNamesLabels {
+        
+        for colorNamesLabel in slidersColorsNamesLabels {
             colorNamesLabel.textColor = .white
         }
     }
