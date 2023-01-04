@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: - IB Outlets
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var mainLabel: UILabel!
@@ -20,11 +20,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.insertSegment(withTitle: "Third", at: 2, animated: false)
-
+        
         setupSlider()
         setupMainLabel()
     }
-
+    
     // MARK: - IB Actions
     @IBAction func segmentedControlAction() {
         switch segmentedControl.selectedSegmentIndex {
@@ -69,6 +69,7 @@ class ViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         mainLabel.text = dateFormatter.string(from: datePicker.date)
     }
+    
     // MARK: - Private Methods
     private func setupMainLabel() {
         mainLabel.text = String(slider.value)
@@ -86,6 +87,7 @@ class ViewController: UIViewController {
         slider.thumbTintColor = .blue
     }
 }
+
 // MARK: - UIAlertController
 extension ViewController {
     private func showAlert(with title: String, and message: String) {
