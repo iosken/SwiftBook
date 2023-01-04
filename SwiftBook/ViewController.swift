@@ -34,21 +34,21 @@ class ViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func slidersValueChanged(_ sender: UISlider) {
-        for colorSlider in colorSliders.enumerated() where colorSlider.element.contains(sender) {
-            switch colorSlider.offset {
+        if let colorSliderIndex = colorSliders.firstIndex(of: sender) {
+            switch colorSliderIndex {
             case 0:
                 viewColor.red = CGFloat(sender.value)
-                valueLabels[colorSlider.offset].text = String(
+                valueLabels[colorSliderIndex].text = String(
                     round(sender.value * 100) / 100
                 )
             case 1:
                 viewColor.green = CGFloat(sender.value)
-                valueLabels[colorSlider.offset].text = String(
+                valueLabels[colorSliderIndex].text = String(
                     round(sender.value * 100) / 100
                 )
             default:
                 viewColor.blue = CGFloat(sender.value)
-                valueLabels[colorSlider.offset].text = String(
+                valueLabels[colorSliderIndex].text = String(
                     round(sender.value * 100) / 100
                 )
             }
