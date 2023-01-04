@@ -12,39 +12,57 @@ class ViewController: UIViewController {
     @IBOutlet var rgbView: UIView!
     @IBOutlet var colorSliders: [UISlider]!
     @IBOutlet var valueLabels: [UILabel]!
+    @IBOutlet var colorNamesLabels: [UILabel]!
     
-    // MARK: - Public Properties
-    private var viewColor: (red: CGFloat, green: CGFloat , blue: CGFloat ) = (0, 0, 0)
+    // MARK: - Private Properties
+    private var viewColor: (red: CGFloat, green: CGFloat , blue: CGFloat) = (0, 0, 0)
+    
+    // MARK: - Overrided Properties
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
     
     // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.2941176471, blue: 0.5764705882, alpha: 1)
         
-        slidersSettingUp()
-        rgbViewSettingUp()
+        rgbViewBaseSettinsUp()
+        slidersBaseSettingsUp()
+        labelsBaseSettingsUp()
     }
     
     // MARK: - IB Actions
     @IBAction func slidersValueChanged(_ sender: UISlider) {
-        for colorSlider in colorSliders.enumerated() where colorSlider.element == sender {
+        for colorSlider in colorSliders.enumerated() where colorSlider.element.contains(sender) {
             switch colorSlider.offset {
             case 0:
                 viewColor.red = CGFloat(sender.value)
-                valueLabels[colorSlider.offset].text = String(round(sender.value * 100) / 100)
+                valueLabels[colorSlider.offset].text = String(
+                    round(sender.value * 100) / 100
+                )
             case 1:
                 viewColor.green = CGFloat(sender.value)
-                valueLabels[colorSlider.offset].text = String(round(sender.value * 100) / 100)
+                valueLabels[colorSlider.offset].text = String(
+                    round(sender.value * 100) / 100
+                )
             default:
                 viewColor.blue = CGFloat(sender.value)
-                valueLabels[colorSlider.offset].text = String(round(sender.value * 100) / 100)
+                valueLabels[colorSlider.offset].text = String(
+                    round(sender.value * 100) / 100
+                )
             }
         }
-        
-        rgbView.backgroundColor = UIColor(red: viewColor.red, green: viewColor.green, blue: viewColor.blue, alpha: 1)
+        rgbView.backgroundColor = UIColor(
+            red: viewColor.red,
+            green: viewColor.green,
+            blue: viewColor.blue,
+            alpha: 1
+        )
     }
     
     // MARK: - Public Methods
-    func rgbViewSettingUp() {
+    private func rgbViewBaseSettinsUp() {
         rgbView.layer.cornerRadius = 16
         rgbView.backgroundColor = UIColor.init(
             red: viewColor.red,
@@ -54,14 +72,20 @@ class ViewController: UIViewController {
         )
     }
     
-    func slidersSettingUp() {
-        for horisontalSlider in colorSliders.enumerated() {
-            horisontalSlider.element.maximumValue = 0
-            horisontalSlider.element.maximumValue = 1
-            horisontalSlider.element.value = 0
+    private func slidersBaseSettingsUp() {
+        for horisontalSlider in colorSliders {
+            horisontalSlider.minimumValue = 0
+            horisontalSlider.maximumValue = 1
+            horisontalSlider.value = 0
+        }
+    }
+    
+    private func labelsBaseSettingsUp() {
+        for valueLabel in valueLabels {
+            valueLabel.textColor = .white
+        }
+        for colorNamesLabel in colorNamesLabels {
+            colorNamesLabel.textColor = .white
         }
     }
 }
-
-
-
