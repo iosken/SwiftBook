@@ -27,9 +27,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.2941176471, blue: 0.5764705882, alpha: 1)
         
-        rgbViewBaseSettinsUp()
-        slidersBaseSettingsUp()
-        labelsBaseSettingsUp()
+        setupRgbView()
+        setupSliders()
+        setupLabels()
     }
     
     // MARK: - IB Actions
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Public Methods
-    private func rgbViewBaseSettinsUp() {
+    private func setupRgbView() {
         rgbView.layer.cornerRadius = 16
         rgbView.backgroundColor = UIColor.init(
             red: viewColor.red,
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         )
     }
     
-    private func slidersBaseSettingsUp() {
+    private func setupSliders() {
         for horisontalSlider in colorSliders {
             horisontalSlider.minimumValue = 0
             horisontalSlider.maximumValue = 1
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func labelsBaseSettingsUp() {
+    private func setupLabels() {
         for valueLabel in valueLabels {
             valueLabel.textColor = .white
         }
