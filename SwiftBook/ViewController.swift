@@ -38,20 +38,15 @@ class ViewController: UIViewController {
             switch colorSliderIndex {
             case 0:
                 viewColor.red = CGFloat(sender.value)
-                slidersValuesLabels[colorSliderIndex].text = String(
-                    round(sender.value * 100) / 100
-                )
             case 1:
                 viewColor.green = CGFloat(sender.value)
-                slidersValuesLabels[colorSliderIndex].text = String(
-                    round(sender.value * 100) / 100
-                )
             default:
                 viewColor.blue = CGFloat(sender.value)
-                slidersValuesLabels[colorSliderIndex].text = String(
-                    round(sender.value * 100) / 100
-                )
             }
+            
+            slidersValuesLabels[colorSliderIndex].text = String(
+                round(sender.value * 100) / 100
+            )
         }
         
         rgbView.backgroundColor = UIColor(
