@@ -27,9 +27,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.2941176471, blue: 0.5764705882, alpha: 1)
         
-        setupRgbView()
         setupSliders()
         setupLabels()
+        setupRgbView()
     }
     
     // MARK: - IB Actions
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
     // MARK: - Public Methods
     private func setupRgbView() {
         rgbView.layer.cornerRadius = 16
-        rgbView.backgroundColor = UIColor.init(
+        rgbView.backgroundColor = UIColor(
             red: viewColor.red,
             green: viewColor.green,
             blue: viewColor.blue,
