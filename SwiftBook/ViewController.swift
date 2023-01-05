@@ -25,14 +25,13 @@ class ViewController: UIViewController {
     }
     
     // MARK: - IB Actions
-    @IBAction func slidersValueChanged(_ sender: UISlider) {
+    @IBAction func slidersAction(_ sender: UISlider) {
         setupRgbView()
         setupSlidersValuesLabels(sender)
     }
         
-    // MARK: - Public Methods
+    // MARK: - Private Methods
     private func setupRgbView() {
-        
         rgbView.backgroundColor = UIColor(
             red: CGFloat(colorChannelSliders[0].value),
             green: CGFloat(colorChannelSliders[1].value),
