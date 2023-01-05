@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var rgbView: UIView!
+    
     @IBOutlet var colorChannelSliders: [UISlider]!
     @IBOutlet var slidersValuesLabels: [UILabel]!
     

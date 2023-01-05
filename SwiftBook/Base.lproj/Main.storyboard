@@ -87,19 +87,19 @@
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="h1m-wP-NJU" userLabel="RedHorizontalSlider">
                                                         <rect key="frame" x="-2" y="0.0" width="280" height="38"/>
                                                         <connections>
-                                                            <action selector="slidersValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Gdn-3Y-FRg"/>
+                                                            <action selector="slidersAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="cMp-e0-kLQ"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O6O-Tv-9EU" userLabel="GreenHorizontalSlider">
                                                         <rect key="frame" x="-2" y="45" width="280" height="38"/>
                                                         <connections>
-                                                            <action selector="slidersValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uib-Eh-xFu"/>
+                                                            <action selector="slidersAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="5B2-RQ-WtA"/>
                                                         </connections>
                                                     </slider>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="H43-7p-ytH" userLabel="BlueHorizontalSlider">
                                                         <rect key="frame" x="-2" y="90" width="280" height="38"/>
                                                         <connections>
-                                                            <action selector="slidersValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="qvV-SV-i9c"/>
+                                                            <action selector="slidersAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Scw-0c-eHe"/>
                                                         </connections>
                                                     </slider>
                                                 </subviews>
