@@ -27,11 +27,12 @@ class ViewController: UIViewController {
     // MARK: - IB Actions
     @IBAction func slidersValueChanged(_ sender: UISlider) {
         setupRgbView()
-        setupSlidersValuesLabels()
+        setupSlidersValuesLabels(sender)
     }
         
     // MARK: - Public Methods
     private func setupRgbView() {
+        
         rgbView.backgroundColor = UIColor(
             red: CGFloat(colorChannelSliders[0].value),
             green: CGFloat(colorChannelSliders[1].value),
@@ -48,11 +49,11 @@ class ViewController: UIViewController {
         }
     }
     
-    private func setupSlidersValuesLabels() {
-        for colorChannelSlider in colorChannelSliders.enumerated() {
-            slidersValuesLabels[colorChannelSlider.offset].text = String(
+    private func setupSlidersValuesLabels(_ currentSlider: UISlider) {
+        if let colorSliderIndex = colorChannelSliders.firstIndex(of: currentSlider) {
+            slidersValuesLabels[colorSliderIndex].text = String(
                 format: "%.2f",
-                colorChannelSlider.element.value
+                currentSlider.value
             )
         }
     }
