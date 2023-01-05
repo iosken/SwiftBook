@@ -77,12 +77,12 @@ class ViewController: UIViewController {
     }
     
     private func setupLabels() {
-        for valueLabel in slidersValuesLabels {
-            valueLabel.textColor = .white
+        for slidersValuesLabel in slidersValuesLabels {
+            slidersValuesLabel.textColor = .white
         }
         
-        for colorNamesLabel in slidersColorsNamesLabels {
-            colorNamesLabel.textColor = .white
+        for slidersColorsNamesLabel in slidersColorsNamesLabels {
+            slidersColorsNamesLabel.textColor = .white
         }
     }
 }
