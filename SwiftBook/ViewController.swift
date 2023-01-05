@@ -12,10 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet var rgbView: UIView!
     @IBOutlet var colorChannelSliders: [UISlider]!
     @IBOutlet var slidersValuesLabels: [UILabel]!
-    @IBOutlet var slidersColorsNamesLabels: [UILabel]!
-    
-    // MARK: - Private Properties
-    private var viewColor: (red: CGFloat, green: CGFloat , blue: CGFloat) = (0, 0, 0)
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -25,45 +21,21 @@ class ViewController: UIViewController {
     // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.2941176471, blue: 0.5764705882, alpha: 1)
-        
-        setupSliders()
-        setupLabels()
-        setupRgbView()
+        rgbView.layer.cornerRadius = 16
     }
     
     // MARK: - IB Actions
     @IBAction func slidersValueChanged(_ sender: UISlider) {
-        if let colorSliderIndex = colorChannelSliders.firstIndex(of: sender) {
-            switch colorSliderIndex {
-            case 0:
-                viewColor.red = CGFloat(sender.value)
-            case 1:
-                viewColor.green = CGFloat(sender.value)
-            default:
-                viewColor.blue = CGFloat(sender.value)
-            }
-            
-            slidersValuesLabels[colorSliderIndex].text = String(
-                round(sender.value * 100) / 100
-            )
-        }
-        
-        rgbView.backgroundColor = UIColor(
-            red: viewColor.red,
-            green: viewColor.green,
-            blue: viewColor.blue,
-            alpha: 1
-        )
+        setupRgbView()
+        setupSlidersValuesLabels()
     }
-    
+        
     // MARK: - Public Methods
     private func setupRgbView() {
-        rgbView.layer.cornerRadius = 16
         rgbView.backgroundColor = UIColor(
-            red: viewColor.red,
-            green: viewColor.green,
-            blue: viewColor.blue,
+            red: CGFloat(colorChannelSliders[0].value),
+            green: CGFloat(colorChannelSliders[1].value),
+            blue: CGFloat(colorChannelSliders[2].value),
             alpha: 1
         )
     }
@@ -76,13 +48,12 @@ class ViewController: UIViewController {
         }
     }
     
-    private func setupLabels() {
-        for slidersValuesLabel in slidersValuesLabels {
-            slidersValuesLabel.textColor = .white
-        }
-        
-        for slidersColorsNamesLabel in slidersColorsNamesLabels {
-            slidersColorsNamesLabel.textColor = .white
+    private func setupSlidersValuesLabels() {
+        for colorChannelSlider in colorChannelSliders.enumerated() {
+            slidersValuesLabels[colorChannelSlider.offset].text = String(
+                format: "%.2f",
+                colorChannelSlider.element.value
+            )
         }
     }
 }
