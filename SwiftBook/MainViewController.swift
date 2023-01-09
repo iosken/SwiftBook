@@ -9,27 +9,38 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
     @IBOutlet var logInButton: UIButton!
     
-    private let login = "User"
-    private let password = "1234"
+    // MARK: - Private Properties
+    private var login: String { // computing property hope to little more security
+        "User"
+    }
+    private var password: String {
+        "1234"
+    }
     
+    // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-           .portrait
-       }
-
+        .portrait
+    }
+    
+    // MARK: - Overrided Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
     
+    // MARK: - Overrided Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    // MARK: - Overrided Segue Methods
     override func shouldPerformSegue(
         withIdentifier identifier: String?,
         sender: Any?
@@ -48,17 +59,11 @@ class MainViewController: UIViewController {
         welcomeVC.welcomeLabelText = "Welcome, \(userNameTextField.text ?? "")"
     }
     
+    // MARK: - IB Actions
     @IBAction func logInButtonPressed(_ sender: UIButton) {
-        guard let inputLogin = userNameTextField.text, !inputLogin.isEmpty else {
-            showAlert(
-                with: "Empty login",
-                and: "Please enter correct login and password"
-            )
-            return
-        }
-        
+        let inputLogin = userNameTextField.text ?? ""
         let inputPassword = passwordTextField.text ?? ""
-
+        
         if (inputLogin + inputPassword).contains(login + password) {
             performSegue(
                 withIdentifier: "MainToWelcomeViewControllerID",
@@ -72,6 +77,7 @@ class MainViewController: UIViewController {
             passwordTextField.text = ""
         }
     }
+    
     @IBAction func forgotNameButtonPressed(_ sender: UIButton) {
         showAlert(with: "Oops!", and: "Your name is: \(login) 😉")
     }
@@ -94,6 +100,7 @@ extension MainViewController {
             message: message,
             preferredStyle: .alert
         )
+        
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in }
         alert.addAction(okAction)
         present(alert, animated: true)

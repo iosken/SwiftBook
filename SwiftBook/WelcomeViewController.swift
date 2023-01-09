@@ -16,7 +16,9 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         welcomeLabel.text = welcomeLabelText
+        
         smileLabel.text = "👋"
         smileLabel.font = smileLabel.font.withSize(40)
     }
