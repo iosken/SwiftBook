@@ -20,9 +20,10 @@ class MainViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
            .portrait
        }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super .touchesBegan(touches, with: event)
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
