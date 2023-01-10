@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hql-92-CeX">
-                                <rect key="frame" x="159" y="601.5" width="96" height="40.5"/>
+                                <rect key="frame" x="159" y="671.5" width="96" height="40.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Log out">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
@@ -131,7 +131,7 @@
                         <viewLayoutGuide key="safeArea" id="PPm-YN-hOx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PPm-YN-hOx" firstAttribute="bottom" secondItem="Hql-92-CeX" secondAttribute="bottom" constant="200" id="1fq-Z6-0xn"/>
+                            <constraint firstItem="PPm-YN-hOx" firstAttribute="bottom" secondItem="Hql-92-CeX" secondAttribute="bottom" constant="130" id="1fq-Z6-0xn"/>
                             <constraint firstItem="dcv-dD-5v4" firstAttribute="centerX" secondItem="aFp-7P-3pZ" secondAttribute="centerX" id="3tD-jY-5T1"/>
                             <constraint firstItem="01o-zU-gqk" firstAttribute="top" secondItem="dcv-dD-5v4" secondAttribute="bottom" constant="40" id="7K8-9H-Tsc"/>
                             <constraint firstItem="dcv-dD-5v4" firstAttribute="top" secondItem="PPm-YN-hOx" secondAttribute="top" constant="60" id="GKe-go-N5B"/>

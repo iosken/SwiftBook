@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     // MARK: - IB Outlets
     @IBOutlet var userNameTextField: UITextField!
@@ -32,12 +32,6 @@ class MainViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
-    }
-    
-    // MARK: - Overrided Lifecycle Methods
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     // MARK: - Overrided Segue Methods
@@ -93,7 +87,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - UIAlertController
-extension MainViewController {
+extension LoginViewController {
     private func showAlert(with title: String, and message: String) {
         let alert = UIAlertController(
             title: title,
