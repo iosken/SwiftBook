@@ -58,16 +58,48 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
-				DA564D3B294B1949006CD17C /* AppDelegate.swift */,
-				DA564D3D294B1949006CD17C /* SceneDelegate.swift */,
-				DA564D3F294B1949006CD17C /* LoginViewController.swift */,
-				DA271AE5296AA193002C0151 /* WelcomeViewController.swift */,
-				DA564D41294B1949006CD17C /* Main.storyboard */,
+				DA62C3F8296EBE010032948F /* Models */,
+				DA62C3FA296EBE3C0032948F /* SupportFiles */,
+				DA62C3F7296EBDAA0032948F /* ViewControllers */,
+				DA62C3F9296EBE140032948F /* StoryBoards */,
 				DA564D44294B194A006CD17C /* Assets.xcassets */,
-				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
 				DA564D49294B194A006CD17C /* Info.plist */,
 			);
 			path = SwiftBook;
+			sourceTree = "<group>";
+		};
+		DA62C3F7296EBDAA0032948F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D3F294B1949006CD17C /* LoginViewController.swift */,
+				DA271AE5296AA193002C0151 /* WelcomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DA62C3F8296EBE010032948F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA62C3F9296EBE140032948F /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D41294B1949006CD17C /* Main.storyboard */,
+				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		DA62C3FA296EBE3C0032948F /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D3B294B1949006CD17C /* AppDelegate.swift */,
+				DA564D3D294B1949006CD17C /* SceneDelegate.swift */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
