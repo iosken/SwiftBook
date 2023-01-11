@@ -58,7 +58,6 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
-				DA62C3F8296EBE010032948F /* Models */,
 				DA62C3FA296EBE3C0032948F /* SupportFiles */,
 				DA62C3F7296EBDAA0032948F /* ViewControllers */,
 				DA62C3F9296EBE140032948F /* StoryBoards */,
@@ -75,13 +74,6 @@
 				DA271AE5296AA193002C0151 /* WelcomeViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		DA62C3F8296EBE010032948F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		DA62C3F9296EBE140032948F /* StoryBoards */ = {
