@@ -12,18 +12,16 @@ class WelcomeViewController: UIViewController {
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var smileLabel: UILabel!
     
-    var welcomeLabelText: String!
+    var userName: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setGradientBackground()
         
-        welcomeLabel.text = welcomeLabelText
+        welcomeLabel.text = "Welcome, " + userName + "!"
         welcomeLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
-        smileLabel.text = "👋"
-        smileLabel.font = smileLabel.font.withSize(40)
     }
     
     func setGradientBackground() {

@@ -34,14 +34,6 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    // MARK: - Overrided Segue Methods
-    override func shouldPerformSegue(
-        withIdentifier identifier: String?,
-        sender: Any?
-    ) -> Bool {
-        return false
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {
             return
@@ -50,7 +42,7 @@ class LoginViewController: UIViewController {
         welcomeVC.modalPresentationStyle = .fullScreen
         welcomeVC.modalTransitionStyle = .crossDissolve
         
-        welcomeVC.welcomeLabelText = "Welcome, \(userNameTextField.text ?? "")"
+        welcomeVC.userName = userNameTextField.text ?? ""
     }
     
     // MARK: - IB Actions
