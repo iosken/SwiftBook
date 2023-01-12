@@ -96,7 +96,7 @@
         <!--Settings View Controller-->
         <scene sceneID="4pW-vN-rw8">
             <objects>
-                <viewController id="6Lg-D3-zrm" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController id="6Lg-D3-zrm" customClass="SettingsViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qns-qg-HPv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
