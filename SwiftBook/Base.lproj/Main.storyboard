@@ -77,7 +77,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Random Number" id="5a1-42-RhB">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="NcS-uk-yl5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="NcS-uk-yl5">
+                            <connections>
+                                <segue destination="6Lg-D3-zrm" kind="presentation" id="nc4-d6-2Vm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="maxValueLabel" destination="bum-A4-l9R" id="LFh-qh-Ytq"/>
@@ -88,6 +92,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="69.642857142857139"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="4pW-vN-rw8">
+            <objects>
+                <viewController id="6Lg-D3-zrm" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qns-qg-HPv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="As3-f5-JvX">
+                                <rect key="frame" x="50" y="144" width="314" height="88"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minimum value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZZ-Dw-WHO">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Maximum value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mPz-Er-Y92">
+                                        <rect key="frame" x="0.0" y="54" width="314" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yS6-YX-txY">
+                                <rect key="frame" x="161.5" y="369" width="91" height="104"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-Ic-cdC">
+                                        <rect key="frame" x="0.0" y="0.0" width="91" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akB-IG-DSR">
+                                        <rect key="frame" x="0.0" y="56" width="91" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed" destination="6Lg-D3-zrm" eventType="touchUpInside" id="2Bk-kh-UL6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E0A-sn-RcQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="As3-f5-JvX" firstAttribute="top" secondItem="E0A-sn-RcQ" secondAttribute="top" constant="100" id="09U-mB-4qc"/>
+                            <constraint firstItem="yS6-YX-txY" firstAttribute="centerY" secondItem="Qns-qg-HPv" secondAttribute="centerY" id="3Qz-zR-cSa"/>
+                            <constraint firstItem="yS6-YX-txY" firstAttribute="centerX" secondItem="Qns-qg-HPv" secondAttribute="centerX" id="F8z-Hy-6Pb"/>
+                            <constraint firstItem="As3-f5-JvX" firstAttribute="leading" secondItem="E0A-sn-RcQ" secondAttribute="leading" constant="50" id="UMD-8j-4ox"/>
+                            <constraint firstItem="E0A-sn-RcQ" firstAttribute="trailing" secondItem="As3-f5-JvX" secondAttribute="trailing" constant="50" id="wwb-Uv-UsJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="srh-YY-1BG"/>
+                    <connections>
+                        <outlet property="maxValueTextField" destination="mPz-Er-Y92" id="9PW-N3-YdX"/>
+                        <outlet property="minValueTextField" destination="YZZ-Dw-WHO" id="E6l-xs-rt6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8w-8F-RnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="70"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X1L-hW-IRy">
@@ -100,7 +170,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="KxW-hy-VtZ"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="d3T-BI-ZSz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A80-7W-MUp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -111,6 +181,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
