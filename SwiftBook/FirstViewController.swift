@@ -1,19 +1,19 @@
 //
-//  ViewController.swift
+//  FirstViewController.swift
 //  SwiftBook
 //
-//  Created by Yuri on 15.12.2022.
+//  Created by Yuri on 12.01.2023.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
 
 }
-
