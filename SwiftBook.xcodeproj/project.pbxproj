@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA2194B7297007C70049B257 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2194B6297007C70049B257 /* Welcome.swift */; };
 		DA271AE6296AA193002C0151 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA271AE5296AA193002C0151 /* WelcomeViewController.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA2194B6297007C70049B257 /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		DA271AE5296AA193002C0151 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA2194B5297007950049B257 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA2194B6297007C70049B257 /* Welcome.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DA564D2F294B1949006CD17C = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +68,7 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
+				DA2194B5297007950049B257 /* Model */,
 				DA62C3FA296EBE3C0032948F /* SupportFiles */,
 				DA62C3F7296EBDAA0032948F /* ViewControllers */,
 				DA62C3F9296EBE140032948F /* StoryBoards */,
@@ -169,6 +180,7 @@
 				DA271AE6296AA193002C0151 /* WelcomeViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
+				DA2194B7297007C70049B257 /* Welcome.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
