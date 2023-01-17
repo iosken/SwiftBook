@@ -16,11 +16,42 @@ class ViewController: UIViewController {
     var round = 0
     var points: Float = 0
     
+    override func loadView() {
+        super.loadView()
+        print("loadView")
+        
+        let versionLabel = UILabel(frame: CGRect(x: 20, y: 10, width: 200, height: 20))
+        versionLabel.text = "Version 1.1"
+        versionLabel.textColor = .systemGray
+        self.view.addSubview(versionLabel)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         number = Float.random(in: 0...50)
         label.text = number.formatted()
+        print("viewDidLoad")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDissapear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("viewDidDisappear")
     }
 
     @IBAction func checkNumber() {

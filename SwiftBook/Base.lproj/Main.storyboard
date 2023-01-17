@@ -40,10 +40,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jy0-Ll-yiG">
+                                <rect key="frame" x="769" y="362" width="63" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="About"/>
+                                <connections>
+                                    <segue destination="l0z-5u-BWk" kind="show" id="e7m-rp-WVL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jy0-Ll-yiG" secondAttribute="trailing" constant="20" id="2nA-Bh-tWv"/>
+                            <constraint firstItem="Jy0-Ll-yiG" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="5gE-gP-FRV"/>
                             <constraint firstItem="VNV-Ru-bew" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bpc-JK-J6l"/>
                             <constraint firstItem="Sly-Em-z3X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MIZ-pu-K4H"/>
                             <constraint firstItem="Sly-Em-z3X" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="120" id="OhP-iy-n2w"/>
@@ -53,6 +63,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jrf-PC-bNO" secondAttribute="trailing" constant="20" id="tzc-fs-puP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="yDB-ep-MFH"/>
                     <connections>
                         <outlet property="label" destination="Sly-Em-z3X" id="fOC-o1-p1J"/>
                         <outlet property="slider" destination="jrf-PC-bNO" id="d2y-Cm-0Gm"/>
@@ -62,10 +73,43 @@
             </objects>
             <point key="canvasLocation" x="132" y="78"/>
         </scene>
+        <!--Second View Controller-->
+        <scene sceneID="upr-0U-nzg">
+            <objects>
+                <viewController id="l0z-5u-BWk" customClass="SecondViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cL8-95-MfR">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iN-hd-otr">
+                                <rect key="frame" x="420" y="191.5" width="56" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="y26-eq-eOH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="u7d-ie-UM2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7iN-hd-otr" firstAttribute="centerY" secondItem="cL8-95-MfR" secondAttribute="centerY" id="axf-iF-JJI"/>
+                            <constraint firstItem="7iN-hd-otr" firstAttribute="centerX" secondItem="cL8-95-MfR" secondAttribute="centerX" id="jyr-pG-jal"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="FaJ-HX-NYd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ibE-bD-oSY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="77"/>
+        </scene>
     </scenes>
     <resources>
         <image name="01.square.fill" catalog="system" width="128" height="114"/>
         <image name="50.square.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
