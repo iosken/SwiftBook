@@ -36,6 +36,7 @@ class SecondViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("viewDidDisappear SecondViewController")
+        print("---")
     }
     
     @IBAction func hideCurrentScene() {
