@@ -45,7 +45,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="About"/>
                                 <connections>
-                                    <segue destination="l0z-5u-BWk" kind="show" id="e7m-rp-WVL"/>
+                                    <action selector="showNextScreen" destination="BYZ-38-t0r" eventType="touchUpInside" id="naH-5N-Vbi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,7 +76,7 @@
         <!--Second View Controller-->
         <scene sceneID="upr-0U-nzg">
             <objects>
-                <viewController id="l0z-5u-BWk" customClass="SecondViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondViewController" id="l0z-5u-BWk" customClass="SecondViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cL8-95-MfR">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,12 +86,13 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="y26-eq-eOH"/>
+                                    <action selector="hideCurrentScene" destination="l0z-5u-BWk" eventType="touchUpInside" id="CMp-DR-Zgi"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u7d-ie-UM2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="SecondViewController"/>
                         <constraints>
                             <constraint firstItem="7iN-hd-otr" firstAttribute="centerY" secondItem="cL8-95-MfR" secondAttribute="centerY" id="axf-iF-JJI"/>
                             <constraint firstItem="7iN-hd-otr" firstAttribute="centerX" secondItem="cL8-95-MfR" secondAttribute="centerX" id="jyr-pG-jal"/>

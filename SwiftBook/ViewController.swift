@@ -53,6 +53,14 @@ class ViewController: UIViewController {
         super.viewDidDisappear(animated)
         print("viewDidDisappear")
     }
+    
+    @IBAction func showNextScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController = storyboard.instantiateViewController(identifier: "SecondViewController") as! SecondViewController
+        
+        self.present(viewController, animated: true, completion: nil)
+    }
 
     @IBAction func checkNumber() {
 

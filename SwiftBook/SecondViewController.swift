@@ -38,7 +38,10 @@ class SecondViewController: UIViewController {
         print("viewDidDisappear SecondViewController")
     }
     
-
+    @IBAction func hideCurrentScene() {
+        self.dismiss(animated: true)
+    }
+    
     
 
     /*
