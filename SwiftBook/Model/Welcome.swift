@@ -5,23 +5,21 @@
 //  Created by Yuri on 12.01.2023.
 //
 
-struct Person {
-    ///name
-    ///about
-    ///hobbi
-    ///helth
-    ///resume
-    ///username
-    ///password
-    var name: String
-    var accessRights: Account
-    
-    
-}
-
-struct Account {
+struct User {
     var userName: String
     var password: String
     
-    
+    var person: Person
 }
+
+struct Person {
+    var firstName: String
+    var secondName: String
+    var about: String?
+    var hobbie: String?
+    var helth: String?
+}
+
+
+
+
