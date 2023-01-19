@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet var logInButton: UIButton!
     
     // MARK: - Private Properties
+    //let defaultUser = User(userName: "User", password: "1234", person: Person(firstName: "Default", secondName: "User"))
     private var login: String { // computing property hope to little more security
         "User"
     }
@@ -35,14 +36,18 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else {
-            return
+        guard let tabBarVC = segue.destination as? UITabBarController else { return }
+        
+        tabBarVC.modalPresentationStyle = .fullScreen
+        tabBarVC.modalTransitionStyle = .crossDissolve
+        
+        guard let viewControllers = tabBarVC.viewControllers else { return }
+        
+        viewControllers.forEach { viewController in
+            if let welcomeVC = viewController as? WelcomeViewController {
+                    welcomeVC.userName = userNameTextField.text ?? ""
+            }
         }
-        
-        welcomeVC.modalPresentationStyle = .fullScreen
-        welcomeVC.modalTransitionStyle = .crossDissolve
-        
-        welcomeVC.userName = userNameTextField.text ?? ""
     }
     
     // MARK: - IB Actions
