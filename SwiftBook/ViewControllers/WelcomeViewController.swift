@@ -19,9 +19,13 @@ class WelcomeViewController: UIViewController {
         
         setGradientBackground()
         
-        welcomeLabel.text = "Welcome, "// + userName + "!"
+        welcomeLabel.text = "Welcome, " + userName + "!"
         welcomeLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
+    }
+    
+    @IBAction func logOutButtonPressed() {
+        dismiss(animated: true)
     }
     
     func setGradientBackground() {

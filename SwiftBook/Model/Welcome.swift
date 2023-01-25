@@ -5,15 +5,30 @@
 //  Created by Yuri on 12.01.2023.
 //
 
-struct UsersAccounts {
-    private var users: [String: User] = [:]
+import Foundation
+
+class SignedUsers {
+    var users: [String: UserProperties] = [ // key is user name (login)
+        "User" : UserProperties(
+            password: "1234",
+            recoveryEmail: "User",
+            person: Person(
+                firstName: "DefaultUser",
+                secondName: "DefaultUser",
+                about: "Some information \"About\" to test",
+                pet: "Some information \"About pet\" to test",
+                sport: "Some information \"About sport\" to test"
+            )
+        )
+    ]
 }
 
-struct User {
-    let login: String
-    let password: String
+struct UserProperties {
+    var password: String
+    var recoveryEmail: String
+    let dateSignIn = Date.now
     
-    let person: Person
+    var person: Person
 }
 
 struct Person {
@@ -21,37 +36,32 @@ struct Person {
     var secondName: String
     
     var about: String?
-    var hobbie: String?
-    var helth: String?
+    var pet: String?
+    var sport: String?
 }
 
-extension UsersAccounts {
-    mutating func signUp(
+extension SignedUsers {
+    func signUp(
         login: String,
         password: String,
+        recoveryEmail: String,
         firstName: String,
         secondName: String,
         about: String?,
-        hobbie: String?,
-        helth: String?
+        pet: String?,
+        sport: String?
     ) {
-        users = [
-            login + password : User(
-                login: login,
-                password: password,
-                person: Person(
-                    firstName: firstName,
-                    secondName: secondName,
-                    about: about,
-                    hobbie: hobbie,
-                    helth: helth
-                )
+        users[login] = UserProperties(
+            password: password,
+            recoveryEmail: recoveryEmail,
+            person: Person(
+                firstName: firstName,
+                secondName: secondName,
+                about: about,
+                pet: pet,
+                sport: sport
             )
-        ]
-    }
-    
-    func signIn(login: String, password: String) -> User? {
-        users.keys.contains(login + password) ? users[login + password] : nil
+        )
     }
 }
 

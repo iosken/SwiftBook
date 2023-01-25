@@ -44,6 +44,7 @@ public class SquareArea: UIView, SquareAreaProtocol {
             )
             
             self.addSubview(ball)
+            self.bringSubviewToFront(ball)
             self.balls.append(ball)
             collisionBahavior.addItem(ball)
         }

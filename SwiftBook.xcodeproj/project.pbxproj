@@ -19,6 +19,7 @@
 		DA7EB58C2978FA660004DE47 /* BallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EB58B2978FA660004DE47 /* BallsViewController.swift */; };
 		DA7EB58E2978FF450004DE47 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EB58D2978FF450004DE47 /* Ball.swift */; };
 		DA7EB5912978FFEF0004DE47 /* SquareArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7EB5902978FFEF0004DE47 /* SquareArea.swift */; };
+		DA9EEEC6297A4BCF0059F1B8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9EEEC5297A4BCF0059F1B8 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DA7EB58B2978FA660004DE47 /* BallsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallsViewController.swift; sourceTree = "<group>"; };
 		DA7EB58D2978FF450004DE47 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 		DA7EB5902978FFEF0004DE47 /* SquareArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareArea.swift; sourceTree = "<group>"; };
+		DA9EEEC5297A4BCF0059F1B8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				DA564D3F294B1949006CD17C /* LoginViewController.swift */,
+				DA9EEEC5297A4BCF0059F1B8 /* SignUpViewController.swift */,
 				DA271AE5296AA193002C0151 /* WelcomeViewController.swift */,
 				DA7D751E297815F600EC6370 /* AboutViewController.swift */,
 				DA7EB58B2978FA660004DE47 /* BallsViewController.swift */,
@@ -200,6 +203,7 @@
 				DA564D40294B1949006CD17C /* LoginViewController.swift in Sources */,
 				DA7EB58C2978FA660004DE47 /* BallsViewController.swift in Sources */,
 				DA7EB5912978FFEF0004DE47 /* SquareArea.swift in Sources */,
+				DA9EEEC6297A4BCF0059F1B8 /* SignUpViewController.swift in Sources */,
 				DA271AE6296AA193002C0151 /* WelcomeViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
