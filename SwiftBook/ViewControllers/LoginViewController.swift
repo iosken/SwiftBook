@@ -18,11 +18,20 @@ class LoginViewController: UIViewController {
     // MARK: - Private Properties
     
     
-    let  signedUsers = SignedUsers()
+    let signedUsers = SignedUsers()
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.layer.insertSublayer(
+            UIViewController.gradientLayer(bounds: self.view.bounds),
+            at: 0
+        )
     }
     
     // MARK: - Overrided Methods
@@ -33,22 +42,26 @@ class LoginViewController: UIViewController {
     
     // MARK: - Prepare and Unwind Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         switch segue.identifier {
         case "TabBarID":
-            guard let tabBarVC = segue.destination as? UITabBarController else { return }
+            signedUsers.currentUserName = userNameTextField.text ?? ""
             
-            tabBarVC.modalPresentationStyle = .fullScreen
-            tabBarVC.modalTransitionStyle = .crossDissolve
+            guard let tabBarVC = segue.destination as? UITabBarController else { return }
             
             guard let viewControllers = tabBarVC.viewControllers else { return }
             
             viewControllers.forEach { viewController in
                 if let welcomeVC = viewController as? WelcomeViewController {
                     welcomeVC.userName = userNameTextField.text ?? ""
+                } else if let navigationVC = viewController as? UINavigationController {
+                    if let aboutVC = navigationVC.topViewController as? AboutViewController {
+                        aboutVC.title = "About \(signedUsers.currentUserProperties?.person.firstName ?? "") \(signedUsers.currentUserProperties?.person.secondName ?? "")"
+                        aboutVC.aboutPerson = signedUsers.currentUserProperties?.person.about
+                    } else if let helpVC = navigationVC.topViewController as? HelpViewController {
+                        helpVC.helpText = "Hello my dear frend. This is my training program and you can try to close it and forget forever. \n\n But I reporting: this text I setted from first ViewController."
+                    }
                 }
-//                else if let aboutVC = viewController as? UINavigationBar {
-//                    
-//                }
             }
         case "SignUpID":
             guard let signUpVC = segue.destination as? SignUpViewController else { break }
@@ -77,12 +90,10 @@ class LoginViewController: UIViewController {
             signedUsers.signUp(
                 login: signUp?.loginTextField.text ?? "",
                 password: signUp?.passwordTextField.text ?? "",
-                recoveryEmail: signUp?.loginTextField.text ?? "",
+                recoveryEmail: signUp?.emailTextField.text ?? "",
                 firstName: signUp?.firstNameTextField.text ?? "",
                 secondName: signUp?.secondNameTextField.text ?? "",
-                about: signUp?.aboutUserTextField.text ?? "",
-                pet: signUp?.aboutPetsTextField.text ?? "",
-                sport: signUp?.aboutSportsTextField.text ?? ""
+                about: signUp?.aboutUserTextField.text ?? ""
             )
         default:
             break
@@ -150,3 +161,5 @@ extension LoginViewController {
         present(alert, animated: true)
     }
 }
+
+

@@ -27,9 +27,4 @@ class BallsViewController: UIViewController {
 
         self.view.addSubview(area)
     }
-    
-    @IBAction func testButton() {
-        
-      
-    }
 }

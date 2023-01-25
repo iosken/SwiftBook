@@ -9,9 +9,21 @@ import UIKit
 
 class AboutViewController: UIViewController {
 
+    @IBOutlet var aboutTextView: UITextView!
+    
+    var aboutPerson: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.view.layer.insertSublayer(
+            UIViewController.gradientLayer(bounds: self.view.bounds),
+            at: 0
+        )
+    
+        aboutTextView.text = aboutPerson
+        
+        print(aboutPerson ?? "")
     }
     
 }
