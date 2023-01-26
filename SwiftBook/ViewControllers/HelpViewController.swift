@@ -11,6 +11,13 @@ class HelpViewController: UIViewController {
     @IBOutlet var helpTextView: UITextView!
     
     var helpText: String!
+    var currentUserName: String!
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let signUpViewController = segue.destination as? SignUpViewController else { return }
+//        signUpViewController.loginTextField.text = currentUserName
+//        
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +28,9 @@ class HelpViewController: UIViewController {
             UIViewController.gradientLayer(bounds: self.view.bounds),
             at: 0
         )        
+    }
+
+    @IBAction func showPropertiesBarButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "HepToPropertiesID", sender: self)
     }
 }

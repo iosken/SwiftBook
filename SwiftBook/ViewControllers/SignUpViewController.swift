@@ -15,7 +15,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var aboutUserTextField: UITextField!
     
-    var userNameEntered: String?
+    var userNameEntered: String? // transfer from LoginViewController.userNameTextField to SignUpViewController.loginTextField
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,24 +28,52 @@ class SignUpViewController: UIViewController {
         loginTextField.text = userNameEntered ?? ""
     }
     
+
+    @IBAction func unwindToSignUpViewController(for unwindSegue: UIStoryboardSegue) {
+        print("===Unwind called!")
+    }
+    
     @IBAction func cancelButtonPressed() {
         dismiss(animated: true)
     }
 
     @IBAction func submitButtonPressed() {
-        print("called")
+        guard (loginTextField.text ?? "") != "" && (loginTextField.text ?? "").count > 3 else {
+            showAlert(with: "Oops!", and: "Please enter New Login with more then 5 symbols and please fill all the fields with \"*\" mark!")
+            return
+        }
+        guard (passwordTextField.text ?? "") != "" && (passwordTextField.text ?? "").count > 5 else {
+            showAlert(with: "Oops!", and: "Please enter Password with more then 5 symbols and please fill all the fields with \"*\" mark!")
+            return
+        }
+        guard (firstNameTextField.text ?? "") != "" else {
+            showAlert(with: "Oops!", and: "Please fill all the fields with \"*\" mark!")
+            return
+        }
+        guard (secondNameTextField.text ?? "") != "" else {
+            showAlert(with: "Oops!", and: "Please fill all the fields with \"*\" mark!")
+            return
+        }
+        guard (emailTextField.text ?? "") != "" else {
+            showAlert(with: "Oops!", and: "Please fill e-mail field wich is marked \"*\"!")
+            return
+        }
+        
         performSegue(withIdentifier: "SignUpID", sender: self)
     }
-    
-//    func setGradientBackground() {
-//        let gradientLayer = CAGradientLayer()
-//
-//        gradientLayer.colors = [#colorLiteral(red: 1, green: 0.9042130062, blue: 0.8607816224, alpha: 1).cgColor, #colorLiteral(red: 0.9233794142, green: 1, blue: 0.8758689237, alpha: 1).cgColor, #colorLiteral(red: 0.8862585912, green: 0.9864693626, blue: 1, alpha: 1).cgColor, #colorLiteral(red: 0.9574609403, green: 0.9686274529, blue: 0.541431185, alpha: 1).cgColor]
-//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-//        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
-//        gradientLayer.locations = [0, 0.25, 0.93, 1]
-//        gradientLayer.frame = self.view.bounds
-//
-//        self.view.layer.insertSublayer(gradientLayer, at: 0)
-//    }
+}
+
+// MARK: - UIAlertController
+extension SignUpViewController {
+    private func showAlert(with title: String, and message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }

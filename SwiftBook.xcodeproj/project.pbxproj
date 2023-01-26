@@ -100,8 +100,8 @@
 				DA564D3F294B1949006CD17C /* LoginViewController.swift */,
 				DA9EEEC5297A4BCF0059F1B8 /* SignUpViewController.swift */,
 				DA271AE5296AA193002C0151 /* WelcomeViewController.swift */,
-				DA67AAF52981216B0090169C /* HelpViewController.swift */,
 				DA7D751E297815F600EC6370 /* AboutViewController.swift */,
+				DA67AAF52981216B0090169C /* HelpViewController.swift */,
 				DA7EB58B2978FA660004DE47 /* BallsViewController.swift */,
 			);
 			path = ViewControllers;

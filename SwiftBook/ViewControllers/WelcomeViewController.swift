@@ -17,17 +17,15 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //setGradientBackground()
-        
         self.view.layer.insertSublayer(
             UIViewController.gradientLayer(bounds: self.view.bounds),
             at: 0
         )
         
-        welcomeLabel.text = "Greetings, " + userName + "!"
+        welcomeLabel.text = "Welcome, " + userName + "!"
     }
     
     @IBAction func logOutButtonPressed() {
-        dismiss(animated: true)
+        performSegue(withIdentifier: "WelcomeViewControllerID", sender: self)
     }
 }

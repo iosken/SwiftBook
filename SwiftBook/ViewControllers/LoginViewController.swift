@@ -59,7 +59,8 @@ class LoginViewController: UIViewController {
                         aboutVC.title = "About \(signedUsers.currentUserProperties?.person.firstName ?? "") \(signedUsers.currentUserProperties?.person.secondName ?? "")"
                         aboutVC.aboutPerson = signedUsers.currentUserProperties?.person.about
                     } else if let helpVC = navigationVC.topViewController as? HelpViewController {
-                        helpVC.helpText = "Hello my dear frend. This is my training program and you can try to close it and forget forever. \n\n But I reporting: this text I setted from first ViewController."
+                        helpVC.helpText = "Hello my dear friend, \(signedUsers.currentUserProperties?.person.firstName ?? ""). This is my training programm and you can try to close it and forget it forever. \n\n But I reporting: this text I setted from first ViewController with your name. \n\n Good luck and be happy you and your family!"
+                        helpVC.currentUserName = signedUsers.currentUserName
                     }
                 }
             }
@@ -72,19 +73,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func unwindToLogin(for segue: UIStoryboardSegue) {
-        print("Unwind called with \(segue.identifier ?? "NIL") and \(segue)")
-        for value in signedUsers.users.values {
-            print()
-            print(value.password)
-        }
-        
         switch segue.identifier {
-        case "MainToWelcomeViewControllerID":
+        case "WelcomeViewControllerID":
             userNameTextField.text = ""
             userPasswordTextField.text = ""
         case "SignUpID":
-            print("Unwind SignUpID called")
-            
             let signUp = segue.source as? SignUpViewController
             
             signedUsers.signUp(
@@ -105,8 +98,6 @@ class LoginViewController: UIViewController {
         let inputLogin = userNameTextField.text ?? ""
         let inputPassword = userPasswordTextField.text ?? ""
         
-        print(signedUsers.users[inputLogin]?.password ?? "some")
-        
         if let storedPassword = signedUsers.users[inputLogin]?.password {
             if storedPassword == inputPassword {
                 performSegue(
@@ -125,7 +116,6 @@ class LoginViewController: UIViewController {
                 with: "Invalid login or password",
                 and: "Please, enter correct login and password"
             )
-            
             userPasswordTextField.text = ""
         }
     }
@@ -135,14 +125,18 @@ class LoginViewController: UIViewController {
         for (user, account) in signedUsers.users {
             accounts += (user + " " + account.password + " || ")
         }
-        showAlert(with: "Oops!", and: "Your name is: \("Default name is: \"User\"") and another: \n \(accounts) 😉")
+        
+        showAlert(
+            with: "Oops!",
+            and: "All autorization data is: \n \(accounts) 😉"
+        )
         
     }
     
     @IBAction func forgotPasswordButtonPressed(_ sender: UIButton) {
         showAlert(
             with: "Oops!",
-            and: "Your password is: \(signedUsers.users["User"]?.password ?? "Error with default user stored data. Look at signedUsers.users[\"User\"]?.password")"
+            and: "Your password is: \(signedUsers.currentUserProperties?.password ?? "Error with default user stored data. Look at signedUsers.users[\"User\"]?.password")"
         )
     }
 }
