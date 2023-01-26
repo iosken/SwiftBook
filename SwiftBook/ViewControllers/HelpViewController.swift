@@ -11,13 +11,13 @@ class HelpViewController: UIViewController {
     @IBOutlet var helpTextView: UITextView!
     
     var helpText: String!
-    var currentUserName: String!
+    var currentUserProperties: UserProperties!
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let signUpViewController = segue.destination as? SignUpViewController else { return }
-//        signUpViewController.loginTextField.text = currentUserName
-//        
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let showPropertiesVC = segue.destination as? ShowPropertiesViewController else { return }
+
+        showPropertiesVC.userProperties = currentUserProperties
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -47,8 +47,6 @@ struct Person {
     var secondName: String
     
     var about: String?
-    var pet: String?
-    var sport: String?
 }
 
 extension SignedUsers {
@@ -69,6 +67,19 @@ extension SignedUsers {
                 about: about
             )
         )
+    }
+}
+
+extension UserProperties {
+    func values() -> [String] {
+        var userPropertiesValues = [""]
+        userPropertiesValues.append(self.recoveryEmail)
+        userPropertiesValues.append(self.person.firstName)
+        userPropertiesValues.append(self.person.secondName)
+        userPropertiesValues.append(self.person.about ?? "")
+        userPropertiesValues.append(self.dateSignIn.formatted())
+        
+        return userPropertiesValues
     }
 }
 

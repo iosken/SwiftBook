@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
 
     @IBAction func submitButtonPressed() {
         guard (loginTextField.text ?? "") != "" && (loginTextField.text ?? "").count > 3 else {
-            showAlert(with: "Oops!", and: "Please enter New Login with more then 5 symbols and please fill all the fields with \"*\" mark!")
+            showAlert(with: "Oops!", and: "Please enter New Login with more then 3 symbols and please fill all the fields with \"*\" mark!")
             return
         }
         guard (passwordTextField.text ?? "") != "" && (passwordTextField.text ?? "").count > 5 else {

@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
                         aboutVC.aboutPerson = signedUsers.currentUserProperties?.person.about
                     } else if let helpVC = navigationVC.topViewController as? HelpViewController {
                         helpVC.helpText = "Hello my dear friend, \(signedUsers.currentUserProperties?.person.firstName ?? ""). This is my training programm and you can try to close it and forget it forever. \n\n But I reporting: this text I setted from first ViewController with your name. \n\n Good luck and be happy you and your family!"
-                        helpVC.currentUserName = signedUsers.currentUserName
+                        helpVC.currentUserProperties = signedUsers.currentUserProperties
                     }
                 }
             }
