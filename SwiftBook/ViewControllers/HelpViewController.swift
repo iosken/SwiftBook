@@ -13,6 +13,10 @@ class HelpViewController: UIViewController {
     var helpText: String!
     var currentUserProperties: UserProperties!
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let showPropertiesVC = segue.destination as? ShowPropertiesViewController else { return }
 

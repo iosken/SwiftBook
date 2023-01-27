@@ -17,6 +17,10 @@ class SignUpViewController: UIViewController {
     
     var userNameEntered: String? // transfer from LoginViewController.userNameTextField to SignUpViewController.loginTextField
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -13,6 +13,10 @@ class AboutViewController: UIViewController {
     
     var aboutPerson: String!
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

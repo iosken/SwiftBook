@@ -16,6 +16,10 @@ class ShowPropertiesViewController: UIViewController {
     var userPropertiesValues = [""]
     var propertyIndex = 1
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

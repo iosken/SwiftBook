@@ -9,6 +9,10 @@ import UIKit
 
 class BallsViewController: UIViewController {
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     override func loadView() {
         super.loadView()
 
