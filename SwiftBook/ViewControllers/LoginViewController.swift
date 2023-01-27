@@ -13,12 +13,9 @@ class LoginViewController: UIViewController {
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var userPasswordTextField: UITextField!
     
-    @IBOutlet var logInButton: UIButton!
-    
     // MARK: - Private Properties
     
-    
-    let signedUsers = SignedUsers()
+    let signedUsers = UsersDatabase()
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -43,7 +40,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Prepare and Unwind Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
         case "TabBarID":
             signedUsers.currentUserName = userNameTextField.text ?? ""
@@ -123,6 +119,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotNameButtonPressed(_ sender: UIButton) {
         var accounts = ""
+        
         for (user, account) in signedUsers.users {
             accounts += (user + " " + account.password + " || ")
         }

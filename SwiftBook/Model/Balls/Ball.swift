@@ -8,10 +8,13 @@
 import UIKit
 
 protocol BallProtocol {
+    
     init(color: UIColor, radius: Int, coordinates: (x: Int, y: Int))
+    
 }
 
 public class Ball: UIView, BallProtocol {
+    
     required public init(color: UIColor, radius: Int, coordinates: (x: Int, y: Int)) {
         super.init(
             frame: CGRect(
@@ -26,5 +29,6 @@ public class Ball: UIView, BallProtocol {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 

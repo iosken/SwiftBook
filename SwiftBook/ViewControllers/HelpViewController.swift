@@ -11,6 +11,7 @@ class HelpViewController: UIViewController {
     @IBOutlet var helpTextView: UITextView!
     
     var helpText: String!
+    
     var currentUserProperties: UserProperties!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

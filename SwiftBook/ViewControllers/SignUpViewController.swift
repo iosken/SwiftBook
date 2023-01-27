@@ -8,6 +8,8 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
+    
+    //MARK: - IB Outlets
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var firstNameTextField: UITextField!
@@ -15,12 +17,14 @@ class SignUpViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var aboutUserTextField: UITextField!
     
+    //MARK: - Related Properties
     var userNameEntered: String? // transfer from LoginViewController.userNameTextField to SignUpViewController.loginTextField
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
     
+    //MARK: - Lifecycle Methods:
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,10 +36,7 @@ class SignUpViewController: UIViewController {
         loginTextField.text = userNameEntered ?? ""
     }
     
-
-    @IBAction func unwindToSignUpViewController(for unwindSegue: UIStoryboardSegue) {
-        print("===Unwind called!")
-    }
+    //MARK: - IB Actions
     
     @IBAction func cancelButtonPressed() {
         dismiss(animated: true)

@@ -7,7 +7,8 @@
 
 import Foundation
 
-class SignedUsers {
+class UsersDatabase {
+    
     var users: [String: UserProperties] = [ // key is user name (login)
         "TEXHA" : UserProperties(
             password: "1234",
@@ -30,26 +31,32 @@ class SignedUsers {
     
     var currentUserName = ""
     
-    var currentUserProperties: UserProperties? {
-        users[currentUserName]
-    }
+    var currentUserProperties: UserProperties? { users[currentUserName] }
+    
 }
+
 struct UserProperties {
-    var password: String
-    var recoveryEmail: String
+    
+    let password: String
+    let recoveryEmail: String
+    
     let dateSignIn = Date.now
     
-    var person: Person
+    let person: Person
+    
 }
 
 struct Person {
-    var firstName: String
-    var secondName: String
     
-    var about: String?
+    let firstName: String
+    let secondName: String
+    
+    let about: String?
+    
 }
 
-extension SignedUsers {
+extension UsersDatabase {
+    
     func signUp(
         login: String,
         password: String,
@@ -68,9 +75,11 @@ extension SignedUsers {
             )
         )
     }
+    
 }
 
 extension UserProperties {
+    
     func values() -> [String] {
         var userPropertiesValues = [""]
         userPropertiesValues.append(self.recoveryEmail)
@@ -81,4 +90,5 @@ extension UserProperties {
         
         return userPropertiesValues
     }
+    
 }

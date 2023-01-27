@@ -15,8 +15,6 @@ class BallsViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-
-
     }
     
     override func viewDidLoad() {
@@ -31,4 +29,5 @@ class BallsViewController: UIViewController {
 
         self.view.addSubview(area)
     }
+    
 }

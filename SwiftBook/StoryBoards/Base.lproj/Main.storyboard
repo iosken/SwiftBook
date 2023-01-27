@@ -60,7 +60,7 @@
                                             <constraint firstAttribute="height" constant="34" id="ibJ-AI-ovT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                        <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*What is your second name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVF-LD-feD">
                                         <rect key="frame" x="0.0" y="211.5" width="315" height="20.5"/>
@@ -74,7 +74,7 @@
                                             <constraint firstAttribute="height" constant="34" id="Fdx-Lp-vWp"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                        <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Enter your e-mail:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2I-rC-3AP">
                                         <rect key="frame" x="0.0" y="282" width="315" height="20.5"/>
@@ -99,7 +99,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Tell little story about you" minimumFontSize="17" background="pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zga-nw-N3P">
                                         <rect key="frame" x="0.0" y="381" width="315" height="126.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" keyboardType="alphabet"/>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PvW-jg-eX0">
                                         <rect key="frame" x="0.0" y="515.5" width="315" height="31"/>
@@ -320,39 +320,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wNh-eT-7SL">
-                                <rect key="frame" x="16" y="30" width="343" height="568"/>
+                                <rect key="frame" x="16" y="30" width="343" height="558"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Text about" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcV-CR-93h">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="528"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="467.5"/>
                                         <color key="textColor" red="0.068655303030000003" green="0.068655303030000003" blue="0.068655303030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rZ1-zJ-knq">
-                                        <rect key="frame" x="0.0" y="538" width="343" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbg-SO-m25">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Game start">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <segue destination="U3m-Jy-wWH" kind="show" id="k35-ow-pX8"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                        <rect key="frame" x="0.0" y="477.5" width="343" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="lfc-xS-cax"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbg-SO-m25">
+                                        <rect key="frame" x="0.0" y="517.5" width="343" height="40.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Game start">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="U3m-Jy-wWH" kind="show" id="k35-ow-pX8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CWp-uA-gAo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CWp-uA-gAo" firstAttribute="bottom" secondItem="wNh-eT-7SL" secondAttribute="bottom" constant="20" id="GPG-0c-3KV"/>
+                            <constraint firstItem="CWp-uA-gAo" firstAttribute="bottom" secondItem="wNh-eT-7SL" secondAttribute="bottom" constant="30" id="GPG-0c-3KV"/>
                             <constraint firstItem="CWp-uA-gAo" firstAttribute="trailing" secondItem="wNh-eT-7SL" secondAttribute="trailing" constant="16" id="Tme-Nd-rCw"/>
                             <constraint firstItem="wNh-eT-7SL" firstAttribute="leading" secondItem="sTr-bA-QIk" secondAttribute="leading" constant="16" id="bnn-hB-NC9"/>
                             <constraint firstItem="wNh-eT-7SL" firstAttribute="top" secondItem="sTr-bA-QIk" secondAttribute="top" constant="30" id="fIb-Zr-mNI"/>

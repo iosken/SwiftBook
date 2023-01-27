@@ -14,15 +14,22 @@ protocol SquareAreaProtocol {
 }
 
 public class SquareArea: UIView, SquareAreaProtocol {
+    
     private var balls: [Ball] = []
+    
     private var animator: UIDynamicAnimator?
+    
     private var snapBahavor: UISnapBehavior?
+    
     private var collisionBahavior: UICollisionBehavior
     
     required public init(size: CGSize, color: UIColor) {
         collisionBahavior = UICollisionBehavior(items: [])
+        
         super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
         self.backgroundColor = color
+        
         collisionBahavior.setTranslatesReferenceBoundsIntoBoundary(with: UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1))
         animator = UIDynamicAnimator(referenceView: self)
         animator?.addBehavior(collisionBahavior)
@@ -80,4 +87,5 @@ public class SquareArea: UIView, SquareAreaProtocol {
         }
         snapBahavor = nil
     }
+    
 }

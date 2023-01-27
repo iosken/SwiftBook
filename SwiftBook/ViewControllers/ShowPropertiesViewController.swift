@@ -10,10 +10,13 @@ import UIKit
 class ShowPropertiesViewController: UIViewController {
     
     @IBOutlet var propertieValueTextField: UITextField!
+    
     @IBOutlet var userPropertiesSelector: UISlider!
     
     var userProperties: UserProperties!
+    
     var userPropertiesValues = [""]
+    
     var propertyIndex = 1
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -29,6 +32,7 @@ class ShowPropertiesViewController: UIViewController {
         )
         
         userPropertiesValues = userProperties.values()
+        
         userPropertiesSelector.maximumValue = Float(userPropertiesValues.count - 1)
         userPropertiesSelector.value = Float(propertyIndex)
         

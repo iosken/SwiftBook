@@ -9,15 +9,18 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    //MARK: - IB Outlets
     @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var smileLabel: UILabel!
     
+    //MARK: - Properties
     var userName: String!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
     
+    //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +32,7 @@ class WelcomeViewController: UIViewController {
         welcomeLabel.text = "Welcome, " + userName + "!"
     }
     
+    //MARK: - IB Actions
     @IBAction func logOutButtonPressed() {
         performSegue(withIdentifier: "WelcomeViewControllerID", sender: self)
     }

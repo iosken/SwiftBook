@@ -8,6 +8,7 @@
 import UIKit
 
 class DesignMethod {  // one point to changing color of background views
+    
     static func gradientLayer(bounds: CGRect) -> CAGradientLayer {
         let gradientLayer = CAGradientLayer()
         
@@ -19,4 +20,5 @@ class DesignMethod {  // one point to changing color of background views
         
         return gradientLayer
     }
+    
 }
