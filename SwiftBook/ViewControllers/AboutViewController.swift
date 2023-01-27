@@ -27,7 +27,6 @@ class AboutViewController: UIViewController {
     
         aboutTextView.text = aboutPerson
         
-        print(aboutPerson ?? "")
     }
     
 }

@@ -51,14 +51,18 @@ class LoginViewController: UIViewController {
             viewControllers.forEach { viewController in
                 if let welcomeVC = viewController as? WelcomeViewController {
                     welcomeVC.userName = userNameTextField.text ?? ""
+                    
                 } else if let navigationVC = viewController as? UINavigationController {
+                    
                     if let aboutVC = navigationVC.topViewController as? AboutViewController {
                         aboutVC.title = "About \(signedUsers.currentUserProperties?.person.firstName ?? "") \(signedUsers.currentUserProperties?.person.secondName ?? "")"
                         aboutVC.aboutPerson = signedUsers.currentUserProperties?.person.about
+                        
                     } else if let helpVC = navigationVC.topViewController as? HelpViewController {
                         helpVC.helpText = "Hello my dear friend, \(signedUsers.currentUserProperties?.person.firstName ?? ""). This is my training programm and you can try to close it and forget it forever. \n\n But I reporting: this text I setted from first ViewController with your name. \n\n Good luck and be happy you and your family!"
                         helpVC.currentUserProperties = signedUsers.currentUserProperties
                     }
+                    
                 }
             }
         case "SignUpID":
@@ -85,6 +89,7 @@ class LoginViewController: UIViewController {
                 secondName: signUp?.secondNameTextField.text ?? "",
                 about: signUp?.aboutUserTextField.text ?? ""
             )
+            
         default:
             break
         }
@@ -96,6 +101,7 @@ class LoginViewController: UIViewController {
         let inputPassword = userPasswordTextField.text ?? ""
         
         if let storedPassword = signedUsers.users[inputLogin]?.password {
+            
             if storedPassword == inputPassword {
                 performSegue(
                     withIdentifier: "TabBarID",
@@ -108,6 +114,7 @@ class LoginViewController: UIViewController {
                 )
                 userPasswordTextField.text = ""
             }
+            
         } else {
             showAlert(
                 with: "Invalid login or password",

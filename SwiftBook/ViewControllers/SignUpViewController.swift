@@ -41,31 +41,38 @@ class SignUpViewController: UIViewController {
     @IBAction func cancelButtonPressed() {
         dismiss(animated: true)
     }
-
+    
     @IBAction func submitButtonPressed() {
-        guard (loginTextField.text ?? "") != "" && (loginTextField.text ?? "").count > 3 else {
-            showAlert(with: "Oops!", and: "Please enter New Login with more then 3 symbols and please fill all the fields with \"*\" mark!")
+        guard (loginTextField.text ?? "") != "" &&
+                (3...24).contains((loginTextField.text ?? "").count) &&
+                (loginTextField.text ?? "").first?.wholeNumberValue == nil else {
+            showAlert(with: "Oops!", and: "Please enter New Login with 3-24 symbols (first symbol cant be number) and please fill all the fields with \"*\" mark!")
             return
         }
-        guard (passwordTextField.text ?? "") != "" && (passwordTextField.text ?? "").count > 5 else {
-            showAlert(with: "Oops!", and: "Please enter Password with more then 5 symbols and please fill all the fields with \"*\" mark!")
+        guard (passwordTextField.text ?? "") != "" &&
+                (5...24).contains((passwordTextField.text ?? "").count) else {
+            showAlert(with: "Oops!", and: "Please enter Password with 5-24 symbols and please fill all the fields with \"*\" mark!")
             return
         }
-        guard (firstNameTextField.text ?? "") != "" else {
+        guard (firstNameTextField.text ?? "") != "" &&
+                (1...24).contains((firstNameTextField.text ?? "").count) else {
             showAlert(with: "Oops!", and: "Please fill all the fields with \"*\" mark!")
             return
         }
-        guard (secondNameTextField.text ?? "") != "" else {
+        guard (secondNameTextField.text ?? "") != "" &&
+                (1...24).contains((secondNameTextField.text ?? "").count) else {
             showAlert(with: "Oops!", and: "Please fill all the fields with \"*\" mark!")
             return
         }
-        guard (emailTextField.text ?? "") != "" else {
-            showAlert(with: "Oops!", and: "Please fill e-mail field wich is marked \"*\"!")
+        guard (emailTextField.text ?? "") != "" &&
+                (4...24).contains((secondNameTextField.text ?? "").count) else {
+            showAlert(with: "Oops!", and: "Please fill field e-mail with 4...24 symbols!")
             return
         }
         
         performSegue(withIdentifier: "SignUpID", sender: self)
     }
+    
 }
 
 // MARK: - UIAlertController

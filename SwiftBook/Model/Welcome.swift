@@ -11,7 +11,7 @@ class UsersDatabase {
     
     var users: [String: UserProperties] = [ // key is user name (login)
         "TEXHA" : UserProperties(
-            password: "1234",
+            password: "123456",
             recoveryEmail: "y.volegov@icloud.com",
             person: Person(
                 firstName: "Yuri",
@@ -19,7 +19,7 @@ class UsersDatabase {
                 about: """
                 Hi there!
                 
-                I am 36 years old. I am team lead of little group IT-engeneers about 5 years. I wish to learn Swift to become software developer. I planning to buy MacBook 16. It will be my little present for learning hard all  SwiftBook tasks. I hope it will push learning work faster. Moreover I believe that tool should inspire to making great job. I planning to learn some English and Mathimatic too. Mathimatic interesting with integral, becouse it need to learn some of algorithms. Hope it  will be my way and I can move to it.
+                I am 36 years old. I am team lead of little group IT-engeneers about 5 years. I wish to learn Swift. I planning to buy MacBook 16. It will be my little present for learning hard all  SwiftBook tasks. I hope it will push learning work faster. Moreover I believe that tool should inspire to making great job. I planning to learn some English and Mathimatic too. Mathimatic interesting with integral, becouse it need to learn some of algorithms. Hope it  will be my way and I can move to it.
 
                 I planning to be friend of SwiftBook and big THANK you!
                 
