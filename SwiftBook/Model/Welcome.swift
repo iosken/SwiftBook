@@ -82,7 +82,3 @@ extension UserProperties {
         return userPropertiesValues
     }
 }
-
-
-
-

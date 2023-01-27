@@ -22,7 +22,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.layer.insertSublayer(
-            UIViewController.gradientLayer(bounds: self.view.bounds),
+            DesignMethod.gradientLayer(bounds: self.view.bounds),
             at: 0
         )
         

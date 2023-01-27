@@ -29,7 +29,7 @@ class HelpViewController: UIViewController {
         helpTextView.text = helpText
         
         self.view.layer.insertSublayer(
-            UIViewController.gradientLayer(bounds: self.view.bounds),
+            DesignMethod.gradientLayer(bounds: self.view.bounds),
             at: 0
         )        
     }

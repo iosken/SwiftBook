@@ -25,11 +25,12 @@ class LoginViewController: UIViewController {
         .portrait
     }
     
+    // MARK: - Overrided Life Cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.layer.insertSublayer(
-            UIViewController.gradientLayer(bounds: self.view.bounds),
+            DesignMethod.gradientLayer(bounds: self.view.bounds),
             at: 0
         )
     }

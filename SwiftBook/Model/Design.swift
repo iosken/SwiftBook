@@ -1,14 +1,13 @@
 //
-//  GlobalExtensions.swift
+//  Design.swift
 //  SwiftBook
 //
-//  Created by Yuri on 25.01.2023.
+//  Created by Yuri on 27.01.2023.
 //
 
-import Foundation
 import UIKit
 
-extension UIViewController {
+class DesignMethod {  // one point to changing color of background views
     static func gradientLayer(bounds: CGRect) -> CAGradientLayer {
         let gradientLayer = CAGradientLayer()
         
@@ -21,4 +20,3 @@ extension UIViewController {
         return gradientLayer
     }
 }
-
