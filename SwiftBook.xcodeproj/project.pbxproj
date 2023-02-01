@@ -62,10 +62,18 @@
 				DA930693296E5C9500C02AEE /* Models */,
 				DA930694296E5CA200C02AEE /* StoryBords */,
 				DA930695296E5CC700C02AEE /* SupportFiles */,
-				DA564D44294B194A006CD17C /* Assets.xcassets */,
+				DA8FA6132988C64800A88588 /* Resources */,
 				DA564D49294B194A006CD17C /* Info.plist */,
 			);
 			path = SwiftBook;
+			sourceTree = "<group>";
+		};
+		DA8FA6132988C64800A88588 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D44294B194A006CD17C /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DA930692296E5C7900C02AEE /* ViewControllers */ = {

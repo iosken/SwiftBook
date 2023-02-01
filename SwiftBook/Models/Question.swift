@@ -58,7 +58,7 @@ extension Question {
             ),
             Question(
                 title: "Что вам нравитс больше?",
-                type: .single,
+                type: .multiple,
                 answers: [
                     Answer(title: "Плавать", type: .dog),
                     Answer(title: "Спать", type: .cat),
@@ -78,4 +78,5 @@ extension Question {
             )
         ]
     }
+    
 }
