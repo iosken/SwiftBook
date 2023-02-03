@@ -5,9 +5,14 @@
 //  Created by Yuri on 11.01.2023.
 //
 
+//Передать массив с ответами на экран с результатами
+//Определить наиболее часто встречающийся тип животного
+//Отобразить результаты в соотвствии с этим животным
+//Избавиться от кнопки возврата назад на экране результатов
+
 struct Question {
     let title: String
-    let type: ResponseType
+    let responseType: ResponseType
     let answers: [Answer]
 }
 
@@ -48,7 +53,7 @@ extension Question {
         [
             Question(
                 title: "Какую пищу предпочитаете?",
-                type: .single,
+                responseType: .single,
                 answers: [
                     Answer(title: "Стейк", type: .dog),
                     Answer(title: "Рыба", type: .cat),
@@ -58,7 +63,7 @@ extension Question {
             ),
             Question(
                 title: "Что вам нравитс больше?",
-                type: .multiple,
+                responseType: .multiple,
                 answers: [
                     Answer(title: "Плавать", type: .dog),
                     Answer(title: "Спать", type: .cat),
@@ -68,7 +73,7 @@ extension Question {
             ),
             Question(
                 title: "Любите ли вы поезки на машине?",
-                type: .single,
+                responseType: .single,
                 answers: [
                     Answer(title: "Обожаю", type: .dog),
                     Answer(title: "Ненавижу", type: .cat),
