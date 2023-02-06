@@ -34,7 +34,6 @@ class ResultViewController: UIViewController {
 }
 
 private func getWinnersTypes(from answers: [Answer]) -> [AnimalType] {
-    
     var animalTypeChoseCounts: [AnimalType: Int] = [:]
     
     var maxChoseTypes: [AnimalType] = []

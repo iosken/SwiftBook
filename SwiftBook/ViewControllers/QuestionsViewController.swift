@@ -95,7 +95,6 @@ extension QuestionsViewController {
         questionProgressView.setProgress(totalProgress, animated: true)
         
         // Set navigation title
-        
         title = "Question: № \(questionIndex + 1) from \(questions.count)"
         
         showCurrentAnswers(for: currentQestion.responseType)
@@ -118,7 +117,7 @@ extension QuestionsViewController {
         for (button, answer) in zip(singleButtons, answers) {
             button.setTitle(answer.title, for: .normal)
         }
-
+        
     }
     private func showMultipleStackView(with answers: [Answer]) {
         multipleStackView.isHidden = false
