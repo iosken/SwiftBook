@@ -73,7 +73,7 @@ extension Question {
             ),
             Question(
                 title: "Любите ли вы поезки на машине?",
-                responseType: .single,
+                responseType: .ranged,
                 answers: [
                     Answer(title: "Обожаю", type: .dog),
                     Answer(title: "Ненавижу", type: .cat),

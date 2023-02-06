@@ -47,7 +47,6 @@ class QuestionsViewController: UIViewController {
         guard let result = segue.destination as? ResultViewController else { return }
         
         result.answersChosen = answersChosen
-        
     }
     
     @IBAction func singleButtonAnswerPressed(_ sender: UIButton) {
@@ -69,6 +68,7 @@ class QuestionsViewController: UIViewController {
     @IBAction func rangedAnswerButtonPressed() {
         let index = lrintf(rangedSlider.value)
         answersChosen.append(currentAnswers[index])
+        nextQuestion()
     }
     
 }
