@@ -12,7 +12,7 @@ import Foundation
 extension Dictionary where Value: Equatable {
     func keysForVlue(value: Value) -> [Key] {
         return compactMap {
-            (key: Key, val: Value) -> Key? in value == val ? key : nil
+            (key: Key, value_: Value) -> Key? in value == value_ ? key : nil
         }
     }
 }

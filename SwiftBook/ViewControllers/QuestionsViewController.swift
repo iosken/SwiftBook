@@ -113,7 +113,6 @@ extension QuestionsViewController {
     }
     
     private func showSingleStackView(with answers: [Answer]) {
-        print("Show single stack view called")
         singleStackView.isHidden = false
         
         for (button, answer) in zip(singleButtons, answers) {

@@ -14,10 +14,10 @@ class ResultViewController: UIViewController {
     
     var answersChosen: [Answer]!
     
-    var winnersDefinitions: [AnimalType] {
-        getWinnersDefinitions(from: answersChosen)
+    private var winnersDefinitions: [AnimalType] {
+        getWinnersTypes(from: answersChosen)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,14 +31,10 @@ class ResultViewController: UIViewController {
         navigationController?.dismiss(animated: true)
     }
     
-    deinit {
-        print("ResultViewController has been deallocated")
-    }
-    
 }
 
-func getWinnersDefinitions(from answers: [Answer]) -> [AnimalType] {
-
+private func getWinnersTypes(from answers: [Answer]) -> [AnimalType] {
+    
     var animalTypeChoseCounts: [AnimalType: Int] = [:]
     
     var maxChoseTypes: [AnimalType] = []
@@ -51,5 +47,5 @@ func getWinnersDefinitions(from answers: [Answer]) -> [AnimalType] {
         maxChoseTypes = animalTypeChoseCounts.keysForVlue(value: maxChosen)
     }
     
-return maxChoseTypes
+    return maxChoseTypes
 }
