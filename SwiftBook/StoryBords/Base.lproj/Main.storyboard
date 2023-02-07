@@ -202,7 +202,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="multipleAnswerButtonPressed" destination="GdL-1M-ko5" eventType="touchUpInside" id="c5D-s8-rkp"/>
+                                            <action selector="multipleAnswerButtonPressed" destination="GdL-1M-ko5" eventType="touchUpInside" id="1mj-x5-ykj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -233,9 +233,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m95-pD-BXy">
                                         <rect key="frame" x="0.0" y="82.5" width="280" height="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Отменить"/>
+                                        <state key="normal" title="Ответить"/>
                                         <connections>
-                                            <action selector="rangedAnswerButtonPressed:" destination="GdL-1M-ko5" eventType="touchUpInside" id="eLB-9J-yXa"/>
+                                            <action selector="rangedAnswerButtonPressed" destination="GdL-1M-ko5" eventType="touchUpInside" id="9Wh-QK-Wc4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -346,6 +346,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="resultDescription" destination="7cf-6o-1VF" id="EMm-1H-mjp"/>
+                        <outlet property="resultLabel" destination="WIe-cb-p30" id="qQm-qd-tsX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxN-tA-AIE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,7 +361,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RAb-vj-Ta2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="z35-gP-4GO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="102"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

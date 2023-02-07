@@ -43,6 +43,12 @@ class QuestionsViewController: UIViewController {
         updateUI()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let result = segue.destination as? ResultViewController else { return }
+        
+        result.answersChosen = answersChosen
+    }
+    
     @IBAction func singleButtonAnswerPressed(_ sender: UIButton) {
         guard let buttonIndex = singleButtons.firstIndex(of: sender) else { return }
         let answer = currentAnswers[buttonIndex]
@@ -59,12 +65,11 @@ class QuestionsViewController: UIViewController {
         nextQuestion()
     }
     
-    
     @IBAction func rangedAnswerButtonPressed() {
         let index = lrintf(rangedSlider.value)
         answersChosen.append(currentAnswers[index])
+        nextQuestion()
     }
-    
     
 }
 
@@ -90,7 +95,6 @@ extension QuestionsViewController {
         questionProgressView.setProgress(totalProgress, animated: true)
         
         // Set navigation title
-        
         title = "Question: № \(questionIndex + 1) from \(questions.count)"
         
         showCurrentAnswers(for: currentQestion.responseType)
@@ -108,13 +112,12 @@ extension QuestionsViewController {
     }
     
     private func showSingleStackView(with answers: [Answer]) {
-        print("Show single stack view called")
         singleStackView.isHidden = false
         
         for (button, answer) in zip(singleButtons, answers) {
             button.setTitle(answer.title, for: .normal)
         }
-
+        
     }
     private func showMultipleStackView(with answers: [Answer]) {
         multipleStackView.isHidden = false
@@ -142,7 +145,5 @@ extension QuestionsViewController {
         
         performSegue(withIdentifier: "showResult", sender: nil)
     }
-    
-    
     
 }
