@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var rgbView: UIView!
     
