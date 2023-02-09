@@ -16,8 +16,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet var slidersValuesLabels: [UILabel]!
     @IBOutlet var slidersColorsNamesLabels: [UILabel]!
     
+    @IBOutlet var slidersValuesTextFields: [UITextField]!
+    
+    
     // MARK: - Private Properties
-    private var viewColor: (red: CGFloat, green: CGFloat , blue: CGFloat) = (0, 0, 0)
+    var delegate: SettingsViewControllerDelegate!
+    
+    var color: UIColor!
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -31,8 +36,12 @@ class SettingsViewController: UIViewController {
         
         rgbView.layer.cornerRadius = 16
         
+        slidersValuesTextFields.forEach { textField in
+            textField.keyboardType = UIKeyboardType.numberPad
+        }
+        
         setupLabels()
-        setupRgbView()
+        setColor()
     }
     
     // MARK: - IB Actions
@@ -40,11 +49,11 @@ class SettingsViewController: UIViewController {
         if let colorSliderIndex = colorChannelSliders.firstIndex(of: sender) {
             switch colorSliderIndex {
             case 0:
-                viewColor.red = CGFloat(sender.value)
+                color = UIColor(red: CGFloat(sender.value), green: color.rgba.green, blue: color.rgba.blue, alpha: color.rgba.alpha)
             case 1:
-                viewColor.green = CGFloat(sender.value)
+                color = UIColor(red: color.rgba.red, green: CGFloat(sender.value), blue: color.rgba.blue, alpha: color.rgba.alpha)
             default:
-                viewColor.blue = CGFloat(sender.value)
+                color = UIColor(red: color.rgba.red, green: color.rgba.green, blue: CGFloat(sender.value), alpha: color.rgba.alpha)
             }
             
             slidersValuesLabels[colorSliderIndex].text = String(
@@ -52,17 +61,38 @@ class SettingsViewController: UIViewController {
             )
         }
         
-        setupRgbView()
+        setColor()
+    }
+    @IBAction func doneButtonPressed() {
+        delegate.setColor(from: color)
+        dismiss(animated: true)
     }
     
     // MARK: - Public Methods
-    private func setupRgbView() {
+    private func setColor() {
         rgbView.backgroundColor = UIColor(
-            red: viewColor.red,
-            green: viewColor.green,
-            blue: viewColor.blue,
+            red: color.rgba.red,
+            green: color.rgba.green,
+            blue: color.rgba.blue,
             alpha: 1
         )
+        
+        colorChannelSliders.forEach { slider in
+            if let colorSliderIndex = colorChannelSliders.firstIndex(of: slider) {
+                switch colorSliderIndex {
+                case 0:
+                    slider.value = Float(color.rgba.red)
+                case 1:
+                    slider.value = Float(color.rgba.green)
+                default:
+                    slider.value = Float(color.rgba.blue)
+                }
+                
+                slidersValuesLabels[colorSliderIndex].text = String(
+                    round(slider.value * 100) / 100
+                )
+            }
+        }
     }
     
     private func setupLabels() {
@@ -74,7 +104,17 @@ class SettingsViewController: UIViewController {
             slidersColorsNamesLabel.textColor = .white
         }
     }
-    
-    //private func
+}
+
+extension UIColor {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return (red, green, blue, alpha)
+    }
 }
 
