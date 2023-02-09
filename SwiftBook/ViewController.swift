@@ -10,7 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var rgbView: UIView!
+    
     @IBOutlet var colorChannelSliders: [UISlider]!
+    
     @IBOutlet var slidersValuesLabels: [UILabel]!
     @IBOutlet var slidersColorsNamesLabels: [UILabel]!
     
@@ -27,7 +29,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.2941176471, blue: 0.5764705882, alpha: 1)
         
-        setupSliders()
+        rgbView.layer.cornerRadius = 16
+        
         setupLabels()
         setupRgbView()
     }
@@ -49,31 +52,17 @@ class ViewController: UIViewController {
             )
         }
         
-        rgbView.backgroundColor = UIColor(
-            red: viewColor.red,
-            green: viewColor.green,
-            blue: viewColor.blue,
-            alpha: 1
-        )
+        setupRgbView()
     }
     
     // MARK: - Public Methods
     private func setupRgbView() {
-        rgbView.layer.cornerRadius = 16
         rgbView.backgroundColor = UIColor(
             red: viewColor.red,
             green: viewColor.green,
             blue: viewColor.blue,
             alpha: 1
         )
-    }
-    
-    private func setupSliders() {
-        for horisontalSlider in colorChannelSliders {
-            horisontalSlider.minimumValue = 0
-            horisontalSlider.maximumValue = 1
-            horisontalSlider.value = 0
-        }
     }
     
     private func setupLabels() {
@@ -85,4 +74,7 @@ class ViewController: UIViewController {
             slidersColorsNamesLabel.textColor = .white
         }
     }
+    
+    //private func
 }
+
