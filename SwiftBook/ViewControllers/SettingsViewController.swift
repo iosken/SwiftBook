@@ -39,13 +39,11 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.1450980392, green: 0.2941176471, blue: 0.5764705882, alpha: 1)
         
         rgbView.layer.cornerRadius = 16
         
         addDoneButtonOnKeyboard()
         
-        setupLabels()
         setColor()
     }
     
@@ -60,10 +58,6 @@ class SettingsViewController: UIViewController {
             default:
                 color = UIColor(red: color.rgba.red, green: color.rgba.green, blue: CGFloat(sender.value), alpha: color.rgba.alpha)
             }
-            
-            slidersValuesLabels[colorSliderIndex].text = String(
-                round(sender.value * 100) / 100
-            )
         }
         
         setColor()
@@ -73,12 +67,14 @@ class SettingsViewController: UIViewController {
         
         print("doneButtonPressed")
         
-        isDoneButtonPressed = true
         view.endEditing(true)
+        
+        dismiss(animated: true)
     }
     
     // MARK: - Public Methods
     private func setColor() {
+        
         rgbView.backgroundColor = UIColor(
             red: color.rgba.red,
             green: color.rgba.green,
@@ -97,23 +93,16 @@ class SettingsViewController: UIViewController {
                     slider.value = Float(color.rgba.blue)
                 }
                 
-                slidersValuesLabels[colorSliderIndex].text = String(
-                    round(slider.value * 100) / 100
-                )
+                let sliderValue = String(round(slider.value * 100) / 100)
+
+                slidersValuesLabels[colorSliderIndex].text = sliderValue
+
+                slidersValuesTextFields[colorSliderIndex].text = sliderValue
+                
+                slidersColorsNamesLabels[colorSliderIndex].text = sliderValue
             }
         }
     }
-    
-    private func setupLabels() {
-        for slidersValuesLabel in slidersValuesLabels {
-            slidersValuesLabel.textColor = .white
-        }
-        
-        for slidersColorsNamesLabel in slidersColorsNamesLabels {
-            slidersColorsNamesLabel.textColor = .white
-        }
-    }
-    
 }
 
 // MARK: - Extensions
@@ -165,6 +154,8 @@ extension SettingsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        print("END EDITING CALLED")
+        
         switch textField {
         case slidersValuesTextFields[0]:
             guard let red_ = CGFloat(string: textField.text ?? "") else { break }
@@ -177,15 +168,12 @@ extension SettingsViewController: UITextFieldDelegate {
             color = UIColor(red: color.rgba.red, green: color.rgba.green, blue: blue_, alpha: color.rgba.alpha)
         }
         
-        if isDoneButtonPressed {
-            delegate.setColor(from: color)
-            dismiss(animated: true)
-        }
+        delegate.setColor(from: color)
+        
     }
     
     
 }
-
 
 extension CGFloat {
     

@@ -22,7 +22,6 @@ class StartViewController: UIViewController {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
         settingsVC.color = view.backgroundColor
         settingsVC.delegate = self
-        
     }
 
 }
