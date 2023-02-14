@@ -44,23 +44,12 @@ class SettingsViewController: UIViewController {
         
         addDoneButtonOnKeyboard()
         
-        setColor()
+        setColor(nil)
     }
     
     // MARK: - IB Actions
     @IBAction func slidersValueChanged(_ sender: UISlider) {
-        if let colorSliderIndex = colorChannelSliders.firstIndex(of: sender) {
-            switch colorSliderIndex {
-            case 0:
-                color = UIColor(red: CGFloat(sender.value), green: color.rgba.green, blue: color.rgba.blue, alpha: color.rgba.alpha)
-            case 1:
-                color = UIColor(red: color.rgba.red, green: CGFloat(sender.value), blue: color.rgba.blue, alpha: color.rgba.alpha)
-            default:
-                color = UIColor(red: color.rgba.red, green: color.rgba.green, blue: CGFloat(sender.value), alpha: color.rgba.alpha)
-            }
-        }
-        
-        setColor()
+        setColor(sender)
     }
     
     @IBAction func doneButtonPressed() {
@@ -73,35 +62,110 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Public Methods
-    private func setColor() {
+    private func setColor(_ sender: Any?) {
         
-        rgbView.backgroundColor = UIColor(
-            red: color.rgba.red,
-            green: color.rgba.green,
-            blue: color.rgba.blue,
-            alpha: 1
-        )
+        var channelIndex = 0
         
-        colorChannelSliders.forEach { slider in
-            if let colorSliderIndex = colorChannelSliders.firstIndex(of: slider) {
+        if let setSender = sender as? UISlider {
+            if let colorSliderIndex = colorChannelSliders.firstIndex(
+                of: setSender
+            ) {
+                
+                channelIndex = colorSliderIndex
+                
                 switch colorSliderIndex {
                 case 0:
-                    slider.value = Float(color.rgba.red)
+                    color = UIColor(
+                        red: CGFloat(setSender.value),
+                        green: color.rgba.green,
+                        blue: color.rgba.blue,
+                        alpha: color.rgba.alpha
+                    )
                 case 1:
-                    slider.value = Float(color.rgba.green)
+                    color = UIColor(
+                        red: color.rgba.red,
+                        green: CGFloat(setSender.value),
+                        blue: color.rgba.blue,
+                        alpha: color.rgba.alpha
+                    )
                 default:
-                    slider.value = Float(color.rgba.blue)
+                    color = UIColor(
+                        red: color.rgba.red,
+                        green: color.rgba.green,
+                        blue: CGFloat(setSender.value),
+                        alpha: color.rgba.alpha
+                    )
                 }
-                
-                let sliderValue = String(round(slider.value * 100) / 100)
-
-                slidersValuesLabels[colorSliderIndex].text = sliderValue
-
-                slidersValuesTextFields[colorSliderIndex].text = sliderValue
-                
-                slidersColorsNamesLabels[colorSliderIndex].text = sliderValue
             }
+        } else if let setSender = sender as? UITextField {
+            
+            if let textFieldIndex = slidersValuesTextFields.firstIndex(
+                of: setSender
+            ) {
+                channelIndex = textFieldIndex
+                
+                switch textFieldIndex {
+                case 0:
+                    guard let red_ = CGFloat(
+                        string: setSender.text ?? ""
+                    ) else { break }
+                    
+                    color = UIColor(
+                        red: red_,
+                        green: color.rgba.green,
+                        blue: color.rgba.blue,
+                        alpha: color.rgba.alpha
+                    )
+                    
+                    colorChannelSliders[channelIndex].value = Float(red_)
+                case 1:
+                    guard let green_ = CGFloat(
+                        string: setSender.text ?? ""
+                    ) else { break }
+                    
+                    color = UIColor(
+                        red: color.rgba.red,
+                        green: green_,
+                        blue: color.rgba.blue,
+                        alpha: color.rgba.alpha
+                    )
+                    
+                    colorChannelSliders[channelIndex].value = Float(green_)
+                default:
+                    guard let blue_ = CGFloat(
+                        string: setSender.text ?? ""
+                    ) else { break }
+                    
+                    color = UIColor(
+                        red: color.rgba.red,
+                        green: color.rgba.green,
+                        blue: blue_,
+                        alpha: color.rgba.alpha
+                    )
+                    
+                    colorChannelSliders[channelIndex].value = Float(blue_)
+                }
+            }
+            
+            rgbView.backgroundColor = UIColor(
+                red: color.rgba.red,
+                green: color.rgba.green,
+                blue: color.rgba.blue,
+                alpha: 1
+            )
+            
+            let stringValue = String(
+                round(colorChannelSliders[channelIndex].value * 100) / 100
+            )
+            
+            slidersValuesLabels[channelIndex].text = stringValue
+            
+            slidersValuesTextFields[channelIndex].text = stringValue
+            
+            slidersColorsNamesLabels[channelIndex].text = stringValue
         }
+        
+        delegate.setColor(from: color)
     }
 }
 
@@ -153,23 +217,7 @@ extension SettingsViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        print("END EDITING CALLED")
-        
-        switch textField {
-        case slidersValuesTextFields[0]:
-            guard let red_ = CGFloat(string: textField.text ?? "") else { break }
-            color = UIColor(red: red_, green: color.rgba.green, blue: color.rgba.blue, alpha: color.rgba.alpha)
-        case slidersValuesTextFields[1]:
-            guard let green_ = CGFloat(string: textField.text ?? "") else { break }
-            color = UIColor(red: color.rgba.red, green: green_, blue: color.rgba.blue, alpha: color.rgba.alpha)
-        default:
-            guard let blue_ = CGFloat(string: textField.text ?? "") else { break }
-            color = UIColor(red: color.rgba.red, green: color.rgba.green, blue: blue_, alpha: color.rgba.alpha)
-        }
-        
-        delegate.setColor(from: color)
-        
+        setColor(textField)
     }
     
     
