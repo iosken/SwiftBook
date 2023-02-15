@@ -17,23 +17,22 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet var slidersValuesTextFields: [UITextField]!
     
-    // MARK: - Private Properties
+    // MARK: - Properties
     var delegate: SettingsViewControllerDelegate!
     
     var color: UIColor!
     
-    // MARK: - Overrided Properties
+    // MARK: - Overrided Properties and Methods
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
-    
-    // MARK: - View Lifecycle Methods
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
     
+    // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +58,7 @@ class SettingsViewController: UIViewController {
         
     }
     
-    // MARK: - Public Methods
+    // MARK: - Main setColor method
     private func setColor(_ sender: Any?) {
         
         var channelIndex: Int?
@@ -79,23 +78,23 @@ class SettingsViewController: UIViewController {
                 
                 switch channelIndex {
                 case 0:
-                    guard let red_ = CGFloat(
+                    guard let red = CGFloat(
                         string: setSender.text ?? ""
                     ) else { break }
                     
-                    colorChannelSliders[0].value = Float(red_)
+                    colorChannelSliders[0].value = Float(red)
                 case 1:
-                    guard let green_ = CGFloat(
+                    guard let green = CGFloat(
                         string: setSender.text ?? ""
                     ) else { break }
                     
-                    colorChannelSliders[1].value = Float(green_)
+                    colorChannelSliders[1].value = Float(green)
                 default:
-                    guard let blue_ = CGFloat(
+                    guard let blue = CGFloat(
                         string: setSender.text ?? ""
                     ) else { break }
                     
-                    colorChannelSliders[2].value = Float(blue_)
+                    colorChannelSliders[2].value = Float(blue)
                 }
             }
             
@@ -114,6 +113,7 @@ class SettingsViewController: UIViewController {
         } else {
             
             for channelIndex in colorChannelSliders.indices {
+                
                 switch channelIndex {
                 case 0:
                     colorChannelSliders[0].value = Float(color.rgba.red)
@@ -142,24 +142,7 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
         
-        
         delegate.setColor(from: rgbView.backgroundColor ?? UIColor.white)
-    }
-    
-}
-
-// MARK: - Extensions
-extension UIColor {
-    
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        return (red, green, blue, alpha)
     }
     
 }
@@ -203,16 +186,33 @@ extension SettingsViewController: UITextFieldDelegate {
     
 }
 
+
+// MARK: - Extensions
+extension UIColor {
+    
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return (red, green, blue, alpha)
+    }
+    
+}
+
 extension CGFloat {
-
+    
     init?(string: String) {
-
+        
         guard let number = NumberFormatter().number(from: string) else {
             return nil
         }
-
+        
         self.init(number.floatValue)
     }
-
+    
 }
 
