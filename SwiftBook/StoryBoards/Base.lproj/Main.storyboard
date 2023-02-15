@@ -189,9 +189,6 @@
                         <outletCollection property="slidersValuesLabels" destination="Gt8-NP-pje" collectionClass="NSMutableArray" id="EsJ-vi-IqI"/>
                         <outletCollection property="slidersValuesLabels" destination="e1z-Ev-zhT" collectionClass="NSMutableArray" id="Hcf-ID-Zy9"/>
                         <outletCollection property="slidersValuesLabels" destination="dxX-62-pwG" collectionClass="NSMutableArray" id="aya-NW-ngz"/>
-                        <outletCollection property="slidersColorsNamesLabels" destination="BGt-VR-wdm" collectionClass="NSMutableArray" id="Y20-ZE-Ljg"/>
-                        <outletCollection property="slidersColorsNamesLabels" destination="0gm-Df-GgH" collectionClass="NSMutableArray" id="02a-vt-Sai"/>
-                        <outletCollection property="slidersColorsNamesLabels" destination="Fvd-Zo-fCP" collectionClass="NSMutableArray" id="hsr-RJ-O0e"/>
                         <outletCollection property="slidersValuesTextFields" destination="3O9-TO-CLi" collectionClass="NSMutableArray" id="EA3-hs-HqF"/>
                         <outletCollection property="slidersValuesTextFields" destination="5hN-ga-5Gc" collectionClass="NSMutableArray" id="bel-bU-hJZ"/>
                         <outletCollection property="slidersValuesTextFields" destination="9Ta-Qo-efF" collectionClass="NSMutableArray" id="rRq-Qf-hoP"/>
@@ -207,7 +204,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T0d-No-dv7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pP4-Xc-Khj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -13,7 +13,7 @@ protocol SettingsViewControllerDelegate {
 }
 
 class StartViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,9 +23,8 @@ class StartViewController: UIViewController {
         settingsVC.color = view.backgroundColor
         settingsVC.delegate = self
     }
-
+    
 }
-
 
 // MARK: - SettingsViewControllerDelegate
 extension StartViewController: SettingsViewControllerDelegate {
