@@ -177,11 +177,11 @@ class SettingsViewController: UIViewController {
                 for channelIndex in colorChannelSliders.indices {
                     
                     
-                    colorChannelSliders[channelIndex].value =
+                    //colorChannelSliders[channelIndex].value =
                     
-//                    let stringValue = String(
-//                        round(colorChannelSliders[channelIndex].value * 100) / 100
-//                    )
+                    let stringValue = String(
+                        round(colorChannelSliders[channelIndex].value * 100) / 100
+                    )
                     
                     slidersValuesLabels[channelIndex].text = stringValue
                     
