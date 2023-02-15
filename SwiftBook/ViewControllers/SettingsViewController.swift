@@ -61,37 +61,37 @@ class SettingsViewController: UIViewController {
     // MARK: - Main setColor method
     private func setColor(_ sender: Any?) {
         
-        var channelIndex: Int?
+        var channelIndex: Int? // let returns "Constant 'channelIndex' used before being initialized"
         
-        if let setSender = sender as? UISlider {
+        if let sender = sender as? UISlider {
             if let colorSliderIndex = colorChannelSliders.firstIndex(
-                of: setSender
+                of: sender
             ) {
                 channelIndex = colorSliderIndex
             }
-        } else if let setSender = sender as? UITextField {
+        } else if let sender = sender as? UITextField {
             
             if let textFieldIndex = slidersValuesTextFields.firstIndex(
-                of: setSender
+                of: sender
             ) {
                 channelIndex = textFieldIndex
                 
                 switch channelIndex {
                 case 0:
                     guard let red = CGFloat(
-                        string: setSender.text ?? ""
+                        string: sender.text ?? ""
                     ) else { break }
                     
                     colorChannelSliders[0].value = Float(red)
                 case 1:
                     guard let green = CGFloat(
-                        string: setSender.text ?? ""
+                        string: sender.text ?? ""
                     ) else { break }
                     
                     colorChannelSliders[1].value = Float(green)
                 default:
                     guard let blue = CGFloat(
-                        string: setSender.text ?? ""
+                        string: sender.text ?? ""
                     ) else { break }
                     
                     colorChannelSliders[2].value = Float(blue)
