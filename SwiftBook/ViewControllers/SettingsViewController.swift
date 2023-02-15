@@ -23,6 +23,20 @@ class SettingsViewController: UIViewController {
     
     var color: UIColor!
     
+//    var colorSet: (red: CGFloat?, green: CGFloat?, blue: CGFloat?) {
+//        get {
+//            (red: color.rgba.red, green: color.rgba.green, blue: color.rgba.blue)
+//            }
+//        set {
+//            color = UIColor(
+//                red: CGFloat(newValue.red ?? color.rgba.red),
+//                green: CGFloat(newValue.green ?? color.rgba.green),
+//                blue: CGFloat(newValue.blue ?? color.rgba.blue),
+//                alpha: color.rgba.alpha
+//                )
+//            }
+//        }
+    
     var isDoneButtonPressed = false
     
     // MARK: - Overrided Properties
@@ -64,7 +78,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Public Methods
     private func setColor(_ sender: Any?) {
         
-        var channelIndex = 0
+        var channelIndex: Int?
         
         if let setSender = sender as? UISlider {
             if let colorSliderIndex = colorChannelSliders.firstIndex(
@@ -73,7 +87,7 @@ class SettingsViewController: UIViewController {
                 
                 channelIndex = colorSliderIndex
                 
-                switch colorSliderIndex {
+                switch channelIndex {
                 case 0:
                     color = UIColor(
                         red: CGFloat(setSender.value),
@@ -104,7 +118,7 @@ class SettingsViewController: UIViewController {
             ) {
                 channelIndex = textFieldIndex
                 
-                switch textFieldIndex {
+                switch channelIndex {
                 case 0:
                     guard let red_ = CGFloat(
                         string: setSender.text ?? ""
@@ -117,7 +131,7 @@ class SettingsViewController: UIViewController {
                         alpha: color.rgba.alpha
                     )
                     
-                    colorChannelSliders[channelIndex].value = Float(red_)
+                    colorChannelSliders[channelIndex ?? 0].value = Float(red_)
                 case 1:
                     guard let green_ = CGFloat(
                         string: setSender.text ?? ""
@@ -130,7 +144,7 @@ class SettingsViewController: UIViewController {
                         alpha: color.rgba.alpha
                     )
                     
-                    colorChannelSliders[channelIndex].value = Float(green_)
+                    colorChannelSliders[channelIndex ?? 0].value = Float(green_)
                 default:
                     guard let blue_ = CGFloat(
                         string: setSender.text ?? ""
@@ -143,30 +157,55 @@ class SettingsViewController: UIViewController {
                         alpha: color.rgba.alpha
                     )
                     
-                    colorChannelSliders[channelIndex].value = Float(blue_)
+                    colorChannelSliders[channelIndex ?? 0].value = Float(blue_)
                 }
             }
             
-            rgbView.backgroundColor = UIColor(
-                red: color.rgba.red,
-                green: color.rgba.green,
-                blue: color.rgba.blue,
-                alpha: 1
-            )
+            if let channelIndex = channelIndex {
+                
+                let stringValue = String(
+                    round(colorChannelSliders[channelIndex].value * 100) / 100
+                )
+                
+                slidersValuesLabels[channelIndex].text = stringValue
+                
+                slidersValuesTextFields[channelIndex].text = stringValue
+                
+                slidersColorsNamesLabels[channelIndex].text = stringValue
+            } else {
+                
+                for channelIndex in colorChannelSliders.indices {
+                    
+                    
+                    colorChannelSliders[channelIndex].value =
+                    
+//                    let stringValue = String(
+//                        round(colorChannelSliders[channelIndex].value * 100) / 100
+//                    )
+                    
+                    slidersValuesLabels[channelIndex].text = stringValue
+                    
+                    slidersValuesTextFields[channelIndex].text = stringValue
+                    
+                    slidersColorsNamesLabels[channelIndex].text = stringValue
+                }
+            }
             
-            let stringValue = String(
-                round(colorChannelSliders[channelIndex].value * 100) / 100
-            )
-            
-            slidersValuesLabels[channelIndex].text = stringValue
-            
-            slidersValuesTextFields[channelIndex].text = stringValue
-            
-            slidersColorsNamesLabels[channelIndex].text = stringValue
+
         }
+        
+        rgbView.backgroundColor = UIColor(
+            red: color.rgba.red,
+            green: color.rgba.green,
+            blue: color.rgba.blue,
+            alpha: 1
+        )
         
         delegate.setColor(from: color)
     }
+    
+    
+    
 }
 
 // MARK: - Extensions
@@ -181,6 +220,31 @@ extension UIColor {
         
         return (red, green, blue, alpha)
     }
+    
+    
+//        subscript(channel: Int) -> CGFloat {
+//            get {
+//                switch channel {
+//                case 0:
+//                    return rgba.red
+//                case 1:
+//                    return rgba.green
+//                default:
+//                    return rgba.blue
+//                }
+//            }
+//
+//            set {
+//                switch channel {
+//                case 0:
+//                    self.cgColor = UIColor(red: newValue, green: self.rgba.green, blue: self.rgba.blue, alpha: self.rgba.alpha) as! CGColor
+//                case 1:
+//                    UIColor(red: newValue, green: self.rgba.green, blue: self.rgba.blue, alpha: self.rgba.alpha)
+//                default:
+//                    UIColor(red: newValue, green: self.rgba.green, blue: self.rgba.blue, alpha: self.rgba.alpha)
+//                }
+//            }
+//        }
 }
 
 // MARK: - Delegatges
@@ -235,3 +299,4 @@ extension CGFloat {
     }
     
 }
+
