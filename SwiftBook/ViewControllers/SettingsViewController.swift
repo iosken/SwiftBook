@@ -50,8 +50,6 @@ class SettingsViewController: UIViewController {
     
     @IBAction func doneButtonPressed() {
         
-        print("doneButtonPressed")
-        
         view.endEditing(true)
         
         dismiss(animated: true)
