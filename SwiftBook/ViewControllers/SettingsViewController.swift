@@ -80,19 +80,19 @@ class SettingsViewController: UIViewController {
                         string: sender.text ?? ""
                     ) else { break }
                     
-                    colorChannelSliders[0].value = Float(red)
+                    colorChannelSliders[0].setValue(Float(red), animated: true)
                 case 1:
                     guard let green = CGFloat(
                         string: sender.text ?? ""
                     ) else { break }
                     
-                    colorChannelSliders[1].value = Float(green)
+                    colorChannelSliders[1].setValue(Float(green), animated: true)
                 default:
                     guard let blue = CGFloat(
                         string: sender.text ?? ""
                     ) else { break }
                     
-                    colorChannelSliders[2].value = Float(blue)
+                    colorChannelSliders[2].setValue(Float(blue), animated: true)
                 }
             }
             
