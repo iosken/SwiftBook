@@ -12,7 +12,13 @@ class ContactListViewController: UITableViewController {
     let dataStore = DataStore()
     
     var persons: [Person] = []
-
+    
+    // MARK: - Overrided Properties
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
+    // MARK: - LifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,13 +44,23 @@ class ContactListViewController: UITableViewController {
 
         return cell
     }
+    
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "personalListID", sender: persons[indexPath.row])
+    }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("WORKED")
+        guard let aboutVC = segue.destination as? AboutViewController else { return }
+        
+        guard let person = sender as? Person else { return }
+        
+        aboutVC.person = person
     }
-
 
 }

@@ -12,6 +12,7 @@
 		C3333D6229AA438D00BFF333 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3333D6129AA438D00BFF333 /* Person.swift */; };
 		C3333D6629AB64E000BFF333 /* PersonsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3333D6529AB64E000BFF333 /* PersonsListViewController.swift */; };
 		C3333D6829AB86EA00BFF333 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3333D6729AB86EA00BFF333 /* TabBarViewController.swift */; };
+		C3333D6A29AC5C0300BFF333 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3333D6929AC5C0300BFF333 /* AboutViewController.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
 		DA564D43294B1949006CD17C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA564D41294B1949006CD17C /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		C3333D6129AA438D00BFF333 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		C3333D6529AB64E000BFF333 /* PersonsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsListViewController.swift; sourceTree = "<group>"; };
 		C3333D6729AB86EA00BFF333 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C3333D6929AC5C0300BFF333 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA564D3D294B1949006CD17C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,9 +67,10 @@
 		C3333D5F29AA42F800BFF333 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C3333D5929AA40AF00BFF333 /* ContactListViewController.swift */,
-				C3333D6529AB64E000BFF333 /* PersonsListViewController.swift */,
 				C3333D6729AB86EA00BFF333 /* TabBarViewController.swift */,
+				C3333D5929AA40AF00BFF333 /* ContactListViewController.swift */,
+				C3333D6929AC5C0300BFF333 /* AboutViewController.swift */,
+				C3333D6529AB64E000BFF333 /* PersonsListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
 				C3333D6829AB86EA00BFF333 /* TabBarViewController.swift in Sources */,
 				C3333D5A29AA40AF00BFF333 /* ContactListViewController.swift in Sources */,
+				C3333D6A29AC5C0300BFF333 /* AboutViewController.swift in Sources */,
 				C3333D6229AA438D00BFF333 /* Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

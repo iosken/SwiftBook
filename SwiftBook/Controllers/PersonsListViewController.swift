@@ -25,10 +25,12 @@ class PersonsListViewController: UITableViewController {
         return persons
     }
     
-    override func loadView() {
-        super.loadView()
+    // MARK: - Overrided Properties
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
     }
 
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,18 +51,17 @@ class PersonsListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listID", for: indexPath)
 
         let person = persons[indexPath.section]
-        let name = person.fullName
-        let phone = person.phoneNumber
-        let email = person.email
         
         var content = cell.defaultContentConfiguration()
         
         switch indexPath.row {
         case 0:
             content.text = person.phoneNumber
+            content.image = UIImage(systemName: "phone")
             cell.contentConfiguration = content
         default:
             content.text = person.email
+            content.image = UIImage(systemName: "tray")
             cell.contentConfiguration = content
         }
         
