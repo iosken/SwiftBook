@@ -11,11 +11,12 @@ class ContactListViewController: UITableViewController {
     
     let dataStore = DataStore()
     
-    lazy var persons: [Person] = getPersons(dataStore)
+    var persons: [Person] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        persons = dataStore.persons
     }
 
     // MARK: - Table View data source
@@ -42,29 +43,8 @@ class ContactListViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        print("WORKED")
     }
 
 
-}
-
-extension ContactListViewController {
-    func getPersons(_ dataStore: DataStore) -> [Person] {
-        var persons: [Person] = []
-        
-        var person: Person {
-            Person(
-                name: dataStore.getName,
-                surname: dataStore.getSurname,
-                email: dataStore.getEmail,
-                phoneNumber: dataStore.getPhone
-            )
-        }
-        
-        repeat {
-            persons.append(person)
-        } while dataStore.namesCount != 0
-        
-        return persons
-    }
 }

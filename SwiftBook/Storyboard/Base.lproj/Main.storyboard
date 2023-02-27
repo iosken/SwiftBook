@@ -116,12 +116,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="eRO-wV-56f"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1x4-LG-LcI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Qpx-eJ-Zta" kind="relationship" relationship="viewControllers" id="hei-UJ-p4V"/>
-                        <segue destination="XNL-dw-ZV0" kind="relationship" relationship="viewControllers" id="zPg-iD-ekv"/>
+                        <segue destination="Qpx-eJ-Zta" kind="relationship" relationship="viewControllers" id="HAP-bk-YuQ"/>
+                        <segue destination="XNL-dw-ZV0" kind="relationship" relationship="viewControllers" id="Q60-AS-ohy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eb7-Ra-F6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

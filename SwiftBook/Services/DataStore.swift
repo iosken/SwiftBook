@@ -15,6 +15,8 @@ class DataStore {
     private var emails = ["aaaa@mail.ru", "bbbbb@mail.ru", "ccccc@mail.ru", "dddd@mail.ru", "eeeee@mail.ru", "fffff@mail.ru", "ggggg@mail.ru"]
     
     private var phones = ["435352426", "4353465365", "2342354363", "3242342532", "3245425452", "3242353436534", "324354645645"]
+    
+    lazy var persons: [Person] = getPersons()
 }
 
 extension DataStore {
@@ -69,56 +71,23 @@ extension DataStore {
     
 }
 
-
-
-
-
-//lazy var secondNames = getSecondNames
-//
-//lazy var emails = getEmails
-//
-//lazy var phoneNumbers = getPhones
-
-//extension DataStore {
-//    var getEmails: [String] {
-//        var emails: [String] = []
-//
-//        for _ in 0...names.count {
-//            emails.append(getRandomWord() + "@mail.ru")
-//        }
-//
-//        return emails
-//    }
-//
-//    var getPhones: [Int] {
-//        var phones: [Int] = []
-//
-//        for _ in 0...names.count {
-//            phones.append(Int.random(in: 10000...99999))
-//        }
-//
-//        return phones
-//    }
-//
-//    var getSecondNames: [String] {
-//        var secondNames: [String] = []
-//        var setSecondNames: Set<String> = ["Zik", "Solovei", "Baks", "One", "Two", "Thousand", "Jankin", "Williams"]
-//
-//        for _ in 0...names.count {
-//            secondNames.append(setSecondNames.removeFirst())
-//        }
-//
-//        return secondNames
-//    }
-//
-//    func getRandomWord() -> String {
-//        let alphabet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
-//        var word = ""
-//
-//        for _ in 1...5 {
-//            word.append(alphabet[alphabet.index(alphabet.startIndex, offsetBy: Int.random(in: 0...(alphabet.count - 1)))])
-//        }
-//
-//        return word
-//    }
-//}
+extension DataStore {
+    func getPersons() -> [Person] {
+        var persons: [Person] = []
+        
+        var person: Person {
+            Person(
+                name: getName,
+                surname: getSurname,
+                email: getEmail,
+                phoneNumber: getPhone
+            )
+        }
+        
+        repeat {
+            persons.append(person)
+        } while namesCount != 0
+        
+        return persons
+    }
+}
