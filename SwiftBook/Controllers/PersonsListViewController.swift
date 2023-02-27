@@ -42,24 +42,38 @@ class PersonsListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listID", for: indexPath)
 
-        let person = persons[indexPath.row]
+        let person = persons[indexPath.section]
+        let name = person.fullName
+        let phone = person.phoneNumber
+        let email = person.email
         
         var content = cell.defaultContentConfiguration()
         
-        content.text = person.fullName
-        
-        cell.contentConfiguration = content
+        switch indexPath.row {
+        case 0:
+            content.text = person.phoneNumber
+            cell.contentConfiguration = content
+        default:
+            content.text = person.email
+            cell.contentConfiguration = content
+        }
         
         print(indexPath)
 
         return cell
     }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        persons[section].fullName
+    }
+    
     
     // MARK: Table View Delegate
     
