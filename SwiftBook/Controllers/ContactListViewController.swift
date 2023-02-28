@@ -9,9 +9,9 @@ import UIKit
 
 class ContactListViewController: UITableViewController {
     
-    private let dataStore = DataStore()
-    
     lazy var persons: [Person] = dataStore.persons
+    
+    private let dataStore = DataStore()
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

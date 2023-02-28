@@ -17,7 +17,9 @@ struct Person {
 }
 
 extension Person {
+    
     var fullName: String {
         name + " " + surname
     }
+    
 }

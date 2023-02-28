@@ -9,7 +9,7 @@ import UIKit
 
 class PersonsListViewController: UITableViewController {
     
-    lazy var persons = getPersons()
+    lazy var persons = getCurrentPersons()
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -53,8 +53,9 @@ class PersonsListViewController: UITableViewController {
     
 }
 
+// MARK: - Get Current Persons From First Tab
 extension PersonsListViewController {
-    func getPersons() -> [Person] {
+    func getCurrentPersons() -> [Person] {
         var persons: [Person] = []
         
         guard let viewControllers = tabBarController?.viewControllers else { return DataStore().persons }

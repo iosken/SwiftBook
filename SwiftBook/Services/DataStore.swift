@@ -21,11 +21,9 @@ class DataStore {
     
 }
 
+// MARK: - Computing Properties - Getting Random Data From DataStore
+
 extension DataStore {
-    
-    private var namesCount: Int {
-        names.count
-    }
     
     private var getName: String {
         guard !names.isEmpty else { return ""}
@@ -73,6 +71,8 @@ extension DataStore {
     
 }
 
+// MARK: Return Array Of All Random Persons From Data Store
+
 extension DataStore {
     
     private func getPersons() -> [Person] {
@@ -90,7 +90,7 @@ extension DataStore {
         
         repeat {
             persons.append(person)
-        } while namesCount != 0
+        } while names.count != 0
         
         return persons
         
