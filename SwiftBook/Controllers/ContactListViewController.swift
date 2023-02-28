@@ -9,7 +9,7 @@ import UIKit
 
 class ContactListViewController: UITableViewController {
     
-    let dataStore = DataStore()
+    private let dataStore = DataStore()
     
     lazy var persons: [Person] = dataStore.persons
     

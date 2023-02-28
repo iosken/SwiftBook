@@ -129,7 +129,7 @@
                 <navigationController id="XNL-dw-ZV0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" image="person.circle.fill" catalog="system" id="QuJ-XH-zOv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9Cv-kG-b1f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="98.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -146,7 +146,7 @@
                 <navigationController id="Qpx-eJ-Zta" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Contacts" image="person.circle.fill" catalog="system" id="3d4-pj-HcZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="qIN-Mj-SJa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="92.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="98.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

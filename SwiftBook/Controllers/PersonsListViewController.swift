@@ -9,21 +9,7 @@ import UIKit
 
 class PersonsListViewController: UITableViewController {
     
-    var persons: [Person] {
-        
-        var persons: [Person] = []
-        
-        guard let viewControllers = tabBarController?.viewControllers else { return DataStore().persons }
-        
-        viewControllers.forEach { viewController in
-            if let navigationVC = viewController as? UINavigationController {
-                guard let contactListVC = navigationVC.topViewController as? ContactListViewController else { return }
-                persons = contactListVC.persons
-            }
-        }
-        
-        return persons
-    }
+    lazy var persons = getPersons()
     
     // MARK: - Overrided Properties
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -65,4 +51,21 @@ class PersonsListViewController: UITableViewController {
         persons[section].fullName
     }
     
+}
+
+extension PersonsListViewController {
+    func getPersons() -> [Person] {
+        var persons: [Person] = []
+        
+        guard let viewControllers = tabBarController?.viewControllers else { return DataStore().persons }
+        
+        viewControllers.forEach { viewController in
+            if let navigationVC = viewController as? UINavigationController {
+                guard let contactListVC = navigationVC.topViewController as? ContactListViewController else { return }
+                persons = contactListVC.persons
+            }
+        }
+        
+        return persons
+    }
 }

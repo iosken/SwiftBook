@@ -25,9 +25,9 @@ class AboutViewController: UIViewController {
         
         title = person.fullName
         
-        phoneNumber.text = person.phoneNumber
+        phoneNumber.text = "Phone: " + person.phoneNumber
         
-        email.text = person.email
+        email.text = "Email: " + person.email
     }
     
 }
