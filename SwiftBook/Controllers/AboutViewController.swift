@@ -9,9 +9,7 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
-    
     @IBOutlet var phoneNumber: UILabel!
-    
     @IBOutlet var email: UILabel!
     
     var person: Person!
@@ -27,9 +25,9 @@ class AboutViewController: UIViewController {
         
         title = person.fullName
         
-        email.text = person.email
-        
         phoneNumber.text = person.phoneNumber
+        
+        email.text = person.email
     }
-
+    
 }

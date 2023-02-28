@@ -72,7 +72,9 @@ extension DataStore {
 }
 
 extension DataStore {
+    
     func getPersons() -> [Person] {
+        
         var persons: [Person] = []
         
         var person: Person {
@@ -89,5 +91,7 @@ extension DataStore {
         } while namesCount != 0
         
         return persons
+        
     }
+    
 }
