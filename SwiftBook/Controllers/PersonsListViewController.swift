@@ -35,12 +35,12 @@ class PersonsListViewController: UITableViewController {
         if indexPath.row == 0 {
             content.text = person.phoneNumber
             content.image = UIImage(systemName: "phone")
-            cell.contentConfiguration = content
         } else {
             content.text = person.email
             content.image = UIImage(systemName: "tray")
-            cell.contentConfiguration = content
         }
+        
+        cell.contentConfiguration = content
         
         print(indexPath)
         
