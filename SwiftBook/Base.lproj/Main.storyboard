@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,31 +15,31 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IJb-Dm-Xah">
-                                <rect key="frame" x="133.33333333333331" y="64" width="161.33333333333331" height="808"/>
+                                <rect key="frame" x="107" y="20" width="106" height="528"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Uus-Ye-iN0">
-                                        <rect key="frame" x="0.0" y="0.0" width="161.33333333333334" height="544.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="377"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7P-zn-lAU" userLabel="RedCircleView">
-                                                <rect key="frame" x="0.0" y="0.0" width="161.33333333333334" height="161.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="106" height="105.5"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="P7P-zn-lAU" secondAttribute="height" multiplier="1:1" id="4P5-vC-WwC"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vP-ld-Ecf" userLabel="YellowCircleView">
-                                                <rect key="frame" x="0.0" y="191.66666666666669" width="161.33333333333334" height="161.66666666666669"/>
+                                                <rect key="frame" x="0.0" y="135.5" width="106" height="105.5"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="8vP-ld-Ecf" secondAttribute="height" multiplier="1:1" id="Va3-1m-vUm"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ovq-tt-WTY" userLabel="GreenCircleView">
-                                                <rect key="frame" x="0.0" y="383.33333333333331" width="161.33333333333334" height="161.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="271" width="106" height="106"/>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ovq-tt-WTY" secondAttribute="height" multiplier="1:1" id="rfZ-XJ-3io"/>
@@ -49,7 +50,7 @@
                                         <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jiv-AV-dvV">
-                                        <rect key="frame" x="0.0" y="754" width="161.33333333333334" height="54"/>
+                                        <rect key="frame" x="0.0" y="493" width="106" height="35"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Jiv-AV-dvV" secondAttribute="height" multiplier="3:1" id="O7K-QX-dDK"/>
@@ -60,9 +61,6 @@
                                         <state key="normal" title="START">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="startNextColorLightButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="KEK-rj-lfz"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -83,7 +81,6 @@
                     <connections>
                         <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
                         <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
-                        <outlet property="startButton" destination="Jiv-AV-dvV" id="h8e-55-ltG"/>
                         <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
                     </connections>
                 </viewController>

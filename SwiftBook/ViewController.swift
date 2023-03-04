@@ -12,57 +12,97 @@ class ViewController: UIViewController {
     @IBOutlet var redCircleView: UIView!
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
-    @IBOutlet var startButton: UIButton!
     
-    // MARK: - Overrided properties
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        .portrait
+    var counter = 0 // main state cycle counter
+    
+    override func awakeFromNib() {
+        counter += 1
+        
+        print("\(counter) awakeFromNib isViewLoaded \(isViewLoaded) \n")
+    }
+    
+    override func loadView() {
+        counter += 1
+        
+        print("\(counter) loadView before super.loadView() isViewLoaded \(isViewLoaded)")
+        
+        super.loadView()
+        
+        print("\(counter) loadView after super.loadView() isViewLoaded \(isViewLoaded) and redCircleView.frame.height is \(redCircleView.frame.height)\n")
     }
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /// hide objects to sneak transform:
-        redCircleView.alpha = 0
-        yellowCircleView.alpha = 0
-        greenCircleView.alpha = 0
-        startButton.alpha = 0
+        counter += 1
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) { // Responding to view-related events
+        super.viewWillAppear(animated)
+        counter += 1
+        
+        print("\(counter) viewWillAppear called \(isViewLoaded) with CircleView.frame.height \(redCircleView.frame.height)\n")
+    }
+    
+    override func updateViewConstraints() { // Configuring the view’s layout behavior. Called when the view controller's view needs to update its constraints.
+        
+        counter += 1
+        
+        print("\(counter) updateViewConstraints called with CircleView.frame.height \(redCircleView.frame.height)\n")
+        
+        super.updateViewConstraints() // at final of realization
+    }
+    
+    override func viewWillLayoutSubviews() { // Configuring the view’s layout behavior
+        counter += 1
+        
+        print("\(counter) viewWillLayoutSubviews called with CircleView.frame.height \(redCircleView.frame.height)\n")
+    }
+    
+    override func viewDidLayoutSubviews() { // Configuring the view’s layout behavior
+        counter += 1
+        
+        print("\(counter) viewDidLayoutSubviews called with CircleView.frame.height \(redCircleView.frame.height)\n")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
         super.viewDidAppear(animated)
+        
+        counter += 1
+        
+        print("\(counter) viewDidAppear called with CircleView.frame.height \(redCircleView.frame.height)\n")
         
         redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
         yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
         greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
-        
-        startButton.layer.cornerRadius = startButton.frame.width / 16
-        
-        ///show objects after transformation:
-        redCircleView.alpha = 0.3
-        yellowCircleView.alpha = 0.3
-        greenCircleView.alpha = 0.3
-        startButton.alpha = 1
+                
+        sleep(5)
     }
     
-    // MARK: - IBActions
-    @IBAction func startNextColorLightButtonTapped() {
-        if startButton.currentTitle != "NEXT" {
-            startButton.setTitle("NEXT", for: .normal)
-            redCircleView.alpha = 1
-            return
-        }
+    override func viewWillDisappear(_ animated: Bool) { // Responding to view-related events
+        super.viewWillDisappear(animated)
         
-        if redCircleView.alpha == 1 {
-            redCircleView.alpha = 0.3
-            yellowCircleView.alpha = 1
-        } else if yellowCircleView.alpha == 1 {
-            yellowCircleView.alpha = 0.3
-            greenCircleView.alpha = 1
-        } else {
-            greenCircleView.alpha = 0.3
-            redCircleView.alpha = 1
-        }
+        counter += 1
+        
+        print("\(counter) viewWillDisappear called with CircleView.frame.height \(redCircleView.frame.height)\n")
     }
+    
+    override func viewDidDisappear(_ animated: Bool) { // Responding to view-related events
+        super.viewDidDisappear(animated)
+        
+        counter += 1
+        
+        print("\(counter) viewDidDisappear called with CircleView.frame.height \(redCircleView.frame.height)\n")
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        counter += 1
+        
+        print("\(counter) didReceiveMemoryWarning called with CircleView.frame.height \(redCircleView.frame.height)\n")
+    }
+    
+    
+    
 }
