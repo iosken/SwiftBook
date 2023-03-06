@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
         greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
         
-        sleep(5)
+       // sleep(5)
     }
     
     override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
