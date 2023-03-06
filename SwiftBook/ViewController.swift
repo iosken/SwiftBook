@@ -35,6 +35,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         counter += 1
+        
+        redCircleView.alpha = 0
+        yellowCircleView.alpha = 0
+        greenCircleView.alpha = 0
     }
     
     override func viewWillAppear(_ animated: Bool) { // Responding to view-related events
@@ -67,7 +71,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
         super.viewDidAppear(animated)
-        
+
         counter += 1
         
         print("\(counter) viewDidAppear called with CircleView.frame.height \(redCircleView.frame.height)\n")
@@ -75,7 +79,11 @@ class ViewController: UIViewController {
         redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
         yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
         greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
-                
+        
+        redCircleView.alpha = 1
+        yellowCircleView.alpha = 1
+        greenCircleView.alpha = 1
+        
         sleep(5)
     }
     
