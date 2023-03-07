@@ -39,20 +39,13 @@
                                 <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                 <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-6D-ld9">
-                                <rect key="frame" x="122.5" y="499.5" width="75" height="34.5"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e2J-6D-ld9" secondAttribute="bottom" constant="34" id="2M3-vh-Jgb"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="5bS-Et-ADo"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9hh-H8-X04"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="M6A-nr-cYE"/>
-                            <constraint firstItem="e2J-6D-ld9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aEc-Jv-Rq7"/>
                         </constraints>
                     </view>
                     <connections>
