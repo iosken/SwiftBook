@@ -15,9 +15,6 @@ class ViewController: UIViewController {
     
     @IBOutlet var showButtonOutlet: UIButton! {
         didSet {
-            showButtonOutlet.setNeedsUpdateConfiguration()
-            showButtonOutlet.setNeedsLayout()
-            
             print(showButtonOutlet.currentTitle ?? "\n Init showButtonOutlet: UIButton! \n")
         }
     }
@@ -88,7 +85,10 @@ class ViewController: UIViewController {
 
         super.viewDidAppear(animated)
         
-        print("!!! translatesAutoresizingMaskIntoConstraints \(showButtonOutlet.translatesAutoresizingMaskIntoConstraints)")
+        //print("!!! translatesAutoresizingMaskIntoConstraints \(showButtonOutlet.translatesAutoresizingMaskIntoConstraints)")
+        //view.layoutIfNeeded()
+        
+        print(view.translatesAutoresizingMaskIntoConstraints)
     }
     
     // changes size of view

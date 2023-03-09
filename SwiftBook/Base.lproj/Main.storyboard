@@ -39,52 +39,29 @@
                                 <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                 <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-6D-ld9">
-                                <rect key="frame" x="137" y="473.5" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uda-TF-DBr">
+                                <rect key="frame" x="137" y="498" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="2NG-BB-OCp"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cg-gW-lKI">
-                                <rect key="frame" x="211" y="473" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noZ-e4-phW">
-                                <rect key="frame" x="210" y="414" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLr-cX-4BS">
-                                <rect key="frame" x="122.5" y="414.5" width="75" height="34.5"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e2J-6D-ld9" secondAttribute="bottom" constant="64.5" id="4Hu-q2-f1V"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="5bS-Et-ADo"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9hh-H8-X04"/>
+                            <constraint firstItem="Uda-TF-DBr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KZo-Ui-ZUZ"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="M6A-nr-cYE"/>
-                            <constraint firstItem="e2J-6D-ld9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VWp-a7-txg"/>
-                            <constraint firstItem="LLr-cX-4BS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdN-E0-tRh"/>
-                            <constraint firstItem="e2J-6D-ld9" firstAttribute="top" secondItem="LLr-cX-4BS" secondAttribute="bottom" constant="24.5" id="ssu-TK-gwn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Uda-TF-DBr" secondAttribute="bottom" constant="40" id="v3v-Zp-dZ4"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="3Cg-gW-lKI"/>
-                                <exclude reference="noZ-e4-phW"/>
-                                <exclude reference="LLr-cX-4BS"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
                         <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
-                        <outlet property="showButtonOutlet" destination="e2J-6D-ld9" id="iFg-OW-VzW"/>
+                        <outlet property="showButtonOutlet" destination="Uda-TF-DBr" id="72K-5q-DZT"/>
                         <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
                     </connections>
                 </viewController>
