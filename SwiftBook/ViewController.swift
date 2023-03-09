@@ -13,11 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
     
-    @IBOutlet var showButtonOutlet: UIButton! {
-        didSet {
-            print(showButtonOutlet.currentTitle ?? "\n Init showButtonOutlet: UIButton! \n")
-        }
-    }
+//    @IBOutlet var showButtonOutlet: UIButton! {
+//        didSet {
+//            print(showButtonOutlet.currentTitle ?? "\n Init showButtonOutlet: UIButton! \n")
+//        }
+//    }
     
     var counter = 0 // main state cycle counter
     
@@ -75,9 +75,9 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() { // Configuring the view’s layout behavior
         showFuncName()
         
-        redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
-        yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
-        greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
+//        redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
+//        yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
+//        greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
     }
     
     override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
