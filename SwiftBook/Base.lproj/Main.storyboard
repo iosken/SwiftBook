@@ -39,24 +39,88 @@
                                 <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                 <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2J-6D-ld9">
+                                <rect key="frame" x="137" y="473.5" width="46" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Cg-gW-lKI">
+                                <rect key="frame" x="211" y="473" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="noZ-e4-phW">
+                                <rect key="frame" x="210" y="414" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLr-cX-4BS">
+                                <rect key="frame" x="122.5" y="414.5" width="75" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e2J-6D-ld9" secondAttribute="bottom" constant="64.5" id="4Hu-q2-f1V"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.3" id="5bS-Et-ADo"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9hh-H8-X04"/>
                             <constraint firstItem="IJb-Dm-Xah" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="M6A-nr-cYE"/>
+                            <constraint firstItem="e2J-6D-ld9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VWp-a7-txg"/>
+                            <constraint firstItem="LLr-cX-4BS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdN-E0-tRh"/>
+                            <constraint firstItem="e2J-6D-ld9" firstAttribute="top" secondItem="LLr-cX-4BS" secondAttribute="bottom" constant="24.5" id="ssu-TK-gwn"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="3Cg-gW-lKI"/>
+                                <exclude reference="noZ-e4-phW"/>
+                                <exclude reference="LLr-cX-4BS"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="greenCircleView" destination="Ovq-tt-WTY" id="Ave-zI-Wve"/>
                         <outlet property="redCircleView" destination="P7P-zn-lAU" id="vdb-yK-m1J"/>
+                        <outlet property="showButtonOutlet" destination="e2J-6D-ld9" id="iFg-OW-VzW"/>
                         <outlet property="yellowCircleView" destination="8vP-ld-Ecf" id="ntG-z0-DdS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="99.776785714285708"/>
+            <point key="canvasLocation" x="131.25" y="99.295774647887328"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="Jv9-l2-73g">
+            <objects>
+                <viewController id="HO3-TA-lGC" customClass="SecondViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3fe-TK-bcP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oN5-jE-180">
+                                <rect key="frame" x="122.5" y="471" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="dismissButton" destination="HO3-TA-lGC" eventType="touchUpInside" id="P35-Nn-V7F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vPS-Hb-XrH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vPS-Hb-XrH" firstAttribute="bottom" secondItem="oN5-jE-180" secondAttribute="bottom" constant="62" id="lfR-05-MY4"/>
+                            <constraint firstItem="oN5-jE-180" firstAttribute="centerX" secondItem="3fe-TK-bcP" secondAttribute="centerX" id="tts-KC-sSG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Taz-OR-C4B"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFc-iW-BMD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1044" y="99"/>
         </scene>
     </scenes>
     <resources>

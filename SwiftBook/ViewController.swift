@@ -13,119 +13,124 @@ class ViewController: UIViewController {
     @IBOutlet var yellowCircleView: UIView!
     @IBOutlet var greenCircleView: UIView!
     
+    @IBOutlet var showButtonOutlet: UIButton! {
+        didSet {
+            showButtonOutlet.setNeedsUpdateConfiguration()
+            showButtonOutlet.setNeedsLayout()
+            
+            print(showButtonOutlet.currentTitle ?? "\n Init showButtonOutlet: UIButton! \n")
+        }
+    }
+    
     var counter = 0 // main state cycle counter
     
-    override func awakeFromNib() {
-        counter += 1
-        
-        print("\(counter) awakeFromNib isViewLoaded \(isViewLoaded) \n")
-        
-        sleep(3)
-    }
+//    override func awakeFromNib() {
+//        showFuncName()
+//
+//        print("\(title ?? ""): \(counter) (isViewLoaded: \(isViewLoaded)) \n")
+//    }
     
-    override func loadView() {
-        counter += 1
-        
-        print("\(counter) loadView before super.loadView() isViewLoaded \(isViewLoaded)")
-        
-        sleep(3)
-        
-        super.loadView()
-        
-        print("\(counter) loadView after super.loadView() isViewLoaded \(isViewLoaded) and redCircleView.frame.height is \(redCircleView.frame.height)\n")
-        
-        sleep(3)
-    }
+//    override func loadView() { // If you use Interface Builder to create your views and initialize the view controller, you must not override this method.
+//        showFuncName()
+//
+//        print("\(title ?? ""): \(counter) loadView before super.loadView() (isViewLoaded: \(isViewLoaded)) and redCircleView.frame.height is \(redCircleView?.frame.height ?? 0)\n")
+//
+//        print("\(title ?? ""): \(counter) calling super.loadView()...")
+//
+//        super.loadView()
+//
+//        print("\(title ?? ""): \(counter) loadView after super.loadView() (isViewLoaded: \(isViewLoaded)) and redCircleView.frame.height is \(redCircleView.frame.height)\n")
+//
+//        //sleep(3)
+//    }
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
-        counter += 1
         
-        print("\(counter) viewDidLoad called \(isViewLoaded) with CircleView.frame.height \(redCircleView.frame.height)\n")
+        title = "VC"
+        showFuncName()
         
         super.viewDidLoad()
-        
-        sleep(3)
     }
     
     override func viewWillAppear(_ animated: Bool) { // Responding to view-related events
-        counter += 1
-        
-        print("\(counter) viewWillAppear called \(isViewLoaded) with CircleView.frame.height \(redCircleView.frame.height)\n")
-        
-        sleep(3)
+        showFuncName()
         
         super.viewWillAppear(animated)
         
-        sleep(3)
+        // sleep(3)
         
-        view.layoutIfNeeded()
+        //view.layoutIfNeeded()
         
-        sleep(3)
+        //sleep(3)
     }
     
     override func updateViewConstraints() { // Configuring the view’s layout behavior. Called when the view controller's view needs to update its constraints.
-        counter += 1
+        showFuncName()
         
-        print("\(counter) updateViewConstraints called with CircleView.frame.height \(redCircleView.frame.height)\n")
-        
-        sleep(3)
-        super.updateViewConstraints() // at final of realization
+        super.updateViewConstraints() // at final of realizatio
     }
     
     override func viewWillLayoutSubviews() { // Configuring the view’s layout behavior
-        counter += 1
-        
-        print("\(counter) viewWillLayoutSubviews called with CircleView.frame.height \(redCircleView.frame.height)\n")
-        
-        sleep(3)
+        showFuncName()
     }
     
     override func viewDidLayoutSubviews() { // Configuring the view’s layout behavior
-        counter += 1
-        
-        print("\(counter) viewDidLayoutSubviews called with CircleView.frame.height \(redCircleView.frame.height)\n")
+        showFuncName()
         
         redCircleView.layer.cornerRadius = redCircleView.frame.width / 2
         yellowCircleView.layer.cornerRadius = yellowCircleView.frame.width / 2
         greenCircleView.layer.cornerRadius = greenCircleView.frame.width / 2
-        
-        sleep(5)
     }
     
     override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
-        counter += 1
-        
-        print("\(counter) viewDidAppear called with CircleView.frame.height \(redCircleView.frame.height)\n")
-        
+        showFuncName()
+
         super.viewDidAppear(animated)
         
-        sleep(3)
+        print("!!! translatesAutoresizingMaskIntoConstraints \(showButtonOutlet.translatesAutoresizingMaskIntoConstraints)")
+    }
+    
+    // changes size of view
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        print("View height: \(size.height), view height: \(size.width)")
     }
     
     override func viewWillDisappear(_ animated: Bool) { // Responding to view-related events
-        counter += 1
-        
-        print("\(counter) viewWillDisappear called with CircleView.frame.height \(redCircleView.frame.height)\n")
+        showFuncName()
         
         super.viewWillDisappear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) { // Responding to view-related events
+        showFuncName()
+        
         super.viewDidDisappear(animated)
-        
-        counter += 1
-        
-        print("\(counter) viewDidDisappear called with CircleView.frame.height \(redCircleView.frame.height)\n")
     }
     
     override func didReceiveMemoryWarning() {
+        showFuncName()
+        
         super.didReceiveMemoryWarning()
-        
-        counter += 1
-        
-        print("\(counter) didReceiveMemoryWarning called with CircleView.frame.height \(redCircleView.frame.height)\n")
+    }
+    
+    deinit {
+        print("\n Deinit called \n")
     }
     
     
+}
+
+extension ViewController {
+    func showFuncName(of function: String = #function) {
+        
+        counter += 1
+        
+        print("\(counter) \(function) (CircleView.frame.height: \(redCircleView?.frame.height ?? 0)) \(title ?? "") \n")
+        
+        //sleep(3)
+    }
+
 }
