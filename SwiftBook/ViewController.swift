@@ -86,6 +86,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         //print("!!! translatesAutoresizingMaskIntoConstraints \(showButtonOutlet.translatesAutoresizingMaskIntoConstraints)")
+        
         //view.layoutIfNeeded()
         
         print(view.translatesAutoresizingMaskIntoConstraints)
@@ -128,9 +129,42 @@ extension ViewController {
         
         counter += 1
         
-        print("\(counter) \(function) (CircleView.frame.height: \(redCircleView?.frame.height ?? 0)) \(title ?? "") \n")
+        print("\(counter) \(function) \(view.frame.size) \n") //(CircleView.frame.height: \(redCircleView?.frame.height ?? 0)) \(title ?? "")
         
         //sleep(3)
     }
 
 }
+
+/* results:
+
+ ------- Clear:
+ 5 viewDidAppear(_:) (CircleView.frame.height: 0.0) VC
+
+ true
+
+  SCENE: sceneDidBecomeActive(_:)
+ -----
+ 
+ ----- Button:
+ 6 viewDidAppear(_:) (CircleView.frame.height: 0.0) VC
+
+ true
+
+  SCENE: sceneDidBecomeActive(_:)
+ 
+ View height: 430.0, view height: 932.0
+ 6 viewWillLayoutSubviews() (CircleView.frame.height: 0.0) VC
+
+ 7 viewDidLayoutSubviews() (CircleView.frame.height: 0.0) VC
+
+ 8 viewWillLayoutSubviews() (CircleView.frame.height: 0.0) VC
+
+ 9 viewDidLayoutSubviews() (CircleView.frame.height: 0.0) VC
+ 
+ View height: 430.0, view height: 932.0
+ 7 viewWillLayoutSubviews() (CircleView.frame.height: 0.0) VC
+
+ 8 viewDidLayoutSubviews() (CircleView.frame.height: 0.0) VC
+ -----
+*/
