@@ -9,11 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     // MARK: - IBOutlets
-    @IBOutlet var redCircleView: UIView!
-    @IBOutlet var yellowCircleView: UIView!
-    @IBOutlet var greenCircleView: UIView!
+//    @IBOutlet var redCircleView: UIView!
+//    @IBOutlet var yellowCircleView: UIView!
+//    @IBOutlet var greenCircleView: UIView!
     
-//    @IBOutlet var showButtonOutlet: UIButton! {
+    @IBOutlet var universalOutlet: UIButton!
+    
+    //@IBOutlet var universalOutlet: UILabel!
+    
+    //    @IBOutlet var showButtonOutlet: UIButton! {
 //        didSet {
 //            print(showButtonOutlet.currentTitle ?? "\n Init showButtonOutlet: UIButton! \n")
 //        }
@@ -43,11 +47,35 @@ class ViewController: UIViewController {
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
-        
+
         title = "VC"
         showFuncName()
         
         super.viewDidLoad()
+ 
+//        Tinted to default:
+//        universalOutlet.configuration?.automaticallyUpdateForSelection = false
+//        universalOutlet.configuration?.contentInsets = .zero
+//        universalOutlet.configuration?.imagePlacement = .all
+//        universalOutlet.configuration?.titleAlignment = .center
+        
+        //universalOutlet.configuration = nil
+//
+//
+//        universalOutlet.titleLabel?.layer.position = (defaultButton.titleLabel?.layer.position)!
+//
+//        universalOutlet.titleLabel?.text = "To DEFAULT Button"
+//
+//        universalOutlet.titleLabel?.isHidden = false
+//
+//        universalOutlet.titleLabel?.bounds = (defaultButton.titleLabel?.bounds)!
+//        universalOutlet.titleLabel?.accessibilityElementsHidden = false
+//
+//        universalOutlet.titleLabel?.layer.isHidden = false
+//
+//        universalOutlet.titleLabel?.isHidden = false
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) { // Responding to view-related events
@@ -57,7 +85,7 @@ class ViewController: UIViewController {
         
         // sleep(3)
         
-        //view.layoutIfNeeded()
+        //view.layoutIfNeeded() ///!!!
         
         //sleep(3)
     }
@@ -70,6 +98,10 @@ class ViewController: UIViewController {
     
     override func viewWillLayoutSubviews() { // Configuring the view’s layout behavior
         showFuncName()
+        
+        super.viewWillLayoutSubviews()
+        
+        print(universalOutlet.constraints)
     }
     
     override func viewDidLayoutSubviews() { // Configuring the view’s layout behavior
@@ -82,14 +114,41 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
         showFuncName()
+        
+        //universalOutlet.titleLabel?.isHidden = false
+
+        //print("\n", universalOutlet.configuration, "\n")
+        
+        //print("\n", universalOutlet.titleLabel?.layer, "\n")
+        
+        //universalOutlet.directionalLayoutMargins.top = 120
+        //universalOutlet.preservesSuperviewLayoutMargins = true
+        
+        print("\n universalOutlet.preservesSuperviewLayoutMargins ", universalOutlet.preservesSuperviewLayoutMargins, "\n")
+        print("\n universalOutlet.directionalLayoutMargins", universalOutlet.directionalLayoutMargins, "\n")
+        
+        print("\n view.translatesAutoresizingMaskIntoConstraints", view.translatesAutoresizingMaskIntoConstraints, "\n")
+        
+        print("\n universalOutlet.translatesAutoresizingMaskIntoConstraints", universalOutlet.translatesAutoresizingMaskIntoConstraints, "\n")
+        
+       // print("\n universalOutlet.translatesAutoresizingMaskIntoConstraints", view.safeAreaInsets.translatesAutoresizingMaskIntoConstraints, "\n")
+        
+        
+        //print("\n view.preservesSuperviewLayoutMargins ", view.preservesSuperviewLayoutMargins, "\n")
+        
+        let intrinsicContentSize = universalOutlet.intrinsicContentSize
+
+        if intrinsicContentSize.width > 0 && intrinsicContentSize.height > 0 {
+            print("Button has an intrinsic content size \(intrinsicContentSize.width) \(intrinsicContentSize.height)")
+        } else {
+            print("Button does not have an intrinsic content size")
+        }
 
         super.viewDidAppear(animated)
         
         //print("!!! translatesAutoresizingMaskIntoConstraints \(showButtonOutlet.translatesAutoresizingMaskIntoConstraints)")
         
         //view.layoutIfNeeded()
-        
-        print(view.translatesAutoresizingMaskIntoConstraints)
     }
     
     // changes size of view
@@ -121,6 +180,17 @@ class ViewController: UIViewController {
         print("\n Deinit called \n")
     }
     
+    @IBAction func changerButton(_ sender: Any) {
+        universalOutlet.setImage(UIImage(named: "imagesButtons"), for: .normal)
+    }
+    
+    @IBAction func changerSecondButton(_ sender: Any) {
+        universalOutlet.setImage(UIImage(named: "imageToButton"), for: .normal)
+    }
+    
+    @IBAction func mainButton(_ sender: Any) {
+        universalOutlet.setImage(UIImage(named: "pencil"), for: .normal)
+    }
     
 }
 
@@ -136,35 +206,3 @@ extension ViewController {
 
 }
 
-/* results:
-
- ------- Clear:
- 5 viewDidAppear(_:) (CircleView.frame.height: 0.0) VC
-
- true
-
-  SCENE: sceneDidBecomeActive(_:)
- -----
- 
- ----- Button:
- 6 viewDidAppear(_:) (CircleView.frame.height: 0.0) VC
-
- true
-
-  SCENE: sceneDidBecomeActive(_:)
- 
- View height: 430.0, view height: 932.0
- 6 viewWillLayoutSubviews() (CircleView.frame.height: 0.0) VC
-
- 7 viewDidLayoutSubviews() (CircleView.frame.height: 0.0) VC
-
- 8 viewWillLayoutSubviews() (CircleView.frame.height: 0.0) VC
-
- 9 viewDidLayoutSubviews() (CircleView.frame.height: 0.0) VC
- 
- View height: 430.0, view height: 932.0
- 7 viewWillLayoutSubviews() (CircleView.frame.height: 0.0) VC
-
- 8 viewDidLayoutSubviews() (CircleView.frame.height: 0.0) VC
- -----
-*/
