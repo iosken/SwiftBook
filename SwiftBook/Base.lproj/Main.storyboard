@@ -17,22 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIG-5D-j40">
-                                <rect key="frame" x="137" y="269" width="75" height="34.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-Ns-3ql">
+                                <rect key="frame" x="97.5" y="53" width="125" height="125"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pdz-Ns-3ql" secondAttribute="height" multiplier="1:1" id="10z-Rx-KY7"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-tH-Yax">
+                                <rect key="frame" x="137" y="269" width="46" height="30"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pww-Ex-tgh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MIG-5D-j40" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="269" id="Tvd-0G-D2y"/>
-                            <constraint firstItem="MIG-5D-j40" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="137" id="jAq-gA-IAe"/>
+                            <constraint firstItem="2F7-tH-Yax" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R9k-dL-sdC"/>
+                            <constraint firstItem="pdz-Ns-3ql" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aje-L5-xkC"/>
+                            <constraint firstItem="pdz-Ns-3ql" firstAttribute="top" secondItem="pww-Ex-tgh" secondAttribute="top" constant="53" id="dFi-Fr-mfa"/>
+                            <constraint firstItem="pww-Ex-tgh" firstAttribute="bottom" secondItem="pdz-Ns-3ql" secondAttribute="bottom" constant="390" id="duD-Ja-FBJ"/>
+                            <constraint firstItem="2F7-tH-Yax" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="muM-ds-Lqa"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="universalOutlet" destination="MIG-5D-j40" id="m1E-hb-UXW"/>
+                        <outlet property="redView" destination="pdz-Ns-3ql" id="iP8-ad-p9p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -43,6 +52,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

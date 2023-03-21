@@ -12,15 +12,18 @@ class ViewController: UIViewController {
     
     @IBOutlet var universalOutlet: UIButton! {
         didSet {
-            print("\n universalOutlet \(universalOutlet) \n")
+      //      print("\n universalOutlet \(universalOutlet) \n")
             
             //   print("\n universalOutlet \(universalOutlet.titleLabel) \n")
             
             
-            let intrinsicContentSize = universalOutlet.intrinsicContentSize
+    //        let intrinsicContentSize = universalOutlet.intrinsicContentSize
         }
             
     }
+    
+    @IBOutlet var redView: UIView!
+    
     
     var counter = 0 // main state cycle counter
     
@@ -34,12 +37,14 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         
-        print("\n universalOutlet \(universalOutlet) \n")
+     //   print("\n universalOutlet \(universalOutlet) \n")
         
         // print("\n universalOutlet \(universalOutlet.titleLabel?.text) \n")
         
         
-        
+       // redView.layer.cornerRadius = redView.frame.width / 2
+
+        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
         
     }
     
@@ -48,10 +53,14 @@ class ViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        // sleep(3)
-        print("\n universalOutlet \(universalOutlet) \n")
+       // redView.layer.cornerRadius = redView.frame.width / 2
+
+        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
         
-        print("\n universalOutlet \(universalOutlet.titleLabel) \n")
+        // sleep(3)
+//        print("\n universalOutlet \(universalOutlet) \n")
+        
+ //       print("\n universalOutlet \(universalOutlet.titleLabel) \n")
         
         // print("\n universalOutlet.automaticallyUpdatesConfiguration \(universalOutlet.automaticallyUpdatesConfiguration) \n")
         
@@ -65,9 +74,9 @@ class ViewController: UIViewController {
     override func updateViewConstraints() { // Configuring the view’s layout behavior. Called when the view controller's view needs to update its constraints.
         showFuncName()
         
+        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
         
-        
-        print("\n universalOutlet \(universalOutlet) \n")
+  //      print("\n universalOutlet \(universalOutlet) \n")
         
         //   print("\n universalOutlet \(universalOutlet.titleLabel) \n")
         
@@ -81,7 +90,11 @@ class ViewController: UIViewController {
         
         super.viewWillLayoutSubviews()
         
-        print("\n universalOutlet \(universalOutlet) \n")
+       // redView.layer.cornerRadius = redView.frame.width / 2
+
+        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
+        
+ //       print("\n universalOutlet \(universalOutlet) \n")
         
         //   print("\n universalOutlet \(universalOutlet.titleLabel) \n")
     }
@@ -89,7 +102,11 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() { // Configuring the view’s layout behavior
         showFuncName()
         
-        print("\n universalOutlet \(universalOutlet) \n")
+   //     print("\n universalOutlet \(universalOutlet) \n")
+        
+        redView.layer.cornerRadius = redView.frame.width / 2
+
+        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
         
         //    print("\n universalOutlet \(universalOutlet.titleLabel) \n")
     }
@@ -97,13 +114,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
         showFuncName()
         
-        print("\n universalOutlet \(universalOutlet) \n")
+ //       print("\n universalOutlet \(universalOutlet) \n")
         
         super.viewDidAppear(animated)
         
-        print("universalOutlet.configuration?.automaticallyUpdateForSelection \(universalOutlet.configuration?.automaticallyUpdateForSelection)")
+//        print("universalOutlet.configuration?.automaticallyUpdateForSelection \(universalOutlet.configuration?.automaticallyUpdateForSelection)")
         
-        print("\n universalOutlet \(universalOutlet.titleLabel) \n")
+ //       print("\n universalOutlet \(universalOutlet.titleLabel) \n")
         
         //    print("\n universalOutlet.configuration?.cornerStyle \(universalOutlet) \n")
         
