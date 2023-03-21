@@ -24,20 +24,20 @@
                                     <constraint firstAttribute="width" secondItem="pdz-Ns-3ql" secondAttribute="height" multiplier="1:1" id="10z-Rx-KY7"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2F7-tH-Yax">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PY1-f1-2fx">
+                                <rect key="frame" x="122.5" y="513" width="75" height="35"/>
                                 <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pww-Ex-tgh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2F7-tH-Yax" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R9k-dL-sdC"/>
+                            <constraint firstItem="PY1-f1-2fx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DVE-ab-61x"/>
                             <constraint firstItem="pdz-Ns-3ql" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aje-L5-xkC"/>
                             <constraint firstItem="pdz-Ns-3ql" firstAttribute="top" secondItem="pww-Ex-tgh" secondAttribute="top" constant="53" id="dFi-Fr-mfa"/>
                             <constraint firstItem="pww-Ex-tgh" firstAttribute="bottom" secondItem="pdz-Ns-3ql" secondAttribute="bottom" constant="390" id="duD-Ja-FBJ"/>
-                            <constraint firstItem="2F7-tH-Yax" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="muM-ds-Lqa"/>
+                            <constraint firstItem="pww-Ex-tgh" firstAttribute="bottom" secondItem="PY1-f1-2fx" secondAttribute="bottom" constant="20" id="zaV-4z-Hsm"/>
                         </constraints>
                     </view>
                     <connections>

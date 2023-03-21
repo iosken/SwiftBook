@@ -44,7 +44,7 @@ class ViewController: UIViewController {
         
        // redView.layer.cornerRadius = redView.frame.width / 2
 
-        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
+        print("\n SIZE: \(redView.frame.width) \n")
         
     }
     
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         
        // redView.layer.cornerRadius = redView.frame.width / 2
 
-        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
+        print("\n SIZE: \(redView.frame.width) \n")
         
         // sleep(3)
 //        print("\n universalOutlet \(universalOutlet) \n")
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     override func updateViewConstraints() { // Configuring the view’s layout behavior. Called when the view controller's view needs to update its constraints.
         showFuncName()
         
-        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
+        print("\n SIZE: \(redView.frame.width) \n")
         
   //      print("\n universalOutlet \(universalOutlet) \n")
         
@@ -85,14 +85,17 @@ class ViewController: UIViewController {
         //view.layoutIfNeeded()
     }
     
+    
     override func viewWillLayoutSubviews() { // Configuring the view’s layout behavior
         showFuncName()
         
         super.viewWillLayoutSubviews()
         
-       // redView.layer.cornerRadius = redView.frame.width / 2
+        //sleep(3)
+        
+        
 
-        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
+        print("\n SIZE: \(redView.frame.width) \n")
         
  //       print("\n universalOutlet \(universalOutlet) \n")
         
@@ -103,10 +106,12 @@ class ViewController: UIViewController {
         showFuncName()
         
    //     print("\n universalOutlet \(universalOutlet) \n")
-        
-        redView.layer.cornerRadius = redView.frame.width / 2
+        sleep(2)
+        //redView.layer.cornerRadius = redView.frame.width / 2
 
-        print("Size viewOutlet.layer.cornerRadius in viewWillLayoutSubviews: \(redView.layer.cornerRadius)")
+        redView.layer.cornerRadius = redView.frame.width / 2
+        
+        print("\n SIZE: \(redView.frame.width) \n")
         
         //    print("\n universalOutlet \(universalOutlet.titleLabel) \n")
     }
@@ -115,8 +120,9 @@ class ViewController: UIViewController {
         showFuncName()
         
  //       print("\n universalOutlet \(universalOutlet) \n")
-        
         super.viewDidAppear(animated)
+        
+        print("\n SIZE: \(redView.frame.width) \n")
         
 //        print("universalOutlet.configuration?.automaticallyUpdateForSelection \(universalOutlet.configuration?.automaticallyUpdateForSelection)")
         
@@ -136,7 +142,7 @@ class ViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        print("View height: \(size.height), view height: \(size.width)")
+        print("\n SIZE: \(redView.frame.width) \n")
     }
     
     override func viewWillDisappear(_ animated: Bool) { // Responding to view-related events
