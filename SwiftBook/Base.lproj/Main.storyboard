@@ -17,43 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ii0-PA-hYK">
-                                <rect key="frame" x="122.5" y="267" width="75" height="34.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIG-5D-j40">
+                                <rect key="frame" x="137" y="269" width="75" height="34.5"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="mainButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eyD-mA-E8q"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-1K-Ial">
-                                <rect key="frame" x="55" y="153" width="59" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Changer"/>
-                                <connections>
-                                    <action selector="changerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v5q-t4-p4X"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpD-lY-R76">
-                                <rect key="frame" x="149" y="153" width="104" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Changer 2"/>
-                                <connections>
-                                    <action selector="changerSecondButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RTE-Y7-Mrh"/>
-                                </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="pww-Ex-tgh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ii0-PA-hYK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZDp-U1-cnK"/>
-                            <constraint firstItem="Ii0-PA-hYK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qHs-ra-QGa"/>
+                            <constraint firstItem="MIG-5D-j40" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="269" id="Tvd-0G-D2y"/>
+                            <constraint firstItem="MIG-5D-j40" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="137" id="jAq-gA-IAe"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="universalOutlet" destination="Ii0-PA-hYK" id="lkd-dd-w1z"/>
+                        <outlet property="universalOutlet" destination="MIG-5D-j40" id="m1E-hb-UXW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
