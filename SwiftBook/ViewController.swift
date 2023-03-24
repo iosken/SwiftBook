@@ -44,7 +44,9 @@ class ViewController: UIViewController {
         
        // redView.layer.cornerRadius = redView.frame.width / 2
 
-        print("\n SIZE: \(redView.frame.width) \n")
+        print("\n SIZE: \(redView.frame.width)")
+        
+        
         
     }
     
@@ -55,7 +57,7 @@ class ViewController: UIViewController {
         
        // redView.layer.cornerRadius = redView.frame.width / 2
 
-        print("\n SIZE: \(redView.frame.width) \n")
+        print("\n SIZE: \(redView.frame.width)")
         
         // sleep(3)
 //        print("\n universalOutlet \(universalOutlet) \n")
@@ -74,7 +76,7 @@ class ViewController: UIViewController {
     override func updateViewConstraints() { // Configuring the view’s layout behavior. Called when the view controller's view needs to update its constraints.
         showFuncName()
         
-        print("\n SIZE: \(redView.frame.width) \n")
+        print("\n SIZE: \(redView.frame.width)")
         
   //      print("\n universalOutlet \(universalOutlet) \n")
         
@@ -95,7 +97,7 @@ class ViewController: UIViewController {
         
         
 
-        print("\n SIZE: \(redView.frame.width) \n")
+        print("\n SIZE: \(redView.frame.width)")
         
  //       print("\n universalOutlet \(universalOutlet) \n")
         
@@ -105,24 +107,15 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() { // Configuring the view’s layout behavior
         showFuncName()
         
-   //     print("\n universalOutlet \(universalOutlet) \n")
-        sleep(2)
-        //redView.layer.cornerRadius = redView.frame.width / 2
-
         redView.layer.cornerRadius = redView.frame.width / 2
         
-        print("\n SIZE: \(redView.frame.width) \n")
-        
-        //    print("\n universalOutlet \(universalOutlet.titleLabel) \n")
+        print("\n SIZE: \(redView.frame.width)")
     }
     
-    override func viewDidAppear(_ animated: Bool) { // Responding to view-related events
-        showFuncName()
-        
- //       print("\n universalOutlet \(universalOutlet) \n")
+    override func viewDidAppear(_ animated: Bool) { //
         super.viewDidAppear(animated)
         
-        print("\n SIZE: \(redView.frame.width) \n")
+        print("\n SIZE: \(redView.frame.width)")
         
 //        print("universalOutlet.configuration?.automaticallyUpdateForSelection \(universalOutlet.configuration?.automaticallyUpdateForSelection)")
         
@@ -176,7 +169,7 @@ extension ViewController {
         
         print("\(counter) \(function) \(view.frame.size) \n") //(CircleView.frame.height: \(redCircleView?.frame.height ?? 0)) \(title ?? "")
         
-        //sleep(3)
+        
     }
     
 }
