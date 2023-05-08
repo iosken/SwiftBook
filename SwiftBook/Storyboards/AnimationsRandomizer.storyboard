@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ud-CS-5IE">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ud-CS-5IE" customClass="SpringView" customModule="SpringAnimation">
                                 <rect key="frame" x="40" y="60" width="240" height="170"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lPs-kv-Svx">
@@ -68,6 +68,7 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZIi-af-ewG">
@@ -75,6 +76,9 @@
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Run"/>
+                                <connections>
+                                    <action selector="runPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9qf-w3-4nE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -88,6 +92,14 @@
                             <constraint firstItem="3Ud-CS-5IE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="yHn-rj-6KV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="curveLabel" destination="2KL-B0-l3F" id="HRc-zx-yUr"/>
+                        <outlet property="delayLabel" destination="Kuo-6E-gYa" id="8mV-BM-R41"/>
+                        <outlet property="durationLabel" destination="T4R-fo-GNU" id="DmH-g9-8Px"/>
+                        <outlet property="forceLabel" destination="JaR-Jb-JW7" id="AN9-YI-fmp"/>
+                        <outlet property="presetLabel" destination="UfO-4c-r6d" id="C9V-pc-Qlx"/>
+                        <outlet property="targetAnimationView" destination="3Ud-CS-5IE" id="fur-iF-f1r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
