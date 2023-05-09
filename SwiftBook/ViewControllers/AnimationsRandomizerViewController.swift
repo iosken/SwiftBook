@@ -27,7 +27,7 @@ class AnimationsRandomizerViewController: UIViewController {
         
         animate()
     }
-
+    
     @IBAction func runPressed(_ sender: UIButton) {
         animate(sender: sender)
     }
@@ -53,7 +53,11 @@ extension AnimationsRandomizerViewController {
             firstRun.toggle()
         } else {
             targetAnimationView.animate()
-            nextAnimation = randomPreset()
+            
+            repeat {
+                nextAnimation = randomPreset()
+            } while nextAnimation.animation == targetAnimationView.animation
+            
             sender?.setTitle(nextAnimation.animation, for: .normal)
         }
     }
