@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C327E4052A0507CF002A40C5 /* AnimationsRandomizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* AnimationsRandomizer.storyboard */; };
+		C327E4052A0507CF002A40C5 /* NetworkExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* NetworkExample.storyboard */; };
 		C327E4072A0507F1002A40C5 /* AnimationsRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E4062A0507F1002A40C5 /* AnimationsRandomizerViewController.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C327E4042A0507CF002A40C5 /* AnimationsRandomizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnimationsRandomizer.storyboard; sourceTree = "<group>"; };
+		C327E4042A0507CF002A40C5 /* NetworkExample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NetworkExample.storyboard; sourceTree = "<group>"; };
 		C327E4062A0507F1002A40C5 /* AnimationsRandomizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsRandomizerViewController.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		C327E4082A050805002A40C5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				C327E4042A0507CF002A40C5 /* AnimationsRandomizer.storyboard */,
+				C327E4042A0507CF002A40C5 /* NetworkExample.storyboard */,
 				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -157,7 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C327E4052A0507CF002A40C5 /* AnimationsRandomizer.storyboard in Resources */,
+				C327E4052A0507CF002A40C5 /* NetworkExample.storyboard in Resources */,
 				DA564D48294B194A006CD17C /* LaunchScreen.storyboard in Resources */,
 				DA564D45294B194A006CD17C /* Assets.xcassets in Resources */,
 			);
@@ -316,7 +316,7 @@
 				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = AnimationsRandomizer;
+				INFOPLIST_KEY_UIMainStoryboardFile = NetworkExample;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -345,7 +345,7 @@
 				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = AnimationsRandomizer;
+				INFOPLIST_KEY_UIMainStoryboardFile = NetworkExample;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
