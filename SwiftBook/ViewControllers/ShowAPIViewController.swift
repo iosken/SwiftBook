@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CatFactsViewController: UICollectionViewController {
+class ShowAPIViewController: UICollectionViewController {
     
     enum Link: String {
         case catFactsURL = "https://github.com/alexwohlbruck/cat-facts/blob/master/bower.json"
@@ -48,7 +48,7 @@ class CatFactsViewController: UICollectionViewController {
 
 // MARK: UICollectionViewDelegate
 
-extension CatFactsViewController: UICollectionViewDelegateFlowLayout {
+extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
