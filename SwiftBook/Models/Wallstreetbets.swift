@@ -16,9 +16,6 @@ struct Wallstreetbets {
 
 
 
-
-
-
 //https://tradestie.com/api/v1/apps/reddit
 
 /*[{"no_of_comments":45,

@@ -7,6 +7,8 @@
 
 import UIKit
 
-class CatFactsCell: UICollectionViewCell {
+class ShowAPICell: UICollectionViewCell {
+    
+    @IBOutlet var showAPILabel: UILabel!
     
 }

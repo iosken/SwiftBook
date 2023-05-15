@@ -23,7 +23,7 @@ class ShowAPIViewController: UICollectionViewController {
     
     
     
-    var catFacts: CatFacts?
+    let userAction = UserAction.allCases
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +32,15 @@ class ShowAPIViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 1
+        userAction.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatFactsCell", for: indexPath) as? CatFactsCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatFactsCell", for: indexPath) as? ShowAPICell else { return UICollectionViewCell()}
     
-        // Configure the cell
+        let userAction = userAction[indexPath.item]
+        
+        cell.showAPILabel.text = userAction.rawValue
     
         return cell
     }
