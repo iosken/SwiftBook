@@ -100,12 +100,13 @@ extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
 // MARK: Extension Fetch Methods
 
 extension ShowAPIViewController {
+    
     private func fetchCatFacts() {
         guard let url = URL(string: Link.catFactsURL.rawValue) else { return }
         
         let session = URLSession(configuration: .default)
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No error description")
                 return
@@ -116,10 +117,10 @@ extension ShowAPIViewController {
             do {
                 let catFacts = try jsonDecoder.decode(CatFacts.self, from: data)
                 print(catFacts)
-                self.successAlert()
+                self?.successAlert()
             } catch {
                 print(error.localizedDescription)
-                self.unsuccessAlert()
+                self?.unsuccessAlert()
             }
         }
         
@@ -131,7 +132,7 @@ extension ShowAPIViewController {
         
         let session = URLSession(configuration: .default)
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No descruption")
                 return
@@ -142,10 +143,10 @@ extension ShowAPIViewController {
             do {
                 let sWAPI = try jsonDecoder.decode(SWAPI.self, from: data)
                 print(sWAPI)
-                self.successAlert()
+                self?.successAlert()
             } catch {
                 print(error.localizedDescription)
-                self.unsuccessAlert()
+                self?.unsuccessAlert()
             }
         }
         
@@ -157,7 +158,7 @@ extension ShowAPIViewController {
         
         let session = URLSession(configuration: .default)
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No descriptions")
                 return
@@ -170,10 +171,10 @@ extension ShowAPIViewController {
                     [Wallstreetbet].self, from: data
                 )
                 print(wallstreetbets)
-                self.successAlert()
+                self?.successAlert()
             } catch {
                 print(error.localizedDescription)
-                self.unsuccessAlert()
+                self?.unsuccessAlert()
             }
         }
         
@@ -185,7 +186,7 @@ extension ShowAPIViewController {
         
         let session = URLSession(configuration: .default)
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No description")
                 return
@@ -199,13 +200,14 @@ extension ShowAPIViewController {
                     from: data
                 )
                 print(genderize)
-                self.successAlert()
+                self?.successAlert()
             } catch {
-                self.unsuccessAlert()
+                self?.unsuccessAlert()
             }
         }
         
         task.resume()
     }
+    
 }
 
