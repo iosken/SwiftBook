@@ -26,7 +26,6 @@ final class ShowAPIViewController: UICollectionViewController {
     private let userAction = UserAction.allCases
     
     // MARK: UICollectionViewDataSource
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         userAction.count
     }
@@ -84,7 +83,6 @@ final class ShowAPIViewController: UICollectionViewController {
 }
 
 // MARK: UICollectionViewDelegate
-
 extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
@@ -98,7 +96,6 @@ extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: Extension Fetch Methods
-
 extension ShowAPIViewController {
     
     private func fetchEmojihub() {
