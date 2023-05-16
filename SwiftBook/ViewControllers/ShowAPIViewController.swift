@@ -33,7 +33,7 @@ final class ShowAPIViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "CatFactsCell",
+            withReuseIdentifier: "ShowAPICell",
             for: indexPath) as? ShowAPICell else { return UICollectionViewCell()}
         
         let userAction = userAction[indexPath.item]
