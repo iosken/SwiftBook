@@ -106,6 +106,7 @@ extension ShowAPIViewController {
         let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No error description")
+                self?.unsuccessAlert()
                 return
             }
             
@@ -132,6 +133,7 @@ extension ShowAPIViewController {
         let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No descruption")
+                self?.unsuccessAlert()
                 return
             }
             
@@ -158,6 +160,7 @@ extension ShowAPIViewController {
         let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No descriptions")
+                self?.unsuccessAlert()
                 return
             }
             
@@ -186,6 +189,7 @@ extension ShowAPIViewController {
         let task = session.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data else {
                 print(error?.localizedDescription ?? "No description")
+                self?.unsuccessAlert()
                 return
             }
             
