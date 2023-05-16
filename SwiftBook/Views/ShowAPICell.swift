@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShowAPICell: UICollectionViewCell {
+final class ShowAPICell: UICollectionViewCell {
     
     @IBOutlet var showAPILabel: UILabel!
     

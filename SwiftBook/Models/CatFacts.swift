@@ -5,8 +5,6 @@
 //  Created by Yuri Volegov on 15.05.2023.
 //
 
-import Foundation
-
 struct CatFacts: Decodable {
     let name: String?
     let description: String?

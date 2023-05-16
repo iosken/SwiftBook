@@ -5,8 +5,6 @@
 //  Created by Yuri Volegov on 15.05.2023.
 //
 
-import Foundation
-
 struct Wallstreetbet: Decodable {
     let no_of_comments: Int?
     let sentiment: String?
@@ -15,7 +13,7 @@ struct Wallstreetbet: Decodable {
 }
 
 
-
+//SOURCE:
 //https://tradestie.com/api/v1/apps/reddit
 /*[{"no_of_comments":45,
     "sentiment":"Bullish",

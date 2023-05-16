@@ -9,14 +9,14 @@ import UIKit
 
 final class ShowAPIViewController: UICollectionViewController {
     
-    enum Link: String {
+    private enum Link: String {
         case catFactsURL = "https://github.com/alexwohlbruck/cat-facts/blob/master/bower.json"
         case sWAPIURL = "https://swapi.dev/api/planets/3/?format=json"
         case wallstreetbetsURL = "https://tradestie.com/api/v1/apps/reddit"
         case genderize = "https://api.genderize.io/?name=scott"
     }
     
-    enum UserAction: String, CaseIterable {
+    private enum UserAction: String, CaseIterable {
         case catFacts = "Fetch CatFacts"
         case sWAPI = "Fetch SWAPI"
         case wallstreetbets = "Fetch Wallstreetbets"
@@ -37,7 +37,6 @@ final class ShowAPIViewController: UICollectionViewController {
             for: indexPath) as? ShowAPICell else { return UICollectionViewCell()}
         
         let userAction = userAction[indexPath.item]
-        
         cell.showAPILabel.text = userAction.rawValue
         
         return cell
@@ -98,6 +97,8 @@ extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+// MARK: Extension Fetch Methods
+
 extension ShowAPIViewController {
     private func fetchCatFacts() {
         guard let url = URL(string: Link.catFactsURL.rawValue) else { return }
@@ -120,7 +121,6 @@ extension ShowAPIViewController {
                 print(error.localizedDescription)
                 self.unsuccessAlert()
             }
-            
         }
         
         task.resume()

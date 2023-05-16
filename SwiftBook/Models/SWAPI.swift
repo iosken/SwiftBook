@@ -5,8 +5,6 @@
 //  Created by Yuri Volegov on 15.05.2023.
 //
 
-import Foundation
-
 struct SWAPI: Decodable {
     let name: String?
     let rotation_period: Int?
@@ -24,8 +22,7 @@ struct SWAPI: Decodable {
 }
 
 
-
-
+//SOURCE:
 //https://swapi.dev/api/planets/3/?format=json
 //{
 //"name":"Yavin IV",

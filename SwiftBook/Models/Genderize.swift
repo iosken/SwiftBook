@@ -5,8 +5,6 @@
 //  Created by Yuri Volegov on 16.05.2023.
 //
 
-import Foundation
-
 struct Genderize: Decodable {
     let count: Int?
     let gender: String?
@@ -15,7 +13,7 @@ struct Genderize: Decodable {
 }
 
 
-
+//SOURCE:
 //https://api.genderize.io/?name=scott
 //{"count":545658,
 //    "gender":"male",
