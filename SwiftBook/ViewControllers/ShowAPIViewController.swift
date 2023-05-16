@@ -11,40 +11,76 @@ class ShowAPIViewController: UICollectionViewController {
     
     enum Link: String {
         case catFactsURL = "https://github.com/alexwohlbruck/cat-facts/blob/master/bower.json"
-        case SWAPIURL = "https://swapi.dev/api/planets/3/?format=json"
-        case WallstreetbetsURL = "https://tradestie.com/api/v1/apps/reddit"
+        case sWAPIURL = "https://swapi.dev/api/planets/3/?format=json"
+        case wallstreetbetsURL = "https://tradestie.com/api/v1/apps/reddit"
     }
     
     enum UserAction: String, CaseIterable {
         case catFacts = "Fetch CatFacts"
-        case SWAPI = "Fetch SWAPI"
-        case Wallstreetbets = "Fetch Wallstreetbets"
+        case sWAPI = "Fetch SWAPI"
+        case wallstreetbets = "Fetch Wallstreetbets"
     }
     
-    
-    
     let userAction = UserAction.allCases
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         userAction.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatFactsCell", for: indexPath) as? ShowAPICell else { return UICollectionViewCell()}
-    
+        
         let userAction = userAction[indexPath.item]
         
         cell.showAPILabel.text = userAction.rawValue
-    
+        
         return cell
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let userAction = userAction[indexPath.row]
+        
+        switch userAction {
+        case .catFacts: fetchCatFacts()
+        case .sWAPI: fetchSWAPI()
+        case .wallstreetbets: fetchWallstreetbets()
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func successAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: "Success",
+                message: "You can see the results in the Debug aria",
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
+    }
+    
+    private func unsuccessAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: "Failed",
+                message: "You can see error in the Debug aria",
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
+    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -57,5 +93,87 @@ extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
         
     }
     
+}
+
+extension ShowAPIViewController {
+    func fetchCatFacts() {
+        guard let url = URL(string: Link.catFactsURL.rawValue) else { return }
+        
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No error description")
+                return
+            }
+            
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                let catFacts = try jsonDecoder.decode(CatFacts.self, from: data)
+                print(catFacts)
+                self.successAlert()
+            } catch {
+                print(error.localizedDescription)
+                self.unsuccessAlert()
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func fetchSWAPI() {
+        guard let url = URL(string: Link.sWAPIURL.rawValue) else { return }
+        
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No descruption")
+                return
+            }
+            
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                let sWAPI = try jsonDecoder.decode(SWAPI.self, from: data)
+                print(sWAPI)
+                self.successAlert()
+            } catch {
+                print(error.localizedDescription)
+                self.unsuccessAlert()
+            }
+            
+        }
+        task.resume()
+    }
+
+    func fetchWallstreetbets() {
+        guard let url = URL(string: Link.wallstreetbetsURL.rawValue) else { return }
+        
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No descriptions")
+                return
+            }
+            
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                let wallstreetbets = try jsonDecoder.decode(Wallstreetbets.self, from: data)
+                print(wallstreetbets)
+                self.successAlert()
+            } catch {
+                print(error.localizedDescription)
+                self.unsuccessAlert()
+            }
+            
+        }
+        
+        task.resume()
+    }
 }
 

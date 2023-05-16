@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CatFacts {
+struct CatFacts: Decodable {
     let name: String
     let description: String
     let main: String
@@ -18,7 +18,7 @@ struct CatFacts {
     let dependencies: Dependencies
 }
 
-struct Dependencies {
+struct Dependencies: Decodable {
     let angular_timer: String?
     let ngclipboard: String
 }

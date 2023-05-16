@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SWAPI {
+struct SWAPI: Decodable {
     let name: String
     let rotation_period: Int
     let orbital_period: Int

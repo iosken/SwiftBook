@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Wallstreetbets {
+struct Wallstreetbets: Decodable {
     let no_of_comments: Int
     let sentiment: String
     let sentiment_score: Double
