@@ -17,7 +17,6 @@ struct Wallstreetbet: Decodable {
 
 
 //https://tradestie.com/api/v1/apps/reddit
-
 /*[{"no_of_comments":45,
     "sentiment":"Bullish",
     "sentiment_score":0.084,

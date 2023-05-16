@@ -32,7 +32,9 @@ final class ShowAPIViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatFactsCell", for: indexPath) as? ShowAPICell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "CatFactsCell",
+            for: indexPath) as? ShowAPICell else { return UICollectionViewCell()}
         
         let userAction = userAction[indexPath.item]
         
@@ -86,7 +88,9 @@ final class ShowAPIViewController: UICollectionViewController {
 
 extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         CGSize(width: UIScreen.main.bounds.width - 48, height: 100)
         
@@ -162,7 +166,9 @@ extension ShowAPIViewController {
             let jsonDecoder = JSONDecoder()
             
             do {
-                let wallstreetbets = try jsonDecoder.decode([Wallstreetbet].self, from: data)
+                let wallstreetbets = try jsonDecoder.decode(
+                    [Wallstreetbet].self, from: data
+                )
                 print(wallstreetbets)
                 self.successAlert()
             } catch {
@@ -188,7 +194,10 @@ extension ShowAPIViewController {
             let jsonDecoder = JSONDecoder()
             
             do {
-                let genderize = try jsonDecoder.decode(Genderize.self, from: data)
+                let genderize = try jsonDecoder.decode(
+                    Genderize.self,
+                    from: data
+                )
                 print(genderize)
                 self.successAlert()
             } catch {
