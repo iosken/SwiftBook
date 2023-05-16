@@ -12,7 +12,8 @@
 		C3F595B02A11E20B0035135D /* ShowAPICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595AF2A11E20B0035135D /* ShowAPICell.swift */; };
 		C3F595B32A11E2400035135D /* ShowAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B22A11E2400035135D /* ShowAPIViewController.swift */; };
 		C3F595B52A11E6B70035135D /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B42A11E6B70035135D /* SWAPI.swift */; };
-		C3F595B72A11EA1C0035135D /* Wallstreetbets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B62A11EA1C0035135D /* Wallstreetbets.swift */; };
+		C3F595B72A11EA1C0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B62A11EA1C0035135D /* Wallstreetbet.swift */; };
+		C3F595B92A132D650035135D /* Genderize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B82A132D650035135D /* Genderize.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
 		DA564D45294B194A006CD17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA564D44294B194A006CD17C /* Assets.xcassets */; };
@@ -25,7 +26,8 @@
 		C3F595AF2A11E20B0035135D /* ShowAPICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAPICell.swift; sourceTree = "<group>"; };
 		C3F595B22A11E2400035135D /* ShowAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAPIViewController.swift; sourceTree = "<group>"; };
 		C3F595B42A11E6B70035135D /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
-		C3F595B62A11EA1C0035135D /* Wallstreetbets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbets.swift; sourceTree = "<group>"; };
+		C3F595B62A11EA1C0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
+		C3F595B82A132D650035135D /* Genderize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genderize.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA564D3D294B1949006CD17C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +87,8 @@
 			children = (
 				C3F595AC2A11DE170035135D /* CatFacts.swift */,
 				C3F595B42A11E6B70035135D /* SWAPI.swift */,
-				C3F595B62A11EA1C0035135D /* Wallstreetbets.swift */,
+				C3F595B62A11EA1C0035135D /* Wallstreetbet.swift */,
+				C3F595B82A132D650035135D /* Genderize.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,8 +206,9 @@
 				C3F595AD2A11DE170035135D /* CatFacts.swift in Sources */,
 				C3F595B02A11E20B0035135D /* ShowAPICell.swift in Sources */,
 				C3F595B52A11E6B70035135D /* SWAPI.swift in Sources */,
-				C3F595B72A11EA1C0035135D /* Wallstreetbets.swift in Sources */,
+				C3F595B72A11EA1C0035135D /* Wallstreetbet.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
+				C3F595B92A132D650035135D /* Genderize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

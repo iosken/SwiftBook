@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Wallstreetbets: Decodable {
-    let no_of_comments: Int
-    let sentiment: String
-    let sentiment_score: Double
-    let ticker: String
+struct Wallstreetbet: Decodable {
+    let no_of_comments: Int?
+    let sentiment: String?
+    let sentiment_score: Double?
+    let ticker: String?
 }
 
 

@@ -8,19 +8,19 @@
 import Foundation
 
 struct CatFacts: Decodable {
-    let name: String
-    let description: String
-    let main: String
-    let authors: [String]
-    let license: String
-    let directory: String
-    let ignore: [String]
-    let dependencies: Dependencies
+    let name: String?
+    let description: String?
+    let main: String?
+    let authors: [String?]
+    let license: String?
+    let directory: String?
+    let ignore: [String?]
+    let dependencies: Dependencies?
 }
 
 struct Dependencies: Decodable {
     let angular_timer: String?
-    let ngclipboard: String
+    let ngclipboard: String?
 }
 
 

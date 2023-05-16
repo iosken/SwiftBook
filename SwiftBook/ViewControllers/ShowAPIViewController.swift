@@ -7,25 +7,23 @@
 
 import UIKit
 
-class ShowAPIViewController: UICollectionViewController {
+final class ShowAPIViewController: UICollectionViewController {
     
     enum Link: String {
         case catFactsURL = "https://github.com/alexwohlbruck/cat-facts/blob/master/bower.json"
         case sWAPIURL = "https://swapi.dev/api/planets/3/?format=json"
         case wallstreetbetsURL = "https://tradestie.com/api/v1/apps/reddit"
+        case genderize = "https://api.genderize.io/?name=scott"
     }
     
     enum UserAction: String, CaseIterable {
         case catFacts = "Fetch CatFacts"
         case sWAPI = "Fetch SWAPI"
         case wallstreetbets = "Fetch Wallstreetbets"
+        case genderize = "Fetch Genderize"
     }
     
-    let userAction = UserAction.allCases
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    private let userAction = UserAction.allCases
     
     // MARK: UICollectionViewDataSource
     
@@ -50,6 +48,7 @@ class ShowAPIViewController: UICollectionViewController {
         case .catFacts: fetchCatFacts()
         case .sWAPI: fetchSWAPI()
         case .wallstreetbets: fetchWallstreetbets()
+        case .genderize: fetchGenderize()
         }
     }
     
@@ -96,7 +95,7 @@ extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension ShowAPIViewController {
-    func fetchCatFacts() {
+    private func fetchCatFacts() {
         guard let url = URL(string: Link.catFactsURL.rawValue) else { return }
         
         let session = URLSession(configuration: .default)
@@ -123,7 +122,7 @@ extension ShowAPIViewController {
         task.resume()
     }
     
-    func fetchSWAPI() {
+    private func fetchSWAPI() {
         guard let url = URL(string: Link.sWAPIURL.rawValue) else { return }
         
         let session = URLSession(configuration: .default)
@@ -144,12 +143,12 @@ extension ShowAPIViewController {
                 print(error.localizedDescription)
                 self.unsuccessAlert()
             }
-            
         }
+        
         task.resume()
     }
-
-    func fetchWallstreetbets() {
+    
+    private func fetchWallstreetbets() {
         guard let url = URL(string: Link.wallstreetbetsURL.rawValue) else { return }
         
         let session = URLSession(configuration: .default)
@@ -163,14 +162,38 @@ extension ShowAPIViewController {
             let jsonDecoder = JSONDecoder()
             
             do {
-                let wallstreetbets = try jsonDecoder.decode(Wallstreetbets.self, from: data)
+                let wallstreetbets = try jsonDecoder.decode([Wallstreetbet].self, from: data)
                 print(wallstreetbets)
                 self.successAlert()
             } catch {
                 print(error.localizedDescription)
                 self.unsuccessAlert()
             }
+        }
+        
+        task.resume()
+    }
+    
+    private func fetchGenderize() {
+        guard let url = URL(string: Link.genderize.rawValue) else { return }
+        
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No description")
+                return
+            }
             
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                let genderize = try jsonDecoder.decode(Genderize.self, from: data)
+                print(genderize)
+                self.successAlert()
+            } catch {
+                self.unsuccessAlert()
+            }
         }
         
         task.resume()
