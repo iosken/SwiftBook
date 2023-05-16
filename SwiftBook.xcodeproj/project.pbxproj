@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C327E4052A0507CF002A40C5 /* ShowAPI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ShowAPI.storyboard */; };
-		C3F595AD2A11DE170035135D /* CatFacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595AC2A11DE170035135D /* CatFacts.swift */; };
+		C3F595AD2A11DE170035135D /* Emojihub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595AC2A11DE170035135D /* Emojihub.swift */; };
 		C3F595B02A11E20B0035135D /* ShowAPICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595AF2A11E20B0035135D /* ShowAPICell.swift */; };
 		C3F595B32A11E2400035135D /* ShowAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B22A11E2400035135D /* ShowAPIViewController.swift */; };
 		C3F595B52A11E6B70035135D /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595B42A11E6B70035135D /* SWAPI.swift */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		C327E4042A0507CF002A40C5 /* ShowAPI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowAPI.storyboard; sourceTree = "<group>"; };
-		C3F595AC2A11DE170035135D /* CatFacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFacts.swift; sourceTree = "<group>"; };
+		C3F595AC2A11DE170035135D /* Emojihub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojihub.swift; sourceTree = "<group>"; };
 		C3F595AF2A11E20B0035135D /* ShowAPICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAPICell.swift; sourceTree = "<group>"; };
 		C3F595B22A11E2400035135D /* ShowAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAPIViewController.swift; sourceTree = "<group>"; };
 		C3F595B42A11E6B70035135D /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		C3F595AE2A11DE360035135D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C3F595AC2A11DE170035135D /* CatFacts.swift */,
+				C3F595AC2A11DE170035135D /* Emojihub.swift */,
 				C3F595B42A11E6B70035135D /* SWAPI.swift */,
 				C3F595B62A11EA1C0035135D /* Wallstreetbet.swift */,
 				C3F595B82A132D650035135D /* Genderize.swift */,
@@ -203,7 +203,7 @@
 			files = (
 				C3F595B32A11E2400035135D /* ShowAPIViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
-				C3F595AD2A11DE170035135D /* CatFacts.swift in Sources */,
+				C3F595AD2A11DE170035135D /* Emojihub.swift in Sources */,
 				C3F595B02A11E20B0035135D /* ShowAPICell.swift in Sources */,
 				C3F595B52A11E6B70035135D /* SWAPI.swift in Sources */,
 				C3F595B72A11EA1C0035135D /* Wallstreetbet.swift in Sources */,

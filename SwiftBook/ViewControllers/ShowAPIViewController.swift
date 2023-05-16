@@ -10,14 +10,14 @@ import UIKit
 final class ShowAPIViewController: UICollectionViewController {
     
     private enum Link: String {
-        case catFactsURL = "https://github.com/alexwohlbruck/cat-facts/blob/master/bower.json"
+        case emojihub = "https://emojihub.yurace.pro/api/random"
         case sWAPIURL = "https://swapi.dev/api/planets/3/?format=json"
         case wallstreetbetsURL = "https://tradestie.com/api/v1/apps/reddit"
         case genderize = "https://api.genderize.io/?name=scott"
     }
     
     private enum UserAction: String, CaseIterable {
-        case catFacts = "Fetch CatFacts"
+        case emojihub = "Fetch Emojihub"
         case sWAPI = "Fetch SWAPI"
         case wallstreetbets = "Fetch Wallstreetbets"
         case genderize = "Fetch Genderize"
@@ -46,7 +46,7 @@ final class ShowAPIViewController: UICollectionViewController {
         let userAction = userAction[indexPath.row]
         
         switch userAction {
-        case .catFacts: fetchCatFacts()
+        case .emojihub: fetchEmojihub()
         case .sWAPI: fetchSWAPI()
         case .wallstreetbets: fetchWallstreetbets()
         case .genderize: fetchGenderize()
@@ -101,8 +101,8 @@ extension ShowAPIViewController: UICollectionViewDelegateFlowLayout {
 
 extension ShowAPIViewController {
     
-    private func fetchCatFacts() {
-        guard let url = URL(string: Link.catFactsURL.rawValue) else { return }
+    private func fetchEmojihub() {
+        guard let url = URL(string: Link.emojihub.rawValue) else { return }
         
         let session = URLSession(configuration: .default)
         
@@ -115,7 +115,7 @@ extension ShowAPIViewController {
             let jsonDecoder = JSONDecoder()
             
             do {
-                let catFacts = try jsonDecoder.decode(CatFacts.self, from: data)
+                let catFacts = try jsonDecoder.decode(Emojihub.self, from: data)
                 print(catFacts)
                 self?.successAlert()
             } catch {
