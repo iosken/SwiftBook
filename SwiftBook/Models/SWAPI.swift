@@ -7,14 +7,14 @@
 
 struct SWAPI: Decodable {
     let name: String?
-    let rotation_period: Int?
-    let orbital_period: Int?
-    let diameter: Int?
+    let rotation_period: String?
+    let orbital_period: String?
+    let diameter: String?
     let climate: String?
     let gravity: String?
     let terrain: String?
-    let surface_water: Int?
-    let population: Int?
+    let surface_water: String?
+    let population: String?
     let films: [String?]
     let created: String?
     let edited: String?
