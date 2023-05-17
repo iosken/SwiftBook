@@ -22,6 +22,8 @@ enum UserAction: String, CaseIterable {
     case aboutSwiftBook = "About SwiftBook"
     case aboutSwiftBook2 = "About SwiftBook 2"
     case showCourses = "Show Courses"
+    case postRequestWithDict = "POST RQST with Dict"
+    case postRequestWithModel = "POST RQST with Model"
 }
 
 class NetworkExamplesViewController: UICollectionViewController {
@@ -56,18 +58,20 @@ class NetworkExamplesViewController: UICollectionViewController {
         case .aboutSwiftBook: fetchInfoAboutUs()
         case .aboutSwiftBook2: fetchInfoAboutUsWithEmptyFields()
         case .showCourses: performSegue(withIdentifier: "showCourses", sender: nil)
+        case .postRequestWithDict: postRequestWithDict()
+        case .postRequestWithModel: postRequestWithModel()
         }
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showCourses" {
+            guard let courseVC = segue.destination as? CoursesViewController else { return }
+            courseVC.fetchCourses()
+        }
     }
-    */
 
     // MARK: - Private Methods
     private func successAlert() {
@@ -201,5 +205,13 @@ extension NetworkExamplesViewController {
             }
             
         }.resume()
+    }
+    
+    private func postRequestWithDict() {
+        
+    }
+    
+    private func postRequestWithModel() {
+        
     }
 }
