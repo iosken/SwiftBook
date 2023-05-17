@@ -7,14 +7,6 @@
 
 import UIKit
 
-enum Link: String {
-    case imageURL = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
-    case courseURL = "https://swiftbook.ru//wp-content/uploads/api/api_course"
-    case coursesURL = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
-    case aboutUsURL = "https://swiftbook.ru//wp-content/uploads/api/api_website_description"
-    case aboutUsURL2 = "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields"
-}
-
 enum UserAction: String, CaseIterable {
     case showImage = "Show Image"
     case fetchCourse = "Fetch Course"
@@ -148,10 +140,10 @@ extension NetworkExamplesViewController {
                 return
             }
             
-            let jsonDecoder = JSONDecoder()
-            
             do {
-                let course = try jsonDecoder.decode([Course].self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let course = try decoder.decode([Course].self, from: data)
                 print(course)
                 self.successAlert()
             } catch {

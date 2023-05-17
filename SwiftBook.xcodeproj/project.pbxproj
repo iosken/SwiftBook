@@ -14,6 +14,7 @@
 		C34BC4C42A0CC3CB00D8467D /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BC4C32A0CC3CB00D8467D /* ImageViewController.swift */; };
 		C34BC4C62A0CC3E400D8467D /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BC4C52A0CC3E400D8467D /* CoursesViewController.swift */; };
 		C34BC4C82A0DDCFD00D8467D /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34BC4C72A0DDCFD00D8467D /* Course.swift */; };
+		C3F595BB2A14CBF40035135D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BA2A14CBF40035135D /* NetworkManager.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
 		DA564D45294B194A006CD17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA564D44294B194A006CD17C /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		C34BC4C32A0CC3CB00D8467D /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		C34BC4C52A0CC3E400D8467D /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		C34BC4C72A0DDCFD00D8467D /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		C3F595BA2A14CBF40035135D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA564D3D294B1949006CD17C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C3F595BC2A14CE270035135D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C3F595BA2A14CBF40035135D /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		DA564D2F294B1949006CD17C = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +136,7 @@
 				C34BC4C22A0CC39800D8467D /* Views */,
 				C327E4092A050823002A40C5 /* App */,
 				C327E40B2A050848002A40C5 /* Source */,
+				C3F595BC2A14CE270035135D /* Services */,
 			);
 			path = SwiftBook;
 			sourceTree = "<group>";
@@ -201,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F595BB2A14CBF40035135D /* NetworkManager.swift in Sources */,
 				C34BC4C82A0DDCFD00D8467D /* Course.swift in Sources */,
 				C34BC4C12A0CC38600D8467D /* UserActionCell.swift in Sources */,
 				C34BC4C62A0CC3E400D8467D /* CoursesViewController.swift in Sources */,

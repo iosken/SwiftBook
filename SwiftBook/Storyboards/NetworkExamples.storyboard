@@ -64,6 +64,12 @@
                                         <constraint firstItem="Iyh-nk-nC5" firstAttribute="leading" secondItem="aBY-C4-Do7" secondAttribute="trailing" constant="8" symbolic="YES" id="xWn-8d-IzR"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="courseImage" destination="aBY-C4-Do7" id="jfO-SO-tg0"/>
+                                    <outlet property="courseNameLabel" destination="Iyh-nk-nC5" id="Fc7-Ln-shT"/>
+                                    <outlet property="numberOfLessons" destination="ACy-59-msE" id="7Z6-UJ-0MN"/>
+                                    <outlet property="numberOfTests" destination="c17-g4-nTU" id="84g-0h-z6L"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

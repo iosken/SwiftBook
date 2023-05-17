@@ -18,14 +18,14 @@ class CoursesViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        courses.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: "CourseCell",
+                withIdentifier: "cell",
                 for: indexPath
             ) as? CourseCell
         else {
@@ -52,7 +52,9 @@ extension CoursesViewController {
                 return
             }
             do {
-                self?.courses = try JSONDecoder().decode([Course].self, from: data)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                self?.courses = try decoder.decode([Course].self, from: data)
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
