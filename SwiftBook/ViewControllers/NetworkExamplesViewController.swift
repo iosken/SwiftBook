@@ -21,12 +21,12 @@ enum UserAction: String, CaseIterable {
 class NetworkExamplesViewController: UICollectionViewController {
     
     private let userActions = UserAction.allCases
-
+    
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         userActions.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UserActionCell
         else { return  UICollectionViewCell() }
@@ -34,10 +34,10 @@ class NetworkExamplesViewController: UICollectionViewController {
         let userAction = userActions[indexPath.item]
         
         cell.userActionLabel.text = userAction.rawValue
-    
+        
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -56,7 +56,7 @@ class NetworkExamplesViewController: UICollectionViewController {
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCourses" {
@@ -64,7 +64,7 @@ class NetworkExamplesViewController: UICollectionViewController {
             courseVC.fetchCourses()
         }
     }
-
+    
     // MARK: - Private Methods
     private func successAlert() {
         DispatchQueue.main.async {
@@ -117,7 +117,7 @@ extension NetworkExamplesViewController {
             }
         }
     }
-
+    
     
     private func fetchCourses() {
         NetworkManager.shared.fetch([Course].self, from: Link.coursesURL.rawValue) { [weak self] result in
@@ -159,10 +159,45 @@ extension NetworkExamplesViewController {
     }
     
     private func postRequestWithDict() {
-        
+        let course = [
+            "name": "Networking",
+            "imageURL": "Image url",
+            "numberOfLessons": "10",
+            "numberOfTests": "8"
+        ]
+        NetworkManager.shared.postRequest(with: course, to: Link.postRequest.rawValue) { [weak self] result in
+            switch result {
+            case .success(let json):
+                print(json)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
+            }
+        }
     }
     
     private func postRequestWithModel() {
+        let course = Course(
+            name: "Networking",
+            imageUrl: Link.courseImageURL.rawValue,
+            numberOfLessons: 10,
+            numberOfTests: 5
+        )
         
+        NetworkManager.shared.postRequest(with: course, to: Link.postRequest.rawValue) { [weak self] result in
+            switch result {
+                
+            case .success(let course):
+                print(course)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
+            }
+        }
     }
+    
+    
+    
 }
