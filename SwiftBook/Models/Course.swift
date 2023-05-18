@@ -14,7 +14,7 @@ struct Course: Decodable {
     let numberOfTests: Int?
 }
 
-struct WebsiteDesctiption: Decodable {
+struct SwiftBookInfo: Decodable {
     let courses: [Course]?
     let websiteDescription: String?
     let websiteName: String?

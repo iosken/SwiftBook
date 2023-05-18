@@ -106,97 +106,56 @@ extension NetworkExamplesViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Networking
 extension NetworkExamplesViewController {
     private func fetchCourse() {
-        guard let url = URL(string: Link.courseURL.rawValue) else { return }
-        
-        let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkManager.shared.fetch(Course.self, from: Link.courseURL.rawValue) { [weak self] result in
+            switch result {
+            case .success(let course):
+                print(course)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
             }
-            
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                _ = try jsonDecoder.decode(Course.self, from: data)
-                self.successAlert()
-            } catch {
-                print(error.localizedDescription)
-                self.failedAlert()
-            }
-            
         }
-        
-        task.resume()
     }
+
     
     private func fetchCourses() {
-        guard let url = URL(string: Link.coursesURL.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkManager.shared.fetch([Course].self, from: Link.coursesURL.rawValue) { [weak self] result in
+            switch result {
+            case .success(let courses):
+                print(courses)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
             }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let course = try decoder.decode([Course].self, from: data)
-                print(course)
-                self.successAlert()
-            } catch {
-                print(error.localizedDescription)
-                self.failedAlert()
-            }
-            
-        }.resume()
+        }
     }
     
     private func fetchInfoAboutUs() {
-        guard let url = URL(string: Link.aboutUsURL.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkManager.shared.fetch(SwiftBookInfo.self.self, from: Link.aboutUsURL.rawValue) { [weak self] result in
+            switch result {
+            case .success(let info):
+                print(info)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
             }
-            
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                _ = try jsonDecoder.decode(WebsiteDesctiption.self, from: data)
-                self.successAlert()
-            } catch {
-                print(error.localizedDescription)
-                self.failedAlert()
-            }
-            
-        }.resume()
+        }
     }
     
     private func fetchInfoAboutUsWithEmptyFields() {
-        guard let url = URL(string: Link.aboutUsURL2.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkManager.shared.fetch(SwiftBookInfo.self, from: Link.aboutUsURL2.rawValue) { [weak self] result in
+            switch result {
+            case .success(let info):
+                print(info)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
             }
-            
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                let course = try jsonDecoder.decode(WebsiteDesctiption.self, from: data)
-                print(course)
-                self.successAlert()
-            } catch {
-                print(error.localizedDescription)
-                self.failedAlert()
-            }
-            
-        }.resume()
+        }
     }
     
     private func postRequestWithDict() {
