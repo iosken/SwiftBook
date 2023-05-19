@@ -14,6 +14,8 @@
 		C3F595C32A17214B0035135D /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* SWAPI.swift */; };
 		C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C42A1721AF0035135D /* Wallstreetbet.swift */; };
 		C3F595C72A1723290035135D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C62A1723290035135D /* NetworkManager.swift */; };
+		C3F595C92A172C600035135D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C82A172C600035135D /* MenuViewController.swift */; };
+		C3F595CB2A172CA10035135D /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595CA2A172CA10035135D /* MenuCell.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
 		DA564D45294B194A006CD17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA564D44294B194A006CD17C /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		C3F595C22A17214B0035135D /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
 		C3F595C42A1721AF0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
 		C3F595C62A1723290035135D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C3F595C82A172C600035135D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		C3F595CA2A172CA10035135D /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA564D3D294B1949006CD17C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				C327E4062A0507F1002A40C5 /* ContentShowerViewController.swift */,
+				C3F595C82A172C600035135D /* MenuViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -94,6 +99,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C3F595CC2A172CA70035135D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3F595CA2A172CA10035135D /* MenuCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		DA564D2F294B1949006CD17C = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +129,7 @@
 				C3F595BF2A1720A70035135D /* Models */,
 				C327E4082A050805002A40C5 /* Storyboards */,
 				C327E40A2A05082F002A40C5 /* ViewControllers */,
+				C3F595CC2A172CA70035135D /* Views */,
 				C327E4092A050823002A40C5 /* App */,
 				C327E40B2A050848002A40C5 /* Source */,
 			);
@@ -197,7 +211,9 @@
 				C327E4072A0507F1002A40C5 /* ContentShowerViewController.swift in Sources */,
 				C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
+				C3F595C92A172C600035135D /* MenuViewController.swift in Sources */,
 				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
+				C3F595CB2A172CA10035135D /* MenuCell.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
 				C3F595C32A17214B0035135D /* SWAPI.swift in Sources */,
 				C3F595C12A17210A0035135D /* Genderize.swift in Sources */,
@@ -344,10 +360,9 @@
 				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = ContentShowerViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContentShower;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -373,10 +388,9 @@
 				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = ContentShowerViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContentShower;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

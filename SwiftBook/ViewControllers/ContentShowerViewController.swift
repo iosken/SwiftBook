@@ -1,5 +1,5 @@
 //
-//  AnimationsRandomizerViewController.swift
+//  ContentShowerViewController.swift
 //  SwiftBook
 //
 //  Created by Yuri Volegov on 05.05.2023.
