@@ -10,17 +10,16 @@ import UIKit
 class CoursesViewController: UITableViewController {
     
     private var courses: [Course] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 100
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         courses.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
@@ -33,9 +32,9 @@ class CoursesViewController: UITableViewController {
         }
         
         let course = courses[indexPath.row]
-
+        
         cell.configure(with: course)
-
+        
         return cell
     }
     
@@ -54,5 +53,5 @@ extension CoursesViewController {
             }
         }
     }
-
+    
 }

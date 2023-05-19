@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageViewController: UIViewController {
-
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
@@ -17,7 +17,7 @@ class ImageViewController: UIViewController {
         activityIndicator.startAnimating()
         fetchImage()
     }
-
+    
     private func fetchImage() {
         NetworkManager.shared.fetchImage(from: Link.imageURL.rawValue) { [weak self] result in
             switch result {
@@ -27,9 +27,9 @@ class ImageViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
-
+            
         }
         
     }
-
+    
 }

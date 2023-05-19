@@ -28,7 +28,6 @@ class CourseCell: UITableViewCell {
                 print(error)
             }
         }
-        
     }
 
 }

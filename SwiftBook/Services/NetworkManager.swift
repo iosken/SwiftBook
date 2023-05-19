@@ -24,9 +24,10 @@ enum NetworkError: Error {
 }
 
 class NetworkManager {
+    
     static let shared = NetworkManager()
     
-    func fetchImage(from url: String?, completion: @escaping (Result<Data, NetworkError>) -> Void) {
+    func fetchImage(from url: String?, completion: @escaping(Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: url ?? "") else {
             completion(.failure(.invalidURL))
             return
@@ -129,8 +130,5 @@ class NetworkManager {
     }
     
     private init() {}
+    
 }
-
-
-
-

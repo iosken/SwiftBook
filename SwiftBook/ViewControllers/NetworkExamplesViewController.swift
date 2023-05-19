@@ -198,6 +198,4 @@ extension NetworkExamplesViewController {
         }
     }
     
-    
-    
 }
