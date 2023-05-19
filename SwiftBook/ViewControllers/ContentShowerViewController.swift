@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AnimationsRandomizerViewController: UIViewController {
+class ContentShowerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

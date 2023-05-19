@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C327E4052A0507CF002A40C5 /* AnimationsRandomizer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* AnimationsRandomizer.storyboard */; };
-		C327E4072A0507F1002A40C5 /* AnimationsRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E4062A0507F1002A40C5 /* AnimationsRandomizerViewController.swift */; };
+		C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ContentShower.storyboard */; };
+		C327E4072A0507F1002A40C5 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E4062A0507F1002A40C5 /* ContentShowerViewController.swift */; };
+		C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BD2A1720A20035135D /* Emojihub.swift */; };
+		C3F595C12A17210A0035135D /* Genderize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C02A17210A0035135D /* Genderize.swift */; };
+		C3F595C32A17214B0035135D /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* SWAPI.swift */; };
+		C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C42A1721AF0035135D /* Wallstreetbet.swift */; };
+		C3F595C72A1723290035135D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C62A1723290035135D /* NetworkManager.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
 		DA564D45294B194A006CD17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA564D44294B194A006CD17C /* Assets.xcassets */; };
@@ -16,8 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C327E4042A0507CF002A40C5 /* AnimationsRandomizer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnimationsRandomizer.storyboard; sourceTree = "<group>"; };
-		C327E4062A0507F1002A40C5 /* AnimationsRandomizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsRandomizerViewController.swift; sourceTree = "<group>"; };
+		C327E4042A0507CF002A40C5 /* ContentShower.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentShower.storyboard; sourceTree = "<group>"; };
+		C327E4062A0507F1002A40C5 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
+		C3F595BD2A1720A20035135D /* Emojihub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojihub.swift; sourceTree = "<group>"; };
+		C3F595C02A17210A0035135D /* Genderize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genderize.swift; sourceTree = "<group>"; };
+		C3F595C22A17214B0035135D /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
+		C3F595C42A1721AF0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
+		C3F595C62A1723290035135D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA564D3D294B1949006CD17C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +50,7 @@
 		C327E4082A050805002A40C5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				C327E4042A0507CF002A40C5 /* AnimationsRandomizer.storyboard */,
+				C327E4042A0507CF002A40C5 /* ContentShower.storyboard */,
 				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -59,7 +69,7 @@
 		C327E40A2A05082F002A40C5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C327E4062A0507F1002A40C5 /* AnimationsRandomizerViewController.swift */,
+				C327E4062A0507F1002A40C5 /* ContentShowerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -67,9 +77,21 @@
 		C327E40B2A050848002A40C5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C3F595C62A1723290035135D /* NetworkManager.swift */,
 				DA564D44294B194A006CD17C /* Assets.xcassets */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		C3F595BF2A1720A70035135D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C3F595BD2A1720A20035135D /* Emojihub.swift */,
+				C3F595C02A17210A0035135D /* Genderize.swift */,
+				C3F595C22A17214B0035135D /* SWAPI.swift */,
+				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DA564D2F294B1949006CD17C = {
@@ -91,6 +113,7 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
+				C3F595BF2A1720A70035135D /* Models */,
 				C327E4082A050805002A40C5 /* Storyboards */,
 				C327E40A2A05082F002A40C5 /* ViewControllers */,
 				C327E4092A050823002A40C5 /* App */,
@@ -157,7 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C327E4052A0507CF002A40C5 /* AnimationsRandomizer.storyboard in Resources */,
+				C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */,
 				DA564D48294B194A006CD17C /* LaunchScreen.storyboard in Resources */,
 				DA564D45294B194A006CD17C /* Assets.xcassets in Resources */,
 			);
@@ -170,9 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C327E4072A0507F1002A40C5 /* AnimationsRandomizerViewController.swift in Sources */,
+				C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */,
+				C327E4072A0507F1002A40C5 /* ContentShowerViewController.swift in Sources */,
+				C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
+				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
+				C3F595C32A17214B0035135D /* SWAPI.swift in Sources */,
+				C3F595C12A17210A0035135D /* Genderize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +344,7 @@
 				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = AnimationsRandomizer;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContentShowerViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -345,7 +373,7 @@
 				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = AnimationsRandomizer;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContentShowerViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
