@@ -38,9 +38,6 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="haS-GX-Ysw" kind="show" id="TTC-bE-73w"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -49,10 +46,164 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select API:" id="7Oz-oi-AVV"/>
+                    <connections>
+                        <segue destination="p6v-30-fAq" kind="show" identifier="emojihub" id="FHj-Dr-xeh"/>
+                        <segue destination="cjf-je-YTO" kind="show" identifier="genderize" id="Nae-sb-1aU"/>
+                        <segue destination="R7Z-u2-GSd" kind="show" identifier="swapi" id="L7k-qc-3id"/>
+                        <segue destination="ES1-Dg-EF4" kind="show" identifier="wallstreetbet" id="RFF-aN-Tzm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyf-uR-7QW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1480.8" y="1.3493253373313345"/>
+        </scene>
+        <!--Emojihub-->
+        <scene sceneID="Uza-47-1vC">
+            <objects>
+                <viewController id="p6v-30-fAq" customClass="EmojihubViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LMp-c9-XXE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSO-Rr-9JO">
+                                <rect key="frame" x="141.5" y="612" width="92" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Get new!"/>
+                                <connections>
+                                    <action selector="refreshButtonPressed" destination="p6v-30-fAq" eventType="touchUpInside" id="DCF-ei-kxF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-un-dJg">
+                                <rect key="frame" x="166" y="323.5" width="43" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-xU-RFM">
+                                <rect key="frame" x="141.5" y="444" width="92.5" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gql-kd-bho"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="33a-un-dJg" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="DkZ-5W-eNY"/>
+                            <constraint firstItem="QbM-xU-RFM" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="Mwh-bc-85M"/>
+                            <constraint firstItem="wSO-Rr-9JO" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="Rrm-5G-l8P"/>
+                            <constraint firstItem="Gql-kd-bho" firstAttribute="bottom" secondItem="wSO-Rr-9JO" secondAttribute="bottom" constant="20" id="g2X-pz-Lu5"/>
+                            <constraint firstItem="33a-un-dJg" firstAttribute="centerY" secondItem="LMp-c9-XXE" secondAttribute="centerY" id="k2x-D7-P8y"/>
+                            <constraint firstItem="QbM-xU-RFM" firstAttribute="top" secondItem="33a-un-dJg" secondAttribute="bottom" constant="100" id="znN-Xq-jU3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Emojihub" id="JeR-fQ-ZlL"/>
+                    <connections>
+                        <outlet property="emojiLabel" destination="QbM-xU-RFM" id="THX-h7-oTw"/>
+                        <outlet property="resultLabel" destination="33a-un-dJg" id="0IV-F4-xCJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qu5-eF-Lv3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="788" y="946"/>
+        </scene>
+        <!--Genderize-->
+        <scene sceneID="I1Y-at-GcT">
+            <objects>
+                <viewController id="cjf-je-YTO" customClass="GenderizeViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wIp-Ft-35z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1Z-te-8q5">
+                                <rect key="frame" x="20" y="136" width="335" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="customNameTextField:" destination="cjf-je-YTO" eventType="editingDidEnd" id="u66-F0-v95"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-2g-gpS">
+                                <rect key="frame" x="164" y="323" width="47.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xks-nl-UDE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="k1Z-te-8q5" firstAttribute="leading" secondItem="xks-nl-UDE" secondAttribute="leading" constant="20" id="3tX-ic-OPR"/>
+                            <constraint firstItem="xks-nl-UDE" firstAttribute="trailing" secondItem="k1Z-te-8q5" secondAttribute="trailing" constant="20" id="Q80-PH-8Lt"/>
+                            <constraint firstItem="ECN-2g-gpS" firstAttribute="centerX" secondItem="wIp-Ft-35z" secondAttribute="centerX" id="cI6-Rc-cDQ"/>
+                            <constraint firstItem="ECN-2g-gpS" firstAttribute="centerY" secondItem="wIp-Ft-35z" secondAttribute="centerY" id="gPQ-pJ-nkw"/>
+                            <constraint firstItem="k1Z-te-8q5" firstAttribute="top" secondItem="xks-nl-UDE" secondAttribute="top" constant="20" id="wYL-o1-0m4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Genderize" id="dAw-ne-65R"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="ECN-2g-gpS" id="R1I-kH-L5O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="59v-fv-7W2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="944.97751124437787"/>
+        </scene>
+        <!--SWAPI-->
+        <scene sceneID="HBe-9J-Kcx">
+            <objects>
+                <viewController id="R7Z-u2-GSd" customClass="SWAPIViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SZI-GB-f7X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdU-Qb-Mkw">
+                                <rect key="frame" x="164" y="323" width="47.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ko0-Rx-S4R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pdU-Qb-Mkw" firstAttribute="centerY" secondItem="SZI-GB-f7X" secondAttribute="centerY" id="BYe-eZ-9cz"/>
+                            <constraint firstItem="pdU-Qb-Mkw" firstAttribute="centerX" secondItem="SZI-GB-f7X" secondAttribute="centerX" id="gpZ-qX-VSW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="SWAPI" id="iCf-6e-GPG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOX-Ec-69K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2196" y="944"/>
+        </scene>
+        <!--Wallstreetbet-->
+        <scene sceneID="Iib-YI-zht">
+            <objects>
+                <viewController id="ES1-Dg-EF4" customClass="WallstreetbetViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rFd-29-Cs0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE6-hi-o3S">
+                                <rect key="frame" x="164" y="323" width="47.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MOq-CB-mm0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FE6-hi-o3S" firstAttribute="centerY" secondItem="rFd-29-Cs0" secondAttribute="centerY" id="ZBc-t6-1NB"/>
+                            <constraint firstItem="FE6-hi-o3S" firstAttribute="centerX" secondItem="rFd-29-Cs0" secondAttribute="centerX" id="r0z-Gp-jk3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Wallstreetbet" id="nKI-mD-qxy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G6o-Xp-pha" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2927" y="945"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="084-GW-DW8">
@@ -69,37 +220,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vec-8I-Fq9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="559" y="2"/>
-        </scene>
-        <!--Description-->
-        <scene sceneID="MGc-Sc-g7G">
-            <objects>
-                <viewController id="haS-GX-Ysw" customClass="DescriptionViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dNk-Cp-pB3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0q-JK-RyR">
-                                <rect key="frame" x="144" y="323" width="87.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="jRG-eD-U8r"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="b0q-JK-RyR" firstAttribute="centerY" secondItem="dNk-Cp-pB3" secondAttribute="centerY" id="4GD-Xq-al5"/>
-                            <constraint firstItem="b0q-JK-RyR" firstAttribute="centerX" secondItem="dNk-Cp-pB3" secondAttribute="centerX" id="tfV-e4-EfV"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Description" id="0BN-Zo-qBD"/>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="b0q-JK-RyR" id="5Qf-CR-Gzu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="orf-Lf-Xes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2385" y="1"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,25 @@
 
 import UIKit
 
+enum StatusAlert {
+    case success
+    case failed
+    
+    var title: String {
+        switch self {
+        case .success: return "Success"
+        case .failed: return "Failed"
+        }
+    }
+    
+    var message: String {
+        switch self {
+        case .success: return "You can see the results in the Debug aria"
+        case .failed: return "You can see the error in the Debug aria"
+        }
+    }
+}
+
 enum UserAction: String, CaseIterable {
     case emojihub = "Show Emoji!"
     case genderize = "Tell about Name"
@@ -27,8 +46,7 @@ class ContentShowerViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return userActions.count
+        userActions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,17 +64,59 @@ class ContentShowerViewController: UITableViewController {
     
     // MARK: - Table view delegate
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userAction = userActions[indexPath.item]
+
+        switch userAction {
+        case .emojihub: performSegue(withIdentifier: "emojihub", sender: nil)
+        case .genderize: performSegue(withIdentifier: "genderize", sender: nil)
+        case .swapi: performSegue(withIdentifier: "swapi", sender: nil)
+        case .wallstreetbet: performSegue(withIdentifier: "wallstreetbet", sender: nil)
+        }
+        
+    }
 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+    //    guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
+        switch segue.identifier {
+        case "emojihub":
+            guard let emojihubVC = segue.destination as? EmojihubViewController else { return }
+            emojihubVC.fetchEmojihub()
+        case "genderize":
+            guard let genderizeVC = segue.destination as? GenderizeViewController else { return }
+        case "swapi":
+            guard let swapiVC = segue.destination as? SWAPIViewController else { return }
+        default:
+            guard let wallstreetbetVC = segue.destination as? WallstreetbetViewController else { return }
+            
+        }
+
+        }
         
+    
+    // MARK: - Private Methods
+    private func showAlert(status: StatusAlert) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: status.title,
+                message: status.message,
+                preferredStyle: .alert
+            )
+            
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
     }
 
+}
+
+// MARK: - Networking
+
+extension ContentShowerViewController {
+    
 }

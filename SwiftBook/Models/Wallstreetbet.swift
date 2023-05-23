@@ -8,9 +8,9 @@
 import Foundation
 
 struct Wallstreetbet: Decodable {
-    let no_of_comments: Int?
+    let noOfComments: Int?
     let sentiment: String?
-    let sentiment_score: Double?
+    let sentimentScore: Double?
     let ticker: String?
 }
 

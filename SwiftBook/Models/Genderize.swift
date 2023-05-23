@@ -8,10 +8,10 @@
 import Foundation
 
 struct Genderize: Decodable {
-    let count: Int?
-    let gender: String?
-    let name: String?
-    let probability: Double?
+    let count: Int
+    let gender: String
+    let name: String
+    let probability: Double
 }
 
 
@@ -21,3 +21,4 @@ struct Genderize: Decodable {
 //    "gender":"male",
 //    "name":"scott",
 //    "probability":1.0}
+// {"count":545658,"gender":"male","name":"scott","probability":1.0}

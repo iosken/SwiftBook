@@ -8,19 +8,19 @@
 import Foundation
 
 struct SWAPI: Decodable {
-    let name: String?
-    let rotation_period: String?
-    let orbital_period: String?
-    let diameter: String?
-    let climate: String?
-    let gravity: String?
-    let terrain: String?
-    let surface_water: String?
-    let population: String?
-    let films: [String?]
-    let created: String?
-    let edited: String?
-    let url: String?
+    let name: String
+    let rotationPeriod: String
+    let orbitalPeriod: String
+    let diameter: String
+    let climate: String
+    let gravity: String
+    let terrain: String
+    let surfaceWater: String
+    let population: String
+    let films: [String]
+    let created: String
+    let edited: String
+    let url: String
 }
 
 
