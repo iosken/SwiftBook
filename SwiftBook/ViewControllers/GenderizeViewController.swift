@@ -21,8 +21,6 @@ final class GenderizeViewController: UIViewController {
         super.viewDidLoad()
         
         nameTextField.delegate = self
-        
-        fetchGenderize()
     }
     
     // MARK: - Private Methods
@@ -44,7 +42,7 @@ final class GenderizeViewController: UIViewController {
 
 extension GenderizeViewController {
     
-    private func fetchGenderize() {
+    func fetchGenderize() {
         
         guard let text = nameTextField.text else { return }
         

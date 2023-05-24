@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ContentShower.storyboard */; };
 		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
+		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
+		C385BDBD2A1DED4800368F26 /* BetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBC2A1DED4800368F26 /* BetTableViewCell.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
 		C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */; };
 		C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */; };
-		C3AB1FD12A1B5F0900E31CA9 /* SWAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FD02A1B5F0900E31CA9 /* SWAPIViewController.swift */; };
-		C3AB1FD32A1B5F2100E31CA9 /* WallstreetbetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FD22A1B5F2100E31CA9 /* WallstreetbetViewController.swift */; };
+		C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */; };
 		C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BD2A1720A20035135D /* Emojihub.swift */; };
 		C3F595C12A17210A0035135D /* Genderize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C02A17210A0035135D /* Genderize.swift */; };
-		C3F595C32A17214B0035135D /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* SWAPI.swift */; };
+		C3F595C32A17214B0035135D /* Swapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* Swapi.swift */; };
 		C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C42A1721AF0035135D /* Wallstreetbet.swift */; };
 		C3F595C72A1723290035135D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C62A1723290035135D /* NetworkManager.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
@@ -28,14 +29,15 @@
 /* Begin PBXFileReference section */
 		C327E4042A0507CF002A40C5 /* ContentShower.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentShower.storyboard; sourceTree = "<group>"; };
 		C385BDB42A1B662500368F26 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallstreetbetListViewController.swift; sourceTree = "<group>"; };
+		C385BDBC2A1DED4800368F26 /* BetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetTableViewCell.swift; sourceTree = "<group>"; };
 		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojihubViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderizeViewController.swift; sourceTree = "<group>"; };
-		C3AB1FD02A1B5F0900E31CA9 /* SWAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIViewController.swift; sourceTree = "<group>"; };
-		C3AB1FD22A1B5F2100E31CA9 /* WallstreetbetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallstreetbetViewController.swift; sourceTree = "<group>"; };
+		C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		C3F595BD2A1720A20035135D /* Emojihub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojihub.swift; sourceTree = "<group>"; };
 		C3F595C02A17210A0035135D /* Genderize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genderize.swift; sourceTree = "<group>"; };
-		C3F595C22A17214B0035135D /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
+		C3F595C22A17214B0035135D /* Swapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swapi.swift; sourceTree = "<group>"; };
 		C3F595C42A1721AF0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
 		C3F595C62A1723290035135D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,8 +84,8 @@
 				C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */,
 				C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */,
 				C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */,
-				C3AB1FD02A1B5F0900E31CA9 /* SWAPIViewController.swift */,
-				C3AB1FD22A1B5F2100E31CA9 /* WallstreetbetViewController.swift */,
+				C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */,
+				C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -98,22 +100,23 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		C385BDBE2A1DED4F00368F26 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C385BDBC2A1DED4800368F26 /* BetTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C3F595BF2A1720A70035135D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C3F595BD2A1720A20035135D /* Emojihub.swift */,
 				C3F595C02A17210A0035135D /* Genderize.swift */,
-				C3F595C22A17214B0035135D /* SWAPI.swift */,
+				C3F595C22A17214B0035135D /* Swapi.swift */,
 				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C3F595CC2A172CA70035135D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		DA564D2F294B1949006CD17C = {
@@ -138,7 +141,7 @@
 				C3F595BF2A1720A70035135D /* Models */,
 				C327E4082A050805002A40C5 /* Storyboards */,
 				C327E40A2A05082F002A40C5 /* ViewControllers */,
-				C3F595CC2A172CA70035135D /* Views */,
+				C385BDBE2A1DED4F00368F26 /* Views */,
 				C327E4092A050823002A40C5 /* App */,
 				C327E40B2A050848002A40C5 /* Source */,
 			);
@@ -221,12 +224,13 @@
 				C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
 				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
+				C385BDBD2A1DED4800368F26 /* BetTableViewCell.swift in Sources */,
 				C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
 				C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */,
-				C3AB1FD32A1B5F2100E31CA9 /* WallstreetbetViewController.swift in Sources */,
-				C3F595C32A17214B0035135D /* SWAPI.swift in Sources */,
-				C3AB1FD12A1B5F0900E31CA9 /* SWAPIViewController.swift in Sources */,
+				C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */,
+				C3F595C32A17214B0035135D /* Swapi.swift in Sources */,
+				C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */,
 				C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */,
 				C3F595C12A17210A0035135D /* Genderize.swift in Sources */,
 			);

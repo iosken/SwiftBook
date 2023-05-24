@@ -10,7 +10,7 @@ import Foundation
 enum Link: String, CaseIterable {
     case emojihub = "https://emojihub.yurace.pro/api/random"
     //case genderize = "https://api.genderize.io/?name=scott"
-    case swapi = "https://swapi.dev/api/planets/3/?format=json"
+    case swapi = "https://swapi.dev/api/planets/"
     case wallstreetbet = "https://tradestie.com/api/v1/apps/reddit"
 }
 

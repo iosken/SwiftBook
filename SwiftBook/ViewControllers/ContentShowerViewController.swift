@@ -69,10 +69,12 @@ final class ContentShowerViewController: UITableViewController {
             emojihubVC.fetchEmojihub()
         case "genderize":
             guard let genderizeVC = segue.destination as? GenderizeViewController else { return }
+            genderizeVC.fetchGenderize()
         case "swapi":
-            guard let swapiVC = segue.destination as? SWAPIViewController else { return }
+            guard let swapiVC = segue.destination as? SwapiViewController else { return }
+            swapiVC.fetchSwapi()
         default:
-            guard let wallstreetbetVC = segue.destination as? WallstreetbetViewController else { return }
+            guard let wallstreetbetVC = segue.destination as? WallstreetbetListViewController else { return }
             
         }
 
