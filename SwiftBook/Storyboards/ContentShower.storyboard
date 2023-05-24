@@ -73,14 +73,14 @@
                                     <action selector="refreshButtonPressed" destination="p6v-30-fAq" eventType="touchUpInside" id="DCF-ei-kxF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-un-dJg">
-                                <rect key="frame" x="166" y="323.5" width="43" height="20.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-un-dJg">
+                                <rect key="frame" x="16" y="156" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-xU-RFM">
-                                <rect key="frame" x="165" y="444" width="45" height="48"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-xU-RFM">
+                                <rect key="frame" x="165" y="484" width="45" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,11 +90,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="33a-un-dJg" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="DkZ-5W-eNY"/>
+                            <constraint firstItem="33a-un-dJg" firstAttribute="top" secondItem="Gql-kd-bho" secondAttribute="top" constant="40" id="KMt-n6-n1l"/>
                             <constraint firstItem="QbM-xU-RFM" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="Mwh-bc-85M"/>
+                            <constraint firstItem="wSO-Rr-9JO" firstAttribute="top" secondItem="QbM-xU-RFM" secondAttribute="bottom" constant="80" id="Ncq-7R-xum"/>
                             <constraint firstItem="wSO-Rr-9JO" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="Rrm-5G-l8P"/>
                             <constraint firstItem="Gql-kd-bho" firstAttribute="bottom" secondItem="wSO-Rr-9JO" secondAttribute="bottom" constant="20" id="g2X-pz-Lu5"/>
-                            <constraint firstItem="33a-un-dJg" firstAttribute="centerY" secondItem="LMp-c9-XXE" secondAttribute="centerY" id="k2x-D7-P8y"/>
-                            <constraint firstItem="QbM-xU-RFM" firstAttribute="top" secondItem="33a-un-dJg" secondAttribute="bottom" constant="100" id="znN-Xq-jU3"/>
+                            <constraint firstItem="33a-un-dJg" firstAttribute="leading" secondItem="Gql-kd-bho" secondAttribute="leading" constant="16" id="ufK-VU-x3i"/>
+                            <constraint firstItem="Gql-kd-bho" firstAttribute="trailing" secondItem="33a-un-dJg" secondAttribute="trailing" constant="16" id="yVe-GT-OMD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Emoji randomizer" id="JeR-fQ-ZlL"/>
@@ -105,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qu5-eF-Lv3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="946"/>
+            <point key="canvasLocation" x="788" y="945.87706146926541"/>
         </scene>
         <!--Genderize-->
         <scene sceneID="I1Y-at-GcT">

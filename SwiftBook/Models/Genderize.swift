@@ -8,13 +8,16 @@
 import Foundation
 
 struct Genderize: Decodable {
+    
     let count: Int
     let gender: String
     let name: String
     let probability: Double
+    
 }
 
 extension Genderize {
+    
     var description: String {
                 """
             Current name is \(name)
@@ -23,13 +26,6 @@ extension Genderize {
             names gender is \(gender)
         """
     }
+    
 }
 
-
-//SOURCE:
-//https://api.genderize.io/?name=scott
-//{"count":545658,
-//    "gender":"male",
-//    "name":"scott",
-//    "probability":1.0}
-// {"count":545658,"gender":"male","name":"scott","probability":1.0}

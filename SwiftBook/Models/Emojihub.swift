@@ -8,22 +8,25 @@
 import Foundation
 
 struct Emojihub: Decodable {
+    
     let name: String
     let category: String
     let group: String
     let htmlCode: [String]
     let unicode: [String]
+    
 }
 
 extension Emojihub {
     
-    
-    
     var description: String {
         """
     Current emoji name is \(name)
+
     from category \(category)
+
     of group \(group)
+
     HTML code is \(allHtmlCode)
 """
     }
@@ -56,6 +59,7 @@ extension Emojihub {
 }
 
 extension Emojihub {
+    
     func unicodeScalarFromUPlus(unicode: [String]) -> [String] {
         var result: [String] = []
         
@@ -76,14 +80,5 @@ extension Emojihub {
         
         return result
     }
+    
 }
-
-
-//SOURCE:
-// https://emojihub.yurace.pro/api/random
-
-//{"name":"man with chinese cap, type-3",
-//    "category":"smileys and people",
-//    "group":"person role",
-//    "htmlCode":["\u0026#128114;","\u0026#127996;"],
-//    "unicode":["U+1F472","U+1F3FC"]}

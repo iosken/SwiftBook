@@ -22,6 +22,14 @@ final class EmojihubViewController: UIViewController {
             }
             
             emojiLabel.text = emojis
+            
+            if emojiLabel.isHidden {
+                emojiLabel.isHidden.toggle()
+            }
+            
+            if resultLabel.isHidden {
+                resultLabel.isHidden.toggle()
+            }
         }
     }
     

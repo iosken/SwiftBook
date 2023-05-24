@@ -8,10 +8,12 @@
 import UIKit
 
 private enum UserAction: String, CaseIterable {
-    case emojihub = "Show Emoji!"
-    case genderize = "Tell about Name"
-    case swapi = "Description of Planet"
-    case wallstreetbet = "Some info about wallstreetbet"
+    
+    case emojihub = "Emoji randomizer"
+    case genderize = "Genderize"
+    case swapi = "StarWars Planets"
+    case wallstreetbet = "Wallstreet Bets List"
+    
 }
 
 final class ContentShowerViewController: UITableViewController {
