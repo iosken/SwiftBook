@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmojihubViewController: UIViewController {
+final class EmojihubViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!

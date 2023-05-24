@@ -7,35 +7,16 @@
 
 import UIKit
 
-enum StatusAlert {
-    case success
-    case failed
-    
-    var title: String {
-        switch self {
-        case .success: return "Success"
-        case .failed: return "Failed"
-        }
-    }
-    
-    var message: String {
-        switch self {
-        case .success: return "You can see the results in the Debug aria"
-        case .failed: return "You can see the error in the Debug aria"
-        }
-    }
-}
-
-enum UserAction: String, CaseIterable {
+private enum UserAction: String, CaseIterable {
     case emojihub = "Show Emoji!"
     case genderize = "Tell about Name"
     case swapi = "Description of Planet"
     case wallstreetbet = "Some info about wallstreetbet"
 }
 
-class ContentShowerViewController: UITableViewController {
+final class ContentShowerViewController: UITableViewController {
     
-    let userActions = UserAction.allCases
+    private let userActions = UserAction.allCases
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,10 +94,4 @@ class ContentShowerViewController: UITableViewController {
         }
     }
 
-}
-
-// MARK: - Networking
-
-extension ContentShowerViewController {
-    
 }

@@ -14,6 +14,17 @@ struct Genderize: Decodable {
     let probability: Double
 }
 
+extension Genderize {
+    var description: String {
+                """
+            Current name is \(name)
+            with ID \(count)
+            and probability \(probability)
+            names gender is \(gender)
+        """
+    }
+}
+
 
 //SOURCE:
 //https://api.genderize.io/?name=scott

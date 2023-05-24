@@ -17,10 +17,10 @@ struct Emojihub: Decodable {
 
 extension Emojihub {
     
-
+    
     
     var description: String {
-        return """
+        """
     Current emoji name is \(name)
     from category \(category)
     of group \(group)
@@ -31,7 +31,7 @@ extension Emojihub {
     var emojis: [String] {
         unicodeScalarFromUPlus(unicode: unicode)
     }
-
+    
     
     var allHtmlCode: String {
         var result = ""
@@ -58,22 +58,22 @@ extension Emojihub {
 extension Emojihub {
     func unicodeScalarFromUPlus(unicode: [String]) -> [String] {
         var result: [String] = []
-
+        
         for code in unicode {
-
+            
             var unicodeScalar = "" {
                 didSet {
                     unicodeScalar.removeFirst(2)
                 }
             }
-
+            
             unicodeScalar = code
-
+            
             let codePoint = Int(unicodeScalar, radix: 16) ?? 0
-
+            
             result.append(String(UnicodeScalar(codePoint) ?? UnicodeScalar(0)))
         }
-
+        
         return result
     }
 }
