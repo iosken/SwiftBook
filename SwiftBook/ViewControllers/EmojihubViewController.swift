@@ -29,8 +29,8 @@ final class EmojihubViewController: UIViewController {
         fetchEmojihub()
     }
     
-    
     // MARK: - Private Methods
+    
     private func showAlert(status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -44,7 +44,7 @@ final class EmojihubViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-
+    
 }
 
 extension EmojihubViewController {

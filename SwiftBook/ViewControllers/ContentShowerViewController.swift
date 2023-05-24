@@ -17,29 +17,28 @@ private enum UserAction: String, CaseIterable {
 final class ContentShowerViewController: UITableViewController {
     
     private let userActions = UserAction.allCases
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 100
-
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         userActions.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
+        
         var configuration = cell.defaultContentConfiguration()
         
         configuration.text = userActions[indexPath.row].rawValue
         configuration.image = UIImage(named: "content")
         
         cell.contentConfiguration = configuration
-
+        
         return cell
     }
     
@@ -47,21 +46,18 @@ final class ContentShowerViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let userAction = userActions[indexPath.item]
-
+        
         switch userAction {
         case .emojihub: performSegue(withIdentifier: "emojihub", sender: nil)
         case .genderize: performSegue(withIdentifier: "genderize", sender: nil)
         case .swapi: performSegue(withIdentifier: "swapi", sender: nil)
         case .wallstreetbet: performSegue(withIdentifier: "wallstreetbet", sender: nil)
         }
-        
     }
-
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
         switch segue.identifier {
         case "emojihub":
@@ -74,14 +70,16 @@ final class ContentShowerViewController: UITableViewController {
             guard let swapiVC = segue.destination as? SwapiViewController else { return }
             swapiVC.fetchSwapi()
         default:
+            print("guard")
             guard let wallstreetbetVC = segue.destination as? WallstreetbetListViewController else { return }
+            wallstreetbetVC.fetchWallstreetbet()
             
         }
-
-        }
         
+    }
     
     // MARK: - Private Methods
+    
     private func showAlert(status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -95,5 +93,5 @@ final class ContentShowerViewController: UITableViewController {
             self.present(alert, animated: true)
         }
     }
-
+    
 }

@@ -8,12 +8,12 @@
 import UIKit
 
 class SwapiViewController: UIViewController {
-
+    
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var planetNameTextField: UITextField!
     
     var planets: [Planet] = []
-
+    
     var planetIndex = 0
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -28,7 +28,7 @@ class SwapiViewController: UIViewController {
         planetNameTextField.inputView = elementPicker
         
         planetNameTextField.delegate = self
-
+        
     }
     
     // MARK: - Private Methods
@@ -45,7 +45,7 @@ class SwapiViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-
+    
 }
 
 extension SwapiViewController {
@@ -84,7 +84,7 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         
         planetIndex = row
     }
-
+    
 }
 
 extension SwapiViewController: UITextFieldDelegate {

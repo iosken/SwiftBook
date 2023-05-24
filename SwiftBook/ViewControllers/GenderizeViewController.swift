@@ -24,6 +24,7 @@ final class GenderizeViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
     private func showAlert(status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -43,10 +44,8 @@ final class GenderizeViewController: UIViewController {
 extension GenderizeViewController {
     
     func fetchGenderize() {
-        
         guard let text = nameTextField.text else { return }
-        
-        let link = "https://api.genderize.io/?name=" + text
+        let link = Link.genderize(from: text)
         
         NetworkManager.shared.fetch(dataType: Genderize.self, from: link) { [weak self] result in
             switch result {
@@ -64,7 +63,6 @@ extension GenderizeViewController {
 extension GenderizeViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         (nameTextField.text ?? "").forEach { char in
             let symbol = String(char)
             if Int(symbol) != nil {

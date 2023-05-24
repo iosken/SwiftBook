@@ -30,11 +30,3 @@ enum StatusAlert {
     }
 }
 
-class AlertManager {
-    let share = AlertManager()
-    
-
-    
-    private init() {}
-}
-

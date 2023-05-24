@@ -9,9 +9,12 @@ import Foundation
 
 enum Link: String, CaseIterable {
     case emojihub = "https://emojihub.yurace.pro/api/random"
-    //case genderize = "https://api.genderize.io/?name=scott"
     case swapi = "https://swapi.dev/api/planets/"
     case wallstreetbet = "https://tradestie.com/api/v1/apps/reddit"
+    
+    static func genderize(from ending: String?) -> String {
+        "https://api.genderize.io/?name=" + (ending ?? "Scott")
+    }
 }
 
 enum NetworkError: Error {
@@ -21,6 +24,7 @@ enum NetworkError: Error {
 }
 
 class NetworkManager {
+    
     static let shared = NetworkManager()
     
     func fetch<T: Decodable>(dataType: T.Type, from url: String?, completion: @escaping(Result<T, NetworkError>) -> Void) {
@@ -49,4 +53,5 @@ class NetworkManager {
     }
     
     private init() {}
+    
 }
