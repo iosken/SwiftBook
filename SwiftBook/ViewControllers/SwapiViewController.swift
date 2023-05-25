@@ -13,6 +13,7 @@ class SwapiViewController: UIViewController {
     @IBOutlet var planetNameTextField: UITextField!
     
     var planets: [Planet] = []
+    var names: Set<String> = []
     
     var planetIndex = 0
     
@@ -54,7 +55,8 @@ extension SwapiViewController {
         NetworkManager.shared.fetch(dataType: Swapi.self, from: Link.swapi.rawValue) { [weak self] result in
             switch result {
             case .success(let data):
-                self?.planets = data.results
+                self?.planets = data.planets
+                self?.names = data.names
             case .failure(let error):
                 print(error)
                 self?.showAlert(status: .failed)
@@ -89,8 +91,17 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension SwapiViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        resultLabel.text = planets[planetIndex].description
+        var description = ""
         
+        if names.contains(planetNameTextField.text ?? "") {
+            description = planetNameTextField.text ?? ""
+        } else {
+            description = planets[planetIndex].description
+        }
+        
+        resultLabel.text = description
+        planetNameTextField.text = description
+
         if resultLabel.isHidden {
             resultLabel.isHidden.toggle()
         }

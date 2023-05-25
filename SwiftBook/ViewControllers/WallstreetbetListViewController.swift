@@ -54,7 +54,9 @@ extension WallstreetbetListViewController {
             switch result {
             case .success(let data):
                 self?.bets = data
-                self?.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             case .failure(let error):
                 self?.showAlert(status: .failed)
                 
