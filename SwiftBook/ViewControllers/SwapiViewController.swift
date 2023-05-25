@@ -60,7 +60,9 @@ extension SwapiViewController {
                 case .success(let data):
                     self?.activityIndicator.stopAnimating()
                     self?.swapi = data
-                //    self?.names = data.names
+                    if self?.planetNameTextField.isHidden ?? true {
+                        self?.planetNameTextField.isHidden = false
+                    }
                 case .failure(let error):
                     print(error)
                     self?.showAlert(status: .failed)
