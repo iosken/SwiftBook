@@ -8,10 +8,12 @@
 import Foundation
 
 struct Wallstreetbet: Decodable {
+    
     let noOfComments: Int
     let sentiment: String
     let sentimentScore: Double
     let ticker: String
+    
 }
 
 extension Wallstreetbet {

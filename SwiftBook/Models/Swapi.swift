@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct Swapi: Decodable {
     
     let results: [Planet]

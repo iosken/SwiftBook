@@ -80,6 +80,7 @@ extension SwapiViewController {
 // MARK: - UIPickerViewDataSource and UIPickerViewDelegate
 
 extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }

@@ -18,7 +18,6 @@ final class WallstreetbetListViewController: UITableViewController {
         bets.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BetTableViewCell", for: indexPath)
         
@@ -31,7 +30,6 @@ final class WallstreetbetListViewController: UITableViewController {
             cell.addSubview(indicator)
         }
 
-        
         cell.contentConfiguration = configuration
         
         return cell
