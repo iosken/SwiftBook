@@ -38,7 +38,6 @@ final class ContentShowerViewController: UITableViewController {
         
         configuration.text = userActions[indexPath.row].rawValue
         configuration.image = UIImage(named: "content")
-        
         cell.contentConfiguration = configuration
         
         return cell
@@ -60,7 +59,6 @@ final class ContentShowerViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
         case "emojihub":
             guard let emojihubVC = segue.destination as? EmojihubViewController else { return }
@@ -72,12 +70,10 @@ final class ContentShowerViewController: UITableViewController {
             guard let swapiVC = segue.destination as? SwapiViewController else { return }
             swapiVC.fetchSwapi()
         default:
-            print("guard")
             guard let wallstreetbetVC = segue.destination as? WallstreetbetListViewController else { return }
             wallstreetbetVC.fetchWallstreetbet()
             
         }
-        
     }
     
     // MARK: - Private Methods

@@ -16,12 +16,7 @@ final class EmojihubViewController: UIViewController {
         didSet {
             resultLabel.text = emojihub?.description ?? "no data"
             
-            var emojis = ""
-            for emoji in emojihub?.emojis ?? [""] {
-                emojis.append(" " + emoji)
-            }
-            
-            emojiLabel.text = emojis
+            emojiLabel.text = emojihub?.emojis
             
             if emojiLabel.isHidden {
                 emojiLabel.isHidden.toggle()
@@ -58,15 +53,18 @@ final class EmojihubViewController: UIViewController {
 extension EmojihubViewController {
     
     func fetchEmojihub() {
-        NetworkManager.shared.fetch(dataType: Emojihub.self, from: Link.emojihub.rawValue) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.emojihub = data
-            case .failure(let error):
-                print(error)
-                self?.showAlert(status: .failed)
+        NetworkManager.shared.fetch(
+            dataType: Emojihub.self,
+            from: Link.emojihub.rawValue) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.emojihub = data
+                case .failure(let error):
+                    print(error)
+                    self?.showAlert(status: .failed)
+                    
+                }
             }
-        }
     }
     
 }

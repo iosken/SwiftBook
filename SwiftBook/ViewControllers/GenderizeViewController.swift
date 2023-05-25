@@ -12,6 +12,8 @@ final class GenderizeViewController: UIViewController {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var nameTextField: UITextField!
     
+    private var name = "Scott"
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
@@ -21,6 +23,7 @@ final class GenderizeViewController: UIViewController {
         super.viewDidLoad()
         
         nameTextField.delegate = self
+        nameTextField.text = name
     }
     
     // MARK: - Private Methods
@@ -44,51 +47,54 @@ final class GenderizeViewController: UIViewController {
 extension GenderizeViewController {
     
     func fetchGenderize() {
-        guard let text = nameTextField.text else { return }
-        let link = Link.genderize(from: text)
+        let link = Link.genderize(from: name)
         
-        NetworkManager.shared.fetch(dataType: Genderize.self, from: link) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.resultLabel.text = data.description
-            case .failure(let error):
-                print(error)
-                self?.showAlert(status: .failed)
+        NetworkManager.shared.fetch(
+            dataType: Genderize.self,
+            from: link) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.resultLabel.text = data.description
+                case .failure(let error):
+                    print(error)
+                    self?.showAlert(status: .failed)
+                }
             }
-        }
     }
     
 }
 
 extension GenderizeViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (24...).contains(nameTextField.text?.count ?? 0) {
+            nameTextField.text?.removeLast()
+            return false
+        }
+        
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         (nameTextField.text ?? "").forEach { char in
             let symbol = String(char)
             if Int(symbol) != nil {
                 showAlert(status: .nothing)
-                nameTextField.text? = "Scott"
+                nameTextField.text? = name
                 return
             }
         }
         
         if !(nameTextField.text?.isEmpty ?? true) {
+            name = nameTextField.text ?? name
             fetchGenderize()
         } else {
             showAlert(status: .nothing)
-            nameTextField.text? = "Scott"
+            nameTextField.text? = name
+            return
         }
         
         fetchGenderize()
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (nameTextField.text?.count ?? 0) > 16 {
-            showAlert(status: .nothing)
-            nameTextField.text?.removeLast()
-            return false
-        }
-        return true
     }
     
 }

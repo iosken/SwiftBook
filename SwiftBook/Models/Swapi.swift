@@ -11,7 +11,7 @@ import Foundation
 
 struct Swapi: Decodable {
     
-    let planets: [Planet]
+    let results: [Planet]
     
 }
 
@@ -20,8 +20,8 @@ extension Swapi {
     var names: Set<String> {
         var names: Set<String> = []
         
-        for planet in planets {
-            names.insert(planet.name)
+        for result in results {
+            names.insert(result.name)
         }
         
         return names

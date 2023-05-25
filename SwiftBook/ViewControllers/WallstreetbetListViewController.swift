@@ -7,10 +7,9 @@
 
 import UIKit
 
-class WallstreetbetListViewController: UITableViewController {
+final class WallstreetbetListViewController: UITableViewController {
     
     var counter = 0
-    
     var bets: [Wallstreetbet] = []
     
     // MARK: - Table view data source
@@ -31,6 +30,7 @@ class WallstreetbetListViewController: UITableViewController {
     }
     
     // MARK: - Private Methods
+    
     private func showAlert(status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -50,19 +50,20 @@ class WallstreetbetListViewController: UITableViewController {
 extension WallstreetbetListViewController {
     
     func fetchWallstreetbet() {
-        NetworkManager.shared.fetch(dataType: [Wallstreetbet].self, from: Link.wallstreetbet.rawValue) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.bets = data
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+        NetworkManager.shared.fetch(
+            dataType: [Wallstreetbet].self,
+            from: Link.wallstreetbet.rawValue) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.bets = data
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    self?.showAlert(status: .failed)
+                    print(error)
                 }
-            case .failure(let error):
-                self?.showAlert(status: .failed)
-                
-                print(error)
             }
-        }
     }
     
 }

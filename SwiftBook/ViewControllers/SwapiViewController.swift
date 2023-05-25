@@ -7,14 +7,13 @@
 
 import UIKit
 
-class SwapiViewController: UIViewController {
+final class SwapiViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var planetNameTextField: UITextField!
     
     var planets: [Planet] = []
     var names: Set<String> = []
-    
     var planetIndex = 0
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -27,12 +26,11 @@ class SwapiViewController: UIViewController {
         elementPicker.delegate = self
         
         planetNameTextField.inputView = elementPicker
-        
         planetNameTextField.delegate = self
-        
     }
     
     // MARK: - Private Methods
+    
     private func showAlert(status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
@@ -52,19 +50,28 @@ class SwapiViewController: UIViewController {
 extension SwapiViewController {
     
     func fetchSwapi() {
-        NetworkManager.shared.fetch(dataType: Swapi.self, from: Link.swapi.rawValue) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.planets = data.planets
-                self?.names = data.names
-            case .failure(let error):
-                print(error)
-                self?.showAlert(status: .failed)
+        NetworkManager.shared.fetch(
+            dataType: Swapi.self,
+            from: Link.swapi.rawValue) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    self?.planets = data.results
+                    self?.names = data.names
+                case .failure(let error):
+                    print(error)
+                    self?.showAlert(status: .failed)
+                    DispatchQueue.main.async {
+                        self?.planetNameTextField.isEnabled = false
+                        self?.planetNameTextField.text = "No data to chose"
+                    }
+                    
+                }
             }
-        }
     }
-    
+
 }
+
+// MARK: - UIPickerViewDataSource and UIPickerViewDelegate
 
 extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -80,14 +87,13 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(planets.count, row)
-        
         planetNameTextField.text = planets[row].name + " planet"
-        
         planetIndex = row
     }
     
 }
+
+// MARK: - UITextFieldDelegate
 
 extension SwapiViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -101,7 +107,7 @@ extension SwapiViewController: UITextFieldDelegate {
         
         resultLabel.text = description
         planetNameTextField.text = description
-
+        
         if resultLabel.isHidden {
             resultLabel.isHidden.toggle()
         }

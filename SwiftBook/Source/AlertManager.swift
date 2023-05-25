@@ -9,9 +9,14 @@ import Foundation
 
 
 enum StatusAlert {
+    
     case success
     case failed
     case nothing
+    
+}
+
+extension StatusAlert {
     
     var title: String {
         switch self {
@@ -28,5 +33,6 @@ enum StatusAlert {
         case .nothing: return "Plese, enter correct name"
         }
     }
+    
 }
 

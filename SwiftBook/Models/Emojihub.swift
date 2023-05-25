@@ -31,8 +31,15 @@ extension Emojihub {
 """
     }
     
-    var emojis: [String] {
-        unicodeScalarFromUPlus(unicode: unicode)
+    var emojis: String {
+        let emojisParts = scalarFromUnicode(unicode: unicode)
+        
+        var emojis = ""
+        for emoji in emojisParts {
+            emojis.append(" " + emoji)
+        }
+        
+        return emojis
     }
     
     
@@ -60,20 +67,16 @@ extension Emojihub {
 
 extension Emojihub {
     
-    func unicodeScalarFromUPlus(unicode: [String]) -> [String] {
+    func scalarFromUnicode(unicode: [String]) -> [String] {
         var result: [String] = []
         
         for code in unicode {
             
-            var unicodeScalar = "" {
-                didSet {
-                    unicodeScalar.removeFirst(2)
-                }
-            }
+            var scalar = ""
+            scalar = code
+            scalar.removeFirst(2)
             
-            unicodeScalar = code
-            
-            let codePoint = Int(unicodeScalar, radix: 16) ?? 0
+            let codePoint = Int(scalar, radix: 16) ?? 0
             
             result.append(String(UnicodeScalar(codePoint) ?? UnicodeScalar(0)))
         }
