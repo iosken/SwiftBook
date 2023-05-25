@@ -13,8 +13,7 @@ final class SwapiViewController: UIViewController {
     @IBOutlet var planetNameTextField: UITextField!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    var planets: [Planet] = []
-    var names: [String] = []
+    var swapi = Swapi(results: [])
     var planetIndex = 0
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -60,8 +59,8 @@ extension SwapiViewController {
                 switch result {
                 case .success(let data):
                     self?.activityIndicator.stopAnimating()
-                    self?.planets = data.results
-                    self?.names = data.names
+                    self?.swapi = data
+                //    self?.names = data.names
                 case .failure(let error):
                     print(error)
                     self?.showAlert(status: .failed)
@@ -84,15 +83,15 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        planets.count
+        swapi.results.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        planets[row].name
+        swapi.results[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        planetNameTextField.text = planets[row].name
+        planetNameTextField.text = swapi.results[row].name
         planetIndex = row
     }
     
@@ -102,17 +101,17 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension SwapiViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        var description = planets[planetIndex].description
+        var description = swapi.results[planetIndex].description
         
-        if names.contains(planetNameTextField.text ?? "") {
-            planetIndex = names.firstIndex(of: planetNameTextField.text ?? "") ?? 0
-            description = planets[planetIndex].description
+        if swapi.names.contains(planetNameTextField.text ?? "") {
+            planetIndex = swapi.names.firstIndex(of: planetNameTextField.text ?? "") ?? 0
+            description = swapi.results[planetIndex].description
         } else {
-            planetNameTextField.text = names[planetIndex]
+            planetNameTextField.text = swapi.names[planetIndex]
         }
         
         resultLabel.text = description
-        planetNameTextField.text = planets[planetIndex].name
+        planetNameTextField.text = swapi.results[planetIndex].name
         
         if resultLabel.isHidden {
             resultLabel.isHidden.toggle()
