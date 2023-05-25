@@ -7,20 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ContentShower.storyboard */; };
+		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
+		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
+		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
+		C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */; };
+		C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */; };
+		C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */; };
+		C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BD2A1720A20035135D /* Emojihub.swift */; };
+		C3F595C12A17210A0035135D /* Genderize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C02A17210A0035135D /* Genderize.swift */; };
+		C3F595C32A17214B0035135D /* Swapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* Swapi.swift */; };
+		C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C42A1721AF0035135D /* Wallstreetbet.swift */; };
+		C3F595C72A1723290035135D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C62A1723290035135D /* NetworkManager.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
 		DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3D294B1949006CD17C /* SceneDelegate.swift */; };
-		DA564D40294B1949006CD17C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3F294B1949006CD17C /* ViewController.swift */; };
-		DA564D43294B1949006CD17C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA564D41294B1949006CD17C /* Main.storyboard */; };
 		DA564D45294B194A006CD17C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA564D44294B194A006CD17C /* Assets.xcassets */; };
 		DA564D48294B194A006CD17C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA564D46294B194A006CD17C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C327E4042A0507CF002A40C5 /* ContentShower.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentShower.storyboard; sourceTree = "<group>"; };
+		C385BDB42A1B662500368F26 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallstreetbetListViewController.swift; sourceTree = "<group>"; };
+		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
+		C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojihubViewController.swift; sourceTree = "<group>"; };
+		C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderizeViewController.swift; sourceTree = "<group>"; };
+		C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
+		C3F595BD2A1720A20035135D /* Emojihub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojihub.swift; sourceTree = "<group>"; };
+		C3F595C02A17210A0035135D /* Genderize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genderize.swift; sourceTree = "<group>"; };
+		C3F595C22A17214B0035135D /* Swapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swapi.swift; sourceTree = "<group>"; };
+		C3F595C42A1721AF0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
+		C3F595C62A1723290035135D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA564D3B294B1949006CD17C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA564D3D294B1949006CD17C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DA564D3F294B1949006CD17C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA564D42294B1949006CD17C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA564D44294B194A006CD17C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA564D47294B194A006CD17C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA564D49294B194A006CD17C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +57,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C327E4082A050805002A40C5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C327E4042A0507CF002A40C5 /* ContentShower.storyboard */,
+				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C327E4092A050823002A40C5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D49294B194A006CD17C /* Info.plist */,
+				DA564D3B294B1949006CD17C /* AppDelegate.swift */,
+				DA564D3D294B1949006CD17C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C327E40A2A05082F002A40C5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */,
+				C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */,
+				C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */,
+				C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */,
+				C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C327E40B2A050848002A40C5 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C3F595C62A1723290035135D /* NetworkManager.swift */,
+				C385BDB42A1B662500368F26 /* AlertManager.swift */,
+				DA564D44294B194A006CD17C /* Assets.xcassets */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		C3F595BF2A1720A70035135D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C3F595BD2A1720A20035135D /* Emojihub.swift */,
+				C3F595C02A17210A0035135D /* Genderize.swift */,
+				C3F595C22A17214B0035135D /* Swapi.swift */,
+				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DA564D2F294B1949006CD17C = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +128,11 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
-				DA564D3B294B1949006CD17C /* AppDelegate.swift */,
-				DA564D3D294B1949006CD17C /* SceneDelegate.swift */,
-				DA564D3F294B1949006CD17C /* ViewController.swift */,
-				DA564D41294B1949006CD17C /* Main.storyboard */,
-				DA564D44294B194A006CD17C /* Assets.xcassets */,
-				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
-				DA564D49294B194A006CD17C /* Info.plist */,
+				C3F595BF2A1720A70035135D /* Models */,
+				C327E4082A050805002A40C5 /* Storyboards */,
+				C327E40A2A05082F002A40C5 /* ViewControllers */,
+				C327E4092A050823002A40C5 /* App */,
+				C327E40B2A050848002A40C5 /* Source */,
 			);
 			path = SwiftBook;
 			sourceTree = "<group>";
@@ -125,9 +195,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */,
 				DA564D48294B194A006CD17C /* LaunchScreen.storyboard in Resources */,
 				DA564D45294B194A006CD17C /* Assets.xcassets in Resources */,
-				DA564D43294B1949006CD17C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +208,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA564D40294B1949006CD17C /* ViewController.swift in Sources */,
+				C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */,
+				C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */,
+				C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
+				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
+				C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
+				C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */,
+				C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */,
+				C3F595C32A17214B0035135D /* Swapi.swift in Sources */,
+				C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */,
+				C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */,
+				C3F595C12A17210A0035135D /* Genderize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DA564D41294B1949006CD17C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA564D42294B1949006CD17C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA564D46294B194A006CD17C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,20 +359,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SwiftBook/Info.plist;
+				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContentShower;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.texhap.SwiftBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosken.SwiftBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -315,20 +387,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SwiftBook/Info.plist;
+				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ContentShower;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.texhap.SwiftBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iosken.SwiftBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
