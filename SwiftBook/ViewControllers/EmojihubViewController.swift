@@ -12,7 +12,7 @@ final class EmojihubViewController: UIViewController {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
     
-    var emojihub: Emojihub? {
+    private var emojihub: Emojihub? {
         didSet {
             resultLabel.text = emojihub?.description ?? "no data"
             
@@ -62,7 +62,6 @@ extension EmojihubViewController {
                 case .failure(let error):
                     print(error)
                     self?.showAlert(status: .failed)
-                    
                 }
             }
     }

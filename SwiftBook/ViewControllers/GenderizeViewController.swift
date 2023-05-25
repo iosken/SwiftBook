@@ -9,10 +9,28 @@ import UIKit
 
 final class GenderizeViewController: UIViewController {
     
-    @IBOutlet var resultLabel: UILabel!
     @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var resultLabel: UILabel!
     
-    private var name = "Scott"
+    private var name = "Scott" {
+        didSet {
+            nameTextField.text = name
+            
+            if nameTextField.isHidden {
+                nameTextField.isHidden.toggle()
+            }
+        }
+    }
+    
+    private var descriptionName = "" {
+        didSet {
+            resultLabel.text = descriptionName
+            
+            if resultLabel.isHidden {
+                resultLabel.isHidden.toggle()
+            }
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -23,7 +41,6 @@ final class GenderizeViewController: UIViewController {
         super.viewDidLoad()
         
         nameTextField.delegate = self
-        nameTextField.text = name
     }
     
     // MARK: - Private Methods
@@ -47,14 +64,14 @@ final class GenderizeViewController: UIViewController {
 extension GenderizeViewController {
     
     func fetchGenderize() {
-        let link = Link.genderize(from: name)
-        
         NetworkManager.shared.fetch(
             dataType: Genderize.self,
-            from: link) { [weak self] result in
+            from: Link.genderize(from: name)) { [weak self] result in
                 switch result {
                 case .success(let data):
-                    self?.resultLabel.text = data.description
+                    self?.name = data.name
+                    self?.descriptionName = data.description
+                    
                 case .failure(let error):
                     print(error)
                     self?.showAlert(status: .failed)
@@ -71,7 +88,6 @@ extension GenderizeViewController: UITextFieldDelegate {
             nameTextField.text?.removeLast()
             return false
         }
-        
         return true
     }
     
@@ -89,7 +105,6 @@ extension GenderizeViewController: UITextFieldDelegate {
             name = nameTextField.text ?? name
             fetchGenderize()
         } else {
-            showAlert(status: .nothing)
             nameTextField.text? = name
             return
         }

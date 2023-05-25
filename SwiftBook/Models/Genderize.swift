@@ -21,9 +21,12 @@ extension Genderize {
     var description: String {
                 """
             Current name is \(name)
+        
             with ID \(count)
+        
             and probability \(probability)
-            names gender is \(gender)
+        
+            gender is \(gender)
         """
     }
     

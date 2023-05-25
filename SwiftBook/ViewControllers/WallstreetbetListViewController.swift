@@ -9,8 +9,8 @@ import UIKit
 
 final class WallstreetbetListViewController: UITableViewController {
     
-    var counter = 0
-    var bets: [Wallstreetbet] = []
+    private var counter = 0
+    private var bets: [Wallstreetbet] = []
     
     // MARK: - Table view data source
     

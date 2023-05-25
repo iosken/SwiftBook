@@ -12,8 +12,8 @@ enum Link: String, CaseIterable {
     case swapi = "https://swapi.dev/api/planets/"
     case wallstreetbet = "https://tradestie.com/api/v1/apps/reddit"
     
-    static func genderize(from ending: String?) -> String {
-        "https://api.genderize.io/?name=" + (ending ?? "Scott")
+    static func genderize(from name: String) -> String {
+        "https://api.genderize.io/?name=" + (name)
     }
 }
 

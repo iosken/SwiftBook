@@ -20,6 +20,7 @@ final class SwapiViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         let elementPicker = UIPickerView()
