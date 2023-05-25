@@ -85,6 +85,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fPO-rW-Rie">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gql-kd-bho"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,6 +97,8 @@
                             <constraint firstItem="QbM-xU-RFM" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="Mwh-bc-85M"/>
                             <constraint firstItem="wSO-Rr-9JO" firstAttribute="top" secondItem="QbM-xU-RFM" secondAttribute="bottom" constant="80" id="Ncq-7R-xum"/>
                             <constraint firstItem="wSO-Rr-9JO" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="Rrm-5G-l8P"/>
+                            <constraint firstItem="fPO-rW-Rie" firstAttribute="centerX" secondItem="LMp-c9-XXE" secondAttribute="centerX" id="S3D-CV-mAp"/>
+                            <constraint firstItem="fPO-rW-Rie" firstAttribute="centerY" secondItem="LMp-c9-XXE" secondAttribute="centerY" id="aIO-Gc-5sY"/>
                             <constraint firstItem="Gql-kd-bho" firstAttribute="bottom" secondItem="wSO-Rr-9JO" secondAttribute="bottom" constant="20" id="g2X-pz-Lu5"/>
                             <constraint firstItem="33a-un-dJg" firstAttribute="leading" secondItem="Gql-kd-bho" secondAttribute="leading" constant="16" id="ufK-VU-x3i"/>
                             <constraint firstItem="Gql-kd-bho" firstAttribute="trailing" secondItem="33a-un-dJg" secondAttribute="trailing" constant="16" id="yVe-GT-OMD"/>
@@ -101,6 +106,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Emoji randomizer" id="JeR-fQ-ZlL"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="fPO-rW-Rie" id="PbA-NX-KMu"/>
                         <outlet property="emojiLabel" destination="QbM-xU-RFM" id="THX-h7-oTw"/>
                         <outlet property="resultLabel" destination="33a-un-dJg" id="0IV-F4-xCJ"/>
                     </connections>
@@ -128,6 +134,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="LZx-fs-SnZ">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xks-nl-UDE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -136,11 +145,14 @@
                             <constraint firstItem="xks-nl-UDE" firstAttribute="trailing" secondItem="k1Z-te-8q5" secondAttribute="trailing" constant="20" id="Q80-PH-8Lt"/>
                             <constraint firstItem="ECN-2g-gpS" firstAttribute="centerX" secondItem="wIp-Ft-35z" secondAttribute="centerX" id="cI6-Rc-cDQ"/>
                             <constraint firstItem="ECN-2g-gpS" firstAttribute="centerY" secondItem="wIp-Ft-35z" secondAttribute="centerY" id="gPQ-pJ-nkw"/>
+                            <constraint firstItem="LZx-fs-SnZ" firstAttribute="centerX" secondItem="wIp-Ft-35z" secondAttribute="centerX" id="rqW-Pg-FxV"/>
                             <constraint firstItem="k1Z-te-8q5" firstAttribute="top" secondItem="xks-nl-UDE" secondAttribute="top" constant="20" id="wYL-o1-0m4"/>
+                            <constraint firstItem="LZx-fs-SnZ" firstAttribute="centerY" secondItem="wIp-Ft-35z" secondAttribute="centerY" id="xh0-N8-Abp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Genderize" id="dAw-ne-65R"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="LZx-fs-SnZ" id="xql-On-dZW"/>
                         <outlet property="nameTextField" destination="k1Z-te-8q5" id="70Y-il-hsl"/>
                         <outlet property="resultLabel" destination="ECN-2g-gpS" id="R1I-kH-L5O"/>
                     </connections>
@@ -168,6 +180,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="k69-eS-FRE">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ko0-Rx-S4R"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -178,10 +193,13 @@
                             <constraint firstItem="ko0-Rx-S4R" firstAttribute="trailing" secondItem="pdU-Qb-Mkw" secondAttribute="trailing" constant="16" id="Rwg-oq-dyi"/>
                             <constraint firstItem="X5N-1S-sII" firstAttribute="top" secondItem="ko0-Rx-S4R" secondAttribute="top" constant="20" id="kI6-sO-cQ4"/>
                             <constraint firstItem="pdU-Qb-Mkw" firstAttribute="top" secondItem="X5N-1S-sII" secondAttribute="bottom" constant="25" id="pEk-HH-qac"/>
+                            <constraint firstItem="k69-eS-FRE" firstAttribute="centerY" secondItem="SZI-GB-f7X" secondAttribute="centerY" id="paB-71-yvG"/>
+                            <constraint firstItem="k69-eS-FRE" firstAttribute="centerX" secondItem="SZI-GB-f7X" secondAttribute="centerX" id="vfz-FU-NzU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="StarWars Planets" id="iCf-6e-GPG"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="k69-eS-FRE" id="y7Q-BV-d79"/>
                         <outlet property="planetNameTextField" destination="X5N-1S-sII" id="IXC-EB-QXX"/>
                         <outlet property="resultLabel" destination="pdU-Qb-Mkw" id="xl6-NN-TSd"/>
                     </connections>

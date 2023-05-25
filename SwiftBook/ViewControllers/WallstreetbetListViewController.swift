@@ -24,6 +24,14 @@ final class WallstreetbetListViewController: UITableViewController {
         
         var configuration = cell.defaultContentConfiguration()
         configuration.text = bets[indexPath.row].description
+        
+        if bets.isEmpty{
+            let indicator = UIActivityIndicatorView()
+            indicator.startAnimating()
+            cell.addSubview(indicator)
+        }
+
+        
         cell.contentConfiguration = configuration
         
         return cell

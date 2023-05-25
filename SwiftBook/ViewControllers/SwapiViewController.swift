@@ -11,9 +11,10 @@ final class SwapiViewController: UIViewController {
     
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var planetNameTextField: UITextField!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     var planets: [Planet] = []
-    var names: Set<String> = []
+    var names: [String] = []
     var planetIndex = 0
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -23,6 +24,8 @@ final class SwapiViewController: UIViewController {
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
+        activityIndicator.startAnimating()
+        
         let elementPicker = UIPickerView()
         elementPicker.delegate = self
         
@@ -56,6 +59,7 @@ extension SwapiViewController {
             from: Link.swapi.rawValue) { [weak self] result in
                 switch result {
                 case .success(let data):
+                    self?.activityIndicator.stopAnimating()
                     self?.planets = data.results
                     self?.names = data.names
                 case .failure(let error):
@@ -88,7 +92,7 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        planetNameTextField.text = planets[row].name + " planet"
+        planetNameTextField.text = planets[row].name
         planetIndex = row
     }
     
@@ -98,16 +102,17 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
 extension SwapiViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        var description = ""
+        var description = planets[planetIndex].description
         
         if names.contains(planetNameTextField.text ?? "") {
-            description = planetNameTextField.text ?? ""
-        } else {
+            planetIndex = names.firstIndex(of: planetNameTextField.text ?? "") ?? 0
             description = planets[planetIndex].description
+        } else {
+            planetNameTextField.text = names[planetIndex]
         }
         
         resultLabel.text = description
-        planetNameTextField.text = description
+        planetNameTextField.text = planets[planetIndex].name
         
         if resultLabel.isHidden {
             resultLabel.isHidden.toggle()

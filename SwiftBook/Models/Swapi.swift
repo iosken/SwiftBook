@@ -17,11 +17,11 @@ struct Swapi: Decodable {
 
 extension Swapi {
     
-    var names: Set<String> {
-        var names: Set<String> = []
+    var names: [String] {
+        var names: [String] = []
         
         for result in results {
-            names.insert(result.name)
+            names.append(result.name)
         }
         
         return names

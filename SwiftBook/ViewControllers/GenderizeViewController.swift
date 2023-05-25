@@ -11,6 +11,7 @@ final class GenderizeViewController: UIViewController {
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var resultLabel: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     private var name = "Scott" {
         didSet {
@@ -40,6 +41,7 @@ final class GenderizeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicator.startAnimating()
         nameTextField.delegate = self
     }
     
@@ -69,6 +71,7 @@ extension GenderizeViewController {
             from: Link.genderize(from: name)) { [weak self] result in
                 switch result {
                 case .success(let data):
+                    self?.activityIndicator.stopAnimating()
                     self?.name = data.name
                     self?.descriptionName = data.description
                     
