@@ -7,6 +7,26 @@
 
 import Foundation
 
+//class ShowAlert {
+//    let shared = ShowAlert()
+//    
+//    func showAlert(self: UIViewController, status: StatusAlert) {
+//        DispatchQueue.main.async {
+//            let alert = UIAlertController(
+//                title: status.title,
+//                message: status.message,
+//                preferredStyle: .alert
+//            )
+//            
+//            let okAction = UIAlertAction(title: "OK", style: .default)
+//            alert.addAction(okAction)
+//            self.present(alert, animated: true)
+//        }
+//    }
+//    
+//    private init() {}
+//}
+
 
 enum StatusAlert {
     

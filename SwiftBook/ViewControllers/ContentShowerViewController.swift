@@ -7,6 +7,15 @@
 
 import UIKit
 
+private enum ID: String {
+    
+    case emojihub = "emojihub"
+    case genderize = "genderize"
+    case swapi = "swapi"
+    case wallstreetbet = "wallstreetbet"
+    
+}
+
 private enum UserAction: String, CaseIterable {
     
     case emojihub = "Emoji randomizer"
@@ -49,10 +58,10 @@ final class ContentShowerViewController: UITableViewController {
         let userAction = userActions[indexPath.item]
         
         switch userAction {
-        case .emojihub: performSegue(withIdentifier: "emojihub", sender: nil)
-        case .genderize: performSegue(withIdentifier: "genderize", sender: nil)
-        case .swapi: performSegue(withIdentifier: "swapi", sender: nil)
-        case .wallstreetbet: performSegue(withIdentifier: "wallstreetbet", sender: nil)
+        case .emojihub: performSegue(withIdentifier: ID.emojihub.rawValue, sender: nil)
+        case .genderize: performSegue(withIdentifier: ID.genderize.rawValue, sender: nil)
+        case .swapi: performSegue(withIdentifier: ID.swapi.rawValue, sender: nil)
+        case .wallstreetbet: performSegue(withIdentifier: ID.wallstreetbet.rawValue, sender: nil)
         }
     }
     
@@ -60,13 +69,13 @@ final class ContentShowerViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "emojihub":
+        case ID.emojihub.rawValue:
             guard let emojihubVC = segue.destination as? EmojihubViewController else { return }
             emojihubVC.fetchEmojihub()
-        case "genderize":
+        case ID.genderize.rawValue:
             guard let genderizeVC = segue.destination as? GenderizeViewController else { return }
             genderizeVC.fetchGenderize()
-        case "swapi":
+        case ID.swapi.rawValue:
             guard let swapiVC = segue.destination as? SwapiViewController else { return }
             swapiVC.fetchSwapi()
         default:

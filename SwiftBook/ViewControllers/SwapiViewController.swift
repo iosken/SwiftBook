@@ -103,6 +103,7 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 // MARK: - UITextFieldDelegate
 
 extension SwapiViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         var description = swapi.results[planetIndex].description
         
@@ -120,4 +121,5 @@ extension SwapiViewController: UITextFieldDelegate {
             resultLabel.isHidden.toggle()
         }
     }
+    
 }

@@ -12,6 +12,7 @@ final class EmojihubViewController: UIViewController {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var getNewButton: UIButton!
     
     private var emojihub: Emojihub? {
         didSet {
@@ -23,6 +24,9 @@ final class EmojihubViewController: UIViewController {
             }
             if resultLabel.isHidden {
                 resultLabel.isHidden.toggle()
+            }
+            if getNewButton.isHidden {
+                getNewButton.isHidden.toggle()
             }
         }
     }

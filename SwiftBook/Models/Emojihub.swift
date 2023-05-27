@@ -71,7 +71,6 @@ extension Emojihub {
         var result: [String] = []
         
         for code in unicode {
-            
             var scalar = ""
             scalar = code
             scalar.removeFirst(2)
