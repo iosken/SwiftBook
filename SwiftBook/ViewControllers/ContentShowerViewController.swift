@@ -85,20 +85,4 @@ final class ContentShowerViewController: UITableViewController {
         }
     }
     
-    // MARK: - Private Methods
-    
-    private func showAlert(status: StatusAlert) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: status.title,
-                message: status.message,
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
-    
 }

@@ -41,22 +41,6 @@ final class EmojihubViewController: UIViewController {
         fetchEmojihub()
     }
     
-    // MARK: - Private Methods
-    
-    private func showAlert(status: StatusAlert) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: status.title,
-                message: status.message,
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
-    
 }
 
 extension EmojihubViewController {
@@ -71,7 +55,9 @@ extension EmojihubViewController {
                     self?.emojihub = data
                 case .failure(let error):
                     print(error)
-                    self?.showAlert(status: .failed)
+                    if let self = self {
+                        ShowAlert.shared.showAlert(where: self, status: .failed)
+                    }
                 }
             }
     }

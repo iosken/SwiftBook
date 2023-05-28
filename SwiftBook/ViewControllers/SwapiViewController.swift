@@ -32,22 +32,6 @@ final class SwapiViewController: UIViewController {
         planetNameTextField.delegate = self
     }
     
-    // MARK: - Private Methods
-    
-    private func showAlert(status: StatusAlert) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: status.title,
-                message: status.message,
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
-    
 }
 
 extension SwapiViewController {
@@ -65,12 +49,15 @@ extension SwapiViewController {
                     }
                 case .failure(let error):
                     print(error)
-                    self?.showAlert(status: .failed)
+                    
+                    if let self = self {
+                        ShowAlert.shared.showAlert(where: self, status: .failed)
+                    }
+                    
                     DispatchQueue.main.async {
                         self?.planetNameTextField.isEnabled = false
                         self?.planetNameTextField.text = "No data to chose"
                     }
-                    
                 }
             }
     }

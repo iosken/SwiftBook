@@ -7,26 +7,7 @@
 
 import Foundation
 
-//class ShowAlert {
-//    let shared = ShowAlert()
-//    
-//    func showAlert(self: UIViewController, status: StatusAlert) {
-//        DispatchQueue.main.async {
-//            let alert = UIAlertController(
-//                title: status.title,
-//                message: status.message,
-//                preferredStyle: .alert
-//            )
-//            
-//            let okAction = UIAlertAction(title: "OK", style: .default)
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true)
-//        }
-//    }
-//    
-//    private init() {}
-//}
-
+import UIKit
 
 enum StatusAlert {
     
@@ -56,3 +37,22 @@ extension StatusAlert {
     
 }
 
+final class ShowAlert {
+    static let shared = ShowAlert()
+    
+    func showAlert(where linkObject: UIViewController, status: StatusAlert) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: status.title,
+                message: status.message,
+                preferredStyle: .alert
+            )
+    
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            linkObject.present(alert, animated: true)
+        }
+    }
+
+    private init() {}
+}

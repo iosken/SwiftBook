@@ -45,22 +45,6 @@ final class GenderizeViewController: UIViewController {
         nameTextField.delegate = self
     }
     
-    // MARK: - Private Methods
-    
-    private func showAlert(status: StatusAlert) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: status.title,
-                message: status.message,
-                preferredStyle: .alert
-            )
-            
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            self.present(alert, animated: true)
-        }
-    }
-    
 }
 
 extension GenderizeViewController {
@@ -77,7 +61,9 @@ extension GenderizeViewController {
                     
                 case .failure(let error):
                     print(error)
-                    self?.showAlert(status: .failed)
+                    if let self = self {
+                        ShowAlert.shared.showAlert(where: self, status: .failed)
+                    }
                 }
             }
     }
@@ -98,7 +84,7 @@ extension GenderizeViewController: UITextFieldDelegate {
         (nameTextField.text ?? "").forEach { char in
             let symbol = String(char)
             if Int(symbol) != nil {
-                showAlert(status: .nothing)
+                ShowAlert.shared.showAlert(where: self, status: .nothing)
                 nameTextField.text? = name
                 return
             }
