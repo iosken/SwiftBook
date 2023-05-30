@@ -11,6 +11,7 @@
 		C338258D2A244FE50022DFBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C338258C2A244FE50022DFBD /* Alamofire */; };
 		C33825922A2465380022DFBD /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825912A2465380022DFBD /* Parsing.swift */; };
 		C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825932A24AB3E0022DFBD /* ParsingCollection.swift */; };
+		C33825972A25DF7A0022DFBD /* SpringAnimation in Frameworks */ = {isa = PBXBuildFile; productRef = C33825962A25DF7A0022DFBD /* SpringAnimation */; };
 		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
 		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C33825972A25DF7A0022DFBD /* SpringAnimation in Frameworks */,
 				C338258D2A244FE50022DFBD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +173,7 @@
 			name = SwiftBook;
 			packageProductDependencies = (
 				C338258C2A244FE50022DFBD /* Alamofire */,
+				C33825962A25DF7A0022DFBD /* SpringAnimation */,
 			);
 			productName = SwiftBook;
 			productReference = DA564D38294B1949006CD17C /* SwiftBook.app */;
@@ -202,6 +205,7 @@
 			mainGroup = DA564D2F294B1949006CD17C;
 			packageReferences = (
 				C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C33825952A25DF7A0022DFBD /* XCRemoteSwiftPackageReference "SpringAnimation" */,
 			);
 			productRefGroup = DA564D39294B1949006CD17C /* Products */;
 			projectDirPath = "";
@@ -464,6 +468,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		C33825952A25DF7A0022DFBD /* XCRemoteSwiftPackageReference "SpringAnimation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LexDeBash/SpringAnimation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -471,6 +483,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C33825962A25DF7A0022DFBD /* SpringAnimation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C33825952A25DF7A0022DFBD /* XCRemoteSwiftPackageReference "SpringAnimation" */;
+			productName = SpringAnimation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

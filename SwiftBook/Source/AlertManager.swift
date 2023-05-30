@@ -49,11 +49,11 @@ final class AlertManager {
                 message: status.message,
                 preferredStyle: .alert
             )
-    
+            
             let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
             linkObject?.present(alert, animated: true)
         }
     }
-
+    
 }

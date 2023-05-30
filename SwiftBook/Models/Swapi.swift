@@ -42,7 +42,7 @@ extension Swapi: Parsing {
         guard let swapiData = value as? [String: Any] else {
             return Swapi(data: [:])
         }
-
+        
         return Swapi(data: swapiData)
     }
     

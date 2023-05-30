@@ -29,7 +29,6 @@ enum Link {
     }
 }
 
-
 enum NetworkError: Error {
     case invalidURL
     case noData
@@ -55,7 +54,7 @@ final class NetworkManager {
                     completion(.failure(error))
                     print(error.localizedDescription)
                 }
-        }
+            }
         
     }
     
@@ -72,7 +71,7 @@ final class NetworkManager {
                     completion(.failure(error))
                     print(error.localizedDescription)
                 }
-        }
+            }
         
     }
     
