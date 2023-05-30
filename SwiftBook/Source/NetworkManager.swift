@@ -6,14 +6,26 @@
 //
 
 import Foundation
+import Alamofire
 
-enum Link: String, CaseIterable {
-    case emojihub = "https://emojihub.yurace.pro/api/random"
-    case swapi = "https://swapi.dev/api/planets/"
-    case wallstreetbet = "https://tradestie.com/api/v1/apps/reddit"
+enum Link {
+    case emojihub
+    case swapi
+    case wallstreetbet
     
-    static func genderize(from name: String) -> String {
-        "https://api.genderize.io/?name=" + (name)
+    var url: URL {
+        switch self {
+        case .emojihub:
+            return URL(string: "https://emojihub.yurace.pro/api/random")!
+        case .swapi:
+            return URL(string: "https://emojihub.yurace.pro/api/random")!
+        case .wallstreetbet:
+            return URL(string: "https://emojihub.yurace.pro/api/random")!
+        }
+    }
+    
+    static func genderize(from name: String) -> URL {
+        URL(string: "https://api.genderize.io/?name=" + (name))!
     }
 }
 
@@ -27,33 +39,40 @@ final class NetworkManager {
     
     static let shared = NetworkManager()
     
-    func fetch<T: Decodable>(dataType: T.Type, from url: String?, completion: @escaping(Result<T, NetworkError>) -> Void) {
-        guard let url = URL(string: url ?? "") else {
-            completion(.failure(.invalidURL))
-            return
+    private init() {}
+    
+    func fetchData<T: Parsing & Decodable>(type: T.Type, from url: URL, completion: @escaping(Result<T, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let model = T.getData(from: value)
+                    completion(.success(model))
+                case .failure(let error):
+                    completion(.failure(error))
+                    print(error.localizedDescription)
+                }
         }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                
-                let type = try decoder.decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(type))
-                }
-            } catch {
-                completion(.failure(.decodingError))
-                
-            }
-        }.resume()
     }
     
-    private init() {}
+    func fetchData<T: ParsingCollection & Decodable>(type: T.Type, from url: URL, completion: @escaping(Result<[T], AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    let model = T.getData(from: value)
+                    completion(.success(model))
+                case .failure(let error):
+                    completion(.failure(error))
+                    print(error.localizedDescription)
+                }
+        }
+        
+    }
+    
+    
     
 }

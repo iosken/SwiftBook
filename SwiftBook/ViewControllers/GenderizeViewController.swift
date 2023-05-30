@@ -50,22 +50,15 @@ final class GenderizeViewController: UIViewController {
 extension GenderizeViewController {
     
     func fetchGenderize() {
-        NetworkManager.shared.fetch(
-            dataType: Genderize.self,
-            from: Link.genderize(from: name)) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.activityIndicator.stopAnimating()
-                    self?.name = data.name
-                    self?.descriptionName = data.description
-                    
-                case .failure(let error):
-                    print(error)
-                    if let self = self {
-                        ShowAlert.shared.showAlert(where: self, status: .failed)
-                    }
-                }
+        NetworkManager.shared.fetchData(type: Emoji.self, from: Link.emojihub.url) { [weak self] result in
+            switch result {
+            case .success(let genderize):
+                self?.name = genderize.name
+                self?.descriptionName = genderize.description
+            case .failure(let error):
+                print(error.localizedDescription)
             }
+        }
     }
     
 }

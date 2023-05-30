@@ -7,17 +7,35 @@
 
 import Foundation
 
-struct Emojihub: Decodable {
+struct Emoji: Decodable {
     
     let name: String
     let category: String
     let group: String
     let htmlCode: [String]
-    let unicode: [String]
+    let unicodes: [String]
     
 }
 
-extension Emojihub {
+extension Emoji: Parsing {
+    
+    init(data: [String: Any]) {
+        name = data["name"] as? String ?? ""
+        category = data["category"] as? String ?? ""
+        group = data["group"] as? String ?? ""
+        htmlCode = data["htmlCode"] as? [String] ?? [""]
+        unicodes = data["unicode"] as? [String] ?? [""]
+    }
+    
+    static func getData(from value: Any) -> Emoji {
+        guard let emojiData = value as? [String: Any] else { return Emoji(data: [:]) }
+        
+        return Emoji(data: emojiData)
+    }
+    
+}
+
+extension Emoji {
     
     var description: String {
         """
@@ -32,7 +50,7 @@ extension Emojihub {
     }
     
     var emojis: String {
-        let emojisParts = scalarFromUnicode(unicode: unicode)
+        let emojisParts = scalarsFromUnicodes(unicodes: unicodes)
         
         var emojis = ""
         for emoji in emojisParts {
@@ -56,7 +74,7 @@ extension Emojihub {
     var allUnicode: String {
         var result = ""
         
-        unicode.forEach { unicode in
+        unicodes.forEach { unicode in
             result += " " + unicode
         }
         
@@ -65,12 +83,12 @@ extension Emojihub {
     
 }
 
-extension Emojihub {
+extension Emoji {
     
-    func scalarFromUnicode(unicode: [String]) -> [String] {
+    func scalarsFromUnicodes(unicodes: [String]) -> [String] {
         var result: [String] = []
         
-        for code in unicode {
+        for code in unicodes {
             var scalar = ""
             scalar = code
             scalar.removeFirst(2)

@@ -40,22 +40,32 @@ final class WallstreetbetListViewController: UITableViewController {
 extension WallstreetbetListViewController {
     
     func fetchWallstreetbet() {
-        NetworkManager.shared.fetch(
-            dataType: [Wallstreetbet].self,
-            from: Link.wallstreetbet.rawValue) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.bets = data
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    if let self = self {
-                        ShowAlert.shared.showAlert(where: self, status: .failed)
-                    }
-                    print(error)
-                }
-            }
+//        NetworkManager.shared.fetchData(type: Wallstreetbet.self, from: Link.wallstreetbet.url) { [weak self] result in
+//            switch result {
+//            case .success(let bets):
+//                self?.bets = bets
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
     }
+//    func fetchWallstreetbet() {
+//        NetworkManager.shared.fetch(
+//            dataType: [Wallstreetbet].self,
+//            from: Link.wallstreetbet.rawValue) { [weak self] result in
+//                switch result {
+//                case .success(let data):
+//                    self?.bets = data
+//                    DispatchQueue.main.async {
+//                        self?.tableView.reloadData()
+//                    }
+//                case .failure(let error):
+//                    if let self = self {
+//                        ShowAlert.shared.showAlert(where: self, status: .failed)
+//                    }
+//                    print(error)
+//                }
+//            }
+//    }
     
 }

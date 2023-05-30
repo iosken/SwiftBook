@@ -28,3 +28,20 @@ extension Wallstreetbet {
     }
     
 }
+
+extension Wallstreetbet: Parsing {
+    
+    init(data: [String: Any]) {
+        noOfComments = data["noOfComments"] as? Int ?? 0
+        sentiment = data["sentiment"] as? String ?? ""
+        sentimentScore = data["sentimentScore"] as? Double ?? 0
+        ticker = data["ticker"] as? String ?? ""
+    }
+    
+    static func getData(from value: Any) -> Wallstreetbet {
+        guard let emojiData = value as? [String: Any] else { return Wallstreetbet(data: [:]) }
+        
+        return Wallstreetbet(data: emojiData)
+    }
+    
+}

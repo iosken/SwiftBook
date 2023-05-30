@@ -14,7 +14,9 @@ final class EmojihubViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var getNewButton: UIButton!
     
-    private var emojihub: Emojihub? {
+    private let networkManager = NetworkManager.shared
+    
+    private var emojihub: Emoji? {
         didSet {
             resultLabel.text = emojihub?.description ?? "no data"
             emojiLabel.text = emojihub?.emojis
@@ -41,25 +43,15 @@ final class EmojihubViewController: UIViewController {
         fetchEmojihub()
     }
     
-}
-
-extension EmojihubViewController {
-    
     func fetchEmojihub() {
-        NetworkManager.shared.fetch(
-            dataType: Emojihub.self,
-            from: Link.emojihub.rawValue) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.activityIndicator.stopAnimating()
-                    self?.emojihub = data
-                case .failure(let error):
-                    print(error)
-                    if let self = self {
-                        ShowAlert.shared.showAlert(where: self, status: .failed)
-                    }
-                }
+        networkManager.fetchData(type: Emoji.self, from: Link.emojihub.url) { [weak self] result in
+            switch result {
+            case .success(let emojihub):
+                self?.emojihub = emojihub
+            case .failure(let error):
+                print(error.localizedDescription)
             }
+        }
     }
     
 }

@@ -37,31 +37,16 @@ final class SwapiViewController: UIViewController {
 extension SwapiViewController {
     
     func fetchSwapi() {
-        NetworkManager.shared.fetch(
-            dataType: Swapi.self,
-            from: Link.swapi.rawValue) { [weak self] result in
-                switch result {
-                case .success(let data):
-                    self?.activityIndicator.stopAnimating()
-                    self?.swapi = data
-                    if self?.planetNameTextField.isHidden ?? true {
-                        self?.planetNameTextField.isHidden = false
-                    }
-                case .failure(let error):
-                    print(error)
-                    
-                    if let self = self {
-                        ShowAlert.shared.showAlert(where: self, status: .failed)
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self?.planetNameTextField.isEnabled = false
-                        self?.planetNameTextField.text = "No data to chose"
-                    }
-                }
+        NetworkManager.shared.fetchData(type: Planet.self, from: Link.emojihub.url) { [weak self] result in
+            switch result {
+            case .success(let genderize):
+                self?.swapi = Swapi(results: genderize)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
+        }
     }
-
+    
 }
 
 // MARK: - UIPickerViewDataSource and UIPickerViewDelegate

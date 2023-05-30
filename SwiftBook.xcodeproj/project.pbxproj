@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ContentShower.storyboard */; };
+		C338258D2A244FE50022DFBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C338258C2A244FE50022DFBD /* Alamofire */; };
+		C33825922A2465380022DFBD /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825912A2465380022DFBD /* Parsing.swift */; };
+		C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825932A24AB3E0022DFBD /* ParsingCollection.swift */; };
 		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
 		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
 		C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */; };
 		C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */; };
 		C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */; };
-		C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BD2A1720A20035135D /* Emojihub.swift */; };
+		C3F595BE2A1720A20035135D /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BD2A1720A20035135D /* Emoji.swift */; };
 		C3F595C12A17210A0035135D /* Genderize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C02A17210A0035135D /* Genderize.swift */; };
 		C3F595C32A17214B0035135D /* Swapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* Swapi.swift */; };
 		C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C42A1721AF0035135D /* Wallstreetbet.swift */; };
@@ -27,13 +30,15 @@
 
 /* Begin PBXFileReference section */
 		C327E4042A0507CF002A40C5 /* ContentShower.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentShower.storyboard; sourceTree = "<group>"; };
+		C33825912A2465380022DFBD /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
+		C33825932A24AB3E0022DFBD /* ParsingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingCollection.swift; sourceTree = "<group>"; };
 		C385BDB42A1B662500368F26 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallstreetbetListViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojihubViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderizeViewController.swift; sourceTree = "<group>"; };
 		C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
-		C3F595BD2A1720A20035135D /* Emojihub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojihub.swift; sourceTree = "<group>"; };
+		C3F595BD2A1720A20035135D /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		C3F595C02A17210A0035135D /* Genderize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genderize.swift; sourceTree = "<group>"; };
 		C3F595C22A17214B0035135D /* Swapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swapi.swift; sourceTree = "<group>"; };
 		C3F595C42A1721AF0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C338258D2A244FE50022DFBD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,10 +104,19 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		C33825902A2464F80022DFBD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C33825912A2465380022DFBD /* Parsing.swift */,
+				C33825932A24AB3E0022DFBD /* ParsingCollection.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		C3F595BF2A1720A70035135D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C3F595BD2A1720A20035135D /* Emojihub.swift */,
+				C3F595BD2A1720A20035135D /* Emoji.swift */,
 				C3F595C02A17210A0035135D /* Genderize.swift */,
 				C3F595C22A17214B0035135D /* Swapi.swift */,
 				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
@@ -128,6 +143,7 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
+				C33825902A2464F80022DFBD /* Protocols */,
 				C3F595BF2A1720A70035135D /* Models */,
 				C327E4082A050805002A40C5 /* Storyboards */,
 				C327E40A2A05082F002A40C5 /* ViewControllers */,
@@ -153,6 +169,9 @@
 			dependencies = (
 			);
 			name = SwiftBook;
+			packageProductDependencies = (
+				C338258C2A244FE50022DFBD /* Alamofire */,
+			);
 			productName = SwiftBook;
 			productReference = DA564D38294B1949006CD17C /* SwiftBook.app */;
 			productType = "com.apple.product-type.application";
@@ -181,6 +200,9 @@
 				Base,
 			);
 			mainGroup = DA564D2F294B1949006CD17C;
+			packageReferences = (
+				C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = DA564D39294B1949006CD17C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,7 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3F595BE2A1720A20035135D /* Emojihub.swift in Sources */,
+				C33825922A2465380022DFBD /* Parsing.swift in Sources */,
+				C3F595BE2A1720A20035135D /* Emoji.swift in Sources */,
 				C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */,
 				C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
@@ -217,6 +240,7 @@
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
 				C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */,
 				C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */,
+				C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */,
 				C3F595C32A17214B0035135D /* Swapi.swift in Sources */,
 				C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */,
 				C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */,
@@ -430,6 +454,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C338258C2A244FE50022DFBD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DA564D30294B1949006CD17C /* Project object */;
 }
