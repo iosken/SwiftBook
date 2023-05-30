@@ -20,6 +20,7 @@ final class SwapiViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
+    
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
@@ -48,9 +49,9 @@ extension SwapiViewController {
                 print(swapi)
                 self?.activityIndicator.stopAnimating()
                 
-                
                 self?.swapi = swapi
-                if self?.planetNameTextField.isHidden ?? true {
+                
+                if self?.swapi.results != [] && self?.planetNameTextField.isHidden ?? true {
                     self?.planetNameTextField.isHidden = false
                 }
                 

@@ -30,28 +30,27 @@ extension Swapi {
 extension Swapi: Parsing {
     
     init(data: [String: Any]) {
-        results = data["results"] as? [Planet] ?? []
+        guard let resultsData = data["results"] as? [[String: Any]] else {
+            results = []
+            return
+        }
+        
+        results = resultsData.map { Planet(data: $0) }
     }
     
     static func getData(from value: Any) -> Swapi {
         
         print("getData Swapi called!")
         guard let swapiData = value as? [String: Any] else {
-            
-            print("!!!!!!!!!!!! getData swapiData - NOTHING")
-            
             return Swapi(data: [:])
-            
         }
-        
-        print(">>>>>swapiData")
 
         return Swapi(data: swapiData)
     }
     
 }
 
-struct Planet: Decodable {
+struct Planet: Decodable, Equatable {
     
     let name: String
     let rotationPeriod: String
@@ -71,9 +70,24 @@ struct Planet: Decodable {
 }
 
 extension Planet {
-//    init(data: Any) {
-//        
-//    }
+    
+    init(data: [String: Any]) {
+        name = data["name"] as? String ?? ""
+        rotationPeriod = data["rotationPeriod"] as? String ?? ""
+        orbitalPeriod = data["orbitalPeriod"] as? String ?? ""
+        diameter = data["diameter"] as? String ?? ""
+        climate = data["climate"] as? String ?? ""
+        gravity = data["gravity"] as? String ?? ""
+        terrain = data["terrain"] as? String ?? ""
+        surfaceWater = data["surfaceWater"] as? String ?? ""
+        population = data["population"] as? String ?? ""
+        residents = data["residents"] as? [String] ?? [""]
+        films = data["films"] as? [String] ?? [""]
+        created = data["created"] as? String ?? ""
+        edited = data["edited"] as? String ?? ""
+        url = data["url"] as? String ?? ""
+    }
+    
 }
 
 extension Planet {
