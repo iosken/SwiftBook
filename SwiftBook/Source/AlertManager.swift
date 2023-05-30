@@ -40,7 +40,7 @@ extension StatusAlert {
 final class ShowAlert {
     static let shared = ShowAlert()
     
-    func showAlert(where linkObject: UIViewController, status: StatusAlert) {
+    func showAlert(where linkObject: UIViewController?, status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
                 title: status.title,
@@ -50,7 +50,7 @@ final class ShowAlert {
     
             let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
-            linkObject.present(alert, animated: true)
+            linkObject?.present(alert, animated: true)
         }
     }
 

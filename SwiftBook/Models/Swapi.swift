@@ -39,8 +39,6 @@ extension Swapi: Parsing {
     }
     
     static func getData(from value: Any) -> Swapi {
-        
-        print("getData Swapi called!")
         guard let swapiData = value as? [String: Any] else {
             return Swapi(data: [:])
         }

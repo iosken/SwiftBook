@@ -29,7 +29,7 @@ final class WallstreetbetListViewController: UITableViewController {
             indicator.startAnimating()
             cell.addSubview(indicator)
         }
-
+        
         cell.contentConfiguration = configuration
         
         return cell
@@ -44,6 +44,7 @@ extension WallstreetbetListViewController {
             switch result {
             case .success(let bets):
                 self?.bets = bets
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }

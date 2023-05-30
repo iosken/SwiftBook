@@ -129,26 +129,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="LZx-fs-SnZ">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="result" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-2g-gpS">
-                                <rect key="frame" x="161" y="320.5" width="53" height="26.5"/>
+                                <rect key="frame" x="16" y="206" width="343" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="LZx-fs-SnZ">
-                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xks-nl-UDE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="k1Z-te-8q5" firstAttribute="leading" secondItem="xks-nl-UDE" secondAttribute="leading" constant="20" id="3tX-ic-OPR"/>
+                            <constraint firstItem="ECN-2g-gpS" firstAttribute="top" secondItem="k1Z-te-8q5" secondAttribute="bottom" constant="36" id="NoG-an-41e"/>
                             <constraint firstItem="xks-nl-UDE" firstAttribute="trailing" secondItem="k1Z-te-8q5" secondAttribute="trailing" constant="20" id="Q80-PH-8Lt"/>
-                            <constraint firstItem="ECN-2g-gpS" firstAttribute="centerX" secondItem="wIp-Ft-35z" secondAttribute="centerX" id="cI6-Rc-cDQ"/>
-                            <constraint firstItem="ECN-2g-gpS" firstAttribute="centerY" secondItem="wIp-Ft-35z" secondAttribute="centerY" id="gPQ-pJ-nkw"/>
+                            <constraint firstItem="xks-nl-UDE" firstAttribute="trailing" secondItem="ECN-2g-gpS" secondAttribute="trailing" constant="16" id="UIW-aY-SsH"/>
                             <constraint firstItem="LZx-fs-SnZ" firstAttribute="centerX" secondItem="wIp-Ft-35z" secondAttribute="centerX" id="rqW-Pg-FxV"/>
                             <constraint firstItem="k1Z-te-8q5" firstAttribute="top" secondItem="xks-nl-UDE" secondAttribute="top" constant="20" id="wYL-o1-0m4"/>
                             <constraint firstItem="LZx-fs-SnZ" firstAttribute="centerY" secondItem="wIp-Ft-35z" secondAttribute="centerY" id="xh0-N8-Abp"/>
+                            <constraint firstItem="ECN-2g-gpS" firstAttribute="leading" secondItem="xks-nl-UDE" secondAttribute="leading" constant="16" id="ys8-IK-lTv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Genderize" id="dAw-ne-65R"/>

@@ -45,13 +45,12 @@ extension SwapiViewController {
             switch result {
             case .success(let swapi):
                 
-                print("\n\n success with:")
-                print(swapi)
                 self?.activityIndicator.stopAnimating()
-                
                 self?.swapi = swapi
                 
-                if self?.swapi.results != [] && self?.planetNameTextField.isHidden ?? true {
+                if self?.swapi.results == [] {
+                    ShowAlert.shared.showAlert(where: self, status: .nothing)
+                } else if self?.planetNameTextField.isHidden ?? true {
                     self?.planetNameTextField.isHidden = false
                 }
                 
