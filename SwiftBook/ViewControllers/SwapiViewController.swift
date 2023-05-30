@@ -37,10 +37,23 @@ final class SwapiViewController: UIViewController {
 extension SwapiViewController {
     
     func fetchSwapi() {
-        NetworkManager.shared.fetchData(type: Planet.self, from: Link.emojihub.url) { [weak self] result in
+        NetworkManager.shared.fetchData(
+            type: Swapi.self,
+            from: Link.swapi.url
+        ) { [weak self] result in
             switch result {
-            case .success(let genderize):
-                self?.swapi = Swapi(results: genderize)
+            case .success(let swapi):
+                
+                print("\n\n success with:")
+                print(swapi)
+                self?.activityIndicator.stopAnimating()
+                
+                
+                self?.swapi = swapi
+                if self?.planetNameTextField.isHidden ?? true {
+                    self?.planetNameTextField.isHidden = false
+                }
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }

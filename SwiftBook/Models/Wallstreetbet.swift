@@ -29,7 +29,7 @@ extension Wallstreetbet {
     
 }
 
-extension Wallstreetbet: Parsing {
+extension Wallstreetbet: ParsingCollection {
     
     init(data: [String: Any]) {
         noOfComments = data["noOfComments"] as? Int ?? 0
@@ -38,10 +38,10 @@ extension Wallstreetbet: Parsing {
         ticker = data["ticker"] as? String ?? ""
     }
     
-    static func getData(from value: Any) -> Wallstreetbet {
-        guard let emojiData = value as? [String: Any] else { return Wallstreetbet(data: [:]) }
+    static func getData(from value: Any) -> [Wallstreetbet] {
+        guard let wallstreetbetData = value as? [[String: Any]] else { return [] }
         
-        return Wallstreetbet(data: emojiData)
+        return wallstreetbetData.map { Wallstreetbet(data: $0) }
     }
     
 }

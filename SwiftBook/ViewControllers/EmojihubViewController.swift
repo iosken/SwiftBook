@@ -48,6 +48,7 @@ final class EmojihubViewController: UIViewController {
             switch result {
             case .success(let emojihub):
                 self?.emojihub = emojihub
+                self?.activityIndicator.stopAnimating()
             case .failure(let error):
                 print(error.localizedDescription)
             }

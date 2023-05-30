@@ -16,18 +16,19 @@ enum Link {
     var url: URL {
         switch self {
         case .emojihub:
-            return URL(string: "https://emojihub.yurace.pro/api/random")!
+            return URL(string: "https://emojihub.yurace.pro/api/random")! // model
         case .swapi:
-            return URL(string: "https://emojihub.yurace.pro/api/random")!
+            return URL(string: "https://swapi.dev/api/planets/")! // model with array property
         case .wallstreetbet:
-            return URL(string: "https://emojihub.yurace.pro/api/random")!
+            return URL(string: "https://tradestie.com/api/v1/apps/reddit")! // Array
         }
     }
     
     static func genderize(from name: String) -> URL {
-        URL(string: "https://api.genderize.io/?name=" + (name))!
+        URL(string: "https://api.genderize.io/?name=" + (name))! // model
     }
 }
+
 
 enum NetworkError: Error {
     case invalidURL
@@ -47,6 +48,7 @@ final class NetworkManager {
             .responseJSON { dataResponse in
                 switch dataResponse.result {
                 case .success(let value):
+                    print("Data coming from Parsing \(value)")
                     let model = T.getData(from: value)
                     completion(.success(model))
                 case .failure(let error):
@@ -63,6 +65,7 @@ final class NetworkManager {
             .responseJSON { dataResponse in
                 switch dataResponse.result {
                 case .success(let value):
+                    print("Data coming ParsingCollection  \(value)")
                     let model = T.getData(from: value)
                     completion(.success(model))
                 case .failure(let error):
