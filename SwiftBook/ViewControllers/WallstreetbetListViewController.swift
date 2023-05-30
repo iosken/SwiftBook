@@ -47,6 +47,7 @@ extension WallstreetbetListViewController {
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
+                AlertManager.shared.showAlert(from: self, status: .failed)
             }
         }
     }

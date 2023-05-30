@@ -32,9 +32,9 @@ extension Wallstreetbet {
 extension Wallstreetbet: ParsingCollection {
     
     init(data: [String: Any]) {
-        noOfComments = data["noOfComments"] as? Int ?? 0
+        noOfComments = data["no_of_comments"] as? Int ?? 0
         sentiment = data["sentiment"] as? String ?? ""
-        sentimentScore = data["sentimentScore"] as? Double ?? 0
+        sentimentScore = data["sentiment_score"] as? Double ?? 0
         ticker = data["ticker"] as? String ?? ""
     }
     

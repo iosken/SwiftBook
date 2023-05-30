@@ -47,10 +47,11 @@ final class EmojihubViewController: UIViewController {
         networkManager.fetchData(type: Emoji.self, from: Link.emojihub.url) { [weak self] result in
             switch result {
             case .success(let emojihub):
-                self?.emojihub = emojihub
                 self?.activityIndicator.stopAnimating()
+                self?.emojihub = emojihub
             case .failure(let error):
                 print(error.localizedDescription)
+                AlertManager.shared.showAlert(from: self, status: .failed)
             }
         }
     }

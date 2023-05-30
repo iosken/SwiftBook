@@ -37,10 +37,12 @@ extension StatusAlert {
     
 }
 
-final class ShowAlert {
-    static let shared = ShowAlert()
+final class AlertManager {
+    static let shared = AlertManager()
     
-    func showAlert(where linkObject: UIViewController?, status: StatusAlert) {
+    private init() {}
+    
+    func showAlert(from linkObject: UIViewController?, status: StatusAlert) {
         DispatchQueue.main.async {
             let alert = UIAlertController(
                 title: status.title,
@@ -54,5 +56,4 @@ final class ShowAlert {
         }
     }
 
-    private init() {}
 }

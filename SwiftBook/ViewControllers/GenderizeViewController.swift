@@ -56,11 +56,12 @@ extension GenderizeViewController {
         ) { [weak self] result in
             switch result {
             case .success(let genderize):
+                self?.activityIndicator.stopAnimating()
                 self?.name = genderize.name
                 self?.descriptionName = genderize.description
-                self?.activityIndicator.stopAnimating()
             case .failure(let error):
                 print(error.localizedDescription)
+                AlertManager.shared.showAlert(from: self, status: .failed)
             }
         }
     }
@@ -81,7 +82,7 @@ extension GenderizeViewController: UITextFieldDelegate {
         (nameTextField.text ?? "").forEach { char in
             let symbol = String(char)
             if Int(symbol) != nil {
-                ShowAlert.shared.showAlert(where: self, status: .nothing)
+                AlertManager.shared.showAlert(from: self, status: .nothing)
                 nameTextField.text? = name
                 return
             }
