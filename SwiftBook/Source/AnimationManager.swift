@@ -9,7 +9,7 @@ import Foundation
 
 import SpringAnimation
 
-class AnimationManager {
+final class AnimationManager {
     static let share = AnimationManager()
     
     private init() {}
@@ -28,18 +28,22 @@ class AnimationManager {
     }
     
     func randomPreset() -> (animation: String, curve: String, force: CGFloat, duration: CGFloat, delay: CGFloat) {
-        var animations = AnimationPreset.allCases
+        var animations: [AnimationPreset] = [] {
+            didSet {
+                if let fadeOutIndex = AnimationPreset.allCases.firstIndex(of: AnimationPreset.fadeOut) {
+                    animations.remove(at: fadeOutIndex)
+                }
+                if let zoomOutIndex = AnimationPreset.allCases.firstIndex(of: AnimationPreset.zoomOut) {
+                    animations.remove(at: zoomOutIndex)
+                }
+                
+                if let fallIndex = AnimationPreset.allCases.firstIndex(of: AnimationPreset.fall) {
+                    animations.remove(at: fallIndex)
+                }
+            }
+        }
         
-        if let fadeOutIndex = AnimationPreset.allCases.firstIndex(of: AnimationPreset.fadeOut) {
-            animations.remove(at: fadeOutIndex)
-        }
-        if let zoomOutIndex = AnimationPreset.allCases.firstIndex(of: AnimationPreset.zoomOut) {
-            animations.remove(at: zoomOutIndex)
-        }
-        
-        if let fallIndex = AnimationPreset.allCases.firstIndex(of: AnimationPreset.fall) {
-            animations.remove(at: fallIndex)
-        }
+        animations = AnimationPreset.allCases
         
         let curves = AnimationCurve.allCases
         
