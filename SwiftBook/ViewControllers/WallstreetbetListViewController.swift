@@ -35,16 +35,24 @@ final class WallstreetbetListViewController: UITableViewController {
         return cell
     }
     
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(fetchWallstreetbet), for: .valueChanged)
+    }
 }
 
 extension WallstreetbetListViewController {
     
-    func fetchWallstreetbet() {
+    @objc func fetchWallstreetbet() {
         NetworkManager.shared.fetchData(type: Wallstreetbet.self, from: Link.wallstreetbet.url) { [weak self] result in
             switch result {
             case .success(let bets):
                 self?.bets = bets
                 self?.tableView.reloadData()
+                if self?.refreshControl != nil {
+                    self?.refreshControl?.endRefreshing()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
                 AlertManager.shared.showAlert(from: self, status: .failed)

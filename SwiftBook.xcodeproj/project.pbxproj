@@ -13,6 +13,7 @@
 		C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825932A24AB3E0022DFBD /* ParsingCollection.swift */; };
 		C33825972A25DF7A0022DFBD /* SpringAnimation in Frameworks */ = {isa = PBXBuildFile; productRef = C33825962A25DF7A0022DFBD /* SpringAnimation */; };
 		C33825992A25FE600022DFBD /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825982A25FE600022DFBD /* AnimationManager.swift */; };
+		C338259C2A26EE160022DFBD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = C338259B2A26EE160022DFBD /* AlamofireImage */; };
 		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
 		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
@@ -61,6 +62,7 @@
 			files = (
 				C33825972A25DF7A0022DFBD /* SpringAnimation in Frameworks */,
 				C338258D2A244FE50022DFBD /* Alamofire in Frameworks */,
+				C338259C2A26EE160022DFBD /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +179,7 @@
 			packageProductDependencies = (
 				C338258C2A244FE50022DFBD /* Alamofire */,
 				C33825962A25DF7A0022DFBD /* SpringAnimation */,
+				C338259B2A26EE160022DFBD /* AlamofireImage */,
 			);
 			productName = SwiftBook;
 			productReference = DA564D38294B1949006CD17C /* SwiftBook.app */;
@@ -209,6 +212,7 @@
 			packageReferences = (
 				C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C33825952A25DF7A0022DFBD /* XCRemoteSwiftPackageReference "SpringAnimation" */,
+				C338259A2A26EE160022DFBD /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = DA564D39294B1949006CD17C /* Products */;
 			projectDirPath = "";
@@ -480,6 +484,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		C338259A2A26EE160022DFBD /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -492,6 +504,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C33825952A25DF7A0022DFBD /* XCRemoteSwiftPackageReference "SpringAnimation" */;
 			productName = SpringAnimation;
+		};
+		C338259B2A26EE160022DFBD /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C338259A2A26EE160022DFBD /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
