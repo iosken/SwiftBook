@@ -13,7 +13,12 @@ final class SwapiViewController: UIViewController {
     @IBOutlet var planetNameTextField: UITextField!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    var swapi = Swapi(results: [])
+    var swapi: [SwapiPlanet] = [] {
+        didSet {
+            names = SwapiPlanet.names(from: swapi)
+        }
+    }
+    var names = [""]
     var planetIndex = 0
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -37,17 +42,14 @@ final class SwapiViewController: UIViewController {
 
 extension SwapiViewController {
     
-    func fetchSwapi() {
-        NetworkManager.shared.fetchData(
-            type: Swapi.self,
-            from: Link.swapi.url
-        ) { [weak self] result in
+    func fetch() {
+        NetworkManager.shared.fetchData(type: SwapiPlanet.self, fromJson: Link.swapi.url) { [weak self] result in
             switch result {
             case .success(let swapi):
                 self?.activityIndicator.stopAnimating()
                 self?.swapi = swapi
                 
-                if self?.swapi.results == [] {
+                if self?.swapi == [] {
                     AlertManager.shared.showAlert(from: self, status: .nothing)
                 } else if self?.planetNameTextField.isHidden ?? true {
                     self?.planetNameTextField.isHidden = false
@@ -71,15 +73,15 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        swapi.results.count
+        swapi.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        swapi.results[row].name
+        swapi[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        planetNameTextField.text = swapi.results[row].name
+        planetNameTextField.text = swapi[row].name
         planetIndex = row
     }
     
@@ -90,17 +92,17 @@ extension SwapiViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 extension SwapiViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        var description = swapi.results[planetIndex].description
+        var description = swapi[planetIndex].description
         
-        if swapi.names.contains(planetNameTextField.text ?? "") {
-            planetIndex = swapi.names.firstIndex(of: planetNameTextField.text ?? "") ?? 0
-            description = swapi.results[planetIndex].description
+        if names.contains(planetNameTextField.text ?? "") {
+            planetIndex = names.firstIndex(of: planetNameTextField.text ?? "") ?? 0
+            description = swapi[planetIndex].description
         } else {
-            planetNameTextField.text = swapi.names[planetIndex]
+            planetNameTextField.text = names[planetIndex]
         }
         
         resultLabel.text = description
-        planetNameTextField.text = swapi.results[planetIndex].name
+        planetNameTextField.text = swapi[planetIndex].name
         
         if resultLabel.isHidden {
             resultLabel.isHidden.toggle()

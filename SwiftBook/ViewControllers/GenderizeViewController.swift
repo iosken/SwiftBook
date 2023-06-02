@@ -49,10 +49,10 @@ final class GenderizeViewController: UIViewController {
 
 extension GenderizeViewController {
     
-    func fetchGenderize() {
+    func fetch() {
         NetworkManager.shared.fetchData(
             type: Emoji.self,
-            from: Link.genderize(from: name)
+            fromJson: Link.genderize(from: name)
         ) { [weak self] result in
             switch result {
             case .success(let genderize):
@@ -90,13 +90,13 @@ extension GenderizeViewController: UITextFieldDelegate {
         
         if !(nameTextField.text?.isEmpty ?? true) {
             name = nameTextField.text ?? name
-            fetchGenderize()
+            fetch()
         } else {
             nameTextField.text? = name
             return
         }
         
-        fetchGenderize()
+        fetch()
     }
     
 }

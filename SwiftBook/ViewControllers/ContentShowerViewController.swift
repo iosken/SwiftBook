@@ -13,6 +13,7 @@ private enum ID: String {
     case genderize = "genderize"
     case swapi = "swapi"
     case wallstreetbet = "wallstreetbet"
+    case contacts = "contactList"
     
 }
 
@@ -22,6 +23,7 @@ private enum UserAction: String, CaseIterable {
     case genderize = "Genderize"
     case swapi = "StarWars Planets"
     case wallstreetbet = "Wallstreet Bets List"
+    case contacts = "Contacts"
     
 }
 
@@ -62,6 +64,7 @@ final class ContentShowerViewController: UITableViewController {
         case .genderize: performSegue(withIdentifier: ID.genderize.rawValue, sender: nil)
         case .swapi: performSegue(withIdentifier: ID.swapi.rawValue, sender: nil)
         case .wallstreetbet: performSegue(withIdentifier: ID.wallstreetbet.rawValue, sender: nil)
+        case .contacts: performSegue(withIdentifier: ID.contacts.rawValue, sender: nil)
         }
     }
     
@@ -71,16 +74,19 @@ final class ContentShowerViewController: UITableViewController {
         switch segue.identifier {
         case ID.emojihub.rawValue:
             guard let emojihubVC = segue.destination as? EmojihubViewController else { return }
-            emojihubVC.fetchEmojihub()
+            emojihubVC.fetch()
         case ID.genderize.rawValue:
             guard let genderizeVC = segue.destination as? GenderizeViewController else { return }
-            genderizeVC.fetchGenderize()
+            genderizeVC.fetch()
         case ID.swapi.rawValue:
             guard let swapiVC = segue.destination as? SwapiViewController else { return }
-            swapiVC.fetchSwapi()
-        default:
+            swapiVC.fetch()
+        case ID.wallstreetbet.rawValue:
             guard let wallstreetbetVC = segue.destination as? WallstreetbetListViewController else { return }
-            wallstreetbetVC.fetchWallstreetbet()
+            wallstreetbetVC.fetch()
+        default:
+            guard let contactListVC = segue.destination as? ContactListViewController else { return }
+            contactListVC.fetch()
             
         }
     }

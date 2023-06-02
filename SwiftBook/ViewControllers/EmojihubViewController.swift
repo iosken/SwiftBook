@@ -43,11 +43,11 @@ final class EmojihubViewController: UIViewController {
     
     @IBAction func refreshButtonPressed() {
         activityIndicator.startAnimating()
-        fetchEmojihub()
+        fetch()
     }
     
-    func fetchEmojihub() {
-        networkManager.fetchData(type: Emoji.self, from: Link.emojihub.url) { [weak self] result in
+    func fetch() {
+        networkManager.fetchData(type: Emoji.self, fromJson: Link.emojihub.url) { [weak self] result in
             switch result {
             case .success(let emojihub):
                 self?.activityIndicator.stopAnimating()

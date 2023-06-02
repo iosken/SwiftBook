@@ -7,48 +7,7 @@
 
 import Foundation
 
-struct Swapi: Decodable {
-    
-    let results: [Planet]
-    
-}
-
-extension Swapi {
-    
-    var names: [String] {
-        var names: [String] = []
-        
-        for result in results {
-            names.append(result.name)
-        }
-        
-        return names
-    }
-    
-}
-
-extension Swapi: Parsing {
-    
-    init(data: [String: Any]) {
-        guard let resultsData = data["results"] as? [[String: Any]] else {
-            results = []
-            return
-        }
-        
-        results = resultsData.map { Planet(data: $0) }
-    }
-    
-    static func getData(from value: Any) -> Swapi {
-        guard let swapiData = value as? [String: Any] else {
-            return Swapi(data: [:])
-        }
-        
-        return Swapi(data: swapiData)
-    }
-    
-}
-
-struct Planet: Decodable, Equatable {
+struct SwapiPlanet: Decodable, Equatable {
     
     let name: String
     let rotationPeriod: String
@@ -64,10 +23,6 @@ struct Planet: Decodable, Equatable {
     let created: String
     let edited: String
     let url: String
-    
-}
-
-extension Planet {
     
     init(data: [String: Any]) {
         name = data["name"] as? String ?? ""
@@ -85,10 +40,23 @@ extension Planet {
         edited = data["edited"] as? String ?? ""
         url = data["url"] as? String ?? ""
     }
-    
 }
 
-extension Planet {
+extension SwapiPlanet: ParsingCollection {
+    
+    static func getData(from value: Any) -> [SwapiPlanet] {
+        guard let value = value as? [String: Any] else { return []}
+        guard let contacts = value["results"] as? [[String: Any]] else { return []}
+        
+        return contacts.map { SwapiPlanet(data: $0) }
+    }
+    
+    static func names(from planets: [SwapiPlanet]) -> [String] {
+        planets.map { $0.name }
+    }
+}
+
+extension SwapiPlanet {
     
     var description: String {
                 """
@@ -111,3 +79,4 @@ extension Planet {
     }
     
 }
+

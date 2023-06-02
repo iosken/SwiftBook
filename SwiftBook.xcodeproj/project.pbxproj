@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ContentShower.storyboard */; };
+		C3344E942A2841A3007EC796 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3344E932A2841A3007EC796 /* ContactListViewController.swift */; };
 		C338258D2A244FE50022DFBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C338258C2A244FE50022DFBD /* Alamofire */; };
 		C33825922A2465380022DFBD /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825912A2465380022DFBD /* Parsing.swift */; };
 		C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825932A24AB3E0022DFBD /* ParsingCollection.swift */; };
 		C33825972A25DF7A0022DFBD /* SpringAnimation in Frameworks */ = {isa = PBXBuildFile; productRef = C33825962A25DF7A0022DFBD /* SpringAnimation */; };
 		C33825992A25FE600022DFBD /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825982A25FE600022DFBD /* AnimationManager.swift */; };
 		C338259C2A26EE160022DFBD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = C338259B2A26EE160022DFBD /* AlamofireImage */; };
+		C33825A02A2704B10022DFBD /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C338259F2A2704B10022DFBD /* ImageCacheManager.swift */; };
+		C33825A22A27406C0022DFBD /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825A12A27406C0022DFBD /* Contact.swift */; };
 		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
 		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
@@ -22,7 +25,7 @@
 		C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */; };
 		C3F595BE2A1720A20035135D /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595BD2A1720A20035135D /* Emoji.swift */; };
 		C3F595C12A17210A0035135D /* Genderize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C02A17210A0035135D /* Genderize.swift */; };
-		C3F595C32A17214B0035135D /* Swapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* Swapi.swift */; };
+		C3F595C32A17214B0035135D /* SwapiPlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C22A17214B0035135D /* SwapiPlanet.swift */; };
 		C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C42A1721AF0035135D /* Wallstreetbet.swift */; };
 		C3F595C72A1723290035135D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F595C62A1723290035135D /* NetworkManager.swift */; };
 		DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA564D3B294B1949006CD17C /* AppDelegate.swift */; };
@@ -33,9 +36,12 @@
 
 /* Begin PBXFileReference section */
 		C327E4042A0507CF002A40C5 /* ContentShower.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentShower.storyboard; sourceTree = "<group>"; };
+		C3344E932A2841A3007EC796 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		C33825912A2465380022DFBD /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		C33825932A24AB3E0022DFBD /* ParsingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingCollection.swift; sourceTree = "<group>"; };
 		C33825982A25FE600022DFBD /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		C338259F2A2704B10022DFBD /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		C33825A12A27406C0022DFBD /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C385BDB42A1B662500368F26 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallstreetbetListViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +50,7 @@
 		C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiViewController.swift; sourceTree = "<group>"; };
 		C3F595BD2A1720A20035135D /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		C3F595C02A17210A0035135D /* Genderize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genderize.swift; sourceTree = "<group>"; };
-		C3F595C22A17214B0035135D /* Swapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swapi.swift; sourceTree = "<group>"; };
+		C3F595C22A17214B0035135D /* SwapiPlanet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiPlanet.swift; sourceTree = "<group>"; };
 		C3F595C42A1721AF0035135D /* Wallstreetbet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallstreetbet.swift; sourceTree = "<group>"; };
 		C3F595C62A1723290035135D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DA564D38294B1949006CD17C /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +102,7 @@
 				C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */,
 				C3AB1FD02A1B5F0900E31CA9 /* SwapiViewController.swift */,
 				C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */,
+				C3344E932A2841A3007EC796 /* ContactListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -106,6 +113,7 @@
 				C385BDB42A1B662500368F26 /* AlertManager.swift */,
 				C33825982A25FE600022DFBD /* AnimationManager.swift */,
 				C3F595C62A1723290035135D /* NetworkManager.swift */,
+				C338259F2A2704B10022DFBD /* ImageCacheManager.swift */,
 				DA564D44294B194A006CD17C /* Assets.xcassets */,
 			);
 			path = Source;
@@ -125,8 +133,9 @@
 			children = (
 				C3F595BD2A1720A20035135D /* Emoji.swift */,
 				C3F595C02A17210A0035135D /* Genderize.swift */,
-				C3F595C22A17214B0035135D /* Swapi.swift */,
+				C3F595C22A17214B0035135D /* SwapiPlanet.swift */,
 				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
+				C33825A12A27406C0022DFBD /* Contact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,14 +254,17 @@
 				C3F595BE2A1720A20035135D /* Emoji.swift in Sources */,
 				C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */,
 				C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */,
+				C33825A02A2704B10022DFBD /* ImageCacheManager.swift in Sources */,
+				C33825A22A27406C0022DFBD /* Contact.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
 				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
 				C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
 				C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */,
+				C3344E942A2841A3007EC796 /* ContactListViewController.swift in Sources */,
 				C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */,
 				C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */,
-				C3F595C32A17214B0035135D /* Swapi.swift in Sources */,
+				C3F595C32A17214B0035135D /* SwapiPlanet.swift in Sources */,
 				C33825992A25FE600022DFBD /* AnimationManager.swift in Sources */,
 				C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */,
 				C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */,

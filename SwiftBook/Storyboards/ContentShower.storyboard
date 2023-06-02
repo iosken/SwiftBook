@@ -51,6 +51,7 @@
                         <segue destination="cjf-je-YTO" kind="show" identifier="genderize" id="Nae-sb-1aU"/>
                         <segue destination="R7Z-u2-GSd" kind="show" identifier="swapi" id="L7k-qc-3id"/>
                         <segue destination="dfA-06-21f" kind="show" identifier="wallstreetbet" id="ktI-ex-OIj"/>
+                        <segue destination="WXe-kn-ldW" kind="show" identifier="contactList" id="IW8-L8-AGV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyf-uR-7QW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -247,6 +248,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dku-59-uco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2910" y="946"/>
+        </scene>
+        <!--Contact List-->
+        <scene sceneID="OBC-Bk-l3P">
+            <objects>
+                <tableViewController id="WXe-kn-ldW" customClass="ContactListViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="STh-mg-4eG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactListCell" id="9FK-6B-xKE">
+                                <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9FK-6B-xKE" id="7O5-SX-r7p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WXe-kn-ldW" id="dTW-G5-d4i"/>
+                            <outlet property="delegate" destination="WXe-kn-ldW" id="lfv-BP-JC8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Contact List" id="tBJ-Os-6jg"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UuY-85-Coe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3681" y="946"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="084-GW-DW8">
