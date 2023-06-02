@@ -76,6 +76,14 @@ struct Name: Decodable {
     let first: String
     let last: String
     
+    var fullName: String {
+        """
+\(title)
+\(first)
+\(last)
+"""
+    }
+    
     init(data: [String: String]) {
         self.title = data["title"] ?? ""
         self.first = data["first"] ?? ""

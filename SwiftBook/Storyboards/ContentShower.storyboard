@@ -265,6 +265,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ypm-c8-lYO" kind="show" id="83N-ii-Ooy"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -277,6 +280,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UuY-85-Coe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3681" y="946"/>
+        </scene>
+        <!--Contact Detail View Controller-->
+        <scene sceneID="xMc-JY-iLH">
+            <objects>
+                <viewController id="Ypm-c8-lYO" customClass="ContactDetailViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="77F-HA-EUS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="4aG-Ol-zSt">
+                                <rect key="frame" x="16" y="136" width="343" height="112.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XYF-zB-ZXb">
+                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="112.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="XYF-zB-ZXb" secondAttribute="height" multiplier="1:1" id="QP9-8T-uXl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlg-CM-lOl">
+                                        <rect key="frame" x="134.5" y="0.0" width="208.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JWa-x1-irZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XYF-zB-ZXb" firstAttribute="width" secondItem="77F-HA-EUS" secondAttribute="width" multiplier="0.3" id="C2Z-5z-JZe"/>
+                            <constraint firstItem="4aG-Ol-zSt" firstAttribute="leading" secondItem="JWa-x1-irZ" secondAttribute="leading" constant="16" id="KPX-BD-ZPv"/>
+                            <constraint firstItem="4aG-Ol-zSt" firstAttribute="top" secondItem="JWa-x1-irZ" secondAttribute="top" constant="20" id="s0c-PU-m7m"/>
+                            <constraint firstItem="JWa-x1-irZ" firstAttribute="trailing" secondItem="4aG-Ol-zSt" secondAttribute="trailing" constant="16" id="wz3-ah-qi2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6YH-BH-xR0"/>
+                    <connections>
+                        <outlet property="contactImage" destination="XYF-zB-ZXb" id="sBa-TR-lvZ"/>
+                        <outlet property="nameLabel" destination="Wlg-CM-lOl" id="pff-FT-IlF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qVg-RL-wQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4525.6000000000004" y="945.87706146926541"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="084-GW-DW8">

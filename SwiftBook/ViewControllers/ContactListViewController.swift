@@ -59,6 +59,12 @@ class ContactListViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let contactDetailVC = segue.destination as? ContactDetailViewController else { return }
+        
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        
+        contactDetailVC.contact = contacts[indexPath.row]
+        
     }
     
     private func setupRefreshControl() {
