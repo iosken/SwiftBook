@@ -9,6 +9,7 @@ import Foundation
 
 
 struct Contact: Decodable {
+    
     let gender: String
     let name: Name
     let location: Location
@@ -62,6 +63,7 @@ struct Contact: Decodable {
 }
 
 extension Contact: ParsingCollection {
+    
     static func getData(from value: Any) -> [Contact] {
         guard let value = value as? [String: Any] else { return []}
         guard let contacts = value["results"] as? [[String: Any]] else { return [] }
@@ -71,7 +73,10 @@ extension Contact: ParsingCollection {
     
 }
 
+// MARK: - Name
+
 struct Name: Decodable {
+    
     let title: String
     let first: String
     let last: String
@@ -89,9 +94,13 @@ struct Name: Decodable {
         first = data["first"] ?? ""
         last = data["last"] ?? ""
     }
+    
 }
 
+// MARK: - Location
+
 struct Location: Decodable {
+    
     let street: Street
     let city: String
     let state: String
@@ -115,9 +124,13 @@ struct Location: Decodable {
         let timezoneData = data["timezone"] as? [String: String] ?? [:]
         timezone = Timezone(data: timezoneData)
     }
+    
 }
 
+// MARK: - Street
+
 struct Street: Decodable {
+    
     let number: Int
     let name: String
     
@@ -128,9 +141,13 @@ struct Street: Decodable {
         let nameData = data["name"] as? String ?? ""
         name = nameData
     }
+    
 }
 
+// MARK: - Coordinates
+
 struct Coordinates: Decodable {
+    
     let latitude: String
     let longitude: String
     
@@ -138,9 +155,13 @@ struct Coordinates: Decodable {
         latitude = data["latitude"] ?? ""
         longitude = data["longitude"] ?? ""
     }
+    
 }
 
+// MARK: - Timezone
+
 struct Timezone: Decodable {
+    
     let offset: String
     let description: String
     
@@ -148,9 +169,13 @@ struct Timezone: Decodable {
         offset = data["offset"] ?? ""
         description = data["description"] ?? ""
     }
+    
 }
 
+// MARK: - Login
+
 struct Login: Decodable {
+    
     let uuid: String
     let username:String
     let password: String
@@ -168,9 +193,13 @@ struct Login: Decodable {
         sha1 = data["sha1"] ?? ""
         sha256 = data["sha256"] ?? ""
     }
+    
 }
+
+// MARK: - Dob
 
 struct Dob: Decodable {
+    
     let date: String
     let age: Int
     
@@ -181,9 +210,13 @@ struct Dob: Decodable {
         let ageData = data["age"] as? Int ?? 0
         age = ageData
     }
+    
 }
 
+// MARK: - Registred
+
 struct Registered: Decodable {
+    
     let date: String
     let age: Int
     
@@ -194,7 +227,10 @@ struct Registered: Decodable {
         let ageData = data["age"] as? Int ?? 0
         age = ageData
     }
+    
 }
+
+// MARK: - UserID
 
 struct UserID: Decodable {
     let name: String
@@ -208,6 +244,8 @@ struct UserID: Decodable {
    //     value = data["value"]
     }
 }
+
+// MARK: - Picture
 
 struct Picture: Decodable, Parsing {
 
@@ -226,73 +264,5 @@ struct Picture: Decodable, Parsing {
         
         return Picture(data: data)
     }
+    
 }
-
-//https://randomuser.me/api/
-
-//{
-//    "results": [
-//        {
-//            "gender": "male",
-//            "name": {
-//                "title": "Mr",
-//                "first": "Cooper",
-//                "last": "Smith"
-//            },
-//            "location": {
-//                "street": {
-//                    "number": 5803,
-//                    "name": "Market Street"
-//                },
-//                "city": "Lower Hutt",
-//                "state": "Waikato",
-//                "country": "New Zealand",
-//                "postcode": 90418,
-//                "coordinates": {
-//                    "latitude": "54.7101",
-//                    "longitude": "-140.1725"
-//                },
-//                "timezone": {
-//                    "offset": "+7:00",
-//                    "description": "Bangkok, Hanoi, Jakarta"
-//                }
-//            },
-//            "email": "cooper.smith@example.com",
-//            "login": {
-//                "uuid": "4ac986de-600f-400e-9c70-4ef798186881",
-//                "username": "lazybird370",
-//                "password": "shui",
-//                "salt": "zdd9ab6Z",
-//                "md5": "8f4c838dd27c709e068290f777aeec9e",
-//                "sha1": "23d141e5de70bd040736baa44f27f5c3950729d5",
-//                "sha256": "d237ce26ac13081926bcaee0ab19f91420191657f16b39af486efc490f8af9ff"
-//            },
-//            "dob": {
-//                "date": "1996-03-10T18:35:38.541Z",
-//                "age": 27
-//            },
-//            "registered": {
-//                "date": "2021-12-24T11:53:55.979Z",
-//                "age": 1
-//            },
-//            "phone": "(550)-545-5140",
-//            "cell": "(061)-843-9927",
-//            "id": {
-//                "name": "",
-//                "value": null
-//            },
-//            "picture": {
-//                "large": "https://randomuser.me/api/portraits/men/48.jpg",
-//                "medium": "https://randomuser.me/api/portraits/med/men/48.jpg",
-//                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/48.jpg"
-//            },
-//            "nat": "NZ"
-//        }
-//    ],
-//    "info": {
-//        "seed": "59e620eb548b65b3",
-//        "results": 1,
-//        "page": 1,
-//        "version": "1.4"
-//    }
-//}

@@ -10,6 +10,7 @@ import Foundation
 // MARK: - WelcomeElement
 
 struct Superhero: Decodable, ParsingCollection {
+    
     let id: Int
     let name: String
     let slug: String
@@ -21,7 +22,6 @@ struct Superhero: Decodable, ParsingCollection {
     let images: Images
     
     init(data: [String: Any]) {
-        
         id = data["id"] as? Int ?? 0
         name = data["name"] as? String ?? ""
         slug = data["slug"] as? String ?? ""
@@ -43,7 +43,6 @@ struct Superhero: Decodable, ParsingCollection {
         
         let imagesData = data["images"] as? [String: String] ?? [:]
         images = Images(from: imagesData)
-        
     }
     
     static func getData(from value: Any) -> [Superhero] {
@@ -56,6 +55,7 @@ struct Superhero: Decodable, ParsingCollection {
 // MARK: - Appearance
 
 struct Appearance: Decodable {
+    
     let gender: Gender
     let race: String?
     let height: [String]
@@ -73,6 +73,7 @@ struct Appearance: Decodable {
         eyeColor = data["eyeColor"] as? String ?? ""
         hairColor = data["hairColor"] as? String ?? ""
     }
+    
 }
 
 enum Gender: String, Decodable {
@@ -167,10 +168,10 @@ struct Images: Decodable {
     let lg: String
     
     init(from data: [String: String]) {
-        xs = data["xs"] ?? "No data"
-        sm = data["sm"] ?? "No data"
-        md = data["md"] ?? "No data"
-        lg = data["lg"] ?? "No data"
+        xs = data["xs"] ?? ""
+        sm = data["sm"] ?? ""
+        md = data["md"] ?? ""
+        lg = data["lg"] ?? ""
     }
     
 }
