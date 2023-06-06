@@ -14,6 +14,7 @@ private enum ID: String {
     case swapi = "swapi"
     case wallstreetbet = "wallstreetbet"
     case contacts = "contactList"
+    case heroes = "heroes"
     
 }
 
@@ -24,6 +25,7 @@ private enum UserAction: String, CaseIterable {
     case swapi = "StarWars Planets"
     case wallstreetbet = "Wallstreet Bets List"
     case contacts = "Contacts"
+    case heroes = "Heroes"
     
 }
 
@@ -65,6 +67,7 @@ final class ContentShowerViewController: UITableViewController {
         case .swapi: performSegue(withIdentifier: ID.swapi.rawValue, sender: nil)
         case .wallstreetbet: performSegue(withIdentifier: ID.wallstreetbet.rawValue, sender: nil)
         case .contacts: performSegue(withIdentifier: ID.contacts.rawValue, sender: nil)
+        case .heroes: performSegue(withIdentifier: ID.heroes.rawValue, sender: nil)
         }
     }
     
@@ -84,9 +87,12 @@ final class ContentShowerViewController: UITableViewController {
         case ID.wallstreetbet.rawValue:
             guard let wallstreetbetVC = segue.destination as? WallstreetbetListViewController else { return }
             wallstreetbetVC.fetch()
-        default:
+        case ID.contacts.rawValue:
             guard let contactListVC = segue.destination as? ContactListViewController else { return }
             contactListVC.fetch()
+        default:
+            guard let heroesVC = segue.destination as? SuperHeroesViewController else { return }
+            heroesVC.fetch()
             
         }
     }

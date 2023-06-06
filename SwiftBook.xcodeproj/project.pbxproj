@@ -10,6 +10,8 @@
 		C327E4052A0507CF002A40C5 /* ContentShower.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C327E4042A0507CF002A40C5 /* ContentShower.storyboard */; };
 		C3344E942A2841A3007EC796 /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3344E932A2841A3007EC796 /* ContactListViewController.swift */; };
 		C3344E962A29987D007EC796 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3344E952A29987D007EC796 /* ContactDetailViewController.swift */; };
+		C3344EA02A2D9A42007EC796 /* SuperHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3344E9F2A2D9A42007EC796 /* SuperHero.swift */; };
+		C3344EA22A2D9CED007EC796 /* SuperHeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3344EA12A2D9CED007EC796 /* SuperHeroesViewController.swift */; };
 		C338258D2A244FE50022DFBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C338258C2A244FE50022DFBD /* Alamofire */; };
 		C33825922A2465380022DFBD /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825912A2465380022DFBD /* Parsing.swift */; };
 		C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825932A24AB3E0022DFBD /* ParsingCollection.swift */; };
@@ -20,6 +22,8 @@
 		C33825A22A27406C0022DFBD /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33825A12A27406C0022DFBD /* Contact.swift */; };
 		C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDB42A1B662500368F26 /* AlertManager.swift */; };
 		C385BDBB2A1DEB6000368F26 /* WallstreetbetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */; };
+		C3A321062A2DF2CF003EB149 /* SuperHeroViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321052A2DF2CF003EB149 /* SuperHeroViewCell.swift */; };
+		C3A321092A2ED52B003EB149 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C3A321082A2ED52B003EB149 /* Kingfisher */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
 		C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */; };
 		C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */; };
@@ -39,6 +43,8 @@
 		C327E4042A0507CF002A40C5 /* ContentShower.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentShower.storyboard; sourceTree = "<group>"; };
 		C3344E932A2841A3007EC796 /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		C3344E952A29987D007EC796 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
+		C3344E9F2A2D9A42007EC796 /* SuperHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHero.swift; sourceTree = "<group>"; };
+		C3344EA12A2D9CED007EC796 /* SuperHeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroesViewController.swift; sourceTree = "<group>"; };
 		C33825912A2465380022DFBD /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		C33825932A24AB3E0022DFBD /* ParsingCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingCollection.swift; sourceTree = "<group>"; };
 		C33825982A25FE600022DFBD /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
@@ -46,6 +52,7 @@
 		C33825A12A27406C0022DFBD /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C385BDB42A1B662500368F26 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallstreetbetListViewController.swift; sourceTree = "<group>"; };
+		C3A321052A2DF2CF003EB149 /* SuperHeroViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroViewCell.swift; sourceTree = "<group>"; };
 		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojihubViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderizeViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A321092A2ED52B003EB149 /* Kingfisher in Frameworks */,
 				C33825972A25DF7A0022DFBD /* SpringAnimation in Frameworks */,
 				C338258D2A244FE50022DFBD /* Alamofire in Frameworks */,
 				C338259C2A26EE160022DFBD /* AlamofireImage in Frameworks */,
@@ -106,6 +114,8 @@
 				C385BDBA2A1DEB6000368F26 /* WallstreetbetListViewController.swift */,
 				C3344E932A2841A3007EC796 /* ContactListViewController.swift */,
 				C3344E952A29987D007EC796 /* ContactDetailViewController.swift */,
+				C3344EA12A2D9CED007EC796 /* SuperHeroesViewController.swift */,
+				C3A321052A2DF2CF003EB149 /* SuperHeroViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -139,6 +149,7 @@
 				C3F595C22A17214B0035135D /* SwapiPlanet.swift */,
 				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
 				C33825A12A27406C0022DFBD /* Contact.swift */,
+				C3344E9F2A2D9A42007EC796 /* SuperHero.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,6 +203,7 @@
 				C338258C2A244FE50022DFBD /* Alamofire */,
 				C33825962A25DF7A0022DFBD /* SpringAnimation */,
 				C338259B2A26EE160022DFBD /* AlamofireImage */,
+				C3A321082A2ED52B003EB149 /* Kingfisher */,
 			);
 			productName = SwiftBook;
 			productReference = DA564D38294B1949006CD17C /* SwiftBook.app */;
@@ -225,6 +237,7 @@
 				C338258B2A244FE50022DFBD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C33825952A25DF7A0022DFBD /* XCRemoteSwiftPackageReference "SpringAnimation" */,
 				C338259A2A26EE160022DFBD /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				C3A321072A2ED52B003EB149 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = DA564D39294B1949006CD17C /* Products */;
 			projectDirPath = "";
@@ -255,6 +268,7 @@
 			files = (
 				C33825922A2465380022DFBD /* Parsing.swift in Sources */,
 				C3F595BE2A1720A20035135D /* Emoji.swift in Sources */,
+				C3344EA22A2D9CED007EC796 /* SuperHeroesViewController.swift in Sources */,
 				C3F595C52A1721AF0035135D /* Wallstreetbet.swift in Sources */,
 				C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */,
 				C33825A02A2704B10022DFBD /* ImageCacheManager.swift in Sources */,
@@ -273,6 +287,8 @@
 				C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */,
 				C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */,
 				C3F595C12A17210A0035135D /* Genderize.swift in Sources */,
+				C3344EA02A2D9A42007EC796 /* SuperHero.swift in Sources */,
+				C3A321062A2DF2CF003EB149 /* SuperHeroViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +524,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		C3A321072A2ED52B003EB149 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -525,6 +549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C338259A2A26EE160022DFBD /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
+		};
+		C3A321082A2ED52B003EB149 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3A321072A2ED52B003EB149 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -24,39 +24,39 @@ struct Contact: Decodable {
     
     init(data: [String: Any]) {
         let genderData = data["gender"] as? String ?? ""
-        self.gender = genderData
+        gender = genderData
         
         let nameData = data["name"] as? [String: String] ?? [:]
-        self.name = Name(data: nameData)
+        name = Name(data: nameData)
         
         let locationData = data["location"] as? [String: Any] ?? [:]
-        self.location = Location(data: locationData)
+        location = Location(data: locationData)
         
         let emailData = data["email"] as? String ?? ""
-        self.email = emailData
+        email = emailData
         
         let loginData = data["login"] as? [String: String] ?? [:]
-        self.login = Login(data: loginData)
+        login = Login(data: loginData)
         
         let dobData = data["dob"] as? [String : Any] ?? [:]
-        self.dob = Dob(data: dobData)
+        dob = Dob(data: dobData)
         
         let registredData = data["registered"] as? [String : Any] ?? [:]
-        self.registered = Registered(data: registredData)
+        registered = Registered(data: registredData)
         
         let phoneData = data["phone"] as? String ?? ""
-        self.phone = phoneData
+        phone = phoneData
         
-        self.cell = data["cell"] as? String ?? ""
+        cell = data["cell"] as? String ?? ""
         
         let idData = data["id"] as? [String : Any] ?? [:]
-        self.id = UserID(data: idData)
+        id = UserID(data: idData)
         
         let pictureData = data["picture"] as? [String : String] ?? [:]
-        self.picture = Picture(data: pictureData)
+        picture = Picture(data: pictureData)
         
         let natData = data["nat"] as? String ?? ""
-        self.nat = natData
+        nat = natData
     }
     
 }
@@ -85,9 +85,9 @@ struct Name: Decodable {
     }
     
     init(data: [String: String]) {
-        self.title = data["title"] ?? ""
-        self.first = data["first"] ?? ""
-        self.last = data["last"] ?? ""
+        title = data["title"] ?? ""
+        first = data["first"] ?? ""
+        last = data["last"] ?? ""
     }
 }
 
@@ -102,18 +102,18 @@ struct Location: Decodable {
     
     init(data: [String: Any]) {
         let streetData = data["street"] as? [String: Any] ?? [:]
-        self.street = Street(data: streetData)
+        street = Street(data: streetData)
         
-        self.city = data["city"] as? String ?? ""
-        self.state = data["state"] as? String ?? ""
-        self.country = data["country"] as? String ?? ""
-        self.postcode = data["postcode"] as? Int ?? 0
+        city = data["city"] as? String ?? ""
+        state = data["state"] as? String ?? ""
+        country = data["country"] as? String ?? ""
+        postcode = data["postcode"] as? Int ?? 0
         
         let coordinatesData = data["coordinates"] as? [String: String] ?? [:]
-        self.coordinates = Coordinates(data: coordinatesData)
+        coordinates = Coordinates(data: coordinatesData)
         
         let timezoneData = data["timezone"] as? [String: String] ?? [:]
-        self.timezone = Timezone(data: timezoneData)
+        timezone = Timezone(data: timezoneData)
     }
 }
 
@@ -123,10 +123,10 @@ struct Street: Decodable {
     
     init(data: [String: Any]) {
         let numberData = data["number"] as? Int ?? 0
-        self.number = numberData
+        number = numberData
         
         let nameData = data["name"] as? String ?? ""
-        self.name = nameData
+        name = nameData
     }
 }
 
@@ -135,8 +135,8 @@ struct Coordinates: Decodable {
     let longitude: String
     
     init(data: [String: String]) {
-        self.latitude = data["latitude"] ?? ""
-        self.longitude = data["longitude"] ?? ""
+        latitude = data["latitude"] ?? ""
+        longitude = data["longitude"] ?? ""
     }
 }
 
@@ -145,8 +145,8 @@ struct Timezone: Decodable {
     let description: String
     
     init(data: [String: String]) {
-        self.offset = data["offset"] ?? ""
-        self.description = data["description"] ?? ""
+        offset = data["offset"] ?? ""
+        description = data["description"] ?? ""
     }
 }
 
@@ -160,13 +160,13 @@ struct Login: Decodable {
     let sha256: String
     
     init(data: [String: String]) {
-        self.uuid = data["uuid"] ?? ""
-        self.username = data["username"] ?? ""
-        self.password = data["password"] ?? ""
-        self.salt = data["salt"] ?? ""
-        self.md5 = data["md5"] ?? ""
-        self.sha1 = data["sha1"] ?? ""
-        self.sha256 = data["sha256"] ?? ""
+        uuid = data["uuid"] ?? ""
+        username = data["username"] ?? ""
+        password = data["password"] ?? ""
+        salt = data["salt"] ?? ""
+        md5 = data["md5"] ?? ""
+        sha1 = data["sha1"] ?? ""
+        sha256 = data["sha256"] ?? ""
     }
 }
 
@@ -176,10 +176,10 @@ struct Dob: Decodable {
     
     init(data: [String: Any]) {
         let dateData = data["date"] as? String ?? ""
-        self.date = dateData
+        date = dateData
         
         let ageData = data["age"] as? Int ?? 0
-        self.age = ageData
+        age = ageData
     }
 }
 
@@ -189,10 +189,10 @@ struct Registered: Decodable {
     
     init(data: [String: Any]) {
         let dateData = data["date"] as? String ?? ""
-        self.date = dateData
+        date = dateData
         
         let ageData = data["age"] as? Int ?? 0
-        self.age = ageData
+        age = ageData
     }
 }
 
@@ -203,9 +203,9 @@ struct UserID: Decodable {
     init(data: [String: Any]) {
         
         let nameData = data["name"] as? String ?? ""
-        self.name = nameData
+        name = nameData
         
-   //     self.value = data["value"]
+   //     value = data["value"]
     }
 }
 
@@ -213,12 +213,12 @@ struct Picture: Decodable, Parsing {
 
     let large: String
     let medium: String
-    let thumbnail: String
+    let thumbnail: String?
     
     init(data: [String: Any]) {
-        self.large = data["large"] as? String ?? ""
-        self.medium = data["medium"] as? String ?? ""
-        self.thumbnail = data["thumbnail"] as? String ?? ""
+        large = data["large"] as? String ?? ""
+        medium = data["medium"] as? String ?? ""
+        thumbnail = data["thumbnail"] as? String ?? ""
     }
     
     static func getData(from value: Any) -> Picture {

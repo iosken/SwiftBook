@@ -13,6 +13,7 @@ enum Link {
     case swapi
     case wallstreetbets
     case contacts
+    case heroes
     
     var url: URL? {
         switch self {
@@ -24,6 +25,8 @@ enum Link {
             return URL(string: "https://tradestie.com/api/v1/apps/reddit") // array
         case .contacts:
             return URL(string: "https://randomuser.me/api/") // model with array property
+        case .heroes:
+            return URL(string: "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json")
         }
     }
     

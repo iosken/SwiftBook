@@ -29,29 +29,30 @@ class ContactListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(contacts.count)
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath)
         
-        var configuration = cell.defaultContentConfiguration()
+        var config = cell.defaultContentConfiguration()
         
-        configuration.imageProperties.maximumSize = CGSize(width: 100, height: 100)
-        configuration.imageProperties.cornerRadius = 50
+        config.imageProperties.maximumSize = CGSize(width: 100, height: 100)
+        config.imageProperties.cornerRadius = 50
         
         let contact = contacts[indexPath.row]
-        configuration.text = contact.name.first
-        configuration.secondaryText = contact.name.last
+        config.text = contact.name.first
+        config.secondaryText = contact.name.last
         
-        NetworkManager.shared.fetchData(fromData: URL(string: contact.picture.thumbnail)) { result in
-            switch result {
-            case .success(let data):
-                configuration.image = UIImage(data: data)
-                cell.contentConfiguration = configuration
-            case .failure(let error):
-                print(error)
+        if let imageURL = contact.picture.thumbnail {
+            NetworkManager.shared.fetchData(fromData: URL(string: imageURL)) { result in
+                switch result {
+                case .success(let data):
+                    config.image = UIImage(data: data)
+                    cell.contentConfiguration = config
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
         
-        cell.contentConfiguration = configuration
+        cell.contentConfiguration = config
         
         return cell
     }
@@ -71,9 +72,9 @@ class ContactListViewController: UITableViewController {
         refreshControl = UIRefreshControl()
         refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
         
-        let refreshAction = UIAction { [weak self] _ in
-            self?.fetch()
-        }
+//        let refreshAction = UIAction { [weak self] _ in
+//            self?.fetch()
+//        }
         
         refreshControl?.addTarget(self, action: #selector(fetch), for: .valueChanged)
     }

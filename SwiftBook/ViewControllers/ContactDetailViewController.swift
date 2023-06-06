@@ -27,6 +27,7 @@ class ContactDetailViewController: UIViewController {
         guard let imageUrl = URL(
             string: contact.picture.large
         ) else { return }
+        
         contactImage.af.setImage(withURL: imageUrl)
     }
 
