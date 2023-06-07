@@ -38,15 +38,42 @@ class MarvelViewCell: UICollectionViewCell {
     private func updateImage() {
         guard let imageURL = imageURL else { return }
         
-        NetworkManager.shared.fetchData(fromData: imageURL) { [weak self] result in // moved from configure(with superhero: Superhero)
+        getImage(from: imageURL) { [weak self] result in
+            switch result {
+            case .success(let image):
+                if imageURL == self?.imageURL {
+                    self?.imageView.image = image
+                    self?.activityIndicator?.stopAnimating()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+
+    }
+    
+    private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
+        // Get image from cache
+
+        if let cachedImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
+            print("Image from cache: ", url.lastPathComponent)
+            completion(.success(cachedImage))
+            return
+        }
+
+        // Download image from url
+        NetworkManager.shared.fetchData(fromData: url) { result in // moved from configure(with superhero: Superhero)
             switch result {
             case .success(let imageData):
-                self?.imageView.image = UIImage(data: imageData)
-                self?.activityIndicator?.stopAnimating()
+                guard let uiImage = UIImage(data: imageData) else { return }
+                ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
+                print("Image from network: ", url.lastPathComponent)
+                completion(.success(uiImage))
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
+
     }
     
     private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
