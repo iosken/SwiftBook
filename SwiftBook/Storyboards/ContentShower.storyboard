@@ -53,6 +53,7 @@
                         <segue destination="dfA-06-21f" kind="show" identifier="wallstreetbet" id="ktI-ex-OIj"/>
                         <segue destination="WXe-kn-ldW" kind="show" identifier="contactList" id="IW8-L8-AGV"/>
                         <segue destination="tKT-OR-aLf" kind="show" identifier="heroes" id="5oQ-4d-zoL"/>
+                        <segue destination="E2o-4F-Cso" kind="show" identifier="marvel" id="xfg-Z7-BQq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyf-uR-7QW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -386,6 +387,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kb-tQ-nrp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3169.5652173913045" y="834.375"/>
+        </scene>
+        <!--Marvel View Controller-->
+        <scene sceneID="yjl-SF-VZW">
+            <objects>
+                <collectionViewController id="E2o-4F-Cso" customClass="MarvelViewController" customModule="SwiftBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lwX-9k-kd0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="DZj-XT-adY">
+                            <size key="itemSize" width="160" height="260"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="marvel" id="LMK-8b-6q7" customClass="MarvelViewCell" customModule="SwiftBook" customModuleProvider="target">
+                                <rect key="frame" x="30" y="30" width="160" height="260"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="260"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Czm-db-XKd">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="231"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S03-Oh-OpJ">
+                                            <rect key="frame" x="0.0" y="239" width="160" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="S03-Oh-OpJ" secondAttribute="bottom" id="0LG-ia-mM0"/>
+                                    <constraint firstItem="Czm-db-XKd" firstAttribute="top" secondItem="LMK-8b-6q7" secondAttribute="top" id="2tE-1E-ops"/>
+                                    <constraint firstItem="S03-Oh-OpJ" firstAttribute="leading" secondItem="LMK-8b-6q7" secondAttribute="leading" id="Hp7-HF-LWH"/>
+                                    <constraint firstAttribute="trailing" secondItem="S03-Oh-OpJ" secondAttribute="trailing" id="O4I-bH-NIh"/>
+                                    <constraint firstItem="Czm-db-XKd" firstAttribute="leading" secondItem="LMK-8b-6q7" secondAttribute="leading" id="S01-gM-Ojq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Czm-db-XKd" secondAttribute="trailing" id="aJZ-wQ-HcT"/>
+                                    <constraint firstItem="S03-Oh-OpJ" firstAttribute="top" secondItem="Czm-db-XKd" secondAttribute="bottom" constant="8" id="gF5-S1-fNo"/>
+                                </constraints>
+                                <size key="customSize" width="160" height="260"/>
+                                <connections>
+                                    <outlet property="imageView" destination="Czm-db-XKd" id="jpd-y0-QBo"/>
+                                    <outlet property="mainLabel" destination="S03-Oh-OpJ" id="75S-OM-vZh"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="E2o-4F-Cso" id="dOw-by-4KQ"/>
+                            <outlet property="delegate" destination="E2o-4F-Cso" id="vfm-OZ-WOE"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="6bm-zU-IFD"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cqx-4K-Eut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3982.6086956521744" y="829.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="084-GW-DW8">

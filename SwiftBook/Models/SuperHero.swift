@@ -76,6 +76,8 @@ struct Appearance: Decodable {
     
 }
 
+// MARK: - Gender
+
 enum Gender: String, Decodable {
     
     case empty = "-"
