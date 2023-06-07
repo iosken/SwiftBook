@@ -16,6 +16,7 @@ private enum ID: String {
     case contacts = "contactList"
     case heroes = "heroes"
     case marvel = "marvel"
+    case contactAdd = "contactAdd"
 }
 
 private enum UserAction: String, CaseIterable {
@@ -27,6 +28,7 @@ private enum UserAction: String, CaseIterable {
     case contacts = "Contacts"
     case heroes = "Heroes"
     case marvel = "Marvel"
+    case contactAdd = "ContactAdd"
 }
 
 final class ContentShowerViewController: UITableViewController {
@@ -69,6 +71,7 @@ final class ContentShowerViewController: UITableViewController {
         case .contacts: performSegue(withIdentifier: ID.contacts.rawValue, sender: nil)
         case .heroes: performSegue(withIdentifier: ID.heroes.rawValue, sender: nil)
         case .marvel: performSegue(withIdentifier: ID.marvel.rawValue, sender: nil)
+        case .contactAdd: performSegue(withIdentifier: ID.contactAdd.rawValue, sender: nil)
         }
     }
     

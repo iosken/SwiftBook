@@ -26,6 +26,10 @@
 		C3A321092A2ED52B003EB149 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C3A321082A2ED52B003EB149 /* Kingfisher */; };
 		C3A3210B2A2F43F6003EB149 /* MarvelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3210A2A2F43F6003EB149 /* MarvelViewController.swift */; };
 		C3A3210D2A2F4426003EB149 /* MarvelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3210C2A2F4426003EB149 /* MarvelViewCell.swift */; };
+		C3A321122A3098F1003EB149 /* ContactListAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321112A3098F1003EB149 /* ContactListAddViewController.swift */; };
+		C3A321142A309A04003EB149 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321132A309A04003EB149 /* StorageManager.swift */; };
+		C3A321162A309A4F003EB149 /* ContactAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321152A309A4F003EB149 /* ContactAdd.swift */; };
+		C3A3211A2A309F05003EB149 /* ContactAddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321192A309F05003EB149 /* ContactAddNewViewController.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
 		C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */; };
 		C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */; };
@@ -57,6 +61,10 @@
 		C3A321052A2DF2CF003EB149 /* SuperHeroViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroViewCell.swift; sourceTree = "<group>"; };
 		C3A3210A2A2F43F6003EB149 /* MarvelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelViewController.swift; sourceTree = "<group>"; };
 		C3A3210C2A2F4426003EB149 /* MarvelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelViewCell.swift; sourceTree = "<group>"; };
+		C3A321112A3098F1003EB149 /* ContactListAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListAddViewController.swift; sourceTree = "<group>"; };
+		C3A321132A309A04003EB149 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		C3A321152A309A4F003EB149 /* ContactAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAdd.swift; sourceTree = "<group>"; };
+		C3A321192A309F05003EB149 /* ContactAddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddNewViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojihubViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCE2A1B5EF600E31CA9 /* GenderizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderizeViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +130,8 @@
 				C3A321052A2DF2CF003EB149 /* SuperHeroViewCell.swift */,
 				C3A3210A2A2F43F6003EB149 /* MarvelViewController.swift */,
 				C3A3210C2A2F4426003EB149 /* MarvelViewCell.swift */,
+				C3A321112A3098F1003EB149 /* ContactListAddViewController.swift */,
+				C3A321192A309F05003EB149 /* ContactAddNewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -133,6 +143,7 @@
 				C33825982A25FE600022DFBD /* AnimationManager.swift */,
 				C3F595C62A1723290035135D /* NetworkManager.swift */,
 				C338259F2A2704B10022DFBD /* ImageCacheManager.swift */,
+				C3A321132A309A04003EB149 /* StorageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -163,6 +174,7 @@
 				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
 				C33825A12A27406C0022DFBD /* Contact.swift */,
 				C3344E9F2A2D9A42007EC796 /* SuperHero.swift */,
+				C3A321152A309A4F003EB149 /* ContactAdd.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,6 +303,9 @@
 				C3344E962A29987D007EC796 /* ContactDetailViewController.swift in Sources */,
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
 				C3A3210D2A2F4426003EB149 /* MarvelViewCell.swift in Sources */,
+				C3A321122A3098F1003EB149 /* ContactListAddViewController.swift in Sources */,
+				C3A321162A309A4F003EB149 /* ContactAdd.swift in Sources */,
+				C3A3211A2A309F05003EB149 /* ContactAddNewViewController.swift in Sources */,
 				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
 				C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */,
 				DA564D3E294B1949006CD17C /* SceneDelegate.swift in Sources */,
@@ -300,6 +315,7 @@
 				C33825942A24AB3E0022DFBD /* ParsingCollection.swift in Sources */,
 				C3F595C32A17214B0035135D /* SwapiPlanet.swift in Sources */,
 				C33825992A25FE600022DFBD /* AnimationManager.swift in Sources */,
+				C3A321142A309A04003EB149 /* StorageManager.swift in Sources */,
 				C3AB1FD12A1B5F0900E31CA9 /* SwapiViewController.swift in Sources */,
 				C3AB1FCF2A1B5EF600E31CA9 /* GenderizeViewController.swift in Sources */,
 				C3F595C12A17210A0035135D /* Genderize.swift in Sources */,
