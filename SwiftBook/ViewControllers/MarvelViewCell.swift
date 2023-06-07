@@ -16,12 +16,12 @@ class MarvelViewCell: UICollectionViewCell {
     }
     
     private var activityIndicator: UIActivityIndicatorView?
-//    private var imageURL: URL? { // Image load optimization 1
-//        didSet {
-//            imageView.image = nil
-//            updateImage()
-//        }
-//    }
+    private var imageURL: URL? { // Image load optimization 1
+        didSet {
+            imageView.image = nil
+            updateImage()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,8 +31,14 @@ class MarvelViewCell: UICollectionViewCell {
     
     func configure(with superhero: Superhero) {
         mainLabel.text = superhero.name
-        guard let imageURL = URL(string: superhero.images.lg) else { return }
-        NetworkManager.shared.fetchData(fromData: imageURL) { [weak self] result in
+        imageURL = URL(string: superhero.images.lg)
+
+    }
+    
+    private func updateImage() {
+        guard let imageURL = imageURL else { return }
+        
+        NetworkManager.shared.fetchData(fromData: imageURL) { [weak self] result in // moved from configure(with superhero: Superhero)
             switch result {
             case .success(let imageData):
                 self?.imageView.image = UIImage(data: imageData)
@@ -42,10 +48,6 @@ class MarvelViewCell: UICollectionViewCell {
             }
         }
     }
-    
-//    private func updateImage() {
-//        guard let imageURL = imageURL else { return }
-//    }
     
     private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView(style: .medium)

@@ -126,16 +126,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		C327E40B2A050848002A40C5 /* Source */ = {
+		C327E40B2A050848002A40C5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C385BDB42A1B662500368F26 /* AlertManager.swift */,
 				C33825982A25FE600022DFBD /* AnimationManager.swift */,
 				C3F595C62A1723290035135D /* NetworkManager.swift */,
 				C338259F2A2704B10022DFBD /* ImageCacheManager.swift */,
-				DA564D44294B194A006CD17C /* Assets.xcassets */,
 			);
-			path = Source;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C33825902A2464F80022DFBD /* Protocols */ = {
@@ -145,6 +144,14 @@
 				C33825932A24AB3E0022DFBD /* ParsingCollection.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C3A321102A302F14003EB149 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D44294B194A006CD17C /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		C3F595BF2A1720A70035135D /* Models */ = {
@@ -184,7 +191,8 @@
 				C327E4082A050805002A40C5 /* Storyboards */,
 				C327E40A2A05082F002A40C5 /* ViewControllers */,
 				C327E4092A050823002A40C5 /* App */,
-				C327E40B2A050848002A40C5 /* Source */,
+				C327E40B2A050848002A40C5 /* Services */,
+				C3A321102A302F14003EB149 /* Resources */,
 			);
 			path = SwiftBook;
 			sourceTree = "<group>";
