@@ -49,7 +49,6 @@ class MarvelViewCell: UICollectionViewCell {
                 print(error)
             }
         }
-
     }
     
     private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
