@@ -28,12 +28,6 @@ final class ContactAddNewViewController: UIViewController {
             action: #selector(firstNameTextFieldDidChanged),
             for: .editingChanged
         )
-// Instead firstNameTextField.addTarget and firstNameTextFieldDidChanged:
-//        let action = UIAction { [weak self] _ in
-//            guard let firstName = self?.firstNameTextField.text else { return }
-//            self?.doneButton.isEnabled = !firstName.isEmpty
-//        }
-//        firstNameTextField.addAction(action, for: .editingChanged)
     }
     
     

@@ -8,6 +8,7 @@
 import Foundation
 
 final class StorageManager {
+    
     static let shared = StorageManager()
     
     private let fileURL = URL.documentsDirectory.appending(path: "Contacts").appendingPathExtension("plist")
@@ -35,4 +36,5 @@ final class StorageManager {
         guard let data = try? PropertyListEncoder().encode(contacts) else { return }
         try? data.write(to: fileURL, options: .noFileProtection)
     }
+    
 }

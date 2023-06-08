@@ -52,7 +52,7 @@ extension ContactListAddViewController {
 }
 
 // MARK: - NewContactViewControllerDelegate
-@available(iOS 16.0, *)
+
 extension ContactListAddViewController: ContactAddNewViewControllerDelegate {
     func add(contact: ContactShort) {
         contacts.append(contact)
