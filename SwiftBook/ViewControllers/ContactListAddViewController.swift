@@ -7,13 +7,9 @@
 
 import UIKit
 
-@available(iOS 16.0, *)
-
 final class ContactListAddViewController: UITableViewController {
     
-   // @IBOutlet var tableView: UITableView!
-    
-    private var contacts: [ContactAdd] = []
+    private var contacts: [ContactShort] = []
     private let storageManager = StorageManager.shared
     
     override func viewDidLoad() {
@@ -40,12 +36,11 @@ final class ContactListAddViewController: UITableViewController {
         guard let newContactVC = segue.destination as? ContactAddNewViewController else { return }
         newContactVC.delegate = self
     }
+    
 }
 
-
-
 // MARK: - UITableViewDelegate
-@available(iOS 16.0, *)
+
 extension ContactListAddViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -59,7 +54,7 @@ extension ContactListAddViewController {
 // MARK: - NewContactViewControllerDelegate
 @available(iOS 16.0, *)
 extension ContactListAddViewController: ContactAddNewViewControllerDelegate {
-    func add(contact: ContactAdd) {
+    func add(contact: ContactShort) {
         contacts.append(contact)
         tableView.reloadData()
     }

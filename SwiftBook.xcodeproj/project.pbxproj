@@ -28,7 +28,7 @@
 		C3A3210D2A2F4426003EB149 /* MarvelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A3210C2A2F4426003EB149 /* MarvelViewCell.swift */; };
 		C3A321122A3098F1003EB149 /* ContactListAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321112A3098F1003EB149 /* ContactListAddViewController.swift */; };
 		C3A321142A309A04003EB149 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321132A309A04003EB149 /* StorageManager.swift */; };
-		C3A321162A309A4F003EB149 /* ContactAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321152A309A4F003EB149 /* ContactAdd.swift */; };
+		C3A321162A309A4F003EB149 /* ContactShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321152A309A4F003EB149 /* ContactShort.swift */; };
 		C3A3211A2A309F05003EB149 /* ContactAddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A321192A309F05003EB149 /* ContactAddNewViewController.swift */; };
 		C3AB1FCB2A1772CF00E31CA9 /* ContentShowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */; };
 		C3AB1FCD2A1B5EE100E31CA9 /* EmojihubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */; };
@@ -63,7 +63,7 @@
 		C3A3210C2A2F4426003EB149 /* MarvelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelViewCell.swift; sourceTree = "<group>"; };
 		C3A321112A3098F1003EB149 /* ContactListAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListAddViewController.swift; sourceTree = "<group>"; };
 		C3A321132A309A04003EB149 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		C3A321152A309A4F003EB149 /* ContactAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAdd.swift; sourceTree = "<group>"; };
+		C3A321152A309A4F003EB149 /* ContactShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactShort.swift; sourceTree = "<group>"; };
 		C3A321192A309F05003EB149 /* ContactAddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddNewViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCA2A1772CF00E31CA9 /* ContentShowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentShowerViewController.swift; sourceTree = "<group>"; };
 		C3AB1FCC2A1B5EE100E31CA9 /* EmojihubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojihubViewController.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				C3F595C42A1721AF0035135D /* Wallstreetbet.swift */,
 				C33825A12A27406C0022DFBD /* Contact.swift */,
 				C3344E9F2A2D9A42007EC796 /* SuperHero.swift */,
-				C3A321152A309A4F003EB149 /* ContactAdd.swift */,
+				C3A321152A309A4F003EB149 /* ContactShort.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				DA564D3C294B1949006CD17C /* AppDelegate.swift in Sources */,
 				C3A3210D2A2F4426003EB149 /* MarvelViewCell.swift in Sources */,
 				C3A321122A3098F1003EB149 /* ContactListAddViewController.swift in Sources */,
-				C3A321162A309A4F003EB149 /* ContactAdd.swift in Sources */,
+				C3A321162A309A4F003EB149 /* ContactShort.swift in Sources */,
 				C3A3211A2A309F05003EB149 /* ContactAddNewViewController.swift in Sources */,
 				C3F595C72A1723290035135D /* NetworkManager.swift in Sources */,
 				C385BDB52A1B662500368F26 /* AlertManager.swift in Sources */,
@@ -467,6 +467,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ContentShower;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,6 +496,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = ContentShower;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

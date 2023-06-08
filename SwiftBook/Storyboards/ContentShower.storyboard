@@ -501,7 +501,7 @@
                                                 <action selector="cancelButtonPressed:" destination="GyL-Yk-rxy" id="tOb-x9-BQN"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="O88-50-RhJ">
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="O88-50-RhJ">
                                             <connections>
                                                 <action selector="doneButtonPressed:" destination="GyL-Yk-rxy" id="qOP-Im-mIN"/>
                                             </connections>

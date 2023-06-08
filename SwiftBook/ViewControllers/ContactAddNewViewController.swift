@@ -8,10 +8,9 @@
 import UIKit
 
 protocol ContactAddNewViewControllerDelegate {
-    func add(contact: ContactAdd)
+    func add(contact: ContactShort)
 }
 
-@available(iOS 16.0, *)
 final class ContactAddNewViewController: UIViewController {
 
     @IBOutlet var doneButton: UIBarButtonItem!
@@ -24,11 +23,17 @@ final class ContactAddNewViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        let action = UIAction { [weak self] _ in
-            guard let firstName = self?.firstNameTextField.text else { return }
-            self?.doneButton.isEnabled = !firstName.isEmpty
-        }
-        firstNameTextField.addAction(action, for: .editingChanged)
+        firstNameTextField.addTarget(
+            self,
+            action: #selector(firstNameTextFieldDidChanged),
+            for: .editingChanged
+        )
+// Instead firstNameTextField.addTarget and firstNameTextFieldDidChanged:
+//        let action = UIAction { [weak self] _ in
+//            guard let firstName = self?.firstNameTextField.text else { return }
+//            self?.doneButton.isEnabled = !firstName.isEmpty
+//        }
+//        firstNameTextField.addAction(action, for: .editingChanged)
     }
     
     
@@ -40,10 +45,15 @@ final class ContactAddNewViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @objc private func firstNameTextFieldDidChanged() {
+        guard let firstName = firstNameTextField.text else { return }
+        doneButton.isEnabled = !firstName.isEmpty
+    }
+    
     private func save() {
         guard let firstName = firstNameTextField.text else { return }
         guard let lastName = lastNameTextField.text else { return }
-        let contact = ContactAdd(firstName: firstName, lastName: lastName)
+        let contact = ContactShort(firstName: firstName, lastName: lastName)
         storageManager.save(contact: contact)
         delegate.add(contact: contact)
         dismiss(animated: true)
