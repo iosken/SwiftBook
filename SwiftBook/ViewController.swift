@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     private let textField = UITextField()
     private let button = UIButton()
     
-    private let storage: StorageManagerProtocol = StorageManager()
+    private let storage = StorageManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,6 @@ class ViewController: UIViewController {
             label.text = textField.text
         }
     }
-
 
 }
 
