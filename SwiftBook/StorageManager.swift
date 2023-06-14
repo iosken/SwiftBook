@@ -22,6 +22,10 @@ protocol StorageManagerProtocol {
 }
 
 final class StorageManager {
+    static let shared = StorageManager()
+    
+    private init() {}
+    
     enum Keys: String {
         case textFieldText
     }
@@ -29,10 +33,12 @@ final class StorageManager {
     private let userDefaults = UserDefaults.standard
     
     private func store(_ object: Any?, key: String) {
-        userDefaults.set(object, forKey: key)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.userDefaults.set(object, forKey: key)
+        }
     }
     
-    private func restore(forKey key: String) -> Any? {
+    private func restore(forKey key: String) -> Any? { //optional to return nil if nothing to restore
         userDefaults.object(forKey: key)
     }
 }
@@ -46,7 +52,7 @@ extension StorageManager: StorageManagerProtocol {
     
     func set<T: Encodable>(object: T?, forKey key: Keys) {
         let jsonData = try? JSONEncoder().encode(object)
-        store(object, key: key.rawValue)
+        store(jsonData, key: key.rawValue)
     }
     
     func int(forKey key: Keys) -> Int? {
