@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     private let label = UILabel()
     private let textField = UITextField()
     private let button = UIButton()
+    
+    private let storage: StorageManagerProtocol = StorageManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
         view.addSubview(button)
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Have no data"
+        label.text = storage.string(forKey: .textFieldText) ?? "Have no data"
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .blue.withAlphaComponent(0.2)
@@ -48,6 +50,9 @@ class ViewController: UIViewController {
     @IBAction func buttonTaped() {
         if textField.hasText {
             print("Data saved")
+            
+            storage.set(textField.text, forKey: .textFieldText)
+            
             label.text = textField.text
         }
     }
