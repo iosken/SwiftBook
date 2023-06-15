@@ -1,0 +1,130 @@
+//
+//  TaskListViewController.swift
+//  TaskList
+//
+//  Created by Yuri Volegov on 08.06.2023.
+//
+
+import UIKit
+
+class TaskListViewController: UITableViewController {
+    
+    private let viewContext = StorageManager.shared.persistentContainer.viewContext
+
+    private let cellID = "task"
+    
+    private var taskList: [Task] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        view.backgroundColor = .white
+        setupNavigationBar()
+        fetchData()
+    }
+    
+    private func setupNavigationBar() {
+        title = "Task List"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.backgroundColor = UIColor(
+            red: 21/255,
+            green: 101/255,
+            blue: 192/255,
+            alpha: 194/255
+        )
+        
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addNewTask)
+        )
+        
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
+    @objc private func addNewTask() {
+        print("addNewTask")
+        
+        AlertManager.shared.showAlert(from: self, status: .save) { [weak self] task in
+            self?.save(task)
+        }
+    }
+    
+    private func fetchData() {
+        taskList = StorageManager.shared.fetchTasks()
+    }
+    
+    private func save(_ taskName: String) {
+        print(">>>>>\(taskList.count) AND \(taskName)")
+        let newTask = StorageManager.shared.createTask(taskList.count, title: taskName)
+        
+        taskList.append(newTask)
+        
+        let cellIndex = IndexPath(row: taskList.count - 1, section: 0)
+        tableView.insertRows(at: [cellIndex], with: .automatic)
+    }
+    
+    private func delete(index: Int) {
+        StorageManager.shared.deleteTask(index: index)
+        
+        taskList.remove(at: index)
+        
+        let cellIndex = IndexPath(row: index, section: 0)
+        tableView.deleteRows(at: [cellIndex], with: .automatic)
+    }
+    
+    private func reload(index: Int, taskName: String) {
+        let task = Task(context: viewContext)
+        task.title = taskName
+        taskList[index] = task
+        
+        let cellIndex = IndexPath(row: index, section: 0)
+        tableView.reloadRows(at: [cellIndex], with: .automatic)
+        
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+}
+
+extension TaskListViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        taskList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let task = taskList[indexPath.row]
+        
+        var content = cell.defaultContentConfiguration()
+        content.text = task.title
+        cell.contentConfiguration = content
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AlertManager.shared.showAlert(from: self, status: .update) { [weak self] task in
+            self?.reload(index: indexPath.row, taskName: task)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            delete(index: indexPath.row)
+        }
+    }
+    
+}
