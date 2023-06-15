@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       // CoreDataManager.shared.logCoreDataDBPath()
+        CoreDataManager.shared.createPhoto(1, title: "test", url: "https://www.google.com")
+        
         view.addSubview(label)
         view.addSubview(textField)
         view.addSubview(button)
