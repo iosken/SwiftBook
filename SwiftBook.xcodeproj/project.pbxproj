@@ -41,6 +41,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3C2DFE82A3C0E6300E54694 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C39B6DD52A3B12A10038BCCA /* StorageManager.swift */,
+				C39B6DD72A3B12BD0038BCCA /* AlertManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C3C2DFE92A3C0E7200E54694 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D44294B194A006CD17C /* Assets.xcassets */,
+				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		C3C2DFEA2A3C0E9800E54694 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D3F294B1949006CD17C /* TaskListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C3C2DFEB2A3C0EA600E54694 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				DA564D3B294B1949006CD17C /* AppDelegate.swift */,
+				DA564D3D294B1949006CD17C /* SceneDelegate.swift */,
+				DA564D49294B194A006CD17C /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		DA564D2F294B1949006CD17C = {
 			isa = PBXGroup;
 			children = (
@@ -60,14 +96,10 @@
 		DA564D3A294B1949006CD17C /* SwiftBook */ = {
 			isa = PBXGroup;
 			children = (
-				DA564D3B294B1949006CD17C /* AppDelegate.swift */,
-				DA564D3D294B1949006CD17C /* SceneDelegate.swift */,
-				DA564D3F294B1949006CD17C /* TaskListViewController.swift */,
-				DA564D44294B194A006CD17C /* Assets.xcassets */,
-				DA564D46294B194A006CD17C /* LaunchScreen.storyboard */,
-				DA564D49294B194A006CD17C /* Info.plist */,
-				C39B6DD52A3B12A10038BCCA /* StorageManager.swift */,
-				C39B6DD72A3B12BD0038BCCA /* AlertManager.swift */,
+				C3C2DFEB2A3C0EA600E54694 /* App */,
+				C3C2DFEA2A3C0E9800E54694 /* ViewControllers */,
+				C3C2DFE92A3C0E7200E54694 /* New Group */,
+				C3C2DFE82A3C0E6300E54694 /* Managers */,
 				C39B6DD92A3B12FF0038BCCA /* TaskList.xcdatamodeld */,
 			);
 			path = SwiftBook;
@@ -288,7 +320,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SwiftBook/Info.plist;
+				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -315,7 +347,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SwiftBook/Info.plist;
+				INFOPLIST_FILE = SwiftBook/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
