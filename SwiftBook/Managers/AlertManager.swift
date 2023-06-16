@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 enum StatusAlert {
+    
     case save
     case update
+    
 }
 
 extension StatusAlert {
@@ -39,6 +41,7 @@ extension StatusAlert {
 }
 
 class AlertManager {
+    
     static let shared = AlertManager()
     
     private init () {}

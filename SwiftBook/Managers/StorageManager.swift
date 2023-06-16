@@ -71,10 +71,9 @@ class StorageManager {
         
         let task = Task(entity: taskEntityDescription, insertInto: context)
         task.title = title
-        
         task.id = id ?? newID
-        
         saveContext()
+        
         return task
     }
     
@@ -85,35 +84,29 @@ class StorageManager {
     func updateTasks(withId id: Int, newTitle: String) {
         guard let task = tasks.first (where: { $0.id == id }) else { return }
         task.title = newTitle
-        
         saveContext()
     }
     
     func updateTasks(withIndex index: Int, newTaskName: String) {
         let task = tasks[index]
-        
         task.title = newTaskName
-        
         saveContext()
     }
     
     func deleteTask(id: Int) {
         guard let task = tasks.first(where: { $0.id == id }) else { return }
         context.delete(task)
-        
         saveContext()
     }
     
     func deleteTask(index: Int) {
         let task = tasks[index]
         context.delete(task)
-        
         saveContext()
     }
     
     func deleteAllTasks() {
         tasks.forEach { context.delete($0) }
-        
         saveContext()
     }
     
