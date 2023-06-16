@@ -82,10 +82,6 @@ class StorageManager {
         tasks.first (where: { $0.id == id })
     }
     
-    func fetchTask(withIndex index: Int) -> Task {
-        tasks[index]
-    }
-    
     func updateTasks(withId id: Int, newTitle: String) {
         guard let task = tasks.first (where: { $0.id == id }) else { return }
         task.title = newTitle
