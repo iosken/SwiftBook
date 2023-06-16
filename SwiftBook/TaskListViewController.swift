@@ -7,16 +7,15 @@
 
 import UIKit
 
-class TaskListViewController: UITableViewController {
+final class TaskListViewController: UITableViewController {
     
-    private let viewContext = StorageManager.shared.persistentContainer.viewContext
-
     private let cellID = "task"
     
     private var taskList: [Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // StorageManager.shared.deleteAllTasks()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         view.backgroundColor = .white
         setupNavigationBar()
@@ -51,8 +50,6 @@ class TaskListViewController: UITableViewController {
     }
     
     @objc private func addNewTask() {
-        print("addNewTask")
-        
         AlertManager.shared.showAlert(from: self, status: .save) { [weak self] task in
             self?.save(task)
         }
@@ -63,8 +60,7 @@ class TaskListViewController: UITableViewController {
     }
     
     private func save(_ taskName: String) {
-        print(">>>>>\(taskList.count) AND \(taskName)")
-        let newTask = StorageManager.shared.createTask(taskList.count, title: taskName)
+        let newTask = StorageManager.shared.createTask(UUID().uuidString, title: taskName)
         
         taskList.append(newTask)
         
@@ -81,24 +77,16 @@ class TaskListViewController: UITableViewController {
         tableView.deleteRows(at: [cellIndex], with: .automatic)
     }
     
-    private func reload(index: Int, taskName: String) {
-        let task = Task(context: viewContext)
-        task.title = taskName
-        taskList[index] = task
+    private func reload(index: Int, newTaskName: String) {
+        StorageManager.shared.updateTasks(withIndex: index, newTaskName: newTaskName)
         
         let cellIndex = IndexPath(row: index, section: 0)
         tableView.reloadRows(at: [cellIndex], with: .automatic)
-        
-        if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
     }
     
 }
+
+// MARK: - TableView DataSource and Delegate
 
 extension TaskListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,12 +100,13 @@ extension TaskListViewController {
         var content = cell.defaultContentConfiguration()
         content.text = task.title
         cell.contentConfiguration = content
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AlertManager.shared.showAlert(from: self, status: .update) { [weak self] task in
-            self?.reload(index: indexPath.row, taskName: task)
+            self?.reload(index: indexPath.row, newTaskName: task)
         }
     }
     

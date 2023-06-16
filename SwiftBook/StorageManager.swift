@@ -17,7 +17,7 @@ class StorageManager {
     
     // MARK: - Core Data stack
     
-    let persistentContainer: NSPersistentContainer = {
+    private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TaskList")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -45,8 +45,15 @@ class StorageManager {
     
     private lazy var context = persistentContainer.viewContext
     
+    private var tasks: [Task] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        let tasks = (try? context.fetch(fetchRequest) as? [Task]) ?? []
+        return tasks
+    }
+    
     func createTask(_ id: Int, title: String) -> Task {
         guard let taskEntityDescription = NSEntityDescription.entity(forEntityName: "Task", in: context) else { return Task() }
+        
         let task = Task(entity: taskEntityDescription, insertInto: context)
         task.title = title
         task.id = Int64(id)
@@ -56,68 +63,48 @@ class StorageManager {
     }
     
     func fetchTasks() -> [Task] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        
-        do {
-            return (try? context.fetch(fetchRequest) as? [Task]) ?? []
-        }
+        tasks
     }
     
-    func fetchTask(_ id: Int) -> Task? {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        
-        do {
-            let tasks = try? context.fetch(fetchRequest) as? [Task]
-            
-            return tasks?.first (where: { $0.id == id })
-        }
+    func fetchTask(withId id: Int) -> Task? {
+        tasks.first (where: { $0.id == id })
     }
     
-    func updateTasks(with id: Int, newUrl: String, title: String? = nil) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+    func fetchTask(withIndex index: Int) -> Task {
+        tasks[index]
+    }
+    
+    func updateTasks(withId id: Int, newTitle: String) {
+        guard let task = tasks.first (where: { $0.id == id }) else { return }
+        task.title = newTitle
         
-        do {
-            guard let tasks = try? context.fetch(fetchRequest) as? [Task],
-                  let task = tasks.first (where: { $0.id == id }) else { return }
-            
-            task.title = title ?? ""
-        }
+        saveContext()
+    }
+    
+    func updateTasks(withIndex index: Int, newTaskName: String) {
+        let task = tasks[index]
+        
+        task.title = newTaskName
         
         saveContext()
     }
     
     func deleteAllTasks() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        
-        do {
-            let tasks = try? context.fetch(fetchRequest) as? [Task]
-            tasks?.forEach { context.delete($0) }
-        }
+        tasks.forEach { context.delete($0) }
         
         saveContext()
     }
     
     func deleteTask(id: Int) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        
-        do {
-            guard let tasks = try? context.fetch(fetchRequest) as? [Task],
-                  let task = tasks.first(where: { $0.id == id }) else { return }
-            context.delete(task)
-        }
+        guard let task = tasks.first(where: { $0.id == id }) else { return }
+        context.delete(task)
         
         saveContext()
     }
     
     func deleteTask(index: Int) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        
-        do {
-            guard let tasks = try? context.fetch(fetchRequest) as? [Task] else { return }
-            
-            let task = tasks[index]
-            context.delete(task)
-        }
+        let task = tasks[index]
+        context.delete(task)
         
         saveContext()
     }
