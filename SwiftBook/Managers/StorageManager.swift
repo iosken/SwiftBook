@@ -52,16 +52,16 @@ class StorageManager {
     private lazy var context = persistentContainer.viewContext
 
     private var newID: Int64 {
-        var usedID: [Int64] = []
+        var usedIDs: [Int64] = []
         var result: Int64 = 0
         
         tasks.forEach { task in
-            usedID.append(task.id)
+            usedIDs.append(task.id)
         }
         
         repeat {
             result = Int64.random(in: 0...10000)
-        } while !usedID.contains(result)
+        } while usedIDs.contains(result)
         
         return result
     }
