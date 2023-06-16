@@ -16,7 +16,7 @@ class StorageManager {
     private init () {}
     
     // MARK: - Core Data stack
-    
+   
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TaskList")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -29,7 +29,7 @@ class StorageManager {
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
+    private func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
