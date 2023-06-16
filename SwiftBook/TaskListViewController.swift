@@ -13,13 +13,17 @@ final class TaskListViewController: UITableViewController {
     
     private var taskList: [Task] = []
     
+    private let data = StorageManager.shared
+    private let alert = AlertManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       // StorageManager.shared.deleteAllTasks()
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
         view.backgroundColor = .white
+        
         setupNavigationBar()
-        fetchData()
+        taskList = data.tasks
     }
     
     private func setupNavigationBar() {
@@ -50,17 +54,13 @@ final class TaskListViewController: UITableViewController {
     }
     
     @objc private func addNewTask() {
-        AlertManager.shared.showAlert(from: self, status: .save) { [weak self] task in
+        alert.showAlert(from: self, status: .save) { [weak self] task in
             self?.save(task)
         }
     }
     
-    private func fetchData() {
-        taskList = StorageManager.shared.fetchTasks()
-    }
-    
     private func save(_ taskName: String) {
-        let newTask = StorageManager.shared.createTask(UUID().uuidString, title: taskName)
+        let newTask = data.createTask(title: taskName)
         
         taskList.append(newTask)
         
@@ -69,7 +69,7 @@ final class TaskListViewController: UITableViewController {
     }
     
     private func delete(index: Int) {
-        StorageManager.shared.deleteTask(index: index)
+        data.deleteTask(index: index)
         
         taskList.remove(at: index)
         
@@ -78,7 +78,7 @@ final class TaskListViewController: UITableViewController {
     }
     
     private func reload(index: Int, newTaskName: String) {
-        StorageManager.shared.updateTasks(withIndex: index, newTaskName: newTaskName)
+        data.updateTasks(withIndex: index, newTaskName: newTaskName)
         
         let cellIndex = IndexPath(row: index, section: 0)
         tableView.reloadRows(at: [cellIndex], with: .automatic)
@@ -105,7 +105,7 @@ extension TaskListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AlertManager.shared.showAlert(from: self, status: .update) { [weak self] task in
+        alert.showAlert(from: self, status: .update) { [weak self] task in
             self?.reload(index: indexPath.row, newTaskName: task)
         }
     }

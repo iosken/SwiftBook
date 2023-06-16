@@ -49,7 +49,6 @@ class AlertManager {
             let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
                 guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
                 completion(task)
-                //save(task)
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
@@ -62,7 +61,6 @@ class AlertManager {
             linkObject?.present(alert, animated: true)
     
         }
-    
     
 }
 

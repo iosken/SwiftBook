@@ -43,27 +43,39 @@ class StorageManager {
     
     // MARK: - CRUD
     
-    private lazy var context = persistentContainer.viewContext
-    
-    private var tasks: [Task] {
+    var tasks: [Task] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         let tasks = (try? context.fetch(fetchRequest) as? [Task]) ?? []
         return tasks
     }
     
-    func createTask(_ id: Int, title: String) -> Task {
+    private lazy var context = persistentContainer.viewContext
+
+    private var newID: Int64 {
+        var usedID: [Int64] = []
+        var result: Int64 = 0
+        
+        tasks.forEach { task in
+            usedID.append(task.id)
+        }
+        
+        repeat {
+            result = Int64.random(in: 0...10000)
+        } while !usedID.contains(result)
+        
+        return result
+    }
+    
+    func createTask(_ id: Int64? = nil, title: String) -> Task {
         guard let taskEntityDescription = NSEntityDescription.entity(forEntityName: "Task", in: context) else { return Task() }
         
         let task = Task(entity: taskEntityDescription, insertInto: context)
         task.title = title
-        task.id = Int64(id)
+        
+        task.id = id ?? newID
         
         saveContext()
         return task
-    }
-    
-    func fetchTasks() -> [Task] {
-        tasks
     }
     
     func fetchTask(withId id: Int) -> Task? {
@@ -89,12 +101,6 @@ class StorageManager {
         saveContext()
     }
     
-    func deleteAllTasks() {
-        tasks.forEach { context.delete($0) }
-        
-        saveContext()
-    }
-    
     func deleteTask(id: Int) {
         guard let task = tasks.first(where: { $0.id == id }) else { return }
         context.delete(task)
@@ -105,6 +111,12 @@ class StorageManager {
     func deleteTask(index: Int) {
         let task = tasks[index]
         context.delete(task)
+        
+        saveContext()
+    }
+    
+    func deleteAllTasks() {
+        tasks.forEach { context.delete($0) }
         
         saveContext()
     }
