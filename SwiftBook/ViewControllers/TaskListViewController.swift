@@ -11,8 +11,6 @@ final class TaskListViewController: UITableViewController {
     
     private let cellID = "task"
     
-    private var taskList: [Task] = []
-    
     private let data = StorageManager.shared
     private let alert = AlertManager.shared
     
@@ -23,7 +21,6 @@ final class TaskListViewController: UITableViewController {
         view.backgroundColor = .white
         
         setupNavigationBar()
-        taskList = data.tasks
     }
     
     private func setupNavigationBar() {
@@ -60,18 +57,14 @@ final class TaskListViewController: UITableViewController {
     }
     
     private func save(_ taskName: String) {
-        let newTask = data.createTask(title: taskName)
+        data.createTask(title: taskName)
         
-        taskList.append(newTask)
-        
-        let cellIndex = IndexPath(row: taskList.count - 1, section: 0)
+        let cellIndex = IndexPath(row: data.tasks.count - 1, section: 0)
         tableView.insertRows(at: [cellIndex], with: .automatic)
     }
     
     private func delete(index: Int) {
-        data.deleteTask(index: index)
-        
-        taskList.remove(at: index)
+        data.deleteTask(withIndex: index)
         
         let cellIndex = IndexPath(row: index, section: 0)
         tableView.deleteRows(at: [cellIndex], with: .automatic)
@@ -91,12 +84,12 @@ final class TaskListViewController: UITableViewController {
 extension TaskListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        taskList.count
+        data.tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        let task = taskList[indexPath.row]
+        let task = data.tasks[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         content.text = task.title
@@ -106,15 +99,11 @@ extension TaskListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        alert.showAlert(from: self, status: .update) { [weak self] task in
-//            self?.reload(index: indexPath.row, newTaskName: task)
-//        }
-        
         alert.showAlert(from: self, status: .update) { [weak self] task in
             self?.data.updateTasks(withIndex: indexPath.row, newTaskName: task)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
-
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
