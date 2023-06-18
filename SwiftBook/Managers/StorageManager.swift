@@ -103,13 +103,13 @@ class StorageManager {
         saveContext()
     }
     
-    func deleteTask(id: Int) {
+    func deleteTask(withId id: Int) {
         guard let task = tasks.first(where: { $0.id == id }) else { return }
         context.delete(task)
         saveContext()
     }
     
-    func deleteTask(index: Int) {
+    func deleteTask(withIndex index: Int) {
         let task = tasks[index]
         context.delete(task)
         saveContext()
