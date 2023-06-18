@@ -46,8 +46,16 @@ class AlertManager {
     
     private init () {}
     
-    func showAlert(from linkObject: UIViewController?, status: StatusAlert, completion: @escaping (_ task: String) -> Void) {
-            let alert = UIAlertController(title: status.title, message: status.message, preferredStyle: .alert)
+    func showAlert(
+        from linkObject: UIViewController?,
+        status: StatusAlert,
+        completion: @escaping (_ task: String) -> Void
+    ) {
+            let alert = UIAlertController(
+                title: status.title,
+                message: status.message,
+                preferredStyle: .alert
+            )
             
             let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
                 guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }

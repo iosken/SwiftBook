@@ -27,6 +27,14 @@ class StorageManager {
         return container
     }()
     
+    private lazy var context = persistentContainer.viewContext
+    
+    var tasks: [Task] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        let tasks = (try? context.fetch(fetchRequest) as? [Task]) ?? []
+        return tasks
+    }
+    
     // MARK: - Core Data Saving support
     
     func saveContext () {
@@ -42,14 +50,6 @@ class StorageManager {
     }
     
     // MARK: - CRUD
-    
-    var tasks: [Task] {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        let tasks = (try? context.fetch(fetchRequest) as? [Task]) ?? []
-        return tasks
-    }
-    
-    private lazy var context = persistentContainer.viewContext
 
     private var newID: Int64 {
         var usedIDs: [Int64] = []
