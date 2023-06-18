@@ -63,6 +63,7 @@ class AlertManager {
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
             alert.addAction(saveAction)
             alert.addAction(cancelAction)
             alert.addTextField { textField in

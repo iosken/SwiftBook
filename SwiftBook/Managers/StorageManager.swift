@@ -30,9 +30,19 @@ class StorageManager {
     private lazy var context = persistentContainer.viewContext
     
     var tasks: [Task] {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+//        let tasks = (try? context.fetch(fetchRequest) as? [Task]) ?? []
+//        return tasks
+        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-        let tasks = (try? context.fetch(fetchRequest) as? [Task]) ?? []
-        return tasks
+        
+        do {
+            let tasks = try context.fetch(fetchRequest) as? [Task] ?? []
+            return tasks
+        } catch let error {
+            print(error.localizedDescription)
+            return []
+        }
     }
     
     // MARK: - Core Data Saving support
