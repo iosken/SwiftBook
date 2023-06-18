@@ -59,17 +59,6 @@ class StorageManager {
         return container
     }()
     
-    private func fetchData(completion: (Result<[Task], Error>) -> Void) {
-        let fetchRequest = Task.fetchRequest()
-        
-        do {
-            let tasks = try context.fetch(fetchRequest)
-            completion(.success(tasks))
-        } catch let error {
-            completion(.failure(error))
-        }
-    }
-    
     // MARK: - Core Data Saving support
     
     func saveContext () {
@@ -85,6 +74,17 @@ class StorageManager {
     }
     
     // MARK: - CRUD
+    
+    private func fetchData(completion: (Result<[Task], Error>) -> Void) {
+        let fetchRequest = Task.fetchRequest()
+        
+        do {
+            let tasks = try context.fetch(fetchRequest)
+            completion(.success(tasks))
+        } catch let error {
+            completion(.failure(error))
+        }
+    }
     
     func createTask(_ id: Int64? = nil, title: String) {
         guard let taskEntityDescription = NSEntityDescription.entity(
