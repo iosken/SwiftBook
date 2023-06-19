@@ -13,6 +13,17 @@ class StorageManager {
     
     static let shared = StorageManager()
     
+    private init () {
+        fetchData { result in
+            switch result {
+            case .success(let resultTask):
+                taskList = resultTask
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     var tasks: [Task] {
         taskList
     }
@@ -132,17 +143,6 @@ class StorageManager {
     func deleteAllTasks() {
         tasks.forEach { context.delete($0) }
         saveContext()
-    }
-    
-    private init () {
-        fetchData { result in
-            switch result {
-            case .success(let resultTask):
-                taskList = resultTask
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
     
 }

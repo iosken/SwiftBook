@@ -51,14 +51,14 @@ final class TaskListViewController: UITableViewController {
     }
     
     @objc private func addNewTask() {
-        alert.showAlert(from: self, status: .save) { [weak self] task in
+        alert.showAlert(from: self) { [weak self] task in
             self?.save(task)
         }
     }
     
     private func save(_ taskName: String) {
         data.createTask(title: taskName)
-        
+
         let cellIndex = IndexPath(row: data.tasks.count - 1, section: 0)
         tableView.insertRows(at: [cellIndex], with: .automatic)
     }
@@ -71,7 +71,7 @@ final class TaskListViewController: UITableViewController {
     }
     
     private func reload(index: Int, newTaskName: String) {
-        data.updateTasks(withIndex: index, newTaskName: newTaskName)
+        data.updateTask(withIndex: index, newTaskName: newTaskName)
         
         let cellIndex = IndexPath(row: index, section: 0)
         tableView.reloadRows(at: [cellIndex], with: .automatic)
@@ -99,8 +99,9 @@ extension TaskListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        alert.showAlert(from: self, status: .update) { [weak self] task in
-            self?.data.updateTasks(withIndex: indexPath.row, newTaskName: task)
+        let task = data.tasks[indexPath.row]
+        alert.showAlert(from: self, task: task) { [weak self] task in
+            self?.data.updateTask(withIndex: indexPath.row, newTaskName: task)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         

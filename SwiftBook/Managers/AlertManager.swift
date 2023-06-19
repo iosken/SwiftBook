@@ -13,10 +13,6 @@ enum StatusAlert {
     case save
     case update
     
-}
-
-extension StatusAlert {
-    
     var title: String {
         switch self {
         case .save: return "Save"
@@ -48,31 +44,33 @@ class AlertManager {
     
     func showAlert(
         from linkObject: UIViewController?,
-        status: StatusAlert,
-        completion: @escaping (_ task: String) -> Void
+        task: Task? = nil,
+        completion: @escaping (String) -> Void
     ) {
-            let alert = UIAlertController(
-                title: status.title,
-                message: status.message,
-                preferredStyle: .alert
-            )
-            
-            let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-                guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-                completion(task)
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        let status = task != nil ? StatusAlert.update : StatusAlert.save
+        let alert = UIAlertController(
+            title: status.title,
+            message: status.message,
+            preferredStyle: .alert
+        )
         
-            alert.addAction(saveAction)
-            alert.addAction(cancelAction)
-            alert.addTextField { textField in
-                textField.placeholder = status.placeHolder
-            }
-    
-            linkObject?.present(alert, animated: true)
-    
+        let saveAction = UIAlertAction(title: status.title, style: .default) { _ in
+            guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
+            completion(task)
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { textField in
+            textField.placeholder = status.placeHolder
+            textField.text = task?.title
+        }
+        
+        linkObject?.present(alert, animated: true)
+        
+    }
     
 }
 
