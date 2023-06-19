@@ -104,6 +104,10 @@ class StorageManager {
         tasks.first (where: { $0.id == id })
     }
     
+    func fetchTask(withIndex index: Int) -> Task? {
+        tasks[index]
+    }
+    
     func updateTask(with task: Task, newTitle: String) {
         task.title = newTitle
         saveContext()
