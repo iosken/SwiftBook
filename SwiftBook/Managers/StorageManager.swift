@@ -13,22 +13,11 @@ class StorageManager {
     
     static let shared = StorageManager()
     
-    private init () {
-        fetchData { result in
-            switch result {
-            case .success(let resultTask):
-                taskList = resultTask
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     var tasks: [Task] {
         taskList
     }
     
-    private lazy var taskList: [Task] = []
+    private var taskList: [Task] = []
     
     private lazy var context = persistentContainer.viewContext
     
@@ -86,7 +75,7 @@ class StorageManager {
         }
     }
     
-    func createTask(_ id: Int64? = nil, title: String) {
+    func createTask(title: String) {
         guard let taskEntityDescription = NSEntityDescription.entity(
             forEntityName: "Task",
             in: context
@@ -94,7 +83,7 @@ class StorageManager {
         
         let task = Task(entity: taskEntityDescription, insertInto: context)
         task.title = title
-        task.id = id ?? newID
+        task.id = newID
         saveContext()
         
         taskList.append(task)
@@ -104,15 +93,25 @@ class StorageManager {
         tasks.first (where: { $0.id == id })
     }
     
-    func updateTasks(withId id: Int, newTitle: String) {
+    func updateTask(with task: Task, newTitle: String) {
+        task.title = newTitle
+        saveContext()
+    }
+    
+    func updateTask(withId id: Int, newTitle: String) {
         guard let task = tasks.first (where: { $0.id == id }) else { return }
         task.title = newTitle
         saveContext()
     }
     
-    func updateTasks(withIndex index: Int, newTaskName: String) {
+    func updateTask(withIndex index: Int, newTaskName: String) {
         let task = tasks[index]
         task.title = newTaskName
+        saveContext()
+    }
+    
+    func deleteTask(with task: Task) {
+        context.delete(task)
         saveContext()
     }
     
@@ -133,6 +132,17 @@ class StorageManager {
     func deleteAllTasks() {
         tasks.forEach { context.delete($0) }
         saveContext()
+    }
+    
+    private init () {
+        fetchData { result in
+            switch result {
+            case .success(let resultTask):
+                taskList = resultTask
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }
