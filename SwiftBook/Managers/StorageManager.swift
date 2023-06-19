@@ -75,18 +75,7 @@ class StorageManager {
     
     // MARK: - CRUD
     
-    private func fetchData(completion: (Result<[Task], Error>) -> Void) {
-        let fetchRequest = Task.fetchRequest()
-        
-        do {
-            let tasks = try context.fetch(fetchRequest)
-            completion(.success(tasks))
-        } catch let error {
-            completion(.failure(error))
-        }
-    }
-    
-    func createTask(title: String) {
+    func createTask(withTitle title: String) {
         guard let taskEntityDescription = NSEntityDescription.entity(
             forEntityName: "Task",
             in: context
@@ -97,7 +86,21 @@ class StorageManager {
         task.id = newID
         saveContext()
         
-        taskList.append(task)
+        DispatchQueue.main.async { [weak self] in
+            self?.taskList.append(task)
+        }
+        
+    }
+    
+    private func fetchData(completion: (Result<[Task], Error>) -> Void) {
+        let fetchRequest = Task.fetchRequest()
+        
+        do {
+            let tasks = try context.fetch(fetchRequest)
+            completion(.success(tasks))
+        } catch let error {
+            completion(.failure(error))
+        }
     }
     
     func fetchTask(withId id: Int) -> Task? {
