@@ -75,7 +75,7 @@ class StorageManager {
     
     // MARK: - CRUD
     
-    func createTask(withTitle title: String) {
+    func createTask(withTitle title: String, completion: () -> Void) {
         guard let taskEntityDescription = NSEntityDescription.entity(
             forEntityName: "Task",
             in: context
@@ -86,10 +86,8 @@ class StorageManager {
         task.id = newID
         saveContext()
         
-        DispatchQueue.main.async { [weak self] in
-            self?.taskList.append(task)
-        }
-        
+        taskList.append(task)
+        completion()
     }
     
     private func fetchData(completion: (Result<[Task], Error>) -> Void) {

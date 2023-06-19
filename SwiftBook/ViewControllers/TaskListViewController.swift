@@ -57,10 +57,10 @@ final class TaskListViewController: UITableViewController {
     }
     
     private func save(_ taskName: String) {
-        data.createTask(title: taskName)
-
-        let cellIndex = IndexPath(row: data.tasks.count - 1, section: 0)
-        tableView.insertRows(at: [cellIndex], with: .automatic)
+        data.createTask(withTitle: taskName) {
+            let cellIndex = IndexPath(row: data.tasks.count - 1, section: 0)
+            tableView.insertRows(at: [cellIndex], with: .automatic)
+        }
     }
     
     private func delete(index: Int) {
@@ -99,13 +99,13 @@ extension TaskListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let task = data.tasks[indexPath.row]
         alert.showAlert(from: self, task: task) { [weak self] task in
             self?.data.updateTask(withIndex: indexPath.row, newTaskName: task)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -113,7 +113,6 @@ extension TaskListViewController {
         if editingStyle == .delete {
             delete(index: indexPath.row)
         }
-        
     }
     
 }
