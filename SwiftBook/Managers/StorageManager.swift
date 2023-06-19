@@ -75,7 +75,7 @@ class StorageManager {
     
     // MARK: - CRUD
     
-    func createTask(withTitle title: String, completion: () -> Void) {
+    func createTask(withTitle title: String, completion: (() -> Void)? = nil) {
         guard let taskEntityDescription = NSEntityDescription.entity(
             forEntityName: "Task",
             in: context
@@ -87,7 +87,8 @@ class StorageManager {
         saveContext()
         
         taskList.append(task)
-        completion()
+        
+        if let completion = completion { completion() }
     }
     
     private func fetchData(completion: (Result<[Task], Error>) -> Void) {

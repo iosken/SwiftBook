@@ -57,9 +57,9 @@ final class TaskListViewController: UITableViewController {
     }
     
     private func save(_ taskName: String) {
-        data.createTask(withTitle: taskName) {
-            let cellIndex = IndexPath(row: data.tasks.count - 1, section: 0)
-            tableView.insertRows(at: [cellIndex], with: .automatic)
+        data.createTask(withTitle: taskName) { [weak self] in
+            let cellIndex = IndexPath(row: (self?.data.tasks.count ?? 0) - 1, section: 0)
+            self?.tableView.insertRows(at: [cellIndex], with: .automatic)
         }
     }
     
