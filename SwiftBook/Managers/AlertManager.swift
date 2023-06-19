@@ -43,7 +43,7 @@ class AlertManager {
     private init () {}
     
     func showAlert(
-        from linkObject: UIViewController?,
+        from viewController: UIViewController?,
         task: Task? = nil,
         completion: @escaping (String) -> Void
     ) {
@@ -68,8 +68,7 @@ class AlertManager {
             textField.text = task?.title
         }
         
-        linkObject?.present(alert, animated: true)
-        
+        viewController?.present(alert, animated: true)
     }
     
 }
