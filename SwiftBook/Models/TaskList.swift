@@ -12,6 +12,12 @@ class TaskList: Object {
     @Persisted var title = ""
     @Persisted var date = Date()
     @Persisted var tasks = List<Task>()
+    
+//    init(title: String = "", date: Date = Date(), tasks: List<Task> = List<Task>()) {
+//        self.title = title
+//        self.date = date
+//        self.tasks = tasks
+//    }
 }
 
 class Task: Object {

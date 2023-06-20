@@ -14,9 +14,6 @@ class DataManager {
     private init() {}
     
     func createTempData(completion: @escaping () -> Void) {
-        let shoppingList = TaskList()
-        shoppingList.title = "Shopping List"
-        
         let moviesList = TaskList(
             value: [
                 "Movies List",
@@ -27,6 +24,9 @@ class DataManager {
                 ]
             ] as [Any]
         )
+        
+        let shoppingList = TaskList()
+        shoppingList.title = "Shopping List"
         
         let milk = Task()
         milk.title = "Milk"

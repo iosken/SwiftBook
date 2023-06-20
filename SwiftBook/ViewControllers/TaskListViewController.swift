@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 final class TaskListViewController: UITableViewController {
-
+    
     private var taskLists: Results<TaskList>!
     private let storageManager = StorageManager.shared
     
@@ -82,8 +82,31 @@ final class TaskListViewController: UITableViewController {
         let taskList = taskLists[indexPath.row]
         tasksVC.taskList = taskList
     }
-
+    
     @IBAction func sortingList(_ sender: UISegmentedControl) {
+        
+        
+        
+        if sender.selectedSegmentIndex == 0 {
+            
+//            let result = taskLists!.sorted(by: { (lhsData, rhsData) -> Bool in
+//               return lhsData.title > rhsData.title
+//            })
+//
+//            taskLists = Results<result>
+//
+//
+//
+//
+//            taskLists = taskLists!.sorted(byKeyPath: "task", )
+//        } else {
+//            taskLists = taskLists.sorted(by: { taskList1, taskList2 in
+//                return taskList1.title > taskList2.title
+//            })
+//            }
+        }
+        
+        tableView.reloadData()
     }
     
     @objc private func addButtonPressed() {
