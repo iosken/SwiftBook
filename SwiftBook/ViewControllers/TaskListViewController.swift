@@ -84,28 +84,12 @@ final class TaskListViewController: UITableViewController {
     }
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
-        
-        
-        
-        if sender.selectedSegmentIndex == 0 {
-            
-//            let result = taskLists!.sorted(by: { (lhsData, rhsData) -> Bool in
-//               return lhsData.title > rhsData.title
-//            })
-//
-//            taskLists = Results<result>
-//
-//
-//
-//
-//            taskLists = taskLists!.sorted(byKeyPath: "task", )
-//        } else {
-//            taskLists = taskLists.sorted(by: { taskList1, taskList2 in
-//                return taskList1.title > taskList2.title
-//            })
-//            }
+        if sender.selectedSegmentIndex == 1 {
+            taskLists = taskLists.sorted(byKeyPath: "title", ascending: true)
+        } else {
+            taskLists = storageManager.realm.objects(TaskList.self)
         }
-        
+
         tableView.reloadData()
     }
     

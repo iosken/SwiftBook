@@ -23,6 +23,9 @@
                                 <segment title="Date"/>
                                 <segment title="A-Z"/>
                             </segments>
+                            <connections>
+                                <action selector="sortingList:" destination="quV-iM-juF" eventType="valueChanged" id="9T2-CQ-j7w"/>
+                            </connections>
                         </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskListCell" textLabel="wQ7-lG-f8T" detailTextLabel="eA3-XR-TWL" style="IBUITableViewCellStyleValue1" id="VLN-RI-60C">
@@ -73,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="803-K4-4JI" detailTextLabel="vS2-tb-Ykk" style="IBUITableViewCellStyleSubtitle" id="Kbf-0I-l2L">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TasksCell" textLabel="803-K4-4JI" detailTextLabel="vS2-tb-Ykk" style="IBUITableViewCellStyleSubtitle" id="Kbf-0I-l2L">
                                 <rect key="frame" x="0.0" y="50" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kbf-0I-l2L" id="Nw0-fa-vvG">
