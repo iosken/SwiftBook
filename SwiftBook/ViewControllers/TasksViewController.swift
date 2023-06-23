@@ -11,6 +11,7 @@ import RealmSwift
 class TasksViewController: UITableViewController {
     
     var taskList: TaskList!
+    var taskListPath: Int!
     
     private var currentTasks: Results<Task>!
     private var completedTasks: Results<Task>!
@@ -26,13 +27,16 @@ class TasksViewController: UITableViewController {
             action: #selector(addButtonPressed)
         )
         navigationItem.rightBarButtonItems = [addButton, editButtonItem]
+        
         currentTasks = taskList.tasks.filter("isComplete = false")
         completedTasks = taskList.tasks.filter("isComplete = true")
     }
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let task = taskList.tasks[indexPath.row]
+        //let task = taskList.tasks[indexPath.row]
+        
+        let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
             storageManager.delete(task)
@@ -46,10 +50,133 @@ class TasksViewController: UITableViewController {
             isDone(true)
         }
         
-        let doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
-            storageManager.done(task)
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            isDone(true)
+        var doneAction = UIContextualAction()
+        
+        print(task)
+        
+        if !task.isComplete {
+            doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
+                //tableView.deleteRows(at: [indexPath], with: .automatic)
+                let oldTaskList = taskList
+                print("currentTasks \(currentTasks) \n\n")
+                print("completedTasks \(completedTasks) \n\n")
+                print("--------------------------------")
+                
+                print(indexPath.row)
+                storageManager.done(task)
+                
+                taskList = storageManager.realm.objects(TaskList.self)[taskListPath]
+                if oldTaskList == taskList {
+                    print("same")
+                } else
+                {
+                   print("not same")
+                }
+                
+                var newRow = 0
+                
+                print("currentTasks \(currentTasks) \n\n")
+                print("completedTasks \(completedTasks) \n\n")
+                print("--------------------------------")
+                print(task)
+                
+                
+                let newTask = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+                
+                if let firstIndex = currentTasks.firstIndex(of: newTask) {
+                    newRow = firstIndex
+                    print("firstIndex \(firstIndex)")
+                } else if let newSecondRow = completedTasks.firstIndex(of: newTask) {
+                    print("newSecondRow \(newSecondRow)")
+                    newRow = newSecondRow
+                } else {
+                    print("NOTHING")
+                }
+                
+                for currentTask in currentTasks {
+                    if task == currentTask {
+                        print("same fount \(task)")
+                    } else {
+                        print("\(currentTask) NOT same \(task)")
+                    }
+                }
+                
+                for completeTask in completedTasks {
+                    if task == completeTask {
+                        print("same fount \(task)")
+                    } else {
+                        print("\(completeTask) NOT same \(task)")
+                    }
+                }
+                
+                let rawIndex = IndexPath(row: newRow, section: 0)
+                
+                tableView.reloadData()
+              //  tableView.reloadRows(at: [rawIndex], with: .automatic)
+
+                isDone(true)
+            }
+        } else {
+            doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
+               // tableView.deleteRows(at: [indexPath], with: .automatic)
+                print("currentTasks \(currentTasks) \n\n")
+                print("completedTasks \(completedTasks) \n\n")
+                print("--------------------------------")
+                
+                print(indexPath.row)
+                //storageManager.undone(task)
+                
+//                currentTasks = taskList.tasks.filter("isComplete = false")
+//                completedTasks = taskList.tasks.filter("isComplete = true")
+                
+//                taskList = realm.objects(TaskList.self)[taskListPath]
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    task.setValue(false, forKey: "isComplete")
+                }
+                
+                let newTask = realm.objects(TaskList.self)[taskListPath].tasks[0]
+                
+                realm.objects(TaskList.self)[taskListPath].tasks.contains(newTask) ? print("CONTAINS") : print("NOT CONTAINS")
+                
+                for currentTask in taskList.tasks {
+                    if task == currentTask {
+                        print("same fount \(task)")
+                    } else {
+                        print("\(currentTask) NOT same \(task)")
+                    }
+                }
+                for completeTask in completedTasks {
+                    if task == completeTask {
+                        print("same fount \(task)")
+                    } else {
+                        print("\(completeTask) NOT same \(task)")
+                    }
+                }
+                
+                var newRow = 0
+                
+                if let firstIndex = currentTasks.firstIndex(of: newTask) {
+                    newRow = firstIndex
+                    print("firstIndex \(firstIndex)")
+                } else if let newSecondRow = completedTasks.firstIndex(of: newTask) {
+                    print("newSecondRow \(newSecondRow)")
+                    newRow = newSecondRow
+                } else {
+                    print("NOTHING")
+                }
+    
+                print("currentTasks \(currentTasks) /n/n")
+                print("completedTasks \(completedTasks) /n/n")
+                print(task)
+                
+                let rawIndex = IndexPath(row: newRow, section: 0)
+                
+            //    tableView.reloadRows(at: [rawIndex], with: .automatic)
+                tableView.reloadData()
+                isDone(true)
+            }
         }
         
         editAction.backgroundColor = .orange
@@ -72,7 +199,9 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? currentTasks.count : completedTasks.count
+        print(currentTasks.count, completedTasks.count)
+        
+        return section == 0 ? currentTasks.count : completedTasks.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -84,7 +213,13 @@ class TasksViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         content.text = task.title
-        content.secondaryText = task.note
+        
+        if task.isComplete {
+            content.secondaryText = "👍"
+        } else {
+            content.secondaryText = task.note
+        }
+        
         cell.contentConfiguration = content
         return cell
     }
