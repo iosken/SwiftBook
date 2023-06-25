@@ -24,6 +24,7 @@ final class TaskListViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButtonItem
         taskLists = storageManager.realm.objects(TaskList.self)
+        taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
         createTempData()
     }
     
@@ -87,7 +88,7 @@ final class TaskListViewController: UITableViewController {
         if sender.selectedSegmentIndex == 1 {
             taskLists = taskLists.sorted(byKeyPath: "title", ascending: true)
         } else {
-            taskLists = storageManager.realm.objects(TaskList.self)
+            taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
         }
 
         tableView.reloadData()
