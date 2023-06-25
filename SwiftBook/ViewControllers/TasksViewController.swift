@@ -46,13 +46,29 @@ class TasksViewController: UITableViewController {
             isDone(true)
         }
         
-        let doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
-            storageManager.done(task)
-            //tableView.reloadRows(at: [indexPath], with: .automatic)
-            
-            tableView.reloadData()
-            isDone(true)
+        var doneAction = UIContextualAction()
+        
+        if task.isComplete {
+            doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
+                isDone(true)
+                
+                storageManager.done(task)
+                
+                //tableView.reloadRows(at: [indexPath], with: .automatic)
+                
+                tableView.reloadData()
+                
+            }
+        } else {
+            doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
+                isDone(true)
+                
+                storageManager.undone(task)
+                
+                tableView.reloadData()
+            }
         }
+
         
         editAction.backgroundColor = .orange
         doneAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
