@@ -32,7 +32,7 @@ class TasksViewController: UITableViewController {
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let task = taskList.tasks[indexPath.row]
+        let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
             storageManager.delete(task)
@@ -48,16 +48,31 @@ class TasksViewController: UITableViewController {
         
         var doneAction = UIContextualAction()
         
-        if task.isComplete {
+        if !task.isComplete {
             doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
                 isDone(true)
                 
                 storageManager.done(task)
                 
+               // currentTasks.count : completedTasks.count
+                
+                var indexPathToReload: [IndexPath] = []
+                
+                for row in currentTasks.indices {
+                    let currentIndexPath = IndexPath(row: row, section: 0)
+                    indexPathToReload.append(currentIndexPath)
+                }
+                
+                for row in completedTasks.indices {
+                    let currentIndexPath = IndexPath(row: row, section: 1)
+                    indexPathToReload.append(currentIndexPath)
+                }
+                
+                tableView.reloadRows(at: indexPathToReload, with: .automatic)
+                
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 
-                tableView.reloadData()
-                
+                //tableView.reloadData()
             }
         } else {
             doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
@@ -65,7 +80,21 @@ class TasksViewController: UITableViewController {
                 
                 storageManager.undone(task)
                 
-                tableView.reloadData()
+                var indexPathToReload: [IndexPath] = []
+                
+                for row in currentTasks.indices {
+                    let currentIndexPath = IndexPath(row: row, section: 0)
+                    indexPathToReload.append(currentIndexPath)
+                }
+                
+                for row in completedTasks.indices {
+                    let currentIndexPath = IndexPath(row: row, section: 1)
+                    indexPathToReload.append(currentIndexPath)
+                }
+                
+                tableView.reloadRows(at: indexPathToReload, with: .automatic)
+                
+                //tableView.reloadData()
             }
         }
 
@@ -90,7 +119,7 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? currentTasks.count : completedTasks.count
+        return section == 0 ? currentTasks.count : completedTasks.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -100,9 +129,16 @@ class TasksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TasksCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
+        
         let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         content.text = task.title
-        content.secondaryText = task.note
+        
+        if task.isComplete {
+            content.secondaryText = "✅"
+        } else {
+            content.secondaryText = "❎"
+        }
+        
         cell.contentConfiguration = content
         return cell
     }
