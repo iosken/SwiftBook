@@ -10,8 +10,8 @@ import RealmSwift
 
 final class TaskListViewController: UITableViewController {
     
-    private var taskLists: Results<TaskList>!
     private let storageManager = StorageManager.shared
+    private var taskLists: [TaskList] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,7 @@ final class TaskListViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButtonItem
-        taskLists = storageManager.realm.objects(TaskList.self)
-        taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
+        taskLists = storageManager.taskLists
         createTempData()
     }
     
@@ -98,9 +97,16 @@ final class TaskListViewController: UITableViewController {
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
-            taskLists = taskLists.sorted(byKeyPath: "title", ascending: true)
+            //taskLists = taskLists.sorted(byKeyPath: "title", ascending: true)
+            taskLists = taskLists.sorted(by: { task1, task2 in
+                task1.title > task2.title
+            })
         } else {
-            taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
+           // taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
+            
+            taskLists = taskLists.sorted(by: { task1, task2 in
+                task1.date > task2.date
+            })
         }
         
         tableView.reloadData()
@@ -143,7 +149,7 @@ extension TaskListViewController {
     
     private func save(taskListTitle: String) {
         storageManager.save(taskListTitle) { taskList in
-            let rowIndex = IndexPath(row: taskLists.index(of: taskList) ?? 0, section: 0)
+            let rowIndex = IndexPath(row: taskLists.firstIndex(of: taskList) ?? 0, section: 0)
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }
     }

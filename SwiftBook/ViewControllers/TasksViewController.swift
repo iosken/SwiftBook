@@ -8,12 +8,18 @@
 import UIKit
 import RealmSwift
 
-class TasksViewController: UITableViewController {
+final class TasksViewController: UITableViewController {
     
     var taskList: TaskList!
     
-    private var currentTasks: Results<Task>!
-    private var completedTasks: Results<Task>!
+    var currentTasks: [Task] {
+        storageManager.currentTasks(taskList)
+    }
+    
+    var completedTasks: [Task] {
+        storageManager.completedTasks(taskList)
+    }
+
     private let storageManager = StorageManager.shared
     
     override func viewDidLoad() {
@@ -26,8 +32,7 @@ class TasksViewController: UITableViewController {
             action: #selector(addButtonPressed)
         )
         navigationItem.rightBarButtonItems = [addButton, editButtonItem]
-        currentTasks = taskList.tasks.filter("isComplete = false")
-        completedTasks = taskList.tasks.filter("isComplete = true")
+
     }
     
     // MARK: - Table View Data Source
@@ -53,14 +58,8 @@ class TasksViewController: UITableViewController {
                 isDone(true)
                 
                 storageManager.done(task)
-                
-                let completedTasksList = Array(completedTasks)
-                var rowToInsert = 0
-                completedTasksList.forEach { newTask in
-                    if task.date == newTask.date {
-                        rowToInsert = completedTasksList.firstIndex(of: newTask) ?? 0
-                    }
-                }
+
+                var rowToInsert = currentTasks.firstIndex(of: task) ?? 0
                 
                 tableView.performBatchUpdates(
                     {
@@ -72,16 +71,8 @@ class TasksViewController: UITableViewController {
         } else {
             doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
                 isDone(true)
-                
                 storageManager.undone(task)
-                
-                let completedTasksList = Array(currentTasks)
-                var rowToInsert = 0
-                completedTasksList.forEach { newTask in
-                    if task.date == newTask.date {
-                        rowToInsert = completedTasksList.firstIndex(of: newTask) ?? 0
-                    }
-                }
+                var rowToInsert = completedTasks.firstIndex(of: task) ?? 0
                 
                 tableView.performBatchUpdates(
                     {
@@ -164,7 +155,7 @@ extension TasksViewController {
     
     private func save(task: String, withNote note: String) {
         storageManager.save(task, withTaskNote: note, to: taskList) { task in
-            let rowIndex = IndexPath(row: currentTasks.index(of: task) ?? 0, section: 0)
+            let rowIndex = IndexPath(row: currentTasks.firstIndex(of: task) ?? 0, section: 0)
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }
     }

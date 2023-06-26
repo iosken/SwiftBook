@@ -8,9 +8,16 @@
 import Foundation
 import RealmSwift
 
-class StorageManager {
+final class StorageManager {
     static let shared = StorageManager()
-    let realm = try! Realm()
+    
+    var taskLists: [TaskList] {
+        Array(realm.objects(TaskList.self).sorted(byKeyPath: "date", ascending: true))
+    }
+    
+    private let realm = try! Realm()
+    
+    private lazy var realmTaskLists = realm.objects(TaskList.self)
     
     private init() {}
     
@@ -22,7 +29,6 @@ class StorageManager {
         }
         return result
     }
-    
     
     func save(_ taskLists: [TaskList]) {
         write {
@@ -109,5 +115,17 @@ class StorageManager {
         }
         
     }
+}
+
+extension StorageManager {
+    
+    func currentTasks(_ taskList: TaskList) -> [Task] {
+        Array(taskList.tasks.filter("isComplete = false"))
+    }
+    
+    func completedTasks(_ taskList: TaskList) -> [Task] {
+        Array(taskList.tasks.filter("isComplete = true"))
+    }
+    
 }
 
