@@ -15,7 +15,7 @@ class TasksViewController: UITableViewController {
     private var currentTasks: Results<Task>!
     private var completedTasks: Results<Task>!
     private let storageManager = StorageManager.shared
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = taskList.title
@@ -54,25 +54,20 @@ class TasksViewController: UITableViewController {
                 
                 storageManager.done(task)
                 
-               // currentTasks.count : completedTasks.count
-                
-                var indexPathToReload: [IndexPath] = []
-                
-                for row in currentTasks.indices {
-                    let currentIndexPath = IndexPath(row: row, section: 0)
-                    indexPathToReload.append(currentIndexPath)
+                let completedTasksList = Array(completedTasks)
+                var rowToInsert = 0
+                completedTasksList.forEach { newTask in
+                    if task.date == newTask.date {
+                        rowToInsert = completedTasksList.firstIndex(of: newTask) ?? 0
+                    }
                 }
                 
-                for row in completedTasks.indices {
-                    let currentIndexPath = IndexPath(row: row, section: 1)
-                    indexPathToReload.append(currentIndexPath)
-                }
-                
-                tableView.reloadRows(at: indexPathToReload, with: .automatic)
-                
-                //tableView.reloadRows(at: [indexPath], with: .automatic)
-                
-                //tableView.reloadData()
+                tableView.performBatchUpdates(
+                    {
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                        tableView.insertRows(at: [IndexPath(row: rowToInsert, section: 1)], with: .automatic)
+                    }, completion: nil
+                )
             }
         } else {
             doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
@@ -80,25 +75,22 @@ class TasksViewController: UITableViewController {
                 
                 storageManager.undone(task)
                 
-                var indexPathToReload: [IndexPath] = []
-                
-                for row in currentTasks.indices {
-                    let currentIndexPath = IndexPath(row: row, section: 0)
-                    indexPathToReload.append(currentIndexPath)
+                let completedTasksList = Array(currentTasks)
+                var rowToInsert = 0
+                completedTasksList.forEach { newTask in
+                    if task.date == newTask.date {
+                        rowToInsert = completedTasksList.firstIndex(of: newTask) ?? 0
+                    }
                 }
                 
-                for row in completedTasks.indices {
-                    let currentIndexPath = IndexPath(row: row, section: 1)
-                    indexPathToReload.append(currentIndexPath)
-                }
-                
-                tableView.reloadRows(at: indexPathToReload, with: .automatic)
-                
-                //tableView.reloadData()
+                tableView.performBatchUpdates(
+                    {
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                        tableView.insertRows(at: [IndexPath(row: rowToInsert, section: 0)], with: .automatic)
+                    }, completion: nil
+                )
             }
         }
-
-        
         editAction.backgroundColor = .orange
         doneAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         
@@ -106,9 +98,9 @@ class TasksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let taskList = taskList.tasks[indexPath.row]
+        let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         
-        showAlert(with: taskList) {
+        showAlert(with: task) {
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
@@ -133,10 +125,12 @@ class TasksViewController: UITableViewController {
         let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         content.text = task.title
         
+        content.secondaryText = task.note
+        
         if task.isComplete {
-            content.secondaryText = "✅"
+            content.image = UIImage(systemName: "checkmark")
         } else {
-            content.secondaryText = "❎"
+            content.image = UIImage(systemName: "xmark")
         }
         
         cell.contentConfiguration = content
@@ -146,7 +140,7 @@ class TasksViewController: UITableViewController {
     @objc private func addButtonPressed() {
         showAlert()
     }
-
+    
 }
 
 extension TasksViewController {

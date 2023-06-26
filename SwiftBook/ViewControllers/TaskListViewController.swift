@@ -43,7 +43,19 @@ final class TaskListViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         let taskList = taskLists[indexPath.row]
         content.text = taskList.title
-        content.secondaryText = taskList.tasks.count.formatted()
+        
+        let completedTasksCount = storageManager.completedTasksCount(taskList)
+        
+        if taskList.tasks.isEmpty{
+            content.secondaryText = "-"
+        } else if completedTasksCount == taskList.tasks.count {
+            content.secondaryTextProperties.color = UIColor(.blue)
+            content.secondaryText = "⎷"
+        } else {
+            content.secondaryTextProperties.color = UIColor(.gray)
+            content.secondaryText = completedTasksCount.formatted()
+        }
+        
         cell.contentConfiguration = content
         return cell
     }
@@ -90,7 +102,7 @@ final class TaskListViewController: UITableViewController {
         } else {
             taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
         }
-
+        
         tableView.reloadData()
     }
     

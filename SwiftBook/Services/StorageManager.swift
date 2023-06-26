@@ -15,6 +15,14 @@ class StorageManager {
     private init() {}
     
     // MARK: - Task List
+    func completedTasksCount(_ taskList: TaskList) -> Int {
+        var result = 0
+        taskList.tasks.forEach { task in
+            result += task.isComplete ? 1 : 0
+        }
+        return result
+    }
+    
     
     func save(_ taskLists: [TaskList]) {
         write {
@@ -55,7 +63,7 @@ class StorageManager {
             task.note = newNote
         }
     }
-
+    
     func done(_ taskList: TaskList) {
         write {
             taskList.tasks.setValue(true, forKey: "isComplete")
@@ -81,7 +89,7 @@ class StorageManager {
     }
     
     
-
+    
     // MARK: - Tasks
     func save(_ taskTitle: String, withTaskNote taskNote: String, to taskList: TaskList, completion: (Task) -> Void) {
         write {
