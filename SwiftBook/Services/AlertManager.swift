@@ -70,28 +70,12 @@ class AlertManager {
     
     private init () {}
     
-    func taskShowAlert(
-        from viewController: UIViewController?,
-        task: Task? = nil,
+    func showAlert(
+        presentIn viewController: UIViewController?,
+        taskList: TaskList?,
         completion: @escaping (String) -> Void
     ) {
-        showAlert(from: <#T##UIViewController?#>, task: <#T##Task?#>, completion: <#T##(String) -> Void#>)
-    }
-    
-    func taskListShowAlert(
-        from viewController: UIViewController?,
-        task: Task? = nil,
-        completion: @escaping (String) -> Void
-    ) {
-        showAlert(from: <#T##UIViewController?#>, task: <#T##Task?#>, completion: <#T##(String) -> Void#>)
-    }
-    
-    private func showAlert(
-        from viewController: UIViewController?,
-        task: Task? = nil,
-        completion: @escaping (String) -> Void
-    ) {
-        let status = task != nil ? TaskStatusAlert.editTask : TaskStatusAlert.newTask
+        let status = taskList != nil ? TaskListStatusAlert.editTaskList : TaskListStatusAlert.newTaskList
         let alert = UIAlertController(
             title: status.title,
             message: status.message,
@@ -107,163 +91,49 @@ class AlertManager {
         
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
+        
         alert.addTextField { textField in
             textField.placeholder = status.placeHolder
-            textField.text = task?.title
+            textField.text = taskList?.title
         }
         
         viewController?.present(alert, animated: true)
     }
     
-}
-
-//-----------------------------------------------------------------------------------
-
-    private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
-        let taskAlertFactory = TaskAlertControllerFactory(
-            userAction: task != nil ? .editTask : .newTask,
-            taskTitle: task?.title,
-            taskNote: task?.note
-        )
-        let alert = taskAlertFactory.createAlert { [weak self] taskTitle, taskNote in
-            if let task, let completion {
-                self?.storageManager.edit(task, newValue: taskTitle, newNote: taskNote)
-                completion()
-            } else {
-                self?.save(task: taskTitle, withNote: taskNote)
-            }
-        }
-
-        present(alert, animated: true)
-    }
-
-
-//protocol TaskListAlert {
-//    var listTitle: String? { get }
-//    func createAlert(completion: @escaping (String) -> Void) -> UIAlertController
-//}
-//
-//protocol TaskAlert {
-//    var taskTitle: String? { get }
-//    var taskNote: String? { get }
-//    func createAlert(completion: @escaping (String, String) -> Void) -> UIAlertController
-//}
-
-final class TaskListAlertControllerFactory: TaskListAlert {
-    var listTitle: String?
-    private let userAction: UserAction
-
-    init(userAction: UserAction, listTitle: String?) {
-        self.userAction = userAction
-        self.listTitle = listTitle
-    }
-
-    func createAlert(completion: @escaping (String) -> Void) -> UIAlertController {
-        let alertController = UIAlertController(
-            title: userAction.title,
-            message: "Please set title for new task list",
+    func showAlert(
+        presentIn viewController: UIViewController?,
+        task: Task?,
+        completion: @escaping (String, String) -> Void
+    ) {
+        let status = task != nil ? TaskStatusAlert.editTask : TaskStatusAlert.newTask
+        let alert = UIAlertController(
+            title: status.title,
+            message: status.message,
             preferredStyle: .alert
         )
-
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-            guard let listTitle = alertController.textFields?.first?.text else { return }
-            guard !listTitle.isEmpty else { return }
-            completion(listTitle)
+        
+        let saveAction = UIAlertAction(title: status.title, style: .default) { _ in
+            guard let title = alert.textFields?[0].text, !title.isEmpty else { return }
+            guard let note = alert.textFields?[1].text, !note.isEmpty else { return }
+            completion(title, note)
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        alertController.addTextField { [weak self] textField in
-            textField.placeholder = "New List"
-            textField.text = self?.listTitle
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { textField in
+            textField.placeholder = status.placeHolder
+            textField.text = task?.title
         }
-
-        return alertController
+        
+        alert.addTextField { textField in
+            textField.placeholder = status.placeHolder
+            textField.text = task?.note
+        }
+        
+        viewController?.present(alert, animated: true)
     }
-}
-
-// MARK: - TaskListUserAction
-extension TaskListAlertControllerFactory {
-    enum UserAction {
-        case newList
-        case editList
-
-        var title: String {
-            switch self {
-            case .newList:
-                return "New List"
-            case .editList:
-                return "Edit List"
-            }
-        }
-    }
-}
-
-final class TaskAlertControllerFactory: TaskAlert {
-    var taskTitle: String?
-    var taskNote: String?
-
-    private let userAction: UserAction
-
-    init(userAction: UserAction, taskTitle: String?, taskNote: String?) {
-        self.userAction = userAction
-        self.taskTitle = taskTitle
-        self.taskNote = taskNote
-    }
-
-    func createAlert(completion: @escaping (String, String) -> Void) -> UIAlertController {
-        let alertController = UIAlertController(
-            title: userAction.title,
-            message: "What do you want to do?",
-            preferredStyle: .alert
-        )
-
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-            guard let taskTitle = alertController.textFields?.first?.text else { return }
-            guard !taskTitle.isEmpty else { return }
-
-            if let taskNote = alertController.textFields?.last?.text, !taskNote.isEmpty {
-                completion(taskTitle, taskNote)
-            } else {
-                completion(taskTitle, "")
-            }
-        }
-
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-
-        alertController.addTextField { [weak self] textField in
-            textField.placeholder = "New Task"
-            textField.text = self?.taskTitle
-        }
-
-        alertController.addTextField { [weak self] textField in
-            textField.placeholder = "Note"
-            textField.text = self?.taskNote
-        }
-
-        return alertController
-    }
-}
-
-// MARK: - TaskUserAction
-extension TaskAlertControllerFactory {
-    enum UserAction {
-        case newTask
-        case editTask
-
-        var title: String {
-            switch self {
-            case .newTask:
-                return "New Task"
-            case .editTask:
-                return "Edit Task"
-            }
-        }
-    }
+    
 }
 

@@ -10,8 +10,8 @@ import RealmSwift
 
 final class TaskListViewController: UITableViewController {
     
-    private let storageManager = StorageManager.shared
-    private var taskLists: [TaskList] = []
+    private let data = StorageManager.shared
+    private let alert = AlertManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,6 @@ final class TaskListViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButtonItem
-        taskLists = storageManager.taskLists
         createTempData()
     }
     
@@ -34,16 +33,16 @@ final class TaskListViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        taskLists.count
+        data.taskLists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        let taskList = taskLists[indexPath.row]
+        let taskList = data.taskLists[indexPath.row]
         content.text = taskList.title
         
-        let completedTasksCount = storageManager.completedTasksCount(taskList)
+        let completedTasksCount = data.completedTasksCount(taskList)
         
         if taskList.tasks.isEmpty{
             content.secondaryText = "-"
@@ -61,22 +60,23 @@ final class TaskListViewController: UITableViewController {
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let taskList = taskLists[indexPath.row]
+        let taskList = data.taskLists[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
-            storageManager.delete(taskList)
+            data.delete(taskList)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { [unowned self] _, _, isDone in
-            showAlert(with: taskList) {
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+            alert.showAlert(presentIn: self, taskList: taskList) { taskListValue in
+                self.data.edit(taskList, newTitle: taskListValue)
             }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
             isDone(true)
         }
         
         let doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
-            storageManager.done(taskList)
+            data.done(taskList)
             tableView.reloadRows(at: [indexPath], with: .automatic)
             isDone(true)
         }
@@ -91,29 +91,24 @@ final class TaskListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         guard let tasksVC = segue.destination as? TasksViewController else { return }
-        let taskList = taskLists[indexPath.row]
+        let taskList = data.taskLists[indexPath.row]
         tasksVC.taskList = taskList
     }
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
-            //taskLists = taskLists.sorted(byKeyPath: "title", ascending: true)
-            taskLists = taskLists.sorted(by: { task1, task2 in
-                task1.title > task2.title
-            })
+            data.taskListsSortingMethod = .title
         } else {
-           // taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
-            
-            taskLists = taskLists.sorted(by: { task1, task2 in
-                task1.date > task2.date
-            })
+            data.taskListsSortingMethod = .date
         }
         
         tableView.reloadData()
     }
     
     @objc private func addButtonPressed() {
-        showAlert()
+        alert.showAlert(presentIn: self, taskList: nil) { [weak self] task in
+            self?.save(task)
+        }
     }
     
     private func createTempData() {
@@ -128,29 +123,15 @@ final class TaskListViewController: UITableViewController {
 
 // MARK: - AlertController
 extension TaskListViewController {
-    private func showAlert(with taskList: TaskList? = nil, completion: (() -> Void)? = nil) {
-        let listAlertFactory = TaskListAlertControllerFactory(
-            userAction: taskList != nil ? .editList : .newList,
-            listTitle: taskList?.title
-        )
-        
-        let alert = listAlertFactory.createAlert { [weak self] newValue in
-            if let taskList, let completion {
-                self?.storageManager.edit(taskList, newValue: newValue)
-                completion()
-                return
-            }
+    
+    private func save(_ taskListTitle: String) {
+        data.save(taskListTitle) { [weak self] taskList in
             
-            self?.save(taskListTitle: newValue)
+            let rowIndex = IndexPath(row: (self?.data.taskLists.count ?? 0) - 1, section: 0)
+            print(rowIndex)
+
+            self?.tableView.insertRows(at: [rowIndex], with: .automatic)
         }
-        
-        present(alert, animated: true)
     }
     
-    private func save(taskListTitle: String) {
-        storageManager.save(taskListTitle) { taskList in
-            let rowIndex = IndexPath(row: taskLists.firstIndex(of: taskList) ?? 0, section: 0)
-            tableView.insertRows(at: [rowIndex], with: .automatic)
-        }
-    }
 }

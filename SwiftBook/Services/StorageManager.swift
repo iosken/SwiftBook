@@ -8,11 +8,23 @@
 import Foundation
 import RealmSwift
 
+enum TaskListProperty {
+    case date
+    case title
+}
+
 final class StorageManager {
     static let shared = StorageManager()
     
+    var taskListsSortingMethod = TaskListProperty.date
+    
     var taskLists: [TaskList] {
-        Array(realm.objects(TaskList.self).sorted(byKeyPath: "date", ascending: true))
+        switch taskListsSortingMethod {
+        case .date:
+            return Array(realm.objects(TaskList.self).sorted(byKeyPath: "date", ascending: true))
+        default:
+            return Array(realm.objects(TaskList.self).sorted(byKeyPath: "title", ascending: true))
+        }
     }
     
     private let realm = try! Realm()
@@ -57,15 +69,15 @@ final class StorageManager {
         }
     }
     
-    func edit(_ taskList: TaskList, newValue: String) {
+    func edit(_ taskList: TaskList, newTitle: String) {
         write {
-            taskList.title = newValue
+            taskList.title = newTitle
         }
     }
     
-    func edit(_ task: Task, newValue: String, newNote: String) {
+    func edit(_ task: Task, newTitle: String, newNote: String) {
         write {
-            task.title = newValue
+            task.title = newTitle
             task.note = newNote
         }
     }
@@ -101,6 +113,7 @@ final class StorageManager {
         write {
             let task = Task(value: [taskTitle, taskNote])
             taskList.tasks.append(task)
+            
             completion(task)
         }
     }
@@ -120,12 +133,21 @@ final class StorageManager {
 extension StorageManager {
     
     func currentTasks(_ taskList: TaskList) -> [Task] {
-        Array(taskList.tasks.filter("isComplete = false"))
+        switch taskListsSortingMethod {
+        case .date:
+            return Array(taskList.tasks.filter("isComplete = false").sorted(byKeyPath: "date", ascending: true))
+        default:
+            return Array(taskList.tasks.filter("isComplete = false").sorted(byKeyPath: "title", ascending: true))
+        }
     }
     
     func completedTasks(_ taskList: TaskList) -> [Task] {
-        Array(taskList.tasks.filter("isComplete = true"))
+        switch taskListsSortingMethod {
+        case .date:
+            return Array(taskList.tasks.filter("isComplete = true").sorted(byKeyPath: "date", ascending: true))
+        default:
+            return Array(taskList.tasks.filter("isComplete = true").sorted(byKeyPath: "title", ascending: true))
+        }
     }
     
 }
-
