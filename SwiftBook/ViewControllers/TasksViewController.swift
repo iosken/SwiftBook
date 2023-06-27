@@ -59,7 +59,7 @@ final class TasksViewController: UITableViewController {
                 
                 storageManager.done(task)
 
-                var rowToInsert = currentTasks.firstIndex(of: task) ?? 0
+                let rowToInsert = currentTasks.firstIndex(of: task) ?? 0
                 
                 tableView.performBatchUpdates(
                     {
@@ -72,7 +72,7 @@ final class TasksViewController: UITableViewController {
             doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
                 isDone(true)
                 storageManager.undone(task)
-                var rowToInsert = completedTasks.firstIndex(of: task) ?? 0
+                let rowToInsert = completedTasks.firstIndex(of: task) ?? 0
                 
                 tableView.performBatchUpdates(
                     {
