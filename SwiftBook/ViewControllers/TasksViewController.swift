@@ -145,9 +145,9 @@ extension TasksViewController {
         data.save(task, withTaskNote: note, to: taskList) { task in
             
             let section = !task.isComplete ? 0 : 1
-            let row = !task.isComplete ? currentTasks.firstIndex(of: task) : completedTasks.firstIndex(of: task)
+            let row = !task.isComplete ? (currentTasks.count - 1) : (completedTasks.count - 1)
             
-            let rowIndex = IndexPath(row: row ?? 0, section: section)
+            let rowIndex = IndexPath(row: row , section: section)
             
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }

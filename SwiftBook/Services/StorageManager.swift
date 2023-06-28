@@ -18,20 +18,31 @@ final class StorageManager {
     
     var taskListsSortingMethod = TaskListProperty.date
     
-    var taskLists: [TaskList] {
-        switch taskListsSortingMethod {
-        case .date:
-            return Array(realm.objects(TaskList.self).sorted(byKeyPath: "date", ascending: true))
-        default:
-            return Array(realm.objects(TaskList.self).sorted(byKeyPath: "title", ascending: true))
-        }
-    }
+    lazy var taskLists: [TaskList] = []
     
     private let realm = try! Realm()
     
     private lazy var realmTaskLists = realm.objects(TaskList.self)
     
-    private init() {}
+    private init() {
+        taskLists = {
+            switch taskListsSortingMethod {
+            case .date:
+                return Array(
+                    realm.objects(TaskList.self).sorted(
+                        byKeyPath: "date",
+                        ascending: true
+                    )
+                )
+            default:
+                return Array(
+                    realm.objects(TaskList.self).sorted(
+                        byKeyPath: "title",
+                        ascending: true)
+                )
+            }
+        }()
+    }
     
     // MARK: - Task List
     func completedTasksCount(_ taskList: TaskList) -> Int {
@@ -42,9 +53,11 @@ final class StorageManager {
         return result
     }
     
-    func save(_ taskLists: [TaskList]) {
+    func save(_ taskList: [TaskList]) {
         write {
-            realm.add(taskLists)
+            realm.add(taskList)
+            
+            self.taskLists.append(contentsOf: taskList)
         }
     }
     
@@ -52,6 +65,7 @@ final class StorageManager {
         write {
             let taskList = TaskList(value: [taskListTitle])
             realm.add(taskList)
+            self.taskLists.append(taskList)
             completion(taskList)
         }
     }
@@ -60,12 +74,22 @@ final class StorageManager {
         write {
             realm.delete(taskList.tasks)
             realm.delete(taskList)
+            
+            let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
+            taskLists.remove(at: taskListIndex)
         }
     }
     
     func delete(_ task: Task) {
         write {
             realm.delete(task)
+            
+            taskLists.forEach { taskList in
+                if taskList.tasks.contains(task) {
+                    let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
+                    taskList.tasks.remove(at: taskIndex)
+                }
+            }
         }
     }
     
@@ -73,12 +97,23 @@ final class StorageManager {
         write {
             taskList.title = newTitle
         }
+        
+        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
+        taskLists[taskListIndex].title = newTitle
     }
     
     func edit(_ task: Task, newTitle: String, newNote: String) {
         write {
             task.title = newTitle
             task.note = newNote
+            
+            taskLists.forEach { taskList in
+                if taskList.tasks.contains(task) {
+                    let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
+                    taskList.tasks[taskIndex].title = newTitle
+                    taskList.tasks[taskIndex].note = newNote
+                }
+            }
         }
     }
     
@@ -86,11 +121,23 @@ final class StorageManager {
         write {
             taskList.tasks.setValue(true, forKey: "isComplete")
         }
+        
+        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
+        taskLists[taskListIndex].tasks.forEach { task in
+            task.isComplete = true
+        }
     }
     
     func done(_ task: Task) {
         write {
             task.setValue(true, forKey: "isComplete")
+        }
+        
+        taskLists.forEach { taskList in
+            if taskList.tasks.contains(task) {
+                let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
+                taskList.tasks[taskIndex].isComplete = true
+            }
         }
     }
     
@@ -98,15 +145,35 @@ final class StorageManager {
         write {
             taskList.tasks.setValue(false, forKey: "isComplete")
         }
+        
+        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
+        taskLists[taskListIndex].tasks.forEach { task in
+            task.isComplete = false
+        }
     }
     
     func undone(_ task: Task) {
         write {
             task.setValue(false, forKey: "isComplete")
         }
+        
+        taskLists.forEach { taskList in
+            if taskList.tasks.contains(task) {
+                let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
+                taskList.tasks[taskIndex].isComplete = false
+            }
+        }
+        
+//        let currentTaskList = taskLists.first { taskList in
+//            taskList.tasks.contains(task)
+//        } ?? TaskList()
+//
+//        let currentTask = currentTaskList.tasks.first { currentTask in
+//            currentTask === task
+//        }
+//
+//        currentTask?.isComplete = false
     }
-    
-    
     
     // MARK: - Tasks
     func save(_ taskTitle: String, withTaskNote taskNote: String, to taskList: TaskList, completion: (Task) -> Void) {
@@ -133,20 +200,40 @@ final class StorageManager {
 extension StorageManager {
     
     func currentTasks(_ taskList: TaskList) -> [Task] {
+        var isOrNotCompleteTasks: [Task] = []
+        
+        isOrNotCompleteTasks = taskList.tasks.filter { task in
+            !task.isComplete
+        }
+        
         switch taskListsSortingMethod {
         case .date:
-            return Array(taskList.tasks.filter("isComplete = false").sorted(byKeyPath: "date", ascending: true))
+            return isOrNotCompleteTasks.sorted { task1, task2 in
+                task1.date > task2.date
+            }
         default:
-            return Array(taskList.tasks.filter("isComplete = false").sorted(byKeyPath: "title", ascending: true))
+            return isOrNotCompleteTasks.sorted { task1, task2 in
+                task1.title > task2.title
+            }
         }
     }
     
     func completedTasks(_ taskList: TaskList) -> [Task] {
+        var isOrNotCompleteTasks: [Task] = []
+        
+        isOrNotCompleteTasks = taskList.tasks.filter { task in
+            task.isComplete
+        }
+
         switch taskListsSortingMethod {
         case .date:
-            return Array(taskList.tasks.filter("isComplete = true").sorted(byKeyPath: "date", ascending: true))
+            return isOrNotCompleteTasks.sorted { task1, task2 in
+                task1.date > task2.date
+            }
         default:
-            return Array(taskList.tasks.filter("isComplete = true").sorted(byKeyPath: "title", ascending: true))
+            return isOrNotCompleteTasks.sorted { task1, task2 in
+                task1.title > task2.title
+            }
         }
     }
     
