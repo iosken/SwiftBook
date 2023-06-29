@@ -18,7 +18,17 @@ final class StorageManager {
     
     var taskListsSortingMethod = TaskListProperty.date
     
-    lazy var taskLists: [TaskList] = []
+    var taskLists: [TaskList] = []
+    
+    var tasksCollection: [Int: [TaskShadow]] {
+        var result: [Int: [TaskShadow]] = [:]
+        
+        for (index, task) in taskLists.enumerated() {
+            result = [index: Array(_immutableCocoaArray: task)]
+        }
+        
+        return result
+    }
     
     private let realm = try! Realm()
     
@@ -65,6 +75,7 @@ final class StorageManager {
         write {
             let taskList = TaskList(value: [taskListTitle])
             realm.add(taskList)
+            
             self.taskLists.append(taskList)
             completion(taskList)
         }
@@ -164,15 +175,15 @@ final class StorageManager {
             }
         }
         
-//        let currentTaskList = taskLists.first { taskList in
-//            taskList.tasks.contains(task)
-//        } ?? TaskList()
-//
-//        let currentTask = currentTaskList.tasks.first { currentTask in
-//            currentTask === task
-//        }
-//
-//        currentTask?.isComplete = false
+        //        let currentTaskList = taskLists.first { taskList in
+        //            taskList.tasks.contains(task)
+        //        } ?? TaskList()
+        //
+        //        let currentTask = currentTaskList.tasks.first { currentTask in
+        //            currentTask === task
+        //        }
+        //
+        //        currentTask?.isComplete = false
     }
     
     // MARK: - Tasks
@@ -199,39 +210,59 @@ final class StorageManager {
 
 extension StorageManager {
     
-    func currentTasks(_ taskList: TaskList) -> [Task] {
-        var isOrNotCompleteTasks: [Task] = []
+    func currentTasks(_ taskList: TaskList) -> [TaskShadow] {
         
-        isOrNotCompleteTasks = taskList.tasks.filter { task in
+        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 99
+        var result: [TaskShadow] = []
+        
+        result = tasksCollection[taskListIndex]?.filter { task in
             !task.isComplete
-        }
+        } ?? []
         
         switch taskListsSortingMethod {
         case .date:
-            return isOrNotCompleteTasks.sorted { task1, task2 in
+            return result.sorted { task1, task2 in
                 task1.date > task2.date
             }
         default:
-            return isOrNotCompleteTasks.sorted { task1, task2 in
+            return result.sorted { task1, task2 in
                 task1.title > task2.title
             }
         }
     }
     
-    func completedTasks(_ taskList: TaskList) -> [Task] {
-        var isOrNotCompleteTasks: [Task] = []
+    func shadowToTask(taskShadow: TaskShadow) -> Task {
+        var index = 0
+        var indexCollection = 0
         
-        isOrNotCompleteTasks = taskList.tasks.filter { task in
-            task.isComplete
+        for (code, tasks) in tasksCollection {
+            for (indexTask, task) in tasks.enumerated() {
+                if task === taskShadow {
+                    indexCollection = code
+                    index = indexTask
+                }
+            }
         }
+        
+        return realmTaskLists[indexCollection].tasks[index]
+    }
+    
+    func completedTasks(_ taskList: TaskList) -> [TaskShadow] {
+        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
 
+        var result: [TaskShadow] = []
+        
+        result = tasksCollection[taskListIndex]?.filter { task in
+            task.isComplete
+        } ?? []
+        
         switch taskListsSortingMethod {
         case .date:
-            return isOrNotCompleteTasks.sorted { task1, task2 in
+            return result.sorted { task1, task2 in
                 task1.date > task2.date
             }
         default:
-            return isOrNotCompleteTasks.sorted { task1, task2 in
+            return result.sorted { task1, task2 in
                 task1.title > task2.title
             }
         }

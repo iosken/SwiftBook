@@ -15,11 +15,11 @@ final class TasksViewController: UITableViewController {
     
     var taskList: TaskList!
     
-    var currentTasks: [Task] {
+    var currentTasks: [TaskShadow] {
         data.currentTasks(taskList)
     }
     
-    var completedTasks: [Task] {
+    var completedTasks: [TaskShadow] {
         data.completedTasks(taskList)
     }
     
@@ -38,7 +38,20 @@ final class TasksViewController: UITableViewController {
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+        let taskShadow = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+        let task = data.shadowToTask(taskShadow: taskShadow)
+        
+        if currentTasks.contains(where: { taskShadow in
+            taskShadow === task
+        }) {
+            print("currentTask have task")
+        }
+        
+        if completedTasks.contains(where: { taskShadow in
+            taskShadow === task
+        }) {
+            print("completedTasks have task")
+        }
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
             data.delete(task)
@@ -61,8 +74,8 @@ final class TasksViewController: UITableViewController {
                 isDone(true)
                 
                 data.done(task)
-
-                let rowToInsert = currentTasks.firstIndex(of: task) ?? 0
+                
+                let rowToInsert = currentTasks.firstIndex(of: taskShadow) ?? 0
                 
                 tableView.performBatchUpdates(
                     {
@@ -75,7 +88,12 @@ final class TasksViewController: UITableViewController {
             doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
                 isDone(true)
                 data.undone(task)
-                let rowToInsert = completedTasks.firstIndex(of: task) ?? 0
+                
+                completedTasks.forEach { taskD in
+                    print(taskD)
+                }
+                
+                let rowToInsert = completedTasks.firstIndex(of: taskShadow) ?? 0
                 
                 tableView.performBatchUpdates(
                     {
@@ -92,7 +110,8 @@ final class TasksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let task = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+        let taskShadow = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
+        let task = data.shadowToTask(taskShadow: taskShadow)
         
         alert.showAlert(presentIn: self, task: task) { [weak self] title, note in
             self?.data.edit(task, newTitle: title, newNote: note)

@@ -26,3 +26,25 @@ class Task: Object {
     @Persisted var date = Date()
     @Persisted var isComplete = false
 }
+
+class TaskShadow: Equatable {
+    static func == (lhs: TaskShadow, rhs: TaskShadow) -> Bool {
+        var result = false
+        
+        if lhs.isComplete == rhs.isComplete &&
+            lhs.date == rhs.date &&
+            lhs.note == rhs.note &&
+            lhs.title == rhs.title {
+            result = true
+        }
+        
+        return result
+    }
+    
+    var title = ""
+    var note = ""
+    var date = Date()
+    var isComplete = false
+}
+
+
