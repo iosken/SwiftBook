@@ -40,6 +40,7 @@ final class TasksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let taskShadow = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
         let task = data.shadowToTask(taskShadow: taskShadow)
+        print(task)
         
         if currentTasks.contains(where: { taskShadow in
             taskShadow === task

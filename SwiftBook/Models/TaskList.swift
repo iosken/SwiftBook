@@ -13,11 +13,11 @@ class TaskList: Object {
     @Persisted var date = Date()
     @Persisted var tasks = List<Task>()
     
-//    init(title: String = "", date: Date = Date(), tasks: List<Task> = List<Task>()) {
-//        self.title = title
-//        self.date = date
-//        self.tasks = tasks
-//    }
+    //    init(title: String = "", date: Date = Date(), tasks: List<Task> = List<Task>()) {
+    //        self.title = title
+    //        self.date = date
+    //        self.tasks = tasks
+    //    }
 }
 
 class Task: Object {
@@ -27,7 +27,32 @@ class Task: Object {
     @Persisted var isComplete = false
 }
 
-class TaskShadow: Equatable {
+class TaskShadow {
+    var title: String
+    var note: String
+    var date: Date
+    var isComplete: Bool
+    
+//    init() {
+//    title = ""
+//    note = ""
+//    date = Date()
+//    isComplete = false
+//    }
+    
+    init(title: String = "",
+         note: String = "",
+         date: Date = Date(),
+         isComplete: Bool = false
+    ) {
+        self.title = title
+        self.note = note
+        self.date = date
+        self.isComplete = isComplete
+    }
+}
+
+extension TaskShadow: Equatable {
     static func == (lhs: TaskShadow, rhs: TaskShadow) -> Bool {
         var result = false
         
@@ -40,11 +65,6 @@ class TaskShadow: Equatable {
         
         return result
     }
-    
-    var title = ""
-    var note = ""
-    var date = Date()
-    var isComplete = false
 }
 
 
