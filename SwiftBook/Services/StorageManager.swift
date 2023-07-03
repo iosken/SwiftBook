@@ -18,44 +18,62 @@ final class StorageManager {
     
     var taskListsSortingMethod = TaskListProperty.date
     
-    var taskLists: [TaskList] = [] // stay only shadow task
-    
-    var shadowTasksCollection: [[TaskShadow]] {
-        var result: [[TaskShadow]] = []
-
-        for (index, taskList) in taskLists.enumerated() {
-            taskList.tasks.forEach { task in
-               // result[index] = []
-                result[index].append(
-                TaskShadow(
-                    title: task.title,
-                    note: task.note,
-                    date: task.date,
-                    isComplete: task.isComplete)
-                )
-                
-                print(index, result[index][0].title)
-            }
-            //result = [index: Array(_immutableCocoaArray: taskList.tasks)]
-        }
-        
-        print(taskLists.enumerated())
-        print("------------------------------------------------------------")
-        print(result.first?.first?.title)
-        print()
-        return result
-    }
+    var shadowTaskLists: [TaskListShadow] = []
     
     private let realm = try! Realm()
     
-    private lazy var realmTaskLists = realm.objects(TaskList.self)
-    
     private init() {
-        taskLists = Array(realm.objects(TaskList.self))
+        let taskLists = Array(realm.objects(TaskList.self))
+        
+        shadowTaskLists = taskListsToShadow(from: taskLists)
+    }
+    
+    func taskListsToShadow(from taskLists: [TaskList]) -> [TaskListShadow] {
+        var taskListShadow: [TaskListShadow] = []
+        for taskList in taskLists {
+            let tasks = {
+                var result: [TaskShadow] = []
+                taskList.tasks.forEach { task in
+                    result.append(
+                        taskToShadow(task: task)
+                    )
+                }
+                
+                return result
+            }()
+            
+            taskListShadow.append(TaskListShadow(
+                title: taskList.title,
+                date: taskList.date,
+                tasks: tasks
+            ))
+            
+        }
+        return taskListShadow
+    }
+    
+    func taskToShadow(task: Task) -> TaskShadow {
+        TaskShadow(
+            title: task.title,
+            note: task.note,
+            date: task.date,
+            isComplete: task.isComplete
+        )
+    }
+    
+    func taskShadowIndex(taskShadow: TaskShadow) -> Int {
+        var taskIndex = 0
+        shadowTaskLists.forEach { taskList in
+            if taskList.tasks.contains(taskShadow) {
+                taskIndex = taskList.tasks.firstIndex(of: taskShadow) ?? 00
+            }
+        }
+        
+        return taskIndex
     }
     
     // MARK: - Task List
-    func completedTasksCount(_ taskList: TaskList) -> Int {
+    func completedTasksCount(_ taskList: TaskListShadow) -> Int {
         var result = 0
         taskList.tasks.forEach { task in
             result += task.isComplete ? 1 : 0
@@ -67,7 +85,7 @@ final class StorageManager {
         write {
             realm.add(taskList)
             
-            self.taskLists.append(contentsOf: taskList)
+            self.shadowTaskLists.append(contentsOf: taskListsToShadow(from: taskList))
         }
     }
     
@@ -76,7 +94,9 @@ final class StorageManager {
             let taskList = TaskList(value: [taskListTitle])
             realm.add(taskList)
             
-            self.taskLists.append(taskList)
+            self.shadowTaskLists.append(
+                taskListsToShadow(from: [taskList]).first ?? TaskListShadow()
+            )
             completion(taskList)
         }
     }
@@ -86,8 +106,8 @@ final class StorageManager {
             realm.delete(taskList.tasks)
             realm.delete(taskList)
             
-            let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
-            taskLists.remove(at: taskListIndex)
+            let taskListIndex = shadowTaskLists.firstIndex(of: taskListsToShadow(from: [taskList]).first ?? TaskListShadow()) ?? 0
+            shadowTaskLists.remove(at: taskListIndex)
         }
     }
     
@@ -95,9 +115,13 @@ final class StorageManager {
         write {
             realm.delete(task)
             
-            taskLists.forEach { taskList in
-                if taskList.tasks.contains(task) {
-                    let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
+            let taskShadow = taskToShadow(task: task)
+            
+            let taskToShadowIndex = taskShadowIndex(taskShadow: taskShadow)
+            
+            shadowTaskLists.forEach { taskList in
+                if taskList.tasks.contains(taskShadow) {
+                    let taskIndex = taskList.tasks.firstIndex(of: taskShadow) ?? 0
                     taskList.tasks.remove(at: taskIndex)
                 }
             }
@@ -109,8 +133,10 @@ final class StorageManager {
             taskList.title = newTitle
         }
         
-        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
-        taskLists[taskListIndex].title = newTitle
+        let shadowTaskList = taskListsToShadow(from: [taskList]).first ?? TaskListShadow()
+        
+        let taskListIndex = shadowTaskLists.firstIndex(of: shadowTaskList) ?? 0
+        shadowTaskLists[taskListIndex].title = newTitle
     }
     
     func edit(_ task: Task, newTitle: String, newNote: String) {
@@ -118,11 +144,13 @@ final class StorageManager {
             task.title = newTitle
             task.note = newNote
             
-            taskLists.forEach { taskList in
-                if taskList.tasks.contains(task) {
-                    let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
-                    taskList.tasks[taskIndex].title = newTitle
-                    taskList.tasks[taskIndex].note = newNote
+            let shadowTask = taskToShadow(task: task)
+            
+            shadowTaskLists.forEach { shadowTaskList in
+                if shadowTaskList.tasks.contains(shadowTask) {
+                    let taskIndex = shadowTaskList.tasks.firstIndex(of: shadowTask) ?? 0
+                    shadowTaskList.tasks[taskIndex].title = newTitle
+                    shadowTaskList.tasks[taskIndex].note = newNote
                 }
             }
         }
@@ -133,8 +161,10 @@ final class StorageManager {
             taskList.tasks.setValue(true, forKey: "isComplete")
         }
         
-        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
-        taskLists[taskListIndex].tasks.forEach { task in
+        let taskListShadow = taskListsToShadow(from: [taskList]).first ?? TaskListShadow()
+        
+        let taskListIndex = shadowTaskLists.firstIndex(of: taskListShadow) ?? 0
+        shadowTaskLists[taskListIndex].tasks.forEach { task in
             task.isComplete = true
         }
     }
@@ -144,10 +174,12 @@ final class StorageManager {
             task.setValue(true, forKey: "isComplete")
         }
         
-        taskLists.forEach { taskList in
-            if taskList.tasks.contains(task) {
-                let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
-                taskList.tasks[taskIndex].isComplete = true
+        let shadowTask = taskToShadow(task: task)
+        
+        shadowTaskLists.forEach { shadowTaskList in
+            if shadowTaskList.tasks.contains(shadowTask) {
+                let taskIndex = shadowTaskList.tasks.firstIndex(of: shadowTask) ?? 0
+                shadowTaskList.tasks[taskIndex].isComplete = true
             }
         }
     }
@@ -157,8 +189,10 @@ final class StorageManager {
             taskList.tasks.setValue(false, forKey: "isComplete")
         }
         
-        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 0
-        taskLists[taskListIndex].tasks.forEach { task in
+        let shadowTaskList = taskListsToShadow(from: [taskList]).first ?? TaskListShadow()
+        
+        let taskListIndex = shadowTaskLists.firstIndex(of: shadowTaskList) ?? 0
+        shadowTaskLists[taskListIndex].tasks.forEach { task in
             task.isComplete = false
         }
     }
@@ -168,22 +202,14 @@ final class StorageManager {
             task.setValue(false, forKey: "isComplete")
         }
         
-        taskLists.forEach { taskList in
-            if taskList.tasks.contains(task) {
-                let taskIndex = taskList.tasks.firstIndex(of: task) ?? 0
-                taskList.tasks[taskIndex].isComplete = false
+        let shadowTask = taskToShadow(task: task)
+        
+        shadowTaskLists.forEach { shadowTaskList in
+            if shadowTaskList.tasks.contains(shadowTask) {
+                let taskIndex = shadowTaskList.tasks.firstIndex(of: shadowTask) ?? 0
+                shadowTaskList.tasks[taskIndex].isComplete = false
             }
         }
-        
-        //        let currentTaskList = taskLists.first { taskList in
-        //            taskList.tasks.contains(task)
-        //        } ?? TaskList()
-        //
-        //        let currentTask = currentTaskList.tasks.first { currentTask in
-        //            currentTask === task
-        //        }
-        //
-        //        currentTask?.isComplete = false
     }
     
     // MARK: - Tasks
@@ -207,36 +233,33 @@ final class StorageManager {
         
     }
     
-    func shadowToTask(taskShadow: TaskShadow) -> Task {
-        var index = 0
-        var indexCollection = 0
-        
-        for (shadowTasksIndex, shadowTasks) in shadowTasksCollection.enumerated() {
-            for (indexTask, task) in shadowTasks.enumerated() {
-                if task == taskShadow {
-                    indexCollection = shadowTasksIndex
-                    index = indexTask
-                }
-            }
-        }
-        
-        return realmTaskLists[indexCollection].tasks[index]
-    }
+//    func shadowToTask(taskShadow: TaskShadow) -> Task {
+//        var index = 0
+//        var indexCollection = 0
+//
+//        for (shadowTasksIndex, shadowTasks) in shadowTasksCollection.enumerated() {
+//            for (indexTask, task) in shadowTasks.enumerated() {
+//                if task == taskShadow {
+//                    indexCollection = shadowTasksIndex
+//                    index = indexTask
+//                }
+//            }
+//        }
+//
+//        return realmTaskLists[indexCollection].tasks[index]
+//    }
 }
 
 extension StorageManager {
     
-    func currentTasks(_ taskList: TaskList) -> [TaskShadow] {
-        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 999
-        print(taskListIndex)
+    func currentTasks(_ taskListShadow: TaskListShadow) -> [TaskShadow] {
+        let taskListShadowIndex = shadowTaskLists.firstIndex(of: taskListShadow) ?? 999
         
         var result: [TaskShadow] = []
         
-        result = shadowTasksCollection[taskListIndex].filter { task in
+        result = shadowTaskLists[taskListShadowIndex].tasks.filter { task in
             !task.isComplete
         }
-        
-        print(result)
         
         switch taskListsSortingMethod {
         case .date:
@@ -250,17 +273,14 @@ extension StorageManager {
         }
     }
     
-    func completedTasks(_ taskList: TaskList) -> [TaskShadow] {
-        let taskListIndex = taskLists.firstIndex(of: taskList) ?? 999
-        print(taskListIndex)
+    func completedTasks(_ taskListShadow: TaskListShadow) -> [TaskShadow] {
+        let taskListShadowIndex = shadowTaskLists.firstIndex(of: taskListShadow) ?? 999
         
         var result: [TaskShadow] = []
         
-        result = shadowTasksCollection[taskListIndex].filter { task in
+        result = shadowTaskLists[taskListShadowIndex].tasks.filter { task in
             task.isComplete
         }
-        
-        print(result)
         
         switch taskListsSortingMethod {
         case .date:

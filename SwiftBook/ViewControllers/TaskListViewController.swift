@@ -33,13 +33,13 @@ final class TaskListViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.taskLists.count
+        data.shadowTaskLists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        let taskList = data.taskLists[indexPath.row]
+        let taskList = data.shadowTaskLists[indexPath.row]
         content.text = taskList.title
         
         let completedTasksCount = data.completedTasksCount(taskList)
@@ -60,7 +60,7 @@ final class TaskListViewController: UITableViewController {
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let taskList = data.taskLists[indexPath.row]
+        let taskList = data.shadowTaskLists[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
             data.delete(taskList)
@@ -91,7 +91,7 @@ final class TaskListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         guard let tasksVC = segue.destination as? TasksViewController else { return }
-        let taskList = data.taskLists[indexPath.row]
+        let taskList = data.shadowTaskLists[indexPath.row]
         tasksVC.taskList = taskList
     }
     
@@ -127,7 +127,7 @@ extension TaskListViewController {
     private func save(_ taskListTitle: String) {
         data.save(taskListTitle) { [weak self] taskList in
             
-            let rowIndex = IndexPath(row: (self?.data.taskLists.count ?? 0) - 1, section: 0)
+            let rowIndex = IndexPath(row: (self?.data.shadowTaskLists.count ?? 0) - 1, section: 0)
             print(rowIndex)
 
             self?.tableView.insertRows(at: [rowIndex], with: .automatic)

@@ -12,12 +12,6 @@ class TaskList: Object {
     @Persisted var title = ""
     @Persisted var date = Date()
     @Persisted var tasks = List<Task>()
-    
-    //    init(title: String = "", date: Date = Date(), tasks: List<Task> = List<Task>()) {
-    //        self.title = title
-    //        self.date = date
-    //        self.tasks = tasks
-    //    }
 }
 
 class Task: Object {
@@ -27,23 +21,46 @@ class Task: Object {
     @Persisted var isComplete = false
 }
 
+class TaskListShadow {
+    var title = ""
+    var date = Date()
+    var tasks: [TaskShadow] = []
+    
+    init() {
+        title = ""
+        date = Date()
+        tasks = []
+    }
+    
+    init(
+        title: String,
+         date: Date,
+         tasks: [TaskShadow]
+    ) {
+        self.title = title
+        self.date = date
+        self.tasks = tasks
+    }
+}
+
 class TaskShadow {
     var title: String
     var note: String
     var date: Date
     var isComplete: Bool
     
-//    init() {
-//    title = ""
-//    note = ""
-//    date = Date()
-//    isComplete = false
-//    }
+    init() {
+     title = ""
+     note = ""
+     date = Date()
+     isComplete = false
+    }
     
-    init(title: String = "",
-         note: String = "",
-         date: Date = Date(),
-         isComplete: Bool = false
+    init(
+        title: String,
+         note: String,
+         date: Date,
+         isComplete: Bool
     ) {
         self.title = title
         self.note = note
@@ -65,6 +82,21 @@ extension TaskShadow: Equatable {
         
         return result
     }
+}
+
+extension TaskListShadow: Equatable {
+    static func == (lhs: TaskListShadow, rhs: TaskListShadow) -> Bool {
+        var result = false
+        
+        if lhs.title == rhs.title &&
+            lhs.date == rhs.date {
+            result = true
+        }
+        
+        return result
+    }
+    
+    
 }
 
 
