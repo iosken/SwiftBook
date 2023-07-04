@@ -72,10 +72,10 @@ class AlertManager {
     
     func showAlert(
         presentIn viewController: UIViewController?,
-        taskList: TaskList?,
+        taskListShadow: TaskListShadow?,
         completion: @escaping (String) -> Void
     ) {
-        let status = taskList != nil ? TaskListStatusAlert.editTaskList : TaskListStatusAlert.newTaskList
+        let status = taskListShadow != nil ? TaskListStatusAlert.editTaskList : TaskListStatusAlert.newTaskList
         let alert = UIAlertController(
             title: status.title,
             message: status.message,
@@ -94,7 +94,7 @@ class AlertManager {
         
         alert.addTextField { textField in
             textField.placeholder = status.placeHolder
-            textField.text = taskList?.title
+            textField.text = taskListShadow?.title
         }
         
         viewController?.present(alert, animated: true)
@@ -102,10 +102,10 @@ class AlertManager {
     
     func showAlert(
         presentIn viewController: UIViewController?,
-        task: Task?,
+        taskShadow: TaskShadow?,
         completion: @escaping (String, String) -> Void
     ) {
-        let status = task != nil ? TaskStatusAlert.editTask : TaskStatusAlert.newTask
+        let status = taskShadow != nil ? TaskStatusAlert.editTask : TaskStatusAlert.newTask
         let alert = UIAlertController(
             title: status.title,
             message: status.message,
@@ -124,12 +124,12 @@ class AlertManager {
         alert.addAction(cancelAction)
         alert.addTextField { textField in
             textField.placeholder = status.placeHolder
-            textField.text = task?.title
+            textField.text = taskShadow?.title
         }
         
         alert.addTextField { textField in
             textField.placeholder = status.placeHolder
-            textField.text = task?.note
+            textField.text = taskShadow?.note
         }
         
         viewController?.present(alert, animated: true)

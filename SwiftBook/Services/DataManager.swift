@@ -39,7 +39,9 @@ final class DataManager {
         shoppingList.tasks.insert(contentsOf: [bread, apples], at: 1)
         
         DispatchQueue.main.async { [unowned self] in
-            storageManager.save([shoppingList, moviesList])
+            let shoppingListShadow = storageManager.taskListsToShadow(from: [shoppingList]).first ?? TaskListShadow()
+            let moviesListShadow = storageManager.taskListsToShadow(from: [moviesList]).first ?? TaskListShadow()
+            storageManager.save([shoppingListShadow, moviesListShadow])
             completion()
         }
     }

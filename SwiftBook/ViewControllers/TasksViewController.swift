@@ -13,19 +13,19 @@ final class TasksViewController: UITableViewController {
     private let data = StorageManager.shared
     private let alert = AlertManager.shared
     
-    var taskList: TaskList!
+    var taskListShadow: TaskListShadow!
     
     var currentTasks: [TaskShadow] {
-        data.currentTasks(taskList)
+        data.currentTasks(taskListShadow)
     }
     
     var completedTasks: [TaskShadow] {
-        data.completedTasks(taskList)
+        data.completedTasks(taskListShadow)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = taskList.title
+        title = taskListShadow.title
         
         let addButton = UIBarButtonItem(
             barButtonSystemItem: .add,
@@ -39,29 +39,15 @@ final class TasksViewController: UITableViewController {
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let taskShadow = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
-        let task = data.shadowToTask(taskShadow: taskShadow)
-        print(task)
-        
-        if currentTasks.contains(where: { taskShadow in
-            taskShadow === task
-        }) {
-            print("currentTask have task")
-        }
-        
-        if completedTasks.contains(where: { taskShadow in
-            taskShadow === task
-        }) {
-            print("completedTasks have task")
-        }
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
-            data.delete(task)
+            data.delete(taskListShadow)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { [unowned self] _, _, isDone in
-            alert.showAlert(presentIn: self, task: task) { [weak self] title, note in
-                self?.data.edit(task, newTitle: title, newNote: note)
+            alert.showAlert(presentIn: self, taskShadow: taskShadow) { [weak self] title, note in
+                self?.data.edit(taskShadow, newTitle: title, newNote: note)
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
             
@@ -70,11 +56,11 @@ final class TasksViewController: UITableViewController {
         
         var doneAction = UIContextualAction()
         
-        if !task.isComplete {
+        if !taskShadow.isComplete {
             doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
                 isDone(true)
                 
-                data.done(task)
+                data.done(taskShadow)
                 
                 let rowToInsert = currentTasks.firstIndex(of: taskShadow) ?? 0
                 
@@ -88,7 +74,7 @@ final class TasksViewController: UITableViewController {
         } else {
             doneAction = UIContextualAction(style: .normal, title: "Undone") { [unowned self] _, _, isDone in
                 isDone(true)
-                data.undone(task)
+                data.undone(taskShadow)
                 
                 completedTasks.forEach { taskD in
                     print(taskD)
@@ -112,10 +98,10 @@ final class TasksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskShadow = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
-        let task = data.shadowToTask(taskShadow: taskShadow)
+       // let task = data.shadowToTask(taskShadow: taskShadow)
         
-        alert.showAlert(presentIn: self, task: task) { [weak self] title, note in
-            self?.data.edit(task, newTitle: title, newNote: note)
+        alert.showAlert(presentIn: self, taskShadow: taskShadow) { [weak self] title, note in
+            self?.data.edit(taskShadow, newTitle: title, newNote: note)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
@@ -153,7 +139,7 @@ final class TasksViewController: UITableViewController {
     }
     
     @objc private func addButtonPressed() {
-        alert.showAlert(        presentIn: self, task: nil) { [weak self] task, note in
+        alert.showAlert(presentIn: self, taskShadow: nil) { [weak self] task, note in
             self?.save(task: task, withNote: note)
         }
     }
@@ -162,7 +148,7 @@ final class TasksViewController: UITableViewController {
 
 extension TasksViewController {
     private func save(task: String, withNote note: String) {
-        data.save(task, withTaskNote: note, to: taskList) { task in
+        data.save(task, withTaskNote: note, to: taskListShadow) { task in
             
             let section = !task.isComplete ? 0 : 1
             let row = !task.isComplete ? (currentTasks.count - 1) : (completedTasks.count - 1)

@@ -33,13 +33,13 @@ final class TaskListViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.shadowTaskLists.count
+        data.taskListsShadow.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        let taskList = data.shadowTaskLists[indexPath.row]
+        let taskList = data.taskListsShadow[indexPath.row]
         content.text = taskList.title
         
         let completedTasksCount = data.completedTasksCount(taskList)
@@ -60,23 +60,23 @@ final class TaskListViewController: UITableViewController {
     
     // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let taskList = data.shadowTaskLists[indexPath.row]
+        let taskListShadow = data.taskListsShadow[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, _ in
-            data.delete(taskList)
+            data.delete(taskListShadow)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         let editAction = UIContextualAction(style: .normal, title: "Edit") { [unowned self] _, _, isDone in
-            alert.showAlert(presentIn: self, taskList: taskList) { taskListValue in
-                self.data.edit(taskList, newTitle: taskListValue)
+            alert.showAlert(presentIn: self, taskListShadow: taskListShadow) { taskListValue in
+                self.data.edit(taskListShadow, newTitle: taskListValue)
             }
             tableView.reloadRows(at: [indexPath], with: .automatic)
             isDone(true)
         }
         
         let doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
-            data.done(taskList)
+            data.done(taskListShadow)
             tableView.reloadRows(at: [indexPath], with: .automatic)
             isDone(true)
         }
@@ -91,8 +91,8 @@ final class TaskListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         guard let tasksVC = segue.destination as? TasksViewController else { return }
-        let taskList = data.shadowTaskLists[indexPath.row]
-        tasksVC.taskList = taskList
+        let taskListShadow = data.taskListsShadow[indexPath.row]
+        tasksVC.taskListShadow = taskListShadow
     }
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
@@ -106,7 +106,7 @@ final class TaskListViewController: UITableViewController {
     }
     
     @objc private func addButtonPressed() {
-        alert.showAlert(presentIn: self, taskList: nil) { [weak self] task in
+        alert.showAlert(presentIn: self, taskListShadow: nil) { [weak self] task in
             self?.save(task)
         }
     }
@@ -127,7 +127,7 @@ extension TaskListViewController {
     private func save(_ taskListTitle: String) {
         data.save(taskListTitle) { [weak self] taskList in
             
-            let rowIndex = IndexPath(row: (self?.data.shadowTaskLists.count ?? 0) - 1, section: 0)
+            let rowIndex = IndexPath(row: (self?.data.taskListsShadow.count ?? 0) - 1, section: 0)
             print(rowIndex)
 
             self?.tableView.insertRows(at: [rowIndex], with: .automatic)
