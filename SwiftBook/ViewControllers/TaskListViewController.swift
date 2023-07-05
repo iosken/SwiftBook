@@ -129,7 +129,7 @@ extension TaskListViewController {
             
             let rowIndex = IndexPath(row: (self?.data.taskListsShadow.count ?? 0) - 1, section: 0)
             print(rowIndex)
-
+            
             self?.tableView.insertRows(at: [rowIndex], with: .automatic)
         }
     }

@@ -9,59 +9,59 @@
 import UIKit
 
 enum TaskStatusAlert {
-
+    
     case newTask
     case editTask
-
+    
     var title: String {
         switch self {
         case .newTask: return "Save"
         case .editTask: return "Edit"
         }
     }
-
+    
     var message: String {
         switch self {
         case .newTask: return "You can save or cancel new task"
         case .editTask: return "You can change current task"
         }
     }
-
+    
     var placeHolder: String {
         switch self {
         case .newTask: return "New task"
         case .editTask: return "Edit task with"
         }
     }
-
+    
 }
 
 enum TaskListStatusAlert {
-
+    
     case newTaskList
     case editTaskList
-
+    
     var title: String {
         switch self {
         case .newTaskList: return "Save"
         case .editTaskList: return "Edit"
         }
     }
-
+    
     var message: String {
         switch self {
         case .newTaskList: return "You can save or cancel new task list"
         case .editTaskList: return "You can change current task list"
         }
     }
-
+    
     var placeHolder: String {
         switch self {
         case .newTaskList: return "New task list"
         case .editTaskList: return "Edit task list with"
         }
     }
-
+    
 }
 
 class AlertManager {

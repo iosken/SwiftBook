@@ -34,8 +34,8 @@ class TaskListShadow {
     
     init(
         title: String,
-         date: Date,
-         tasks: [TaskShadow]
+        date: Date = Date(),
+        tasks: [TaskShadow]
     ) {
         self.title = title
         self.date = date
@@ -50,17 +50,17 @@ class TaskShadow {
     var isComplete: Bool
     
     init() {
-     title = ""
-     note = ""
-     date = Date()
-     isComplete = false
+        title = ""
+        note = ""
+        date = Date()
+        isComplete = false
     }
     
     init(
         title: String,
-         note: String,
-         date: Date,
-         isComplete: Bool
+        note: String,
+        date: Date = Date(),
+        isComplete: Bool = false
     ) {
         self.title = title
         self.note = note

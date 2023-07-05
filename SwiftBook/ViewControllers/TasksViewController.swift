@@ -33,7 +33,7 @@ final class TasksViewController: UITableViewController {
             action: #selector(addButtonPressed)
         )
         navigationItem.rightBarButtonItems = [addButton, editButtonItem]
-
+        
     }
     
     // MARK: - Table View Data Source
@@ -94,7 +94,6 @@ final class TasksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let taskShadow = indexPath.section == 0 ? currentTasks[indexPath.row] : completedTasks[indexPath.row]
-       // let task = data.shadowToTask(taskShadow: taskShadow)
         
         alert.showAlert(presentIn: self, taskShadow: taskShadow) { [weak self] title, note in
             self?.data.edit(taskShadow, newTitle: title, newNote: note)
