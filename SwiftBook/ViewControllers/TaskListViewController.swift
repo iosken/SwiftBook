@@ -97,9 +97,9 @@ final class TaskListViewController: UITableViewController {
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
-            data.taskListsSortingMethod = .title
+            data.taskListSortMethod = .title
         } else {
-            data.taskListsSortingMethod = .date
+            data.taskListSortMethod = .date
         }
         
         tableView.reloadData()

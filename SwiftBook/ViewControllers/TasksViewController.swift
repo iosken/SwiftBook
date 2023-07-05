@@ -76,10 +76,6 @@ final class TasksViewController: UITableViewController {
                 isDone(true)
                 data.undone(taskShadow)
                 
-                completedTasks.forEach { taskD in
-                    print(taskD)
-                }
-                
                 let rowToInsert = completedTasks.firstIndex(of: taskShadow) ?? 0
                 
                 tableView.performBatchUpdates(
