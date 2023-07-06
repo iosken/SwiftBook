@@ -9,17 +9,22 @@
 import UIKit
 
 protocol TaskListAlert {
+    
     var listTitle: String? { get }
     func createAlert(completion: @escaping (String) -> Void) -> UIAlertController
+    
 }
 
 protocol TaskAlert {
+    
     var taskTitle: String? { get }
     var taskNote: String? { get }
     func createAlert(completion: @escaping (String, String) -> Void) -> UIAlertController
+    
 }
 
 final class TaskListAlertControllerFactory: TaskListAlert {
+    
     var listTitle: String?
     private let userAction: UserAction
     
@@ -52,11 +57,14 @@ final class TaskListAlertControllerFactory: TaskListAlert {
         
         return alertController
     }
+    
 }
 
 // MARK: - TaskListUserAction
 extension TaskListAlertControllerFactory {
+    
     enum UserAction {
+        
         case newList
         case editList
         
@@ -68,10 +76,13 @@ extension TaskListAlertControllerFactory {
                 return "Edit List"
             }
         }
+        
     }
+    
 }
 
 final class TaskAlertControllerFactory: TaskAlert {
+    
     var taskTitle: String?
     var taskNote: String?
     
@@ -118,11 +129,14 @@ final class TaskAlertControllerFactory: TaskAlert {
         
         return alertController
     }
+    
 }
 
 // MARK: - TaskUserAction
 extension TaskAlertControllerFactory {
+    
     enum UserAction {
+        
         case newTask
         case editTask
         
@@ -134,6 +148,8 @@ extension TaskAlertControllerFactory {
                 return "Edit Task"
             }
         }
+        
     }
+    
 }
 

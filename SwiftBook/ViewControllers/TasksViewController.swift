@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class TasksViewController: UITableViewController {
+final class TasksViewController: UITableViewController {
     
     var taskList: TaskList!
     
@@ -91,6 +91,7 @@ class TasksViewController: UITableViewController {
                 )
             }
         }
+        
         editAction.backgroundColor = .orange
         doneAction.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         
@@ -144,6 +145,7 @@ class TasksViewController: UITableViewController {
 }
 
 extension TasksViewController {
+    
     private func showAlert(with task: Task? = nil, completion: (() -> Void)? = nil) {
         let taskAlertFactory = TaskAlertControllerFactory(
             userAction: task != nil ? .editTask : .newTask,
@@ -168,4 +170,5 @@ extension TasksViewController {
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }
     }
+    
 }

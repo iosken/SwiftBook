@@ -23,6 +23,8 @@ final class TaskListViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.title = "Task Lists"
+        
         taskLists = storageManager.realm.objects(TaskList.self)
         taskLists = taskLists.sorted(byKeyPath: "date", ascending: true)
         createTempData()
@@ -118,10 +120,12 @@ final class TaskListViewController: UITableViewController {
             }
         }
     }
+    
 }
 
 // MARK: - AlertController
 extension TaskListViewController {
+    
     private func showAlert(with taskList: TaskList? = nil, completion: (() -> Void)? = nil) {
         let listAlertFactory = TaskListAlertControllerFactory(
             userAction: taskList != nil ? .editList : .newList,
@@ -147,4 +151,5 @@ extension TaskListViewController {
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }
     }
+    
 }
