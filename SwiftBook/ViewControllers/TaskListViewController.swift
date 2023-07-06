@@ -135,12 +135,13 @@ final class TaskListViewController: UITableViewController {
 extension TaskListViewController {
     
     private func save(_ taskListTitle: String) {
-        data.save(taskListTitle) { [weak self] taskList in
+        data.save(taskListTitle) { [weak self] taskListShadow in
+            let indexRow = self?.data.taskListsShadow.firstIndex(of: taskListShadow) ?? 0
+            let indexPath = IndexPath(row: indexRow, section: 0)
             
-            let rowIndex = IndexPath(row: (self?.data.taskListsShadow.count ?? 0) - 1, section: 0)
-            print(rowIndex)
+            print(indexPath)
             
-            self?.tableView.insertRows(at: [rowIndex], with: .automatic)
+            self?.tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
     
