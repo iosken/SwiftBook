@@ -29,7 +29,7 @@ enum TaskStatusAlert {
     
     var placeHolder: String {
         switch self {
-        case .newTask: return "New task"
+        case .newTask: return "Enter new task"
         case .editTask: return "Edit task with"
         }
     }
@@ -64,7 +64,7 @@ enum TaskListStatusAlert {
     
 }
 
-class AlertManager {
+final class AlertManager {
     
     static let shared = AlertManager()
     

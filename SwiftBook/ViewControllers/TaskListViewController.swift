@@ -23,6 +23,7 @@ final class TaskListViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = addButton
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.title = "Task List"
         createTempData()
     }
     
@@ -32,13 +33,14 @@ final class TaskListViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.taskListsShadow.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        let result = tableView.dequeueReusableCell(withIdentifier: "TaskListCell", for: indexPath)
+        var content = result.defaultContentConfiguration()
         let taskList = data.taskListsShadow[indexPath.row]
         content.text = taskList.title
         
@@ -54,11 +56,12 @@ final class TaskListViewController: UITableViewController {
             content.secondaryText = completedTasksCount.formatted()
         }
         
-        cell.contentConfiguration = content
-        return cell
+        result.contentConfiguration = content
+        return result
     }
     
     // MARK: - Table View Data Source
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let taskListShadow = data.taskListsShadow[indexPath.row]
         
@@ -88,6 +91,7 @@ final class TaskListViewController: UITableViewController {
     }
     
     // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         guard let tasksVC = segue.destination as? TasksViewController else { return }
@@ -96,10 +100,15 @@ final class TaskListViewController: UITableViewController {
     }
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
+        
         if sender.selectedSegmentIndex == 1 {
-            data.taskListSortMethod = .title
+            data.taskListSortMethod == .titleUp ?
+            (data.taskListSortMethod = .titleDown) :
+            (data.taskListSortMethod = .titleUp)
         } else {
-            data.taskListSortMethod = .date
+            data.taskListSortMethod == .dateUp ?
+            (data.taskListSortMethod = .dateDown) :
+            (data.taskListSortMethod = .dateUp)
         }
         
         tableView.reloadData()
@@ -122,6 +131,7 @@ final class TaskListViewController: UITableViewController {
 }
 
 // MARK: - AlertController
+
 extension TaskListViewController {
     
     private func save(_ taskListTitle: String) {

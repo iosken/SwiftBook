@@ -9,17 +9,37 @@ import Foundation
 import RealmSwift
 
 enum SortMethod {
-    case date
-    case title
+    case dateUp
+    case dateDown
+    case titleUp
+    case titleDown
 }
 
 final class StorageManager {
     
     static let shared = StorageManager()
     
-    var taskListSortMethod = SortMethod.date
+    var taskListSortMethod = SortMethod.dateUp
     var taskListsShadow: [TaskListShadow] {
-        taskListsShadowStorage
+        let result = taskListsShadowStorage
+        switch taskListSortMethod {
+        case .dateUp:
+            return result.sorted { lhs, rhs in
+                lhs.date > rhs.date
+            }
+        case .dateDown:
+            return result.sorted { lhs, rhs in
+                lhs.date < rhs.date
+            }
+        case .titleUp:
+            return result.sorted { lhs, rhs in
+                lhs.title > rhs.title
+            }
+        default:
+            return result.sorted { lhs, rhs in
+                lhs.title < rhs.title
+            }
+        }
     }
     
     private var taskListsShadowStorage: [TaskListShadow] = []
@@ -33,119 +53,7 @@ final class StorageManager {
         }
     }
     
-    func completedTasksCount(_ taskListShadow: TaskListShadow) -> Int {
-        taskListShadow.tasks.filter { task in
-            task.isComplete
-        }.count
-    }
-    
-    func taskListsToShadow(from taskLists: [TaskList]) -> [TaskListShadow] {
-        var taskListShadow: [TaskListShadow] = []
-        taskLists.forEach { taskList in
-            let tasks = {
-                var result: [TaskShadow] = []
-                taskList.tasks.forEach { task in
-                    result.append(
-                        taskToShadow(task: task)
-                    )
-                }
-                
-                return result
-            }()
-            
-            taskListShadow.append(TaskListShadow(
-                title: taskList.title,
-                date: taskList.date,
-                tasks: tasks
-            ))
-            
-        }
-        return taskListShadow
-    }
-    
-    func shadowToTaskList(from taskListsShadow: TaskListShadow) -> TaskList {
-        var result: TaskList
-        
-        result = taskLists.filter(
-            "title = '\(taskListsShadow.title)'",
-            "date = \(taskListsShadow.date)"
-        ).first ?? TaskList()
-        
-        return result
-    }
-    
-    func initTaskList(from taskListsShadow: [TaskListShadow]) -> [TaskList] {
-        var taskList: [TaskList] = []
-        for taskListShadow in taskListsShadow {
-            let tasks = {
-                var result: [Task] = []
-                taskListShadow.tasks.forEach { taskShadow in
-                    result.append(shadowToTask(taskShadow: taskShadow))
-                }
-                
-                return result
-            }()
-            
-            taskList.append(TaskList(
-                value: [
-                    taskListShadow.title,
-                    taskListShadow.date,
-                    tasks] as [Any]
-            ))
-        }
-        
-        return taskList
-    }
-    
-    func initTask(from taskShadow: TaskShadow) -> Task {
-        Task(value: [
-            taskShadow.title,
-            taskShadow.note,
-            taskShadow.date,
-            taskShadow.isComplete
-        ] as [Any])
-    }
-    
-    func shadowToTask(taskShadow: TaskShadow) -> Task {
-        var result = Task()
-        
-        taskLists.forEach { taskList in
-            let task = taskList.tasks.filter(
-                "title = '\(taskShadow.title)'",
-                "note = '\(taskShadow.note)'",
-                "date = \(taskShadow.date)",
-                "isComplete = \(taskShadow.isComplete)"
-            )
-            
-            if !task.isEmpty {
-                result = task.first ?? Task()
-            }
-        }
-        
-        return result
-    }
-    
-    func taskToShadow(task: Task) -> TaskShadow {
-        TaskShadow(
-            title: task.title,
-            note: task.note,
-            date: task.date,
-            isComplete: task.isComplete
-        )
-    }
-    
-    func taskShadowIndex(taskShadow: TaskShadow) -> Int {
-        var taskIndex = 0
-        taskListsShadowStorage.forEach { taskList in
-            if taskList.tasks.contains(taskShadow) {
-                taskIndex = taskList.tasks.firstIndex(of: taskShadow) ?? 0
-            }
-        }
-        
-        return taskIndex
-    }
-    
-    // MARK: - Task List
+    // MARK: - Actions Methods
     func save(_ taskListsShadow: [TaskListShadow]) {
         let taskLists = initTaskList(from: taskListsShadow)
         
@@ -284,20 +192,20 @@ final class StorageManager {
     // MARK: - Tasks
     
     func save(
-        _ taskTitle: String,
+        taskName: String,
         withTaskNote taskNote: String,
         to taskListShadow: TaskListShadow,
         completion: (TaskShadow) -> Void
     ) {
         let taskList: TaskList = shadowToTaskList(from: taskListShadow)
-        let task = Task(value: [taskTitle, taskNote])
+        let task = Task(value: [taskName, taskNote])
         
         write {
             taskList.tasks.append(task)
         }
         
         let taskShadow = TaskShadow(
-            title: taskTitle,
+            title: taskName,
             note: taskNote
         )
         
@@ -321,45 +229,137 @@ final class StorageManager {
 extension StorageManager {
     
     func currentTasks(_ taskListShadow: TaskListShadow) -> [TaskShadow] {
-        let taskListShadowIndex = taskListsShadowStorage.firstIndex(of: taskListShadow) ?? 0
+        let taskListShadowIndex = taskListsShadow.firstIndex(of: taskListShadow) ?? 0
         
-        var result: [TaskShadow] = []
-        
-        result = taskListsShadowStorage[taskListShadowIndex].tasks.filter { task in
+        return taskListsShadow[taskListShadowIndex].tasks.filter { task in
             !task.isComplete
-        }
-        
-        switch taskListSortMethod {
-        case .date:
-            return result.sorted { lhs, rhs in
-                lhs.date > rhs.date
-            }
-        default:
-            return result.sorted { lhs, rhs in
-                lhs.title > rhs.title
-            }
         }
     }
     
     func completedTasks(_ taskListShadow: TaskListShadow) -> [TaskShadow] {
-        let taskListShadowIndex = taskListsShadowStorage.firstIndex(of: taskListShadow) ?? 0
+        let taskListShadowIndex = taskListsShadow.firstIndex(of: taskListShadow) ?? 0
         
-        var result: [TaskShadow] = []
-        
-        result = taskListsShadowStorage[taskListShadowIndex].tasks.filter { task in
+        return taskListsShadow[taskListShadowIndex].tasks.filter { task in
             task.isComplete
         }
+    }
+    
+}
+
+// MARK: - StorageManager Support Methods
+
+extension StorageManager {
+    
+    func completedTasksCount(_ taskListShadow: TaskListShadow) -> Int {
+        taskListShadow.tasks.filter { task in
+            task.isComplete
+        }.count
+    }
+    
+    func taskListsToShadow(from taskLists: [TaskList]) -> [TaskListShadow] {
+        var result: [TaskListShadow] = []
+        taskLists.forEach { taskList in
+            let tasks = {
+                var result: [TaskShadow] = []
+                taskList.tasks.forEach { task in
+                    result.append(
+                        taskToShadow(task: task)
+                    )
+                }
+                
+                return result
+            }()
+            
+            result.append(TaskListShadow(
+                title: taskList.title,
+                date: taskList.date,
+                tasks: tasks
+            ))
+            
+        }
+        return result
+    }
+    
+    func shadowToTaskList(from taskListsShadow: TaskListShadow) -> TaskList {
+        var result: TaskList
         
-        switch taskListSortMethod {
-        case .date:
-            return result.sorted { lhs, rhs in
-                lhs.date > rhs.date
-            }
-        default:
-            return result.sorted { lhs, rhs in
-                lhs.title > rhs.title
+        result = taskLists.filter(
+            "title = '\(taskListsShadow.title)'",
+            "date = \(taskListsShadow.date)"
+        ).first ?? TaskList()
+        
+        return result
+    }
+    
+    func initTaskList(from taskListsShadow: [TaskListShadow]) -> [TaskList] {
+        var result: [TaskList] = []
+        for taskListShadow in taskListsShadow {
+            let tasks = {
+                var result: [Task] = []
+                taskListShadow.tasks.forEach { taskShadow in
+                    result.append(shadowToTask(taskShadow: taskShadow))
+                }
+                
+                return result
+            }()
+            
+            result.append(TaskList(
+                value: [
+                    taskListShadow.title,
+                    taskListShadow.date,
+                    tasks] as [Any]
+            ))
+        }
+        
+        return result
+    }
+    
+    func initTask(from taskShadow: TaskShadow) -> Task {
+        Task(value: [
+            taskShadow.title,
+            taskShadow.note,
+            taskShadow.date,
+            taskShadow.isComplete
+        ] as [Any])
+    }
+    
+    func shadowToTask(taskShadow: TaskShadow) -> Task {
+        var result = Task()
+        
+        taskLists.forEach { taskList in
+            let task = taskList.tasks.filter(
+                "title = '\(taskShadow.title)'",
+                "note = '\(taskShadow.note)'",
+                "date = \(taskShadow.date)",
+                "isComplete = \(taskShadow.isComplete)"
+            )
+            
+            if !task.isEmpty {
+                result = task.first ?? Task()
             }
         }
+        
+        return result
+    }
+    
+    func taskToShadow(task: Task) -> TaskShadow {
+        TaskShadow(
+            title: task.title,
+            note: task.note,
+            date: task.date,
+            isComplete: task.isComplete
+        )
+    }
+    
+    func taskShadowIndex(taskShadow: TaskShadow) -> Int {
+        var result = 0
+        taskListsShadowStorage.forEach { taskList in
+            if taskList.tasks.contains(taskShadow) {
+                result = taskList.tasks.firstIndex(of: taskShadow) ?? 0
+            }
+        }
+        
+        return result
     }
     
 }

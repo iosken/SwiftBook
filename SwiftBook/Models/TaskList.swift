@@ -8,20 +8,25 @@
 import RealmSwift
 import Foundation
 
-class TaskList: Object {
+final class TaskList: Object {
+    
     @Persisted var title = ""
     @Persisted var date = Date()
     @Persisted var tasks = List<Task>()
+    
 }
 
-class Task: Object {
+final class Task: Object {
+    
     @Persisted var title = ""
     @Persisted var note = ""
     @Persisted var date = Date()
     @Persisted var isComplete = false
+    
 }
 
-class TaskListShadow {
+final class TaskListShadow {
+    
     var title = ""
     var date = Date()
     var tasks: [TaskShadow] = []
@@ -41,9 +46,11 @@ class TaskListShadow {
         self.date = date
         self.tasks = tasks
     }
+    
 }
 
-class TaskShadow {
+final class TaskShadow {
+    
     var title: String
     var note: String
     var date: Date
@@ -67,9 +74,11 @@ class TaskShadow {
         self.date = date
         self.isComplete = isComplete
     }
+    
 }
 
 extension TaskShadow: Equatable {
+    
     static func == (lhs: TaskShadow, rhs: TaskShadow) -> Bool {
         var result = false
         
@@ -95,7 +104,6 @@ extension TaskListShadow: Equatable {
         
         return result
     }
-    
     
 }
 
