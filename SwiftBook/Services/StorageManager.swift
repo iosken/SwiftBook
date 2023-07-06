@@ -20,8 +20,10 @@ final class StorageManager {
     static let shared = StorageManager()
     
     var taskListSortMethod = SortMethod.dateUp
+    
     var taskListsShadow: [TaskListShadow] {
         let result = taskListsShadowStorage
+        
         switch taskListSortMethod {
         case .dateUp:
             return result.sorted { lhs, rhs in

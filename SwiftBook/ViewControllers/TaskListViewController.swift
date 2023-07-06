@@ -100,13 +100,12 @@ final class TaskListViewController: UITableViewController {
     }
     
     @IBAction func sortingList(_ sender: UISegmentedControl) {
-        
         if sender.selectedSegmentIndex == 1 {
-            data.taskListSortMethod == .titleUp ?
+            data.taskListSortMethod == .dateDown ?
             (data.taskListSortMethod = .titleDown) :
             (data.taskListSortMethod = .titleUp)
         } else {
-            data.taskListSortMethod == .dateUp ?
+            data.taskListSortMethod == .titleUp ?
             (data.taskListSortMethod = .dateDown) :
             (data.taskListSortMethod = .dateUp)
         }
