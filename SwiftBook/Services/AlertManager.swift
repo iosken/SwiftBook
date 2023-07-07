@@ -124,12 +124,12 @@ final class AlertManager {
         alert.addAction(cancelAction)
         alert.addTextField { textField in
             textField.placeholder = status.placeHolder
-            textField.text = taskShadow?.title ?? status.placeHolder
+            textField.text = taskShadow?.title
         }
         
         alert.addTextField { textField in
             textField.placeholder = status.placeHolder
-            textField.text = taskShadow?.note ?? status.placeHolder
+            textField.text = taskShadow?.note
         }
         
         viewController?.present(alert, animated: true)

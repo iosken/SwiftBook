@@ -55,7 +55,7 @@ final class StorageManager {
         }
     }
     
-    // MARK: - Actions Methods
+    // MARK: - CRUD
     func save(_ taskListsShadow: [TaskListShadow]) {
         let taskLists = initTaskList(from: taskListsShadow)
         
@@ -79,32 +79,27 @@ final class StorageManager {
         completion(taskListShadow)
     }
     
-    func delete(_ taskListShadow: TaskListShadow) {
-        let taskList = shadowToTaskList(from: taskListShadow)
-        let tasks = taskList.tasks
+    func save(
+        taskName: String,
+        withTaskNote taskNote: String,
+        to taskListShadow: TaskListShadow,
+        completion: (TaskShadow) -> Void
+    ) {
+        let taskList: TaskList = shadowToTaskList(from: taskListShadow)
+        let task = Task(value: [taskName, taskNote])
         
         write {
-            realm.delete(tasks)
-            realm.delete(taskList)
+            taskList.tasks.append(task)
         }
         
-        let taskListIndex = taskListsShadowStorage.firstIndex(of: taskListShadow) ?? 0
-        taskListsShadowStorage.remove(at: taskListIndex)
-    }
-    
-    func delete(_ taskShadow: TaskShadow) {
-        let task = shadowToTask(taskShadow: taskShadow)
+        let taskShadow = TaskShadow(
+            title: taskName,
+            note: taskNote
+        )
         
-        write {
-            realm.delete(task)
-        }
+        taskListShadow.tasks.append(taskShadow)
         
-        taskListsShadowStorage.forEach { taskList in
-            if taskList.tasks.contains(taskShadow) {
-                let taskIndex = taskList.tasks.firstIndex(of: taskShadow) ?? 0
-                taskList.tasks.remove(at: taskIndex)
-            }
-        }
+        completion(taskShadow)
     }
     
     func edit(_ taskListShadow: TaskListShadow, newTitle: String) {
@@ -131,6 +126,34 @@ final class StorageManager {
                 let taskIndex = shadowTaskList.tasks.firstIndex(of: taskShadow) ?? 0
                 shadowTaskList.tasks[taskIndex].title = newTitle
                 shadowTaskList.tasks[taskIndex].note = newNote
+            }
+        }
+    }
+    
+    func delete(_ taskListShadow: TaskListShadow) {
+        let taskList = shadowToTaskList(from: taskListShadow)
+        let tasks = taskList.tasks
+        
+        write {
+            realm.delete(tasks)
+            realm.delete(taskList)
+        }
+        
+        let taskListIndex = taskListsShadowStorage.firstIndex(of: taskListShadow) ?? 0
+        taskListsShadowStorage.remove(at: taskListIndex)
+    }
+    
+    func delete(_ taskShadow: TaskShadow) {
+        let task = shadowToTask(taskShadow: taskShadow)
+        
+        write {
+            realm.delete(task)
+        }
+        
+        taskListsShadowStorage.forEach { taskList in
+            if taskList.tasks.contains(taskShadow) {
+                let taskIndex = taskList.tasks.firstIndex(of: taskShadow) ?? 0
+                taskList.tasks.remove(at: taskIndex)
             }
         }
     }
@@ -191,31 +214,6 @@ final class StorageManager {
         }
     }
     
-    // MARK: - Tasks
-    
-    func save(
-        taskName: String,
-        withTaskNote taskNote: String,
-        to taskListShadow: TaskListShadow,
-        completion: (TaskShadow) -> Void
-    ) {
-        let taskList: TaskList = shadowToTaskList(from: taskListShadow)
-        let task = Task(value: [taskName, taskNote])
-        
-        write {
-            taskList.tasks.append(task)
-        }
-        
-        let taskShadow = TaskShadow(
-            title: taskName,
-            note: taskNote
-        )
-        
-        taskListShadow.tasks.append(taskShadow)
-        
-        completion(taskShadow)
-    }
-    
     private func write(completion: () -> Void) {
         do {
             try realm.write {
@@ -248,7 +246,7 @@ extension StorageManager {
     
 }
 
-// MARK: - StorageManager Support Methods
+// MARK: - StorageManager Realm Support Methods
 
 extension StorageManager {
     
@@ -265,7 +263,7 @@ extension StorageManager {
                 var result: [TaskShadow] = []
                 taskList.tasks.forEach { task in
                     result.append(
-                        taskToShadow(task: task)
+                        initTaskShadow(from: task)
                     )
                 }
                 
@@ -316,13 +314,13 @@ extension StorageManager {
         return result
     }
     
-    func initTask(from taskShadow: TaskShadow) -> Task {
-        Task(value: [
-            taskShadow.title,
-            taskShadow.note,
-            taskShadow.date,
-            taskShadow.isComplete
-        ] as [Any])
+    func initTaskShadow(from task: Task) -> TaskShadow {
+        TaskShadow(
+            title: task.title,
+            note: task.note,
+            date: task.date,
+            isComplete: task.isComplete
+        )
     }
     
     func shadowToTask(taskShadow: TaskShadow) -> Task {
@@ -344,15 +342,6 @@ extension StorageManager {
         return result
     }
     
-    func taskToShadow(task: Task) -> TaskShadow {
-        TaskShadow(
-            title: task.title,
-            note: task.note,
-            date: task.date,
-            isComplete: task.isComplete
-        )
-    }
-    
     func taskShadowIndex(taskShadow: TaskShadow) -> Int {
         var result = 0
         taskListsShadowStorage.forEach { taskList in
@@ -360,7 +349,6 @@ extension StorageManager {
                 result = taskList.tasks.firstIndex(of: taskShadow) ?? 0
             }
         }
-        
         return result
     }
     
