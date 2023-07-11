@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Enum TrafficLightsState
+
 private enum TrafficLightsState {
     case red(red: StateValue = .on, yellow: StateValue = .off, green: StateValue = .off)
     case yellow(red: StateValue = .off, yellow: StateValue = .on, green: StateValue = .off)
@@ -15,7 +17,16 @@ private enum TrafficLightsState {
     case start(red: StateValue = .off, yellow: StateValue = .off, green: StateValue = .off)
 }
 
+extension TrafficLightsState {
+    enum StateValue: CGFloat { //one point to change On/Off alpha channel level for circles views
+        case off = 0.3
+        case on = 1
+    }
+}
+
 final class TrafficLightsManager {
+    
+    // MARK: - Public Properties
     
     static let share = TrafficLightsManager()
     
@@ -31,10 +42,9 @@ final class TrafficLightsManager {
         trafficLights.green
     }
     
-    private var trafficLights = TrafficLights()
-    
     // MARK: - Private Properties
     
+    private var trafficLights = TrafficLights()
     private var currentState: TrafficLightsState?
     
     private init() {}
@@ -85,11 +95,3 @@ final class TrafficLightsManager {
     }
     
 }
-
-extension TrafficLightsState {
-    enum StateValue: CGFloat { //one point to change On/Off alpha channel level for circles views
-        case off = 0.3
-        case on = 1
-    }
-}
-

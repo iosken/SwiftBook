@@ -10,7 +10,7 @@
 		C315B4602A5C783E00C491CF /* TrafficLightsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C315B45F2A5C783E00C491CF /* TrafficLightsManager.swift */; };
 		C315B4642A5D949900C491CF /* TrafficLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = C315B4632A5D949900C491CF /* TrafficLights.swift */; };
 		C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */; };
-		C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679442A59CC91007EA4F3 /* ContentView.swift */; };
+		C3B679452A59CC91007EA4F3 /* TrafficLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679442A59CC91007EA4F3 /* TrafficLight.swift */; };
 		C3B679472A59CC91007EA4F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B679462A59CC91007EA4F3 /* Assets.xcassets */; };
 		C3B6794A2A59CC91007EA4F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B679492A59CC91007EA4F3 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -20,7 +20,7 @@
 		C315B4632A5D949900C491CF /* TrafficLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLights.swift; sourceTree = "<group>"; };
 		C3B6793F2A59CC90007EA4F3 /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBookApp.swift; sourceTree = "<group>"; };
-		C3B679442A59CC91007EA4F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3B679442A59CC91007EA4F3 /* TrafficLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLight.swift; sourceTree = "<group>"; };
 		C3B679462A59CC91007EA4F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3B679492A59CC91007EA4F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */,
-				C3B679442A59CC91007EA4F3 /* ContentView.swift */,
+				C3B679442A59CC91007EA4F3 /* TrafficLight.swift */,
 			);
 			path = ContentViews;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C315B4642A5D949900C491CF /* TrafficLights.swift in Sources */,
-				C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */,
+				C3B679452A59CC91007EA4F3 /* TrafficLight.swift in Sources */,
 				C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */,
 				C315B4602A5C783E00C491CF /* TrafficLightsManager.swift in Sources */,
 			);

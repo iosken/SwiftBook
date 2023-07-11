@@ -7,14 +7,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TrafficLight: View {
+    
+    // MARK: - Private Properties
+    
     private let lights = TrafficLightsManager.share
     private let size = (UIScreen.main.bounds).size.width / 3
+    
+    // MARK: - State Properties
     
     @State private var redCircle: Color = .red
     @State private var yellowCircle: Color = .yellow
     @State private var greenCircle: Color = .green
     @State private var currentStateName = "Start"
+    
+    // MARK: - Body View
     
     var body: some View {
         VStack() {
@@ -45,7 +52,7 @@ struct ContentView: View {
             }
             .padding(size / 4)
         }
-
+        
         .onAppear {
             lights.nextState()
             
@@ -54,6 +61,8 @@ struct ContentView: View {
             greenCircle = lights.green
         }
     }
+    
+    // MARK: - Private Funcs
     
     private func changeStates() {
         lights.nextState()
@@ -66,11 +75,13 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+    // MARK: - Preview code
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TrafficLight()
+//    }
+//}
 
 
 
