@@ -9,20 +9,29 @@ import Foundation
 import SwiftUI
 
 private enum TrafficLightsState {
-    
     case red(red: StateValue = .on, yellow: StateValue = .off, green: StateValue = .off)
     case yellow(red: StateValue = .off, yellow: StateValue = .on, green: StateValue = .off)
     case green(red: StateValue = .off, yellow: StateValue = .off, green: StateValue = .on)
     case start(red: StateValue = .off, yellow: StateValue = .off, green: StateValue = .off)
-    
 }
 
 final class TrafficLightsManager {
     
     static let share = TrafficLightsManager()
     
-    var currentStateValue: (red: Double, yellow: Double, green: Double) = (0.3, 0.3, 0.3)
-    //let trafficLights = TrafficLights()
+    var red: Color {
+        trafficLights.red
+    }
+    
+    var yellow: Color {
+        trafficLights.yellow
+    }
+    
+    var green: Color {
+        trafficLights.green
+    }
+    
+    private var trafficLights = TrafficLights()
     
     // MARK: - Private Properties
     
@@ -53,25 +62,25 @@ final class TrafficLightsManager {
     private func setToCircles() {
         switch currentState {
         case let .start(red: redValue, yellow: yellowValue, green: greenValue):
-            currentStateValue.red = redValue.rawValue
-            currentStateValue.yellow = yellowValue.rawValue
-            currentStateValue.green = greenValue.rawValue
+            trafficLights.lightsState.red = redValue.rawValue
+            trafficLights.lightsState.yellow = yellowValue.rawValue
+            trafficLights.lightsState.green = greenValue.rawValue
         case let .red(red: redValue, yellow: yellowValue, green: greenValue):
-            currentStateValue.red = redValue.rawValue
-            currentStateValue.yellow = yellowValue.rawValue
-            currentStateValue.green = greenValue.rawValue
+            trafficLights.lightsState.red = redValue.rawValue
+            trafficLights.lightsState.yellow = yellowValue.rawValue
+            trafficLights.lightsState.green = greenValue.rawValue
         case let .yellow(red: redValue, yellow: yellowValue, green: greenValue):
-            currentStateValue.red = redValue.rawValue
-            currentStateValue.yellow = yellowValue.rawValue
-            currentStateValue.green = greenValue.rawValue
+            trafficLights.lightsState.red = redValue.rawValue
+            trafficLights.lightsState.yellow = yellowValue.rawValue
+            trafficLights.lightsState.green = greenValue.rawValue
         case let .green(red: redValue, yellow: yellowValue, green: greenValue):
-            currentStateValue.red = redValue.rawValue
-            currentStateValue.yellow = yellowValue.rawValue
-            currentStateValue.green = greenValue.rawValue
+            trafficLights.lightsState.red = redValue.rawValue
+            trafficLights.lightsState.yellow = yellowValue.rawValue
+            trafficLights.lightsState.green = greenValue.rawValue
         default:
-            currentStateValue.red = 0
-            currentStateValue.yellow = 0
-            currentStateValue.green = 0
+            trafficLights.lightsState.red = 0
+            trafficLights.lightsState.yellow = 0
+            trafficLights.lightsState.green = 0
         }
     }
     

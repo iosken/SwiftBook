@@ -9,18 +9,18 @@ import Foundation
 import SwiftUI
 
 class TrafficLights {
-    var lightState: (red: Double, yellow: Double, green: Double) = (0.3, 0.3, 0.3)
+    var lightsState: (red: Double, yellow: Double, green: Double) = (0, 0, 0)
     
     var red: Color {
-        .red.opacity(lightState.red)
+        .red.opacity(lightsState.red)
     }
     
     var yellow: Color {
-        .yellow.opacity(lightState.yellow)
+        .yellow.opacity(lightsState.yellow)
     }
     
     var green: Color {
-        .green.opacity(lightState.green)
+        .green.opacity(lightsState.green)
     }
     
 }
