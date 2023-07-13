@@ -21,19 +21,18 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            VStack(spacing: 20) {
-                colorShape(
-                    red: $redSliderValue,
-                    green: $greenSliderValue,
-                    blue: $blueSliderValue
-                )
-                ColorSliderView(value: $redSliderValue, color: .red)
-                ColorSliderView(value: $greenSliderValue, color: .green)
-                ColorSliderView(value: $blueSliderValue, color: .blue)
-                Text("\(redSliderValue) \(greenSliderValue) \(blueSliderValue)")
-                Spacer(minLength: 350)
-            }
+        VStack(spacing: 20) {
+            colorShape(
+                red: $redSliderValue,
+                green: $greenSliderValue,
+                blue: $blueSliderValue
+            )
+            
+            ColorSliderView(value: $redSliderValue, color: .red)
+            ColorSliderView(value: $greenSliderValue, color: .green)
+            ColorSliderView(value: $blueSliderValue, color: .blue)
+
+            Spacer(minLength: 350)
         }
         .padding()
     }
@@ -71,15 +70,16 @@ struct ColorSliderView: View {
     
     var body: some View {
         HStack {
-            Text("\(lround(value))")
-            Slider(value: $value, in: 0...255, step: 1)
-                .tint(color)
-            
+            Text("\(lround(value))").frame(width: 45)
+            Slider(value: $value, in: 0...255, step: 1).tint(color)
             TextField("\(lround(value))", text: $text) {
                 if let convertedValue = Double(text) {
                     value = convertedValue
                 }
             }
+            .frame(width: 45)
+            .keyboardType(.numberPad)
+            
         }
     }
 }
