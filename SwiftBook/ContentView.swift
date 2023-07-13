@@ -37,7 +37,7 @@ struct ContentView: View {
         }
         .padding()
     }
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -65,15 +65,21 @@ struct colorShape: View {
 
 struct ColorSliderView: View {
     @Binding var value: Double
+    @State private var text: String = ""
+    
     let color: Color
     
     var body: some View {
         HStack {
-            Text("0")
+            Text("\(lround(value))")
             Slider(value: $value, in: 0...255, step: 1)
                 .tint(color)
-         
-            Text("255")
+            
+            TextField("\(lround(value))", text: $text) {
+                if let convertedValue = Double(text) {
+                    value = convertedValue
+                }
+            }
         }
     }
 }
