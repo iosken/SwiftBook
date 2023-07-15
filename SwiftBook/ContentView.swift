@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     
@@ -21,18 +22,21 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 40) {
             colorShape(
                 red: $redSliderValue,
                 green: $greenSliderValue,
                 blue: $blueSliderValue
             )
+            .frame(height: 200)
             
-            ColorSliderView(value: $redSliderValue, color: .red)
-            ColorSliderView(value: $greenSliderValue, color: .green)
-            ColorSliderView(value: $blueSliderValue, color: .blue)
-
-            Spacer(minLength: 350)
+            VStack(spacing: 10) {
+                ColorSliderView(value: $redSliderValue, color: .red)
+                ColorSliderView(value: $greenSliderValue, color: .green)
+                ColorSliderView(value: $blueSliderValue, color: .blue)
+            }
+            
+            Spacer()
         }
         .padding()
     }
@@ -64,7 +68,8 @@ struct colorShape: View {
 
 struct ColorSliderView: View {
     @Binding var value: Double
-    @State private var text: String = ""
+    @State private var text = ""
+    @State private var alertPresented = false
     
     let color: Color
     
@@ -72,14 +77,26 @@ struct ColorSliderView: View {
         HStack {
             Text("\(lround(value))").frame(width: 45)
             Slider(value: $value, in: 0...255, step: 1).tint(color)
-            TextField("\(lround(value))", text: $text) {
-                if let convertedValue = Double(text) {
-                    value = convertedValue
+            TextField("\(lround(value))", text: $text, onEditingChanged: checkColorValue)
+                .frame(width: 45)
+            //.keyboardType(.numberPad)
+                .alert ("Wrong Format", isPresented: $alertPresented) {
+                    Text ("Set number of color")
                 }
-            }
-            .frame(width: 45)
-            .keyboardType(.numberPad)
-            
+        }
+        .onAppear {
+            text = String(lround(value))
+        }
+    }
+    
+    private func checkColorValue(change: Bool) {
+        print("after", text)
+        if let convertedValue = Double(text) {
+            value = convertedValue
+        } else {
+            alertPresented.toggle()
+            text = "0"//String(lround(value))
+            print("change", text)
         }
     }
 }
