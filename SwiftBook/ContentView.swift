@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct ContentView: View {
     
@@ -22,6 +21,7 @@ struct ContentView: View {
     }
     
     var body: some View {
+        
         VStack(spacing: 40) {
             colorShape(
                 red: $redSliderValue,
@@ -29,13 +29,13 @@ struct ContentView: View {
                 blue: $blueSliderValue
             )
             .frame(height: 200)
-            
+
             VStack(spacing: 10) {
                 ColorSliderView(value: $redSliderValue, color: .red)
                 ColorSliderView(value: $greenSliderValue, color: .green)
                 ColorSliderView(value: $blueSliderValue, color: .blue)
             }
-            
+
             Spacer()
         }
         .padding()
@@ -77,12 +77,16 @@ struct ColorSliderView: View {
         HStack {
             Text("\(lround(value))").frame(width: 45)
             Slider(value: $value, in: 0...255, step: 1).tint(color)
+            
             TextField("\(lround(value))", text: $text, onEditingChanged: checkColorValue)
                 .frame(width: 45)
-            //.keyboardType(.numberPad)
+//                .keyboardType(.numberPad)
+            
+            
                 .alert ("Wrong Format", isPresented: $alertPresented) {
                     Text ("Set number of color")
                 }
+            
         }
         .onAppear {
             text = String(lround(value))
@@ -95,7 +99,11 @@ struct ColorSliderView: View {
             value = convertedValue
         } else {
             alertPresented.toggle()
-            text = "0"//String(lround(value))
+            
+            DispatchQueue.main.async {
+                text = String(lround(value))
+            }
+            
             print("change", text)
         }
     }
