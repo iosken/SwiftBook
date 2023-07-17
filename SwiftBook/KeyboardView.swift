@@ -52,39 +52,19 @@ struct KeyboardView<Content, ToolBar> : View where Content: View, ToolBar: View 
     var body: some View {
         ZStack(alignment: .topLeading) {
             content()
-              // .padding(.bottom, (keyboard.currentHeight == 0) ? 0 : toolbarFrame.height) //
+               .padding(.bottom, (keyboard.currentHeight == 0) ? 0 : toolbarFrame.height)
             VStack {
                  Spacer()
                  toolBar()
                     .frame(width: toolbarFrame.width, height: toolbarFrame.height)
                     .background(Color.secondary)
-                    
             }
             .opacity((keyboard.currentHeight == 0) ? 0 : 1)
             .animation(.easeOut, value: 1)
         }
         
-        //.padding(.bottom, 80) //keyboard.currentHeight
+        .padding(.bottom, -16)
         .edgesIgnoringSafeArea(.bottom)
         .animation(.easeOut, value: 1)
     }
 }
-
-
-//var body: some View {
-//    ZStack(alignment: .topLeading) {
-//        content()
-//            .padding(.bottom, (keyboard.currentHeight == 0) ? 0 : toolbarFrame.height)
-//        VStack {
-//             Spacer()
-//             toolBar()
-//                .frame(width: toolbarFrame.width, height: toolbarFrame.height)
-//                .background(Color.secondary)
-//        }.opacity((keyboard.currentHeight == 0) ? 0 : 1)
-//        .animation(.easeOut, value: 1)
-//
-//    }
-//    .padding(.bottom, keyboard.currentHeight)
-//    .edgesIgnoringSafeArea(.bottom)
-//    .animation(.easeOut, value: 1)
-//}
