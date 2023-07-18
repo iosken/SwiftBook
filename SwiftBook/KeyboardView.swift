@@ -11,7 +11,7 @@ final class KeyboardResponder: ObservableObject {
     
     private var notificationCenter: NotificationCenter
     @Published private(set) var currentHeight: CGFloat = 0
-
+    
     init(center: NotificationCenter = .default) {
         notificationCenter = center
         notificationCenter.addObserver(
@@ -23,7 +23,7 @@ final class KeyboardResponder: ObservableObject {
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
-
+    
     func dismiss() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
@@ -31,13 +31,13 @@ final class KeyboardResponder: ObservableObject {
     deinit {
         notificationCenter.removeObserver(self)
     }
-
+    
     @objc func keyBoardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             currentHeight = keyboardSize.height
         }
     }
-
+    
     @objc func keyBoardWillHide(notification: Notification) {
         currentHeight = 0
     }
@@ -52,10 +52,10 @@ struct KeyboardView<Content, ToolBar> : View where Content: View, ToolBar: View 
     var body: some View {
         ZStack(alignment: .topLeading) {
             content()
-               .padding(.bottom, (keyboard.currentHeight == 0) ? 0 : toolbarFrame.height)
+                .padding(.bottom, (keyboard.currentHeight == 0) ? 0 : toolbarFrame.height)
             VStack {
-                 Spacer()
-                 toolBar()
+                Spacer()
+                toolBar()
                     .frame(width: toolbarFrame.width, height: toolbarFrame.height)
                     .background(Color.secondary)
             }

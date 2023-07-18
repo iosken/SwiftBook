@@ -7,21 +7,13 @@
 
 import SwiftUI
 
-enum ColorState: Hashable {
-    case red
-    case green
-    case blue
-}
-
 struct ContentView: View {
-    
-    
     
     @State private var redSliderValue = Double.random(in: 0...255)
     @State private var greenSliderValue = Double.random(in: 0...255)
     @State private var blueSliderValue = Double.random(in: 0...255)
     
-    @State var currentFocus: ColorState?
+    @State var currentFocus: Color?
     
     private let size = (UIScreen.main.bounds).size.width / 3
     
@@ -44,9 +36,9 @@ struct ContentView: View {
                 
                 KeyboardView {
                     VStack() {
-                        ColorSliderView(value: $redSliderValue, currentFocus: $currentFocus, color: .red, colorSlider: .red)
-                        ColorSliderView(value: $greenSliderValue, currentFocus: $currentFocus, color: .green, colorSlider: .green)
-                        ColorSliderView(value: $blueSliderValue, currentFocus: $currentFocus, color: .blue, colorSlider: .blue)
+                        ColorSliderView(value: $redSliderValue, currentFocus: $currentFocus, color: .red)
+                        ColorSliderView(value: $greenSliderValue, currentFocus: $currentFocus, color: .green)
+                        ColorSliderView(value: $blueSliderValue, currentFocus: $currentFocus, color: .blue)
                     }.padding(.horizontal)
                 } toolBar: {
                     HStack() {
@@ -74,11 +66,11 @@ struct ContentView: View {
     
     private func upFocus() {
         switch currentFocus {
-        case .red:
+        case Color.red:
             currentFocus = .blue
-        case .green:
+        case Color.green:
             currentFocus = .red
-        case .blue:
+        case Color.blue:
             currentFocus = .green
         default:
             return
@@ -86,18 +78,16 @@ struct ContentView: View {
     }
     
     private func downFocus() {
-        
         switch currentFocus {
-        case .red:
+        case Color.red:
             currentFocus = .green
-        case .green:
+        case Color.green:
             currentFocus = .blue
-        case .blue:
+        case Color.blue:
             currentFocus = .red
         default:
             return
         }
-        
     }
 }
 
@@ -125,16 +115,15 @@ struct colorShape: View {
 }
 
 struct ColorSliderView: View {
-    @FocusState var focus: ColorState?
+    @FocusState var focus: Color?
     
     @Binding var value: Double
-    @Binding var currentFocus: ColorState?
+    @Binding var currentFocus: Color?
     
     @State private var text = ""
     @State private var alertPresented = false
     
     let color: Color
-    let colorSlider: ColorState
     
     var body: some View {
         HStack {
@@ -145,7 +134,7 @@ struct ColorSliderView: View {
             TextField("\(lround(value))", text: $text, onEditingChanged: checkColorValue)
                 .frame(width: 40)
                 .keyboardType(.numberPad)
-                .focused($focus, equals: colorSlider)
+                .focused($focus, equals: color)
                 .alert ("Wrong Format", isPresented: $alertPresented) {
                     Text ("Set number of color")
                 }
@@ -154,13 +143,12 @@ struct ColorSliderView: View {
             focus = currentFocus
         }
         .onTapGesture {
-            currentFocus = colorSlider
+            currentFocus = color
         }
         .onAppear {
             text = String(lround(value))
         }
         
-
     }
     
     private func checkColorValue(change: Bool) {
@@ -182,28 +170,6 @@ struct ColorSliderView: View {
         focus = nil
     }
     
-
 }
-
-//public extension View {
-//    func storeLastFocus<Value: Hashable>(current: FocusState<Value?>.Binding, last: Binding<Value?>) -> some View {
-//        onChange(of: current.wrappedValue) { _ in
-//            if current.wrappedValue != last.wrappedValue {
-//                last.wrappedValue = current.wrappedValue
-//            }
-//        }
-//    }
-//
-//    func focused<Value>(_ binding: FocusState<Value>.Binding, equals value: Value, last: Value?, onFocus: @escaping (Bool) -> Void) -> some View where Value: Hashable {
-//        return focused(binding, equals: value)
-//            .onChange(of: binding.wrappedValue) { focusValue in
-//                if focusValue == value {
-//                    onFocus(true)
-//                } else if last == value { // only call once
-//                    onFocus(false)
-//                }
-//            }
-//    }
-//}
 
 
