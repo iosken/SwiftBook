@@ -177,10 +177,6 @@ struct ColorSliderView: View {
         }
     }
     
-    private func cancelFucus() {
-        focus = nil
-    }
-    
 }
 
 
