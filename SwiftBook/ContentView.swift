@@ -36,9 +36,21 @@ struct ContentView: View {
                 
                 KeyboardView {
                     VStack() {
-                        ColorSliderView(value: $redSliderValue, currentFocus: $currentFocus, color: .red)
-                        ColorSliderView(value: $greenSliderValue, currentFocus: $currentFocus, color: .green)
-                        ColorSliderView(value: $blueSliderValue, currentFocus: $currentFocus, color: .blue)
+                        ColorSliderView(
+                            value: $redSliderValue,
+                            currentFocus: $currentFocus,
+                            color: .red
+                        )
+                        ColorSliderView(
+                            value: $greenSliderValue,
+                            currentFocus: $currentFocus,
+                            color: .green
+                        )
+                        ColorSliderView(
+                            value: $blueSliderValue,
+                            currentFocus: $currentFocus,
+                            color: .blue
+                        )
                     }.padding(.horizontal)
                 } toolBar: {
                     HStack() {
@@ -49,9 +61,7 @@ struct ContentView: View {
                             Text("↓")
                         })
                         Spacer()
-                        Button(action: {
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        }, label: {
+                        Button(action: doneAction, label: {
                             Text("Done")
                         })
                     } .padding(.horizontal)
@@ -63,17 +73,14 @@ struct ContentView: View {
         }
     }
     
-    
     private func upFocus() {
         switch currentFocus {
         case Color.red:
             currentFocus = .blue
         case Color.green:
             currentFocus = .red
-        case Color.blue:
-            currentFocus = .green
         default:
-            return
+            currentFocus = .green
         }
     }
     
@@ -83,11 +90,18 @@ struct ContentView: View {
             currentFocus = .green
         case Color.green:
             currentFocus = .blue
-        case Color.blue:
-            currentFocus = .red
         default:
-            return
+            currentFocus = .red
         }
+    }
+    
+    private func doneAction() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
     }
 }
 
@@ -115,15 +129,16 @@ struct colorShape: View {
 }
 
 struct ColorSliderView: View {
+    
     @FocusState var focus: Color?
     
     @Binding var value: Double
     @Binding var currentFocus: Color?
     
+    let color: Color
+    
     @State private var text = ""
     @State private var alertPresented = false
-    
-    let color: Color
     
     var body: some View {
         HStack {
@@ -148,11 +163,9 @@ struct ColorSliderView: View {
         .onAppear {
             text = String(lround(value))
         }
-        
     }
     
     private func checkColorValue(change: Bool) {
-        print("after", text)
         if let convertedValue = Double(text) {
             value = convertedValue
         } else {
@@ -161,8 +174,6 @@ struct ColorSliderView: View {
             DispatchQueue.main.async {
                 text = String(lround(value))
             }
-            
-            print("change", text)
         }
     }
     
