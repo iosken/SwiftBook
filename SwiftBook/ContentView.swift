@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+enum ColorState: Hashable {
+    case red
+    case green
+    case blue
+}
+
 struct ContentView: View {
+    
+    
     
     @State private var redSliderValue = Double.random(in: 0...255)
     @State private var greenSliderValue = Double.random(in: 0...255)
     @State private var blueSliderValue = Double.random(in: 0...255)
     
-    @State var redFocused = false
-    @State var greenFocused = false
-    @State var blueFocused = false
+    @State var currentFocus: ColorState?
     
     private let size = (UIScreen.main.bounds).size.width / 3
     
@@ -38,9 +44,9 @@ struct ContentView: View {
                 
                 KeyboardView {
                     VStack() {
-                        ColorSliderView(value: $redSliderValue, isFocused: $redFocused, color: .red)
-                        ColorSliderView(value: $greenSliderValue, isFocused: $greenFocused, color: .green)
-                        ColorSliderView(value: $blueSliderValue, isFocused: $blueFocused, color: .blue)
+                        ColorSliderView(value: $redSliderValue, currentFocus: $currentFocus, color: .red, colorSlider: .red)
+                        ColorSliderView(value: $greenSliderValue, currentFocus: $currentFocus, color: .green, colorSlider: .green)
+                        ColorSliderView(value: $blueSliderValue, currentFocus: $currentFocus, color: .blue, colorSlider: .blue)
                     }.padding(.horizontal)
                 } toolBar: {
                     HStack() {
@@ -58,6 +64,7 @@ struct ContentView: View {
                         })
                     } .padding(.horizontal)
                 }
+                
             }
             .padding()
             .navigationBarTitle("Colorized app", displayMode: .automatic)
@@ -66,53 +73,31 @@ struct ContentView: View {
     
     
     private func upFocus() {
-        switch true {
-        case redFocused:
-            redFocused = false
-            blueFocused = true
-        case greenFocused:
-            greenFocused = false
-            redFocused = true
+        switch currentFocus {
+        case .red:
+            currentFocus = .blue
+        case .green:
+            currentFocus = .red
+        case .blue:
+            currentFocus = .green
         default:
-            blueFocused = false
-            greenFocused = true
+            return
         }
-        
-//        if redFocused {
-//            redFocused = false
-//            blueFocused = true
-//        } else if greenFocused {
-//            greenFocused = false
-//            redFocused = true
-//        } else {
-//            blueFocused = false
-//            greenFocused = true
-//        }
     }
     
     private func downFocus() {
-        switch true {
-        case redFocused:
-            redFocused = false
-            greenFocused = true
-        case greenFocused:
-            greenFocused = false
-            blueFocused = true
+        
+        switch currentFocus {
+        case .red:
+            currentFocus = .green
+        case .green:
+            currentFocus = .blue
+        case .blue:
+            currentFocus = .red
         default:
-            blueFocused = false
-            redFocused = true
+            return
         }
         
-//        if redFocused {
-//            redFocused = false
-//            greenFocused = true
-//        } else if greenFocused {
-//            greenFocused = false
-//            blueFocused = true
-//        } else {
-//            blueFocused = false
-//            redFocused = true
-//        }
     }
 }
 
@@ -140,40 +125,43 @@ struct colorShape: View {
 }
 
 struct ColorSliderView: View {
+    @FocusState var focus: ColorState?
+    
     @Binding var value: Double
-    @Binding var isFocused: Bool
-    
-    @FocusState var focus: Bool
-    
-    let color: Color
+    @Binding var currentFocus: ColorState?
     
     @State private var text = ""
     @State private var alertPresented = false
     
+    let color: Color
+    let colorSlider: ColorState
+    
     var body: some View {
         HStack {
             Text("\(lround(value))").frame(width: 40)
+            
             Slider(value: $value, in: 0...255, step: 1).tint(color)
             
             TextField("\(lround(value))", text: $text, onEditingChanged: checkColorValue)
                 .frame(width: 40)
                 .keyboardType(.numberPad)
-                .focused($focus)
+                .focused($focus, equals: colorSlider)
                 .alert ("Wrong Format", isPresented: $alertPresented) {
                     Text ("Set number of color")
                 }
         }
-        .onChange(of: isFocused) { focused in
-            focus = focused
+        .onChange(of: currentFocus) { focused in
+            focus = currentFocus
         }
         .onTapGesture {
-            focus = false
+            currentFocus = colorSlider
         }
         .onAppear {
             text = String(lround(value))
         }
-    }
+        
 
+    }
     
     private func checkColorValue(change: Bool) {
         print("after", text)
@@ -189,6 +177,33 @@ struct ColorSliderView: View {
             print("change", text)
         }
     }
+    
+    private func cancelFucus() {
+        focus = nil
+    }
+    
+
 }
+
+//public extension View {
+//    func storeLastFocus<Value: Hashable>(current: FocusState<Value?>.Binding, last: Binding<Value?>) -> some View {
+//        onChange(of: current.wrappedValue) { _ in
+//            if current.wrappedValue != last.wrappedValue {
+//                last.wrappedValue = current.wrappedValue
+//            }
+//        }
+//    }
+//
+//    func focused<Value>(_ binding: FocusState<Value>.Binding, equals value: Value, last: Value?, onFocus: @escaping (Bool) -> Void) -> some View where Value: Hashable {
+//        return focused(binding, equals: value)
+//            .onChange(of: binding.wrappedValue) { focusValue in
+//                if focusValue == value {
+//                    onFocus(true)
+//                } else if last == value { // only call once
+//                    onFocus(false)
+//                }
+//            }
+//    }
+//}
 
 
