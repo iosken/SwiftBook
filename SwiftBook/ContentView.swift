@@ -17,14 +17,6 @@ struct ContentView: View {
     
     private let size = (UIScreen.main.bounds).size.width / 3
     
-    private var color: Color {
-        Color(
-            red: redSliderValue/255,
-            green: greenSliderValue/255,
-            blue: blueSliderValue/255
-        )
-    }
-    
     var body: some View {
         NavigationView {
             VStack() {
@@ -119,11 +111,13 @@ struct colorShape: View {
     var body: some View {
         Rectangle()
             .cornerRadius(20)
-            .foregroundColor(Color(
-                red: red/255,
-                green: green/255,
-                blue: blue/255
-            ))
+            .foregroundColor(
+                Color(
+                    red: red/255,
+                    green: green/255,
+                    blue: blue/255
+                )
+            )
     }
     
 }

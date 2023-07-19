@@ -44,7 +44,9 @@ final class KeyboardResponder: ObservableObject {
     }
     
     @objc func keyBoardWillHide(notification: Notification) {
-        height = 0
+        DispatchQueue.main.async {
+            self.height = 0
+        }
     }
 }
 
