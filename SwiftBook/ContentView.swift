@@ -21,9 +21,9 @@ struct ContentView: View {
         NavigationView {
             VStack() {
                 colorShape(
-                    red: $redSliderValue,
-                    green: $greenSliderValue,
-                    blue: $blueSliderValue
+                    red: redSliderValue,
+                    green: greenSliderValue,
+                    blue: blueSliderValue
                 ).frame(height: size)
                 
                 KeyboardView {
@@ -104,9 +104,9 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct colorShape: View {
-    @Binding var red: Double
-    @Binding var green: Double
-    @Binding var blue: Double
+    var red: Double
+    var green: Double
+    var blue: Double
     
     var body: some View {
         Rectangle()
