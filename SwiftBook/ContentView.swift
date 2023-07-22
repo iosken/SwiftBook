@@ -32,8 +32,11 @@ struct ContentView: View {
     }
     
     private func logOut() {
-        userSettings.isLoggedIn.toggle()
         userSettings.name = ""
+        userSettings.isLoggedIn = false
+        
+        RootView.storageName = userSettings.name
+        RootView.storageIsLoggedIn = userSettings.isLoggedIn
     }
 }
 

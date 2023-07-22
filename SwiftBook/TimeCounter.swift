@@ -8,7 +8,9 @@
 import Foundation
 import Combine
 
+
 final class TimeCounter: ObservableObject {
+    
     var counter = 3
     var buttonTitle = "Start"
     let objectWillChange = ObservableObjectPublisher()

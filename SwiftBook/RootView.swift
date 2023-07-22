@@ -10,6 +10,9 @@ import SwiftUI
 struct RootView: View {
     @StateObject private var userSettings = UserSettings()
     
+    @AppStorage("name") static var storageName = ""
+    @AppStorage("isLoggedIn") static var storageIsLoggedIn = false
+    
     var body: some View {
         Group {
             if userSettings.isLoggedIn {
@@ -17,8 +20,14 @@ struct RootView: View {
             } else {
                 LoginView()
             }
-        }.environmentObject(userSettings)
+        }
+        .environmentObject(userSettings)
+        .onAppear() {
+            userSettings.name = RootView.storageName
+            userSettings.isLoggedIn = RootView.storageIsLoggedIn
+        }
     }
+    
 }
 
 struct RootView_Previews: PreviewProvider {

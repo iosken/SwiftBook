@@ -15,8 +15,6 @@ struct LoginView: View {
     @State private var accept = false
     @State private var color = Color.red
     
-    let data = StorageManager.shared
-    
     var body: some View {
         VStack {
             HStack {
@@ -47,8 +45,8 @@ struct LoginView: View {
             userSettings.name = name
             userSettings.isLoggedIn = true
             
-            data.set(userSettings.isLoggedIn, forKey: .isLoggedIn)
-            data.set(userSettings.name, forKey: .name)
+            RootView.storageName = userSettings.name
+            RootView.storageIsLoggedIn = userSettings.isLoggedIn
         }
     }
     
