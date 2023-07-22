@@ -7,11 +7,23 @@
 
 import SwiftUI
 
+//@main
+//struct SwiftBookApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            ContentView()
+//        }
+//    }
+//}
+
+
+import SwiftUI
+
 @main
 struct SwiftBookApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
