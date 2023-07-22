@@ -32,7 +32,8 @@ struct ContentView: View {
     }
     
     private func logOut() {
-        
+        userSettings.isLoggedIn.toggle()
+        userSettings.name = ""
     }
 }
 
@@ -68,7 +69,6 @@ struct LogoutButtonView: View {
     var action: () -> Void
     
     var body: some View {
-        
         Button(action: action) {
             Text("LogOut")
                 .font(.title)

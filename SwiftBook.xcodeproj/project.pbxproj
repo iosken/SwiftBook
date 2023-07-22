@@ -15,6 +15,7 @@
 		C3E192A62A6BB6F000779768 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E192A52A6BB6F000779768 /* LoginView.swift */; };
 		C3E192A82A6BB70C00779768 /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E192A72A6BB70C00779768 /* TimeCounter.swift */; };
 		C3E192AA2A6BB73700779768 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E192A92A6BB73700779768 /* UserSettings.swift */; };
+		C3E192AC2A6BD75100779768 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E192AB2A6BD75100779768 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		C3E192A52A6BB6F000779768 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C3E192A72A6BB70C00779768 /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		C3E192A92A6BB73700779768 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		C3E192AB2A6BD75100779768 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				C3E192A52A6BB6F000779768 /* LoginView.swift */,
 				C3E192A72A6BB70C00779768 /* TimeCounter.swift */,
 				C3E192A92A6BB73700779768 /* UserSettings.swift */,
+				C3E192AB2A6BD75100779768 /* StorageManager.swift */,
 			);
 			path = SwiftBook;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */,
 				C3E192AA2A6BB73700779768 /* UserSettings.swift in Sources */,
 				C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */,
+				C3E192AC2A6BD75100779768 /* StorageManager.swift in Sources */,
 				C3E192A62A6BB6F000779768 /* LoginView.swift in Sources */,
 				C3E192A82A6BB70C00779768 /* TimeCounter.swift in Sources */,
 				C3E192A42A6BB6CF00779768 /* RootView.swift in Sources */,
