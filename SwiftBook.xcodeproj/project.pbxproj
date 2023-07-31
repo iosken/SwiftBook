@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31382D12A756A88003D4E0B /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382D02A756A88003D4E0B /* SliderView.swift */; };
 		C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */; };
 		C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679442A59CC91007EA4F3 /* ContentView.swift */; };
 		C3B679472A59CC91007EA4F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B679462A59CC91007EA4F3 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C31382D02A756A88003D4E0B /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		C3B6793F2A59CC90007EA4F3 /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBookApp.swift; sourceTree = "<group>"; };
 		C3B679442A59CC91007EA4F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				C3B679442A59CC91007EA4F3 /* ContentView.swift */,
 				C3B679462A59CC91007EA4F3 /* Assets.xcassets */,
 				C3B679482A59CC91007EA4F3 /* Preview Content */,
+				C31382D02A756A88003D4E0B /* SliderView.swift */,
 			);
 			path = SwiftBook;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31382D12A756A88003D4E0B /* SliderView.swift in Sources */,
 				C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */,
 				C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */,
 			);
