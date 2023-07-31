@@ -9,13 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var value: Float = 0.0
-    @State var opacity: Float = 1.0
+    @State private var value: Float = 0.0
+    @State private var targetValue: Float = 50.0
+    @State private var opacity: Float = 1.0
+    @State private var alertPresented: Bool = false
     
-    @State var alertPresented: Bool = false
-    @State var targetValue: Float = 50.0
-    
-    var result: String {
+    private var result: String {
         round(opacity * 100).formatted()
     }
     
