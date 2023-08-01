@@ -32,7 +32,7 @@ struct ContentView: View {
             
             HStack {
                 Text("0")
-                SliderView(value: $value, opacity: opacity)
+                SliderView(value: $value, alpha: opacity)
                     .frame(width: size)
                     .onChange(of: value) { newValue in
                         opacity = computeScore
