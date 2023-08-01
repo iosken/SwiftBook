@@ -10,7 +10,7 @@ import SwiftUI
 struct SliderView: UIViewRepresentable {
     @Binding var value: Float
     
-    @Binding var opacity: Float
+    var opacity: Float
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
@@ -34,18 +34,16 @@ struct SliderView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(value: $value, opacity: $opacity)
+        Coordinator(value: $value)
     }
 }
 
 extension SliderView {
     final class Coordinator: NSObject {
         @Binding var value: Float
-        @Binding var opacity: Float
         
-        init(value: Binding<Float>, opacity: Binding<Float>) {
+        init(value: Binding<Float>) {
             self._value = value
-            self._opacity = opacity
         }
         
         @objc func touchCancel(_ sender: UISlider) {
@@ -56,7 +54,7 @@ extension SliderView {
 
 struct SliderView_Previews: PreviewProvider {
     static var previews: some View {
-        SliderView(value: .constant(3.0), opacity: .constant(1.0))
+        SliderView(value: .constant(3.0), opacity: 1.0)
     }
 }
 
