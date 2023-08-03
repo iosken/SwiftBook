@@ -8,22 +8,49 @@
 import SwiftUI
 
 struct ContactView: View {
+    private let size = (UIScreen.main.bounds).size.width / 3
+    
+    let contact: Person
+    
     var body: some View {
         NavigationStack{
             VStack{
-                Image(systemName: "person.fill")
-                    .resizable()
-                    .frame(width: 250, height: 250)
-                    .padding(50)
+                List(["image", "phone", "mail"], id: \.self) { line in
+                    switch line {
+                    case "image":
+                        HStack {
+                            Spacer()
+                            Image(systemName: "person.fill")
+                                .resizable()
+                                .frame(width: size, height: size)
+                                .padding(size / 3)
+                            Spacer()
+                        }
+                    case "phone":
+                        HStack {
+                            Image(systemName: "phone")
+                            Text("\(contact.phone)")
+                            Spacer()
+                        }
+                    default:
+                        HStack {
+                            Image(systemName: "envelope")
+                            Text(contact.email)
+                            Spacer()
+                        }
+                    }
+                }
+                .navigationBarTitle("\(contact.name) \(contact.surname)")
+                .navigationBarTitleDisplayMode(.inline)
                 Spacer()
             }
-            .navigationTitle("Person")
+            
         }
     }
 }
 
 struct ContactView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactView()
+        ContactView(contact: Person.newPerson())
     }
 }

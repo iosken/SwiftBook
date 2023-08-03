@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C31382D32A7A20D0003D4E0B /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382D22A7A20D0003D4E0B /* Person.swift */; };
 		C31382D62A7A210A003D4E0B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382D52A7A210A003D4E0B /* DataManager.swift */; };
-		C31382D92A7A2381003D4E0B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382D82A7A2381003D4E0B /* RootView.swift */; };
 		C31382E12A7AC59C003D4E0B /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382E02A7AC59C003D4E0B /* ContactView.swift */; };
 		C31382E52A7ACB0A003D4E0B /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382E42A7ACB0A003D4E0B /* ContactList.swift */; };
 		C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		C31382D22A7A20D0003D4E0B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		C31382D52A7A210A003D4E0B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		C31382D82A7A2381003D4E0B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		C31382E02A7AC59C003D4E0B /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		C31382E42A7ACB0A003D4E0B /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 		C3B6793F2A59CC90007EA4F3 /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +59,6 @@
 		C31382DA2A7A2387003D4E0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C31382D82A7A2381003D4E0B /* RootView.swift */,
 				C3B679442A59CC91007EA4F3 /* ContentView.swift */,
 				C31382E42A7ACB0A003D4E0B /* ContactList.swift */,
 				C31382E02A7AC59C003D4E0B /* ContactView.swift */,
@@ -190,7 +187,6 @@
 				C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */,
 				C31382E52A7ACB0A003D4E0B /* ContactList.swift in Sources */,
 				C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */,
-				C31382D92A7A2381003D4E0B /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
