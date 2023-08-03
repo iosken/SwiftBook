@@ -13,8 +13,6 @@ struct Person: Identifiable {
     let surname: String
     let email: String
     let phone: String
-    
-    
 }
 
 extension Person {

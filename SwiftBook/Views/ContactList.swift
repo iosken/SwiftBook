@@ -17,24 +17,19 @@ struct ContactList: View {
             if isDetailed {
                 List(contacts) { contact in
                     Section(header: Text("\(contact.name) \(contact.surname)")) {
-                        ForEach(["phone", "mail"], id: \.self) { line in
-                            if line == "phone" {
-                                HStack {
-                                    Image(systemName: "phone")
-                                    Text("\(contact.phone)")
-                                    Spacer()
-                                }
-                            } else {
-                                HStack {
-                                    Image(systemName: "envelope")
-                                    Text(contact.email)
-                                    Spacer()
-                                }
-                            }
+                        HStack {
+                            Image(systemName: "phone")
+                            Text("\(contact.phone)")
+                            Spacer()
+                        }
+                        HStack {
+                            Image(systemName: "envelope")
+                            Text(contact.email)
+                            Spacer()
                         }
                     }
-                    .navigationTitle("Contact List")
                 }
+                .navigationTitle("Contact List")
                 .listStyle(.plain)
             } else {
                 List(contacts) { contact in
@@ -51,6 +46,6 @@ struct ContactList: View {
 
 struct ContactList_Previews: PreviewProvider {
     static var previews: some View {
-        ContactList(isDetailed: false, contacts: Person.generateContacts())
+        ContactList(isDetailed: true, contacts: Person.generateContacts())
     }
 }

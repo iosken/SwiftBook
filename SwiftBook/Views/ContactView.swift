@@ -44,7 +44,6 @@ struct ContactView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 Spacer()
             }
-            
         }
     }
 }
