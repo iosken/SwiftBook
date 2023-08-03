@@ -32,14 +32,10 @@ struct ContactList: View {
                                 }
                             }
                         }
-                        
                     }
                     .navigationTitle("Contact List")
                 }
-                
                 .listStyle(.plain)
-                
-                
             } else {
                 List(contacts) { contact in
                     NavigationLink(destination: ContactView(contact: contact)) {
