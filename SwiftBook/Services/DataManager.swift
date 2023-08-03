@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataManager {
+final class DataManager {
     static let shared = DataManager()
     
     let names = ["Peter", "Axe", "Boris", "Andrew", "Nick"]
