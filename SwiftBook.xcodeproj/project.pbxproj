@@ -7,16 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31382E92A7D309D003D4E0B /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382E82A7D309D003D4E0B /* StarterView.swift */; };
+		C31382EB2A7D30E3003D4E0B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382EA2A7D30E3003D4E0B /* MainView.swift */; };
+		C31382ED2A7D3100003D4E0B /* CartRacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382EC2A7D3100003D4E0B /* CartRacingView.swift */; };
+		C31382EF2A7D311D003D4E0B /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382EE2A7D311D003D4E0B /* AwardsView.swift */; };
+		C31382F12A7D3136003D4E0B /* GradientRectangles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382F02A7D3136003D4E0B /* GradientRectangles.swift */; };
+		C31382F32A7D315D003D4E0B /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382F22A7D315D003D4E0B /* PathView.swift */; };
+		C31382F52A7D3176003D4E0B /* CurvesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31382F42A7D3176003D4E0B /* CurvesView.swift */; };
 		C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */; };
-		C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B679442A59CC91007EA4F3 /* ContentView.swift */; };
 		C3B679472A59CC91007EA4F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B679462A59CC91007EA4F3 /* Assets.xcassets */; };
 		C3B6794A2A59CC91007EA4F3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B679492A59CC91007EA4F3 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C31382E82A7D309D003D4E0B /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
+		C31382EA2A7D30E3003D4E0B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C31382EC2A7D3100003D4E0B /* CartRacingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRacingView.swift; sourceTree = "<group>"; };
+		C31382EE2A7D311D003D4E0B /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
+		C31382F02A7D3136003D4E0B /* GradientRectangles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientRectangles.swift; sourceTree = "<group>"; };
+		C31382F22A7D315D003D4E0B /* PathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathView.swift; sourceTree = "<group>"; };
+		C31382F42A7D3176003D4E0B /* CurvesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvesView.swift; sourceTree = "<group>"; };
 		C3B6793F2A59CC90007EA4F3 /* SwiftBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBookApp.swift; sourceTree = "<group>"; };
-		C3B679442A59CC91007EA4F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C3B679462A59CC91007EA4F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3B679492A59CC91007EA4F3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,9 +64,15 @@
 			isa = PBXGroup;
 			children = (
 				C3B679422A59CC91007EA4F3 /* SwiftBookApp.swift */,
-				C3B679442A59CC91007EA4F3 /* ContentView.swift */,
+				C31382E82A7D309D003D4E0B /* StarterView.swift */,
 				C3B679462A59CC91007EA4F3 /* Assets.xcassets */,
 				C3B679482A59CC91007EA4F3 /* Preview Content */,
+				C31382EA2A7D30E3003D4E0B /* MainView.swift */,
+				C31382EC2A7D3100003D4E0B /* CartRacingView.swift */,
+				C31382EE2A7D311D003D4E0B /* AwardsView.swift */,
+				C31382F02A7D3136003D4E0B /* GradientRectangles.swift */,
+				C31382F22A7D315D003D4E0B /* PathView.swift */,
+				C31382F42A7D3176003D4E0B /* CurvesView.swift */,
 			);
 			path = SwiftBook;
 			sourceTree = "<group>";
@@ -137,8 +155,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3B679452A59CC91007EA4F3 /* ContentView.swift in Sources */,
+				C31382ED2A7D3100003D4E0B /* CartRacingView.swift in Sources */,
 				C3B679432A59CC91007EA4F3 /* SwiftBookApp.swift in Sources */,
+				C31382EF2A7D311D003D4E0B /* AwardsView.swift in Sources */,
+				C31382F32A7D315D003D4E0B /* PathView.swift in Sources */,
+				C31382EB2A7D30E3003D4E0B /* MainView.swift in Sources */,
+				C31382E92A7D309D003D4E0B /* StarterView.swift in Sources */,
+				C31382F52A7D3176003D4E0B /* CurvesView.swift in Sources */,
+				C31382F12A7D3136003D4E0B /* GradientRectangles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
