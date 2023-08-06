@@ -37,6 +37,10 @@ struct SwiftBookThankYou: View {
                 path.addLine(to: CGPoint(x: step[10], y: step[10]))
                 path.addLine(to: CGPoint(x: step[0], y: step[10]))
             }
+            .fill(Gradient(colors: [
+                Color(red: 0.01, green: 0.01, blue: 0.01),
+                Color(red: 0.1, green: 0.2, blue: 0)
+            ]))
             
             Path { path in
                 path.move(to: CGPoint(x: step[1], y: step[1]))
@@ -44,6 +48,10 @@ struct SwiftBookThankYou: View {
                 path.addLine(to: CGPoint(x: step[9], y: step[9]))
                 path.addLine(to: CGPoint(x: step[1], y: step[9]))
             }
+            .fill(Gradient(colors: [
+                Color(red: 0.05, green: 0.01, blue: 0.01),
+                Color(red: 0.1, green: 0.2, blue: 0)
+            ]))
             
             Path { path in
                 path.move(to: CGPoint(x: step[1], y: step[9]))
@@ -65,7 +73,7 @@ struct SwiftBookThankYou: View {
             .stroke(
                 Color.yellow,
                 style: StrokeStyle(
-                    lineWidth: 12,
+                    lineWidth: size / 15,
                     dash: [size / step[8]]
                 )
             )
@@ -78,7 +86,7 @@ struct SwiftBookThankYou: View {
             .stroke(
                 Color.yellow,
                 style: StrokeStyle(
-                    lineWidth: 12,
+                    lineWidth: size / 15,
                     dash: [size / step[8]]
                 )
             )
@@ -86,12 +94,12 @@ struct SwiftBookThankYou: View {
             
             Path { path in
                 path.move(to: CGPoint(x: step[2], y: step[4] + 1))
-                path.addLine(to: CGPoint(x: step[0] + 40, y: step[1]))
+                path.addLine(to: CGPoint(x: size / 5, y: step[1]))
             }
             .stroke(
                 Color.yellow,
                 style: StrokeStyle(
-                    lineWidth: 12,
+                    lineWidth: size / 15,
                     dash: [size / step[8]]
                 )
             )
@@ -117,12 +125,13 @@ struct SwiftBookThankYou: View {
                 .scaleEffect(0.1)
                 .offset(x: -step[2], y: step[3])
                 .frame(width: size, height: size)
-
+            
             Text("Swift Book, Thank You!")
-                .offset(x: 1, y: 1)
+                .offset(x: 5, y: 1)
                 .foregroundColor(Color(red: 1.0, green: 0.84, blue: 0.0))
                 .fontWeight(.bold)
                 .blur(radius: 0.1)
+                .font(.system(size: size / 14))
 
 //            Text("Some text") // why error?
         }
@@ -132,6 +141,6 @@ struct SwiftBookThankYou: View {
 struct LabelView_Previews: PreviewProvider {
     static var previews: some View {
         SwiftBookThankYou()
-            .frame(width: 200, height: 200)
+            .frame(width: 400, height: 400)
     }
 }
