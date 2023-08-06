@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SwiftBookThankYou: View {
+    
     @State private var point = CGPoint(x: 0, y: 0)
     
     var body: some View {
@@ -116,7 +117,7 @@ struct SwiftBookThankYou: View {
                 .offset(x: -step[2], y: step[3])
                 .frame(width: size, height: size)
             
-            Text("Swift Book, Thank You!")
+            Text("SwiftBook, Thank You!")
                 .offset(x: step[1] / 3, y: step[1] / 8)
                 .foregroundColor(Color(red: 1.0, green: 0.84, blue: 0.0))
                 .fontWeight(.bold)
@@ -132,7 +133,9 @@ struct SwiftBookThankYou: View {
 
 //            Text("Some text") // why error?
         }
+        
     }
+    
 }
 
 struct LabelView_Previews: PreviewProvider {
