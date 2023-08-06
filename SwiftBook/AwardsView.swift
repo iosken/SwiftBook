@@ -19,7 +19,7 @@ struct AwardsView: View {
                     CurvesView()
                         .frame(width: 200, height: 200)
                     
-                    LabelView()
+                    SwiftBookThankYou()
                         .frame(width: 200, height: 200)
                 }
             }
