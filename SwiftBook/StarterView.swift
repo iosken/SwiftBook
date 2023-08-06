@@ -16,6 +16,12 @@ struct StarterView: View {
                     Text("Main")
                 }
             
+            HWAward()
+                .tabItem {
+                    Image(systemName: "star")
+                    Text("HW")
+                }
+            
             CartRacingView()
                 .tabItem {
                     Image(systemName: "cart.fill")
