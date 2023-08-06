@@ -22,7 +22,6 @@ struct HWAward: View {
                     .scaleEffect(awardIsShowing ? 2 : 1)
                     .rotationEffect(.degrees(awardIsShowing ? 0 : 180))
             }
-            
             Spacer()
             if awardIsShowing {
                 SwiftBookThankYou()
@@ -33,8 +32,6 @@ struct HWAward: View {
                         offset = 0
                     }
             }
-            
-            
             Spacer()
         }
         .font(.headline)
@@ -51,8 +48,6 @@ struct HWAward: View {
         }
     }
 }
-
-
 
 struct HWAward_Previews: PreviewProvider {
     static var previews: some View {

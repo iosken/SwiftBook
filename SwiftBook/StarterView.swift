@@ -19,7 +19,7 @@ struct StarterView: View {
             HWAward()
                 .tabItem {
                     Image(systemName: "star")
-                    Text("HW")
+                    Text("SB")
                 }
             
             CartRacingView()
