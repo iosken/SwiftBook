@@ -44,7 +44,7 @@ struct HWAward: View {
     private func buttonAction() {
         withAnimation(.spring(
             response: 0.55,
-            dampingFraction: 0.45,
+            dampingFraction: 0.25,
             blendDuration: 0
         )) {
             awardIsShowing.toggle()
@@ -67,7 +67,7 @@ extension AnyTransition {
             .combined(with: .slide)
         
         let removal = AnyTransition.move(edge: .leading)
-            .combined(with: .opacity)
+            .combined(with: .scale)
         
         return .asymmetric(insertion: insertion, removal: removal)
     }
