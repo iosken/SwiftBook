@@ -71,8 +71,8 @@ struct SwiftBookThankYou: View {
             .blur(radius: 1)
             
             Path { path in
-                path.move(to: CGPoint(x: step[8], y: step[7] + 4))
-                path.addLine(to: CGPoint(x: step[2] - 3, y: step[4]))
+                path.move(to: CGPoint(x: step[8], y: step[7]))
+                path.addLine(to: CGPoint(x: step[2], y: step[4]))
             }
             .stroke(
                 Color.yellow,
@@ -84,7 +84,7 @@ struct SwiftBookThankYou: View {
             .blur(radius: 1)
             
             Path { path in
-                path.move(to: CGPoint(x: step[2], y: step[4] + 1))
+                path.move(to: CGPoint(x: step[2], y: step[4]))
                 path.addLine(to: CGPoint(x: size / 5, y: step[1]))
             }
             .stroke(
@@ -107,7 +107,7 @@ struct SwiftBookThankYou: View {
                 .resizable()
                 .foregroundColor(Color(red: 1, green: 1, blue: 0.5))
                 .scaleEffect(0.2)
-                .offset(x: step[3] - 6, y: step[2])
+                .offset(x: step[3] / 1.1, y: step[2])
                 .frame(width: size, height: size)
             
             Image(systemName: "star.fill")
